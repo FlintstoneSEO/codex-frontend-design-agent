@@ -1,0 +1,33 @@
+{
+  "brandName": "Example Organization",
+  "industry": "nonprofit",
+  "positioning": "[NEEDS CLIENT INPUT]",
+  "personality": [
+    "trustworthy",
+    "community-centered"
+  ],
+  "avoid": [
+    "corporate-generic",
+    "excessive gradients"
+  ],
+  "colors": {
+    "primary": "#123456",
+    "accent": "#D97706",
+    "canvas": "#FAFAF7",
+    "text": "#182028"
+  },
+  "typography": {
+    "display": "[SELECT AFTER ART DIRECTION]",
+    "body": "[SELECT AFTER ART DIRECTION]"
+  },
+  "radiusScale": [
+    "0",
+    "4px",
+    "12px"
+  ],
+  "media": {
+    "authenticPhotography": true,
+    "aiImagePolicy": "Do not depict synthetic people as real stakeholders."
+  },
+  "accessibilityTarget": "WCAG 2.2 AA"
+}

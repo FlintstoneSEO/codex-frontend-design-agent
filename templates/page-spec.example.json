@@ -1,0 +1,19 @@
+{
+  "route": "/example",
+  "objective": "[DEFINE]",
+  "audience": "[DEFINE]",
+  "userIntent": "[DEFINE]",
+  "primaryConversion": "[DEFINE]",
+  "searchIntent": "[DEFINE]",
+  "title": "[DRAFT]",
+  "metaDescription": "[DRAFT]",
+  "h1": "[DRAFT]",
+  "structuredData": [],
+  "sections": [],
+  "internalLinks": [],
+  "images": [],
+  "mobileAdaptations": [],
+  "accessibilityRisks": [],
+  "performanceRisks": [],
+  "acceptanceCriteria": []
+}
