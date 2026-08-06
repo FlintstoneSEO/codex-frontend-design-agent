@@ -1,0 +1,65 @@
+{
+  "brandName": "Justice League of Greater Lansing Michigan",
+  "industry": "nonprofit-community",
+  "positioning": "Community-rooted, historically aware, credible and action-oriented",
+  "personality": [
+    "dignified",
+    "community-centered",
+    "trustworthy",
+    "historically aware",
+    "transparent",
+    "locally specific"
+  ],
+  "avoid": [
+    "generic nonprofit visual language",
+    "corporate stock photography",
+    "campaign-site aggression without educational context",
+    "excessive gradients",
+    "glassmorphism",
+    "repetitive rounded cards",
+    "fabricated impact claims"
+  ],
+  "colors": {
+    "status": "[NEEDS CLIENT INPUT: Extract and approve colors from registered brand assets]",
+    "requirements": [
+      "WCAG 2.2 AA contrast",
+      "one clearly differentiated action color",
+      "neutral reading surfaces for educational content",
+      "do not rely on color alone for status"
+    ]
+  },
+  "typography": {
+    "status": "Select after art-direction approval",
+    "requirements": [
+      "highly readable body face",
+      "strong support for long-form educational content",
+      "display voice may express dignity, history or advocacy",
+      "maximum two font families unless a third has a documented role"
+    ]
+  },
+  "componentGrammar": {
+    "status": "Defined separately by each art direction",
+    "rules": [
+      "cards only for discrete objects",
+      "campaign priority must be configurable",
+      "proof must remain close to claims",
+      "event details must remain scannable on mobile",
+      "avoid one universal radius and container treatment"
+    ]
+  },
+  "media": {
+    "priority": "Authentic community, scholarship, event, leadership and meeting photography",
+    "captioning": "Identify event, date and context when verified",
+    "aiImagePolicy": "Do not depict synthetic people as actual members, recipients, supporters or community participants",
+    "fallback": "Use typography, documents, timelines, maps, quotations and verified data when authentic photography is unavailable"
+  },
+  "motion": {
+    "default": "Restrained and optional",
+    "requirements": [
+      "respect prefers-reduced-motion",
+      "never delay access to content",
+      "use motion to explain state or priority rather than decorate every section"
+    ]
+  },
+  "accessibilityTarget": "WCAG 2.2 Level AA"
+}
