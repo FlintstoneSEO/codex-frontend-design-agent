@@ -1,0 +1,156 @@
+{
+  "organization": "Justice League of Greater Lansing Michigan",
+  "organizationType": [
+    "nonprofit",
+    "community organization",
+    "advocacy organization",
+    "scholarship organization",
+    "membership organization"
+  ],
+  "industry": "nonprofit-community",
+  "geography": {
+    "primary": "Greater Lansing, Michigan",
+    "serviceArea": "[NEEDS CLIENT INPUT: Confirm exact geographic scope]"
+  },
+  "currentWebsite": "https://www.justiceleagueglm.org/",
+  "technicalStack": "Wix",
+  "cms": "Wix",
+  "primaryAudience": [
+    "Greater Lansing residents interested in racial justice and reparations",
+    "existing supporters and members",
+    "donors and event attendees",
+    "scholarship applicants, recipients, and families",
+    "community partners and churches"
+  ],
+  "secondaryAudience": [
+    "sponsors and advertisers",
+    "media and public officials",
+    "grant makers and institutional partners",
+    "researchers and educators",
+    "volunteers and prospective committee members"
+  ],
+  "businessGoals": [
+    "Communicate mission and local relevance",
+    "Increase participation in events and campaigns",
+    "Support fundraising, donations, ticket sales, advertisements, and sponsorships",
+    "Explain scholarship and reparations work credibly",
+    "Keep supporters informed through newsletters and updates",
+    "Improve maintainability, accessibility, and mobile usability"
+  ],
+  "primaryConversion": {
+    "type": "rotating campaign priority",
+    "examples": [
+      "event registration",
+      "donation",
+      "scholarship action",
+      "membership",
+      "advertisement purchase",
+      "advocacy participation"
+    ],
+    "status": "[NEEDS CLIENT INPUT: Confirm current first-priority conversion]"
+  },
+  "secondaryConversions": [
+    "subscribe to or read newsletter",
+    "attend an event or meeting",
+    "donate",
+    "become a supporter or member",
+    "purchase or submit an advertisement",
+    "learn about scholarships and reparations work",
+    "contact the organization"
+  ],
+  "brandPositioning": "A community-rooted, historically aware, credible and action-oriented Greater Lansing organization advancing reparations education, scholarships, participation and social impact.",
+  "brandPersonality": [
+    "community-centered",
+    "trustworthy",
+    "dignified",
+    "historically aware",
+    "transparent",
+    "action-oriented",
+    "local"
+  ],
+  "personalityToAvoid": [
+    "generic corporate nonprofit",
+    "partisan campaign merchandise site",
+    "trend-driven",
+    "bureaucratic",
+    "visually aggressive without educational context"
+  ],
+  "contentPriorities": [
+    "mission and local relevance",
+    "current campaign or event",
+    "scholarships and community outcomes",
+    "reparations education",
+    "ways to participate",
+    "leadership and governance",
+    "events, newsletters and updates",
+    "donation, sponsorship and advertising",
+    "contact information"
+  ],
+  "requiredPages": [
+    "Home",
+    "About and Governance",
+    "Reparations and Education",
+    "Scholarships",
+    "Events",
+    "Event Detail",
+    "Get Involved",
+    "Donate",
+    "News and Newsletter Archive",
+    "Contact"
+  ],
+  "availableAssets": [
+    "registered organization logos",
+    "existing event and newsletter content",
+    "scholarship communications",
+    "event registration pages",
+    "leadership information",
+    "existing website photography and campaign assets"
+  ],
+  "mediaPolicy": {
+    "priority": "Authentic event, scholarship, leadership, meeting and community photography",
+    "aiPeople": "Prohibited when representing actual stakeholders",
+    "stockPhotography": "Use only when it cannot be mistaken for real participants and adds necessary context",
+    "historicalMedia": "Requires rights, context and captions"
+  },
+  "seoPriorities": [
+    "organization brand searches",
+    "Greater Lansing community relevance",
+    "local reparations education and advocacy",
+    "scholarship information",
+    "events and fundraisers"
+  ],
+  "structuredDataCandidates": [
+    "Organization",
+    "Event",
+    "Article",
+    "BreadcrumbList"
+  ],
+  "accessibilityTarget": "WCAG 2.2 Level AA",
+  "performanceConstraints": [
+    "Wix platform overhead",
+    "event and payment integrations",
+    "embedded forms",
+    "third-party newsletter or video content"
+  ],
+  "contentReadiness": "partial",
+  "unknowns": [
+    "current primary campaign conversion",
+    "redesign scope and timeline",
+    "approved brand colors and typography",
+    "complete content inventory",
+    "photography rights and availability",
+    "verified impact metrics",
+    "governance and financial transparency content",
+    "membership process",
+    "donation platform and post-donation flow",
+    "exact service area",
+    "staff content owners and update workflow"
+  ],
+  "assumptions": [
+    "Wix will remain the implementation platform",
+    "primary conversion rotates by campaign",
+    "authentic photography is available for at least some programs and events",
+    "the organization wants advocacy urgency balanced with institutional credibility"
+  ],
+  "implementationStatus": "Blocked pending art-direction selection and resolution of material missing inputs"
+}
