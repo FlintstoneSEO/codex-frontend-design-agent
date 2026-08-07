@@ -1,12 +1,16 @@
 ---
-import { site } from "@/data/site";
+import { currentWixRoutes, site } from "@/data/site";
 ---
 
 <footer class="site-footer">
   <div class="footer-statement">
     <p class="section-kicker">Greater Lansing, Michigan</p>
     <p class="footer-name">{site.name}</p>
-    <p class="footer-note">Non-production website prototype. Organization details and integrations remain subject to approval.</p>
+    <address class="footer-note">
+      {site.mailingAddress.line1}<br />
+      {site.mailingAddress.line2}<br />
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+    </address>
   </div>
   <div class="footer-links">
     <nav aria-label="Footer explore">
@@ -28,6 +32,9 @@ import { site } from "@/data/site";
       <h2>Trust</h2>
       <a href="/about/leadership/">Leadership & Governance</a>
       <a href="/impact/">Impact & Accountability</a>
+      <a href={site.nonprofitDocumentUrl} target="_blank" rel="noreferrer">{site.nonprofitLabel}</a>
+      <a href={site.irsForm1023Url} target="_blank" rel="noreferrer">IRS Form 1023</a>
+      <a href={currentWixRoutes.donors} target="_blank" rel="noreferrer">Current donor acknowledgments</a>
       <a href="/privacy/">Privacy shell</a>
     </nav>
   </div>

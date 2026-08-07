@@ -1,17 +1,24 @@
 ---
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import ElinkNews from "@/components/ElinkNews.astro";
 import NewsletterShell from "@/components/NewsletterShell.astro";
 import PageIntro from "@/components/PageIntro.astro";
+import { currentWixRoutes } from "@/data/site";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
-<BaseLayout pageType="WebPage" title="News and Stories | Justice League GLM" description="Review the editorial archive prototype for future dated Justice League GLM news, community stories, and updates.">
-  <main id="main-content" class="interior-page">
+<BaseLayout pageType="WebPage" title="News, Videos, and E-News | Justice League GLM" description="Follow Justice League GLM media coverage, recent videos, the guarded eLink news collection, and the current E-News Brief archive.">
+  <main id="main-content" class="interior-page" tabindex="-1">
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "News and stories" }]} />
-    <PageIntro kicker="Community record" title="News and Stories" lede="A credible archive names the publisher, date, source, context, and correction path. The Wix editorial source is not connected." mode="documentary" marker="Dated context" />
-    <section class="status-banner status-banner--warning" aria-labelledby="news-source"><p class="section-kicker">Editorial source</p><h2 id="news-source">Wix Blog or CMS is not selected</h2><p>[NEEDS CLIENT INPUT: Confirm the source, migration inventory, authorship policy, media rights, archive policy, and newsletter provider.]</p></section>
-    <section class="story-review" aria-labelledby="story-treatment"><div class="section-heading-row"><p class="section-kicker">Demonstration treatment</p><h2 id="story-treatment">A story needs more than a thumbnail.</h2></div><article class="story-row"><div class="story-index">Demo / 01</div><div><p class="placeholder-label">Not published reporting</p><h3>Demonstration story structure</h3><p>A labelled fixture for reviewing editorial hierarchy, source notes, corrections, and a contextual next step.</p><a class="text-action" href="/news/demo-story/">Open demonstration story</a></div><dl><div><dt>Publisher</dt><dd>Not supplied</dd></div><div><dt>Publication date</dt><dd>Not supplied</dd></div></dl></article></section>
-    <section class="state-review state-review--compact" aria-labelledby="news-states"><div class="section-heading-row"><p class="section-kicker">Archive resilience</p><h2 id="news-states">Empty and error states stay honest.</h2></div><div class="state-stack"><details open><summary>Empty archive</summary><div><h3>No approved stories are available</h3><p>Visitors can continue to Events or Reparations without seeing invented editorial content.</p></div></details><details><summary>Source error</summary><div><h3>Stories could not be loaded</h3><p>The page does not substitute stale or fabricated records. A retry can be added with the live adapter.</p></div></details></div></section>
+    <PageIntro kicker="Community record" title="News, Videos, and E-News" lede="Current coverage is distributed across an eLink collection, the Wix media page, and the E-News Brief archive." mode="documentary" marker="Dated context" />
+
+    <section class="documentary-record" aria-labelledby="latest-news-heading">
+      <div><p class="section-kicker">Latest news</p><h2 id="latest-news-heading">Open the current editorial collection deliberately.</h2><p>eLink does not provide an RSS feed for this collection. The third-party embed remains consent-gated, with a direct source link available when scripts are blocked or declined.</p><ElinkNews /></div>
+    </section>
+
+    <section class="story-review" aria-labelledby="video-treatment"><div class="section-heading-row"><p class="section-kicker">Recent video features</p><h2 id="video-treatment">Stories published through the current media page.</h2></div><article class="story-row"><div class="story-index">Video / 01</div><div><h3>The Story Behind the Justice League of Greater Lansing</h3><p>The current Wix page presents an organization overview focused on reparations, community, and justice.</p><a class="text-action" href={currentWixRoutes.news} target="_blank" rel="noreferrer">Watch on the current site <span class="visually-hidden">(opens in a new tab)</span></a></div></article><article class="story-row"><div class="story-index">Video / 02</div><div><h3>MSU Broad Art Museum: Reparations Reframed</h3><p>The current media page also features the Justice League's collaboration with the MSU Broad Art Museum.</p><a class="text-action" href={currentWixRoutes.news} target="_blank" rel="noreferrer">Watch on the current site <span class="visually-hidden">(opens in a new tab)</span></a></div></article></section>
+
+    <section class="evidence-note" aria-labelledby="enews-heading"><p class="section-kicker">E-News Briefs</p><h2 id="enews-heading">The current archive page does not expose entries.</h2><p>Its public table currently shows only the Date, Subject, and View More headings. No newsletter issue is invented or migrated without a visible source record.</p><a class="text-action" href={currentWixRoutes.newsletterArchive} target="_blank" rel="noreferrer">Check the current E-News archive <span class="visually-hidden">(opens in a new tab)</span></a></section>
     <NewsletterShell />
   </main>
 </BaseLayout>

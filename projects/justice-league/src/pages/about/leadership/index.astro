@@ -7,11 +7,11 @@ import { leadership } from "@/data/content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
-<BaseLayout pageType="WebPage" title="Leadership and Governance | Justice League GLM" description="Review the provisionally recorded executive team, board, advisory council, and governance information for Justice League GLM.">
-  <main id="main-content" class="interior-page">
+<BaseLayout pageType="WebPage" title="Leadership and Governance | Justice League GLM" description="Meet the current Justice League GLM executive team, Board of Directors, and African American Advisory Council.">
+  <main id="main-content" class="interior-page" tabindex="-1">
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About", href: "/about/" }, { label: "Leadership and governance" }]} />
-    <PageIntro kicker="Accountability record" title="Leadership and Governance" lede="The current-site roster is shown as a dated prototype record, not as a recertified claim." mode="evidence" marker="Who leads" />
-    <SourceNotice title="Roster requires recertification" />
+    <PageIntro kicker="Accountability record" title="Leadership and Governance" lede="The executive team, Board of Directors, and African American Advisory Council hold distinct responsibilities in the work." mode="evidence" marker="Who leads" />
+    <SourceNotice title="Roster verified against the current team page" />
     <section class="roster-section" aria-labelledby="executive-heading">
       <div class="roster-heading"><span>01</span><h2 id="executive-heading">Executive team</h2></div>
       <dl class="roster-list">{leadership.executive.map(([name, role]) => <div><dt>{name}</dt><dd>{role}</dd></div>)}</dl>
@@ -24,7 +24,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       <div class="roster-heading"><span>03</span><h2 id="advisory-heading">Advisory council</h2></div>
       <ul class="name-ledger">{leadership.advisory.map((name) => <li>{name}<span>Role details not supplied</span></li>)}</ul>
     </section>
-    <section class="evidence-note" aria-labelledby="governance-gaps"><p class="section-kicker">Governance inventory</p><h2 id="governance-gaps">Documents still needed for a complete account.</h2><p>[NEEDS CLIENT INPUT: Confirm current terms, board and advisory responsibilities, committee structure, conflict policy, annual report, IRS determination letter, applicable Form 990 records, financial summaries, scholarship oversight, and donation-allocation policy.]</p></section>
-    <ActionBand kicker="Corrections and questions" title="Help keep the public record current." text="The production page needs a named owner and review schedule for roster and governance changes." primaryLabel="Contact the organization" primaryHref="/contact/" secondaryLabel="View accountability framework" secondaryHref="/impact/" />
+    <section class="evidence-note" aria-labelledby="governance-gaps"><p class="section-kicker">Governance record</p><h2 id="governance-gaps">Public responsibilities and documents.</h2><p>The current timeline states that the African American Advisory Council oversees reparations distributions. Board terms, committee charters, conflict policy, annual reports, Form 990 records, and current financial summaries are not published on the reviewed pages.</p><p>[NEEDS CLIENT INPUT: Confirm which additional governance records should be published in the redesigned site.]</p></section>
+    <ActionBand kicker="Corrections and questions" title="Help keep the public roster current." text="Use the public contact path to report a roster correction or ask a governance question." primaryLabel="Contact the organization" primaryHref="/contact/" secondaryLabel="View accountability record" secondaryHref="/impact/" />
   </main>
 </BaseLayout>

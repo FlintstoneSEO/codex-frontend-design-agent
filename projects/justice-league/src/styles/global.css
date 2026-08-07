@@ -1724,6 +1724,12 @@ h3 {
 }
 
 @media (max-width: 31rem) {
+  main h1,
+  main h2,
+  main h3 {
+    overflow-wrap: anywhere;
+  }
+
   .prototype-rail {
     justify-content: center;
     text-align: center;

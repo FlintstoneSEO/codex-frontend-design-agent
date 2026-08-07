@@ -1,5 +1,6 @@
 ---
 import type { PublicEventsResult } from "@/lib/wix";
+import { currentWixRoutes } from "@/data/site";
 
 interface Props {
   result: PublicEventsResult;
@@ -45,7 +46,7 @@ const fallbackMessage = result.state === "success" ? "" : result.message;
         <p class="priority-status">{result.state === "error" ? "Wix Events connection error" : "No current public priority"}</p>
         <h3>{result.state === "error" ? "Current event information is temporarily unavailable." : "No public upcoming event is configured."}</h3>
         <p>{fallbackMessage}</p>
-        <a class="text-action" href="https://www.justiceleagueglm.org/upcoming-events">View events on the current Wix site</a>
+        <a class="text-action" href={currentWixRoutes.events}>View events on the current Wix site</a>
       </div>
     )}
   </div>

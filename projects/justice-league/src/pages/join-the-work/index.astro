@@ -8,13 +8,13 @@ import { participationPaths } from "@/data/content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
-<BaseLayout pageType="WebPage" title="Join the Work | Justice League GLM" description="Explore provisional ways to attend, contribute, request a presentation, partner, volunteer, or receive Justice League GLM updates.">
-  <main id="main-content" class="interior-page">
+<BaseLayout pageType="WebPage" title="Join the Work | Justice League GLM" description="Ask to join a committee, attend a general meeting, request a presentation, or receive Justice League GLM updates.">
+  <main id="main-content" class="interior-page" tabindex="-1">
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Join the Work" }]} />
-    <PageIntro kicker="Participation pathway" title="Join the Work" lede="Choose a way to begin a relationship with the work. This is a participation prototype, not a claim about formal membership." mode="documentary" marker="Find your path" />
-    <SourceNotice title="Participation options require confirmation" />
-    <section class="ruled-section" aria-labelledby="participation-options"><div class="section-heading-row"><p class="section-kicker">Ordered by intent</p><h2 id="participation-options">Six ways to start a conversation.</h2></div><ol class="pathway-ledger pathway-ledger--six">{participationPaths.map((path, index) => <li><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{path.label}</h3><p>{path.description}</p><small>Availability: requires confirmation</small></div><a href={path.destination === "newsletter" ? "#newsletter" : path.destination === "contact" ? "/contact/" : "#interest-form"}>{path.destination === "newsletter" ? "Review signup" : path.destination === "contact" ? "Contact" : "Select below"}</a></li>)}</ol></section>
-    <section class="form-section" id="interest-form" aria-labelledby="interest-heading"><div class="form-intro"><p class="section-kicker">Participation interest shell</p><h2 id="interest-heading">Test the form pattern.</h2><p>[NEEDS CLIENT INPUT: Confirm active pathways, meetings, committees, membership policy, routing, response time, consent, and privacy.]</p></div><PrototypeForm kind="join" /></section>
+    <PageIntro kicker="Participation pathway" title="Join the Work" lede="Begin with a meeting, committee, presentation, or email update request—the participation options currently published by the organization." mode="documentary" marker="Find your path" />
+    <SourceNotice title="Options verified against the current contact form" />
+    <section class="ruled-section" aria-labelledby="participation-options"><div class="section-heading-row"><p class="section-kicker">Current public options</p><h2 id="participation-options">Four ways to start a conversation.</h2></div><ol class="pathway-ledger pathway-ledger--six">{participationPaths.map((path, index) => <li><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{path.label}</h3><p>{path.description}</p></div><a href={path.destination === "newsletter" ? "#newsletter" : "#interest-form"}>{path.destination === "newsletter" ? "Review signup" : "Select below"}</a></li>)}</ol></section>
+    <section class="form-section" id="interest-form" aria-labelledby="interest-heading"><div class="form-intro"><p class="section-kicker">Participation interest shell</p><h2 id="interest-heading">Preview the future headless form.</h2><p>No formal membership, dues, voting rights, or guaranteed committee placement is claimed. The current meeting schedule and response time still require confirmation.</p></div><PrototypeForm kind="join" /></section>
     <NewsletterShell />
   </main>
 </BaseLayout>

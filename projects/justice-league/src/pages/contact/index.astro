@@ -4,14 +4,15 @@ import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import PageIntro from "@/components/PageIntro.astro";
 import PrototypeForm from "@/components/PrototypeForm.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { currentWixRoutes, site } from "@/data/site";
 ---
 
-<BaseLayout pageType="WebPage" title="Contact | Justice League GLM" description="Review contact pathways and the non-submitting inquiry form prototype for the Justice League of Greater Lansing.">
-  <main id="main-content" class="interior-page">
+<BaseLayout pageType="WebPage" title="Contact | Justice League GLM" description="Email or write to the Justice League of Greater Lansing Michigan, or review the current Wix inquiry form for meetings, committees, and presentations.">
+  <main id="main-content" class="interior-page" tabindex="-1">
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact" }]} />
-    <PageIntro kicker="General inquiry" title="Contact the Justice League" lede="Choose a clear inquiry category and review the accessible form behavior. No message is transmitted in this prototype." mode="documentary" marker="Start a conversation" />
-    <section class="contact-orientation" aria-labelledby="contact-routing"><div><p class="section-kicker">Inquiry routing</p><h2 id="contact-routing">Send the question to the right future workflow.</h2></div><ul><li>General inquiry</li><li>Scholarship question</li><li>Event question</li><li>Media or presentation request</li><li>Support question</li></ul><p>[NEEDS CLIENT INPUT: Verify public contact details, routing owner, response expectation, data retention, consent, and privacy policy.]</p></section>
-    <section class="form-section" aria-labelledby="contact-form-heading"><div class="form-intro"><p class="section-kicker">Inquiry form shell</p><h2 id="contact-form-heading">Test the validation pattern.</h2><p>No address, telephone number, email address, or response time is invented for this page.</p></div><PrototypeForm kind="contact" /></section>
-    <ActionBand kicker="Participation inquiry" title="Looking for a way to take part?" text="The Join page separates meetings, committees, presentations, volunteering, partnerships, and updates." primaryLabel="Join the Work" primaryHref="/join-the-work/" secondaryLabel="Privacy shell" secondaryHref="/privacy/" />
+    <PageIntro kicker="General inquiry" title="Contact the Justice League" lede="Ask about the scholarship, meetings, committees, presentations, events, donations, or the wider reparations work." mode="documentary" marker="Start a conversation" />
+    <section class="contact-orientation" aria-labelledby="contact-routing"><div><p class="section-kicker">Public contact details</p><h2 id="contact-routing">Email or write to the organization.</h2></div><address><a href={`mailto:${site.email}`}>{site.email}</a><br />{site.mailingAddress.line1}<br />{site.mailingAddress.line2}</address><ul><li>Join a committee</li><li>Attend a general meeting</li><li>Request a presentation</li><li>Scholarship or event question</li><li>Donation or general inquiry</li></ul><a class="text-action" href={currentWixRoutes.contact} target="_blank" rel="noreferrer">Use the current Wix contact form <span class="visually-hidden">(opens in a new tab)</span></a></section>
+    <section class="form-section" aria-labelledby="contact-form-heading"><div class="form-intro"><p class="section-kicker">Inquiry form shell</p><h2 id="contact-form-heading">Preview the future headless form.</h2><p>This accessible shell does not transmit information. Until Wix Forms is connected headlessly, use the verified Wix form or email address above.</p></div><PrototypeForm kind="contact" /></section>
+    <ActionBand kicker="Participation inquiry" title="Looking for a way to take part?" text="The Join page separates general meetings, committee interest, presentation requests, and email updates." primaryLabel="Join the Work" primaryHref="/join-the-work/" secondaryLabel="Privacy shell" secondaryHref="/privacy/" />
   </main>
 </BaseLayout>

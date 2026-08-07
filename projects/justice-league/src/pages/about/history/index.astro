@@ -7,7 +7,15 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 const timelineUrl = "https://www.justiceleagueglm.org/timeline";
 const historyUrl = "https://www.justiceleagueglm.org/history";
 
-const milestones = [
+type Milestone = {
+  date: string;
+  datetime: string;
+  title: string;
+  paragraphs: string[];
+  image?: { src: string; width: number; height: number; alt: string; caption: string };
+};
+
+const milestones: Milestone[] = [
   {
     date: "2021",
     datetime: "2021",
@@ -71,6 +79,24 @@ const milestones = [
       alt: "State Senator Sarah Anthony speaking at the 2023 Capitol apology gathering",
       caption: "The Juneteenth gathering brought the apology into a public civic setting."
     }
+  },
+  {
+    date: "April–August 2023",
+    datetime: "2023-04",
+    title: "Congregations make early reparations commitments",
+    paragraphs: [
+      "The current timeline records a $20,000 commitment from First Presbyterian Church of Holt and a $7,000 payment from Red Cedar Friends Meeting.",
+      "It later records a total reparations payment of $173,260 connected with Edgewood United Church and a $130,470.62 contribution from All Saints Episcopal Church. These are dated historical commitments, not current fund balances."
+    ]
+  },
+  {
+    date: "January–April 2024",
+    datetime: "2024-01",
+    title: "Public education reaches local and national audiences",
+    paragraphs: [
+      "The Justice League joined a screening and panel for The Cost of Inheritance, followed by the first How Did We Get Here? community dialogue at the East Lansing Public Library.",
+      "In April, NPR reported on the Greater Lansing faith-based reparations effort, extending attention beyond the region."
+    ]
   },
   {
     date: "August 2024",
@@ -137,6 +163,15 @@ const milestones = [
     }
   },
   {
+    date: "September 2025",
+    datetime: "2025-09",
+    title: "A second home build advances the housing pillar",
+    paragraphs: [
+      "The current timeline records a second reparations-supported home underway on McCullough Street next to the first project.",
+      "The entry describes the same partnership model with the Eastside Community Action Center and approximately $70,000 in Justice League reparations funding for construction."
+    ]
+  },
+  {
     date: "November 2025",
     datetime: "2025-11",
     title: "Four years of work are reviewed in public",
@@ -176,7 +211,7 @@ const milestones = [
   title="History and Timeline | Justice League GLM"
   description="Trace the Justice League of Greater Lansing from its 2021 founding through public education, reparations scholarships, homebuilding, and regional collaboration."
 >
-  <main id="main-content" class="interior-page">
+  <main id="main-content" class="interior-page" tabindex="-1">
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About", href: "/about/" }, { label: "History" }]} />
     <PageIntro
       kicker="Greater Lansing public record"
@@ -228,17 +263,19 @@ const milestones = [
               <div class="timeline-entry-copy">
                 {milestone.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
               </div>
-              <figure class="timeline-media">
-                <img
-                  src={milestone.image.src}
-                  width={milestone.image.width}
-                  height={milestone.image.height}
-                  alt={milestone.image.alt}
-                  loading="lazy"
-                  decoding="async"
-                />
-                <figcaption>{milestone.image.caption} Image reused from the approved current Wix timeline.</figcaption>
-              </figure>
+              {milestone.image && (
+                <figure class="timeline-media">
+                  <img
+                    src={milestone.image.src}
+                    width={milestone.image.width}
+                    height={milestone.image.height}
+                    alt={milestone.image.alt}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption>{milestone.image.caption} Image reused from the approved current Wix timeline.</figcaption>
+                </figure>
+              )}
               <p class="source-line">
                 <a href={timelineUrl} target="_blank" rel="noreferrer">View this milestone in the full current timeline <span class="visually-hidden">(opens in a new tab)</span></a>
               </p>

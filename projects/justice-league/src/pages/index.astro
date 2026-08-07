@@ -12,7 +12,7 @@ const eventsResult = await getUpcomingPublicEvents();
 ---
 
 <BaseLayout isHome={true} ogImage={homepage.hero.src}>
-  <main id="main-content">
+  <main id="main-content" tabindex="-1">
     <section class="hero" aria-labelledby="homepage-title">
       <div class="hero-copy">
         <p class="section-kicker">Greater Lansing · Michigan</p>
@@ -82,8 +82,8 @@ const eventsResult = await getUpcomingPublicEvents();
         <blockquote>
           <p>“I can stand up, speak out, and apologize to those who continue to be harmed.”</p>
         </blockquote>
-        <a class="text-action" href={homepage.willye.cityPulseUrl} target="_blank" rel="noreferrer">
-          Read “The Art of Repair” in City Pulse <span class="visually-hidden">(opens in a new tab)</span>
+        <a class="text-action" href={homepage.willye.profileUrl} target="_blank" rel="noreferrer">
+          Read the Presbytery’s recognition of Willye Bryan <span class="visually-hidden">(opens in a new tab)</span>
         </a>
       </div>
     </section>

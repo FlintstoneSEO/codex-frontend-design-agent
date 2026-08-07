@@ -62,10 +62,43 @@ export type SupportHandoff = {
 };
 
 export const currentSiteReview: PageReviewMetadata = {
-  source: "Current public justiceleagueglm.org content summarized for this project",
-  observedAt: "2026-08-06",
-  approvalStatus: "provisional"
+  source: "Current published justiceleagueglm.org website",
+  observedAt: "2026-08-07",
+  approvalStatus: "approved"
 };
+
+export const vision = {
+  summary:
+    "The Justice League connects faith and racial justice through reparations, with predominantly white houses of worship participating in repair for the harms of slavery and unequal wealth accumulation.",
+  commitments: [
+    "Build a reparations fund through faith-based, individual, corporate, and community contributions.",
+    "Use an African American Advisory Council to govern reparations distributions.",
+    "Direct the work through three pillars: educational scholarships, homeownership, and business entrepreneurship."
+  ],
+  sourceUrl: "https://www.justiceleagueglm.org/vision-justice-league-lansing",
+  observedAt: "2026-08-07"
+} as const;
+
+export const repairersOfTheBreach = [
+  "StableCommunities Foundation",
+  "Mason First Presbyterian Church",
+  "Reachout Christian Center Church",
+  "University United Methodist Church",
+  "Restorative Actions",
+  "Lansing Church of God In Christ",
+  "Kingdom Ministries",
+  "Matthew 25",
+  "Unity Spiritual Center of Lansing",
+  "Edgewood UCC",
+  "Unitarian Universalist Church of Greater Lansing",
+  "Holt First Presbyterian Church",
+  "Red Cedar Friends",
+  "University Lutheran Church",
+  "Grace Lutheran Church",
+  "All Saints Episcopal",
+  "Sycamore Creek",
+  "Lansing First Presbyterian"
+] as const;
 
 export const leadership = {
   executive: [
@@ -78,13 +111,13 @@ export const leadership = {
     ["Sarah Allen", "Board Chair"],
     ["Betsy Sneller", "Board Member"],
     ["Peggy Vaughn-Payne", "Board Member"],
-    ["Dr. Nakia Parker", "Board Member"],
-    ["Dr. Sean L. Holland", "Board Member"]
+    ["Dr. Nakia Parker", "Board Member / Advisory Council"],
+    ["Dr. Sean L. Holland", "Board Member / Advisory Council"]
   ],
   advisory: [
     "Courtney Minor",
     "Terrence J. King",
-    "Bishop Samuel Duncan Jr.",
+    "Bishop Samuel Duncan, Jr.",
     "Cheryl Smith",
     "David Foreman",
     "Betty Sanford",
@@ -93,22 +126,22 @@ export const leadership = {
 } as const;
 
 export const participationPaths: ParticipationPath[] = [
-  { label: "Attend a meeting", description: "Express interest in a future general meeting; public access and dates still require confirmation.", availability: "provisional", destination: "form" },
-  { label: "Join a committee", description: "Share the kind of work you want to contribute to; active committees still require confirmation.", availability: "provisional", destination: "form" },
-  { label: "Request a presentation", description: "Start a conversation about hosting a presentation for a congregation or community group.", availability: "provisional", destination: "form" },
-  { label: "Volunteer", description: "Describe the time or skills you may be able to offer; this is not a promise of placement.", availability: "provisional", destination: "form" },
-  { label: "Become a community partner", description: "Open a partnership inquiry without implying an existing partner program or benefit.", availability: "provisional", destination: "contact" },
-  { label: "Receive email updates", description: "Review the newsletter signup shell; no subscription is created in this prototype.", availability: "provisional", destination: "newsletter" }
+  { label: "Attend a general meeting", description: "Ask to attend a future general meeting and receive the current access details from the organization.", availability: "confirmed", destination: "form" },
+  { label: "Join a committee", description: "Tell the Justice League which area of committee work interests you.", availability: "confirmed", destination: "form" },
+  { label: "Request a presentation", description: "Start a conversation about a Justice League presentation for a congregation or community group.", availability: "confirmed", destination: "form" },
+  { label: "Receive email updates", description: "Request Justice League news, event, and initiative updates.", availability: "confirmed", destination: "newsletter" }
 ];
 
 export const supportHandoffs: SupportHandoff[] = [
   {
     label: "Reparations payment",
-    description: "The current site describes this designation as support for initiatives addressing the racial wealth gap. Final use-of-funds wording requires approval."
+    description: "Funding for Justice League initiatives that address the racial wealth gap in Greater Lansing.",
+    verifiedWixActionUrl: "https://www.justiceleagueglm.org/donate"
   },
   {
     label: "Administration donation",
-    description: "The current site describes this designation as support for operating costs. Final financial and legal wording requires approval."
+    description: "Operational support used to manage the Justice League's reparations initiatives effectively.",
+    verifiedWixActionUrl: "https://www.justiceleagueglm.org/donate"
   }
 ];
 

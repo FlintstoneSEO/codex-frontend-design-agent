@@ -7,7 +7,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Demonstration Event Detail | Justice League GLM Prototype" description="A noindex demonstration of the verified facts and registration states required for a future Justice League GLM event page.">
-  <main id="main-content" class="interior-page">
+  <main id="main-content" class="interior-page" tabindex="-1">
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Events", href: "/events/" }, { label: "Demonstration detail" }]} />
     <div class="demo-rail" role="note"><strong>Demonstration fixture</strong><span>This is not a real event, meeting, invitation, date, venue, or deadline.</span></div>
     <PageIntro kicker="Prototype event detail" title={demoEvent.title} lede={demoEvent.description} mode="campaign" marker="Not a real event" />

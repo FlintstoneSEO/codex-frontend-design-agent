@@ -3,33 +3,43 @@ import ActionBand from "@/components/ActionBand.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import PageIntro from "@/components/PageIntro.astro";
 import SourceNotice from "@/components/SourceNotice.astro";
+import { vision } from "@/data/content";
+import { site } from "@/data/site";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
-<BaseLayout pageType="WebPage" title="About the Justice League | Justice League GLM" description="Learn about the Justice League of Greater Lansing's provisional mission, local focus, and pathways for reparations work.">
-  <main id="main-content" class="interior-page">
+<BaseLayout pageType="WebPage" title="About the Justice League | Justice League GLM" description="Learn the Justice League of Greater Lansing Michigan mission, faith-rooted reparations vision, three program pillars, and ways to participate.">
+  <main id="main-content" class="interior-page" tabindex="-1">
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About" }]} />
     <PageIntro kicker="Organization overview" title="About the Justice League" lede="A faith-rooted, community-centered approach to locally led reparations in Greater Lansing." mode="documentary" marker="Who we are" />
-    <SourceNotice />
+    <SourceNotice title="Mission and vision verified against the current site" />
 
     <section class="editorial-split" aria-labelledby="about-mission">
       <div class="section-index">01 / Mission</div>
       <div>
-        <h2 id="about-mission">Repair requires relationship, learning, and action.</h2>
-        <div class="placeholder-copy">
-          <p class="placeholder-label">Approved prototype mission placeholder</p>
-          <p>The Justice League brings people and partners together to advance reparations and increase wealth equity for African Americans in Greater Lansing.</p>
-        </div>
-        <p>The current public site describes the organization as faith-rooted, historically informed, locally led, and focused on education, relationship building, scholarships, economic repair, and collective action. That description remains provisional for this prototype.</p>
+        <h2 id="about-mission">Repair the breach and increase wealth equity.</h2>
+        <p class="editorial-lede">{site.mission}</p>
+        <p>{vision.summary}</p>
+        <p class="source-line">Mission and vision reviewed against the published organization website on {vision.observedAt}.</p>
       </div>
     </section>
 
+    <section class="ruled-section" aria-labelledby="about-vision">
+      <div class="section-heading-row"><p class="section-kicker">Public vision</p><h2 id="about-vision">A locally governed, three-pillar model.</h2></div>
+      <ol class="method-rail">
+        {vision.commitments.map((commitment, index) => (
+          <li><span>{String(index + 1).padStart(2, "0")}</span><strong>{commitment}</strong></li>
+        ))}
+      </ol>
+      <a class="text-action" href={vision.sourceUrl} target="_blank" rel="noreferrer">Read the current vision statement <span class="visually-hidden">(opens in a new tab)</span></a>
+    </section>
+
     <section class="ruled-section" aria-labelledby="about-work">
-      <div class="section-heading-row"><p class="section-kicker">Areas of work</p><h2 id="about-work">Connected work, distinct paths.</h2></div>
+      <div class="section-heading-row"><p class="section-kicker">Areas of work</p><h2 id="about-work">Education, homeownership, and entrepreneurship.</h2></div>
       <ol class="pathway-ledger">
-        <li><span>01</span><div><h3>Understand the local context</h3><p>Education and historical context belong with sources, definitions, and room for reflection.</p></div><a href="/reparations/">Explore reparations</a></li>
-        <li><span>02</span><div><h3>Follow scholarship activity</h3><p>Applicants and supporters need one dependable place for cycle status, eligibility, and evidence.</p></div><a href="/scholarship/">Review scholarship</a></li>
-        <li><span>03</span><div><h3>Take part locally</h3><p>Participation, partnership, meetings, and presentations require clearer paths than a generic membership promise.</p></div><a href="/join-the-work/">Join the Work</a></li>
+        <li><span>01</span><div><h3>Educational scholarships</h3><p>Reparations-funded scholarships support eligible descendants of enslaved Africans in Ingham, Clinton, and Eaton counties.</p></div><a href="/scholarship/">Review scholarship</a></li>
+        <li><span>02</span><div><h3>Homeownership</h3><p>The timeline records reparations-supported home construction with the Eastside Community Action Center.</p></div><a href="/about/history/">Review the timeline</a></li>
+        <li><span>03</span><div><h3>Business entrepreneurship</h3><p>Business development is the third adopted pillar; current public program terms have not yet been published.</p></div><a href="/reparations/">Understand the framework</a></li>
       </ol>
     </section>
 
@@ -41,6 +51,6 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         <a href="/impact/">Impact and accountability <span aria-hidden="true">→</span></a>
       </nav>
     </section>
-    <ActionBand kicker="Next step" title="Move from interest to participation." text="Compare the provisional participation paths documented on the current site." primaryLabel="Join the Work" primaryHref="/join-the-work/" secondaryLabel="Support Reparations" secondaryHref="/support-reparations/" />
+    <ActionBand kicker="Next step" title="Move from interest to participation." text="Choose a current pathway for a meeting, committee, presentation, email updates, or financial support." primaryLabel="Join the Work" primaryHref="/join-the-work/" secondaryLabel="Support Reparations" secondaryHref="/support-reparations/" />
   </main>
 </BaseLayout>

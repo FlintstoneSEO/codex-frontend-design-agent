@@ -1,5 +1,6 @@
 ---
 import type { PublicEventsResult } from "@/lib/wix";
+import { currentWixRoutes } from "@/data/site";
 
 interface Props {
   result: PublicEventsResult;
@@ -30,8 +31,7 @@ const events = result.state === "success" ? result.events.slice(excludeFirst ? 1
       <p>{result.state === "error" ? result.message : "The current priority is the only public event selected for this homepage build."}</p>
     </div>
   )}
-  <a class="text-action" href="https://www.justiceleagueglm.org/upcoming-events" target="_blank" rel="noreferrer">
+  <a class="text-action" href={currentWixRoutes.events} target="_blank" rel="noreferrer">
     View all events on Wix <span class="visually-hidden">(opens in a new tab)</span>
   </a>
 </section>
-

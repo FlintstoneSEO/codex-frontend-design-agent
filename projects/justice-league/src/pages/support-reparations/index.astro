@@ -4,17 +4,18 @@ import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import PageIntro from "@/components/PageIntro.astro";
 import SourceNotice from "@/components/SourceNotice.astro";
 import { supportHandoffs } from "@/data/content";
+import { currentWixRoutes, site } from "@/data/site";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
-<BaseLayout pageType="WebPage" title="Support Reparations | Justice League GLM" description="Review the provisional reparations-payment and administration-support designations before a future verified Wix-hosted contribution handoff.">
-  <main id="main-content" class="interior-page">
+<BaseLayout pageType="WebPage" title="Support Reparations | Justice League GLM" description="Support Justice League GLM reparations initiatives or administration through the verified Wix donation page, or mail a check with the support card.">
+  <main id="main-content" class="interior-page" tabindex="-1">
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Support Reparations" }]} />
-    <PageIntro kicker="Primary sitewide action" title="Support Reparations" lede="Understand the provisional contribution designations before any future secure payment handoff." mode="campaign" marker="Explain / verify" />
-    <SourceNotice title="No payment is collected in this prototype" />
+    <PageIntro kicker="Primary sitewide action" title="Support Reparations" lede="Choose whether your contribution supports reparations initiatives or the administration needed to carry them out." mode="campaign" marker="Choose / support" />
+    <SourceNotice title="Payments remain on the organization-owned Wix site" />
     <section class="designation-section" aria-labelledby="designation-heading"><div class="section-heading-row"><p class="section-kicker">Current-site designation model</p><h2 id="designation-heading">Two purposes need two clear explanations.</h2></div><ol>{supportHandoffs.map((item, index) => <li><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{item.label}</h3><p>{item.description}</p></div></li>)}</ol></section>
-    <section class="unavailable-action" aria-labelledby="support-handoff"><p class="section-kicker">Secure handoff status</p><h2 id="support-handoff">A verified payment destination is not available.</h2><p>The prototype does not collect an amount, donor information, dedication, or payment details. It will link to a Wix-hosted transaction only after the product, destination, organization ownership, HTTPS security, designations, and post-payment behavior are confirmed.</p><code>[NEEDS CLIENT INPUT: Verify Wix support destination]</code></section>
-    <section class="withheld-section" aria-labelledby="financial-gaps"><p class="section-kicker">Required before launch</p><h2 id="financial-gaps">Financial clarity is part of the conversion.</h2><ul><li>Approved use-of-funds and designation wording</li><li>Payment product, fees, and recurring-gift behavior</li><li>Tax and legal language</li><li>Receipt, refund, contact, and post-payment flow</li><li>Verified mail-a-check instructions and support-card file</li></ul></section>
+    <section class="unavailable-action" aria-labelledby="support-handoff"><p class="section-kicker">Secure Wix handoff</p><h2 id="support-handoff">Continue to the current donation page.</h2><p>The Astro site does not collect an amount, donor information, dedication, or payment details. The verified handoff belongs to {site.name} and uses HTTPS.</p><a class="button button-primary" href={currentWixRoutes.donate} target="_blank" rel="noreferrer">Donate on the current Wix site <span class="visually-hidden">(opens in a new tab)</span></a></section>
+    <section class="withheld-section" aria-labelledby="mail-support"><p class="section-kicker">Mail a reparations payment or donation</p><h2 id="mail-support">Send the support card with your check.</h2><p>Make checks payable to “{site.name}” and mail them to {site.mailingAddress.line1}, {site.mailingAddress.line2}.</p><a class="text-action" href={currentWixRoutes.supportCard} target="_blank" rel="noreferrer">Download the current support card <span class="visually-hidden">(opens in a new tab)</span></a><p class="source-line">The current Wix page does not publish recurring-gift, fee, refund, or tax-deductibility terms; those claims are not added here.</p></section>
     <ActionBand kicker="Non-financial pathway" title="Participation does not require a payment." text="Review the provisional ways to attend, contribute time, request a presentation, or begin a partnership conversation." primaryLabel="Join the Work" primaryHref="/join-the-work/" secondaryLabel="Understand reparations" secondaryHref="/reparations/" />
   </main>
 </BaseLayout>

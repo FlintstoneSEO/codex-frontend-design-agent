@@ -57,6 +57,7 @@ const routeDocuments = routeNames.map((route) => {
 });
 
 const titles = new Set();
+const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 for (const document of routeDocuments) {
   const routeLabel = document.route ? `/${document.route}/` : "/";
   const h1Count = (document.html.match(/<h1\b/g) ?? []).length;
@@ -69,11 +70,38 @@ for (const document of routeDocuments) {
   if (title) titles.add(title);
   checks.push([`${routeLabel} prototype label`, document.html.includes("Non-production prototype")]);
   checks.push([`${routeLabel} no submitting form action`, !/<form[^>]+action=/i.test(document.html)]);
+  checks.push([`${routeLabel} focusable main landmark`, /<main\b[^>]*id="main-content"[^>]*tabindex="-1"/i.test(document.html)]);
+  checks.push([`${routeLabel} Open Graph title`, document.html.includes('property="og:title"')]);
+  checks.push([`${routeLabel} Open Graph description`, document.html.includes('property="og:description"')]);
+  checks.push([`${routeLabel} Open Graph URL`, document.html.includes('property="og:url"')]);
+
+  const headingLevels = [...document.html.matchAll(/<h([1-6])\b/gi)].map((match) => Number(match[1]));
+  const headingOrderIsLogical = headingLevels.every((level, index) => index === 0 || level <= headingLevels[index - 1] + 1);
+  checks.push([`${routeLabel} logical heading order`, headingOrderIsLogical]);
+
+  const images = document.html.match(/<img\b[^>]*>/gi) ?? [];
+  checks.push([`${routeLabel} every image has alt text`, images.every((image) => /\balt="[^"]*"/i.test(image))]);
+
+  const interactiveElements = document.html.match(/<(?:a|button)\b[^>]*>[\s\S]*?<\/(?:a|button)>/gi) ?? [];
+  checks.push([`${routeLabel} links and buttons have names`, interactiveElements.every((element) => {
+    if (/\baria-label="[^"]+"/i.test(element)) return true;
+    return element.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().length > 0;
+  })]);
+
+  const formControls = document.html.match(/<(?:input|textarea|select)\b[^>]*>/gi) ?? [];
+  checks.push([`${routeLabel} form controls have labels`, formControls.every((control) => {
+    if (/\btype="hidden"/i.test(control) || /\baria-label="[^"]+"/i.test(control) || /\baria-labelledby="[^"]+"/i.test(control)) return true;
+    const id = control.match(/\bid="([^"]+)"/i)?.[1];
+    return Boolean(id) && new RegExp(`<label\\b[^>]*for="${escapeRegExp(id)}"`, "i").test(document.html);
+  })]);
 
   for (const match of document.html.matchAll(/href="(https?:\/\/[^\"]+)"/g)) {
     const url = new URL(match[1]);
     checks.push([`${routeLabel} secure external URL ${url.hostname}`, url.protocol === "https:"]);
   }
+
+  const newTabLinks = document.html.match(/<a\b[^>]*target="_blank"[^>]*>/gi) ?? [];
+  checks.push([`${routeLabel} new-tab links protect referrer context`, newTabLinks.every((link) => /\brel="[^"]*(?:noreferrer|noopener)[^"]*"/i.test(link))]);
 
   for (const match of document.html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
     try {
@@ -92,6 +120,25 @@ for (const route of ["events/demo-priority", "news/demo-story"]) {
 }
 
 const allHtml = routeDocuments.map((document) => document.html).join("\n");
+
+for (const document of routeDocuments) {
+  const routeLabel = document.route ? `/${document.route}/` : "/";
+  const checkedPaths = new Set();
+  for (const match of document.html.matchAll(/href="(\/[^"]*)"/g)) {
+    const href = match[1];
+    if (href.startsWith("//")) continue;
+    const url = new URL(href, "https://www.justiceleagueglm.org");
+    const pathname = decodeURIComponent(url.pathname);
+    if (/\.[a-z0-9]+$/i.test(pathname)) continue;
+    if (checkedPaths.has(pathname)) continue;
+    checkedPaths.add(pathname);
+    const target = pathname === "/"
+      ? indexPath
+      : path.join(distRoot, pathname.replace(/^\/|\/$/g, ""), "index.html");
+    checks.push([`${routeLabel} internal link resolves ${pathname}`, fs.existsSync(target)]);
+  }
+}
+
 for (const prohibited of [
   "total scholarship dollars distributed:",
   "endowment balance:",
@@ -105,6 +152,16 @@ for (const prohibited of [
 checks.push(["join form visibly non-submitting", routeDocuments.find((item) => item.route === "join-the-work")?.html.includes("No information entered here is transmitted or stored")]);
 checks.push(["contact form visibly non-submitting", routeDocuments.find((item) => item.route === "contact")?.html.includes("No information entered here is transmitted or stored")]);
 checks.push(["support page has no payment fields", !routeDocuments.find((item) => item.route === "support-reparations")?.html.match(/type="(?:number|radio)"|name="amount"/i)]);
+checks.push(["support page uses verified Wix donation handoff", routeDocuments.find((item) => item.route === "support-reparations")?.html.includes("https://www.justiceleagueglm.org/donate")]);
+checks.push(["contact page publishes verified email and mailing address", routeDocuments.find((item) => item.route === "contact")?.html.includes("info@justiceleagueglm.org") && routeDocuments.find((item) => item.route === "contact")?.html.includes("P.O. Box 12105")]);
+checks.push(["about page uses approved mission and current three pillars", routeDocuments.find((item) => item.route === "about")?.html.includes("exists to repair the breach") && routeDocuments.find((item) => item.route === "about")?.html.includes("Business entrepreneurship")]);
+checks.push(["leadership page includes current overlapping roles", routeDocuments.find((item) => item.route === "about/leadership")?.html.includes("Dr. Nakia Parker") && routeDocuments.find((item) => item.route === "about/leadership")?.html.includes("Board Member / Advisory Council")]);
+checks.push(["site uses corrected Wix listing path", allHtml.includes("https://www.justiceleagueglm.org/upcomingevents")]);
+checks.push(["obsolete Wix event path removed", !allHtml.includes("https://www.justiceleagueglm.org/upcoming-events")]);
+checks.push(["dead City Pulse URL removed", !allHtml.includes("lansingcitypulse.com/stories/the-art-of-repair,125610")]);
+checks.push(["Willye Bryan profile uses verified live source", allHtml.includes("lakemichiganpresbytery.org/2025/02/28/celebrating-elder-willye-bryans-recognition-for-racial-justice")]);
+checks.push(["past scholarship ceremony not advertised as upcoming", !routeDocuments.find((item) => item.route === "events")?.html.includes("2026 Scholarship Acknowledgment Ceremony")]);
+checks.push(["impact page includes current supporter record", routeDocuments.find((item) => item.route === "impact")?.html.includes("StableCommunities Foundation") && routeDocuments.find((item) => item.route === "impact")?.html.includes("Lansing First Presbyterian")]);
 checks.push(["ad booklet has no submitting form", !routeDocuments.find((item) => item.route === "ad-booklet")?.html.match(/<form\b/i)]);
 checks.push(["ad booklet has semantic deadline", routeDocuments.find((item) => item.route === "ad-booklet")?.html.includes('<time datetime="2026-09-30">')]);
 checks.push(["ad booklet uses verified Wix handoff", routeDocuments.find((item) => item.route === "ad-booklet")?.html.includes("https://www.justiceleagueglm.org/ad-booklet")]);

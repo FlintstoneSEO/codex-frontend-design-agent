@@ -4,18 +4,29 @@ import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import PageIntro from "@/components/PageIntro.astro";
 import SourceNotice from "@/components/SourceNotice.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-const methods = ["Education", "Relationship building", "Scholarships", "Economic repair", "Collective action"];
+
+const pillars = [
+  { name: "Educational scholarships", text: "Support eligible descendants of enslaved Africans pursuing college, university, or vocational education." },
+  { name: "Homeownership", text: "Use reparations funding with community partners to support first-time Black homeowners." },
+  { name: "Business entrepreneurship", text: "Address barriers to startup capital through a business-development pillar whose current public program terms are still being developed." }
+] as const;
 ---
 
-<BaseLayout pageType="WebPage" title="Reparations in Greater Lansing | Justice League GLM" description="Explore the Justice League's provisional framework for education, relationship building, scholarships, economic repair, and collective action.">
-  <main id="main-content" class="interior-page">
+<BaseLayout pageType="WebPage" title="Reparations in Greater Lansing | Justice League GLM" description="Learn how Justice League GLM connects faith, historical repair, African American governance, scholarships, homeownership, and entrepreneurship in Greater Lansing.">
+  <main id="main-content" class="interior-page" tabindex="-1">
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Reparations" }]} />
-    <PageIntro kicker="Local education" title="Reparations in Greater Lansing" lede="Understanding comes before action. This prototype separates the local framework from claims that still need sources and approval." mode="evidence" marker="Learn / act" />
-    <SourceNotice />
-    <section class="definition-block" aria-labelledby="definition-heading"><p class="section-kicker">Definition gate</p><h2 id="definition-heading">Start with an approved, plain-language definition.</h2><p class="placeholder-statement">[NEEDS CLIENT INPUT: Approve the organization's definition of reparations and the sources that support it.]</p><p>The prototype does not substitute a generic definition or an unsourced statistic for the organization's own accountable explanation.</p></section>
-    <section class="editorial-split" aria-labelledby="local-heading"><div class="section-index">01 / Local</div><div><h2 id="local-heading">A Greater Lansing framework.</h2><p>The current site describes a faith-rooted, community-centered approach that connects racial justice, relationship building, scholarship, and wealth equity. The exact service area, participating relationships, and public claims require confirmation.</p><a class="text-action" href="/about/history/">Review the developing history</a></div></section>
-    <section class="ruled-section" aria-labelledby="methods-heading"><div class="section-heading-row"><p class="section-kicker">Provisional method pathway</p><h2 id="methods-heading">Five ways the current site describes the work.</h2></div><ol class="method-rail">{methods.map((method, index) => <li><span>{String(index + 1).padStart(2, "0")}</span><strong>{method}</strong><p>[NEEDS CLIENT INPUT: Approve this method and add a source, example, limitation, and related action.]</p></li>)}</ol></section>
-    <section class="evidence-note" aria-labelledby="source-standard"><p class="section-kicker">Evidence standard</p><h2 id="source-standard">Claims need dates, methods, and limits.</h2><p>Future evidence should name its reporting period, source, methodology, content owner, approval status, and known limitations. The accountability page demonstrates that record.</p><a class="text-action" href="/impact/">Review impact and accountability</a></section>
-    <ActionBand kicker="Primary action" title="Support the work after understanding it." text="The support page explains the two provisional contribution designations before any future payment handoff." primaryLabel="Support Reparations" primaryHref="/support-reparations/" secondaryLabel="Join the Work" secondaryHref="/join-the-work/" />
+    <PageIntro kicker="Local education" title="Reparations in Greater Lansing" lede="A faith-rooted response to historical racial harm, governed locally and directed toward wealth-building pathways." mode="evidence" marker="Learn / act" />
+    <SourceNotice title="Framework verified across the current history, reparations, vision, and timeline pages" />
+
+    <section class="definition-block" aria-labelledby="definition-heading"><p class="section-kicker">Organization definition</p><h2 id="definition-heading">Repair means making amends for harm.</h2><p class="editorial-lede">The organization describes reparations as making amends for a wrong that has been done. Its local model asks faith communities that benefited from racial inequity to acknowledge that history, build accountable relationships, and participate in material repair.</p><p>This is not presented as a replacement for federal or state action. The current history page describes it as a local first step led by Greater Lansing faith communities.</p></section>
+
+    <section class="editorial-split" aria-labelledby="local-heading"><div class="section-index">01 / Local</div><div><h2 id="local-heading">From acknowledgment to locally governed action.</h2><p>The current model brings together predominantly white houses of worship, African American churches and community leaders, individual donors, and collaborative partners. The published timeline states that an African American Advisory Council oversees reparations distributions.</p><a class="text-action" href="/about/leadership/">Meet the current leadership groups</a></div></section>
+
+    <section class="ruled-section" aria-labelledby="methods-heading"><div class="section-heading-row"><p class="section-kicker">Three-pillar framework</p><h2 id="methods-heading">The adopted paths for repair.</h2></div><ol class="method-rail">{pillars.map((pillar, index) => <li><span>{String(index + 1).padStart(2, "0")}</span><strong>{pillar.name}</strong><p>{pillar.text}</p></li>)}</ol></section>
+
+    <section class="evidence-note" aria-labelledby="faith-heading"><p class="section-kicker">Faith-based framing</p><h2 id="faith-heading">A payment is part of a longer relationship.</h2><p>The current faith-based statement argues that a financial transfer without spiritual rigor can become charity rather than repair. The Justice League frames the work through repentance, relationship, accountability, and sustained change toward the Beloved Community.</p><a class="text-action" href="https://www.justiceleagueglm.org/faithbased" target="_blank" rel="noreferrer">Read the current faith-based statement <span class="visually-hidden">(opens in a new tab)</span></a></section>
+
+    <section class="withheld-section" aria-labelledby="dated-plan"><p class="section-kicker">Dated planning claim</p><h2 id="dated-plan">The former 2025 fund goal is historical—not a current target.</h2><p>The current reparations page still contains a goal of reaching $1 million by the end of 2025, while the timeline cites different dated fund milestones. The redesign does not present the expired goal or any single endowment balance as current without a reconciled financial source.</p></section>
+    <ActionBand kicker="Primary action" title="Support the work after understanding it." text="Choose a reparations or administration designation on the verified support path, or begin with a meeting or presentation." primaryLabel="Support Reparations" primaryHref="/support-reparations/" secondaryLabel="Join the Work" secondaryHref="/join-the-work/" />
   </main>
 </BaseLayout>
