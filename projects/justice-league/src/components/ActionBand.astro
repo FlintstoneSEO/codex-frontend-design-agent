@@ -9,16 +9,21 @@ interface Props {
   secondaryHref?: string;
 }
 const { kicker, title, text, primaryLabel, primaryHref, secondaryLabel, secondaryHref } = Astro.props;
+const hasKickerSlot = Astro.slots.has("kicker");
+const hasTitleSlot = Astro.slots.has("title");
+const hasTextSlot = Astro.slots.has("text");
+const hasPrimarySlot = Astro.slots.has("primary");
+const hasSecondarySlot = Astro.slots.has("secondary");
 ---
 
 <section class="action-band" aria-label={title}>
   <div>
-    <p class="section-kicker">{kicker}</p>
-    <h2>{title}</h2>
-    <p>{text}</p>
+    <p class="section-kicker">{hasKickerSlot ? <slot name="kicker" /> : kicker}</p>
+    <h2>{hasTitleSlot ? <slot name="title" /> : title}</h2>
+    <p>{hasTextSlot ? <slot name="text" /> : text}</p>
   </div>
   <div class="action-band-links">
-    <a class="button button-primary" href={primaryHref}>{primaryLabel}</a>
-    {secondaryLabel && secondaryHref && <a class="button button-secondary" href={secondaryHref}>{secondaryLabel}</a>}
+    {hasPrimarySlot ? <slot name="primary" /> : <a class="button button-primary" href={primaryHref}>{primaryLabel}</a>}
+    {hasSecondarySlot ? <slot name="secondary" /> : secondaryLabel && secondaryHref && <a class="button button-secondary" href={secondaryHref}>{secondaryLabel}</a>}
   </div>
 </section>

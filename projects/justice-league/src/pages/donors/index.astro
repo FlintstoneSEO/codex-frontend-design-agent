@@ -4,6 +4,7 @@ import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import PageIntro from "@/components/PageIntro.astro";
 import { loadDonorGroups } from "@/lib/donors";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import pageMeta from "@/content/pages/donors.json";
 
 const donorData = await loadDonorGroups();
 const totalYearRecords = donorData.groups.reduce((total, group) => total + group.donors.length, 0);
@@ -11,8 +12,8 @@ const totalYearRecords = donorData.groups.reduce((total, group) => total + group
 
 <BaseLayout
   pageType="WebPage"
-  title="Justice League GLM Donors | Reparations Payees & Administration Fund Supporters"
-  description="View Justice League GLM donors acknowledged by year for the Reparations Payees and Administration funds."
+  title={pageMeta.seo_title}
+  description={pageMeta.meta_description}
 >
   <main id="main-content" class="interior-page donor-page" tabindex="-1">
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Donors" }]} />
@@ -22,7 +23,12 @@ const totalYearRecords = donorData.groups.reduce((total, group) => total + group
       lede="With gratitude, the Justice League recognizes the people and organizations whose reparations payments and administration gifts sustain this work."
       mode="evidence"
       marker="By year"
-    />
+    >
+      <span slot="kicker" data-editable="source" data-path="/src/pages/donors/index.astro" data-key="donors-intro-kicker">Public donor acknowledgment</span>
+      <span slot="title" data-editable="source" data-path="/src/pages/donors/index.astro" data-key="donors-intro-title">Grateful Acknowledgment to Our Reparations Payees &amp; Administration Fund Donors</span>
+      <span slot="lede" data-editable="source" data-path="/src/pages/donors/index.astro" data-key="donors-intro-lede">With gratitude, the Justice League recognizes the people and organizations whose reparations payments and administration gifts sustain this work.</span>
+      <span slot="marker" data-editable="source" data-path="/src/pages/donors/index.astro" data-key="donors-intro-marker">By year</span>
+    </PageIntro>
 
     <section class:list={["donor-source-status", `donor-source-status--${donorData.state}`]} aria-labelledby="donor-source-heading">
       <div>

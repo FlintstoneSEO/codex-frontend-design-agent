@@ -1,26 +1,34 @@
 # CloudCannon configuration
 
-Observed: 2026-08-06
+Observed: 2026-08-07
 
-## Configuration outcome
+## Outcome
 
-CloudCannon is configured as the static Astro build and preview host. Wix remains the canonical content and business-data system, so no CloudCannon content collections or editable schemas are introduced in this pass.
+Unified Configuration exposes one **Pages** collection backed by `src/content/pages/*.json`. These records provide human-readable names, exact preview URLs, and editable SEO fields while the visual regions write only to bounded static HTML in the matching Astro route.
 
-- SSG: Astro
-- Install command: `npm ci`
-- Build command: `npm run build`
-- Output path: `dist`
-- Node version source: `.nvmrc`
-- Static path: `public`
-- Upload path reserved for approved assets: `public/images`
-- Time zone: `America/New_York`
+- Source folder at repository root: `/projects/justice-league/`
+- Collection: `pages`
+- Default editor: Visual
+- Secondary editor: Data (SEO Title and Meta Description)
+- Page creation: disabled
+- Uploads: `public/images`
+- Install: `npm ci`
+- Build: `npm run build`
+- Output: `dist`
+- Node version: `.nvmrc`
 
-The public Wix Headless client and site identifiers are listed as build environment variables in `.cloudcannon/initial-site-settings.json`. No secret API key is stored. The adapter makes read-only public requests and returns an honest error state if the build cannot reach Wix.
+The root and project-local `cloudcannon.config.yml` files intentionally mirror the collection configuration. The root file adds `source` for repositories connected above the project folder.
+
+## Collection exclusions
+
+The collection does not include the 404 page, privacy placeholder, demo event/story routes, sitemap endpoint, redirects, components, layouts, scripts, libraries, APIs, or generated output.
 
 ## Validation
 
-`npx @cloudcannon/cli validate` passed for both `cloudcannon.config.yml` and `.cloudcannon/initial-site-settings.json` on 2026-08-06.
+The official CloudCannon CLI validated:
 
-## Deployment boundary
+- repository-root `cloudcannon.config.yml`
+- project-local `cloudcannon.config.yml`
+- both `.cloudcannon/initial-site-settings.json` files
 
-The repository does not contain a CloudCannon site identifier or account authentication. A provider-generated preview URL must be created by connecting the Git repository to a CloudCannon site. DNS and the current Wix production domain are explicitly outside this configuration step.
+No deprecated `output`, `parser`, or source-folder collection keys are used.

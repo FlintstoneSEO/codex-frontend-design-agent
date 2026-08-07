@@ -1,13 +1,55 @@
+source: /projects/justice-league/
 paths:
   static: public
-  uploads: public/uploads
+  uploads: public/images
 timezone: America/New_York
 markdown:
   engine: commonmark
   options:
     gfm: true
-source: /projects/justice-league/
+
 collections_config:
-  source:
-    path: ''
-    icon: package_2
+  pages:
+    path: src/content/pages
+    name: Pages
+    icon: wysiwyg
+    url: "{url}"
+    disable_add: true
+    _enabled_editors:
+      - visual
+      - data
+    preview:
+      text:
+        - key: name
+        - Page
+      subtext:
+        - key: url
+    _inputs:
+      name:
+        hidden: true
+      url:
+        hidden: true
+      source_path:
+        hidden: true
+      seo_title:
+        type: text
+        label: SEO Title
+        comment: The browser and search-result title. Keep it descriptive and distinct.
+      meta_description:
+        type: textarea
+        label: Meta Description
+        comment: A concise summary for search results and link previews.
+
+collection_groups:
+  - heading: Content
+    collections:
+      - pages
+
+_editables:
+  content:
+    allow_custom_markup: false
+    bold: true
+    italic: true
+    link: true
+    bulletedlist: true
+    numberedlist: true

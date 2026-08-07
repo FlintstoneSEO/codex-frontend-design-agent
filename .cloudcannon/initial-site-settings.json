@@ -1,5 +1,19 @@
 {
   "ssg": "astro",
-  "mode": "hosted",
-  "build": {}
+  "build": {
+    "install_command": "npm ci",
+    "build_command": "npm run build",
+    "output_path": "dist",
+    "node_version": "file",
+    "environment_variables": [
+      {
+        "key": "WIX_CLIENT_ID",
+        "value": "c442e998-2180-4674-a978-56b74e5626cd"
+      },
+      {
+        "key": "WIX_SITE_ID",
+        "value": "03690829-a1bf-4449-984a-9542ff682ce7"
+      }
+    ]
+  }
 }

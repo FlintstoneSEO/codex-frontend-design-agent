@@ -6,12 +6,18 @@ import SourceNotice from "@/components/SourceNotice.astro";
 import { supportHandoffs } from "@/data/content";
 import { currentWixRoutes, site } from "@/data/site";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import pageMeta from "@/content/pages/support-reparations.json";
 ---
 
-<BaseLayout pageType="WebPage" title="Support Reparations | Justice League GLM" description="Support Justice League GLM reparations initiatives or administration through the verified Wix donation page, or mail a check with the support card.">
+<BaseLayout pageType="WebPage" title={pageMeta.seo_title} description={pageMeta.meta_description}>
   <main id="main-content" class="interior-page" tabindex="-1">
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Support Reparations" }]} />
-    <PageIntro kicker="Primary sitewide action" title="Support Reparations" lede="Choose whether your contribution supports reparations initiatives or the administration needed to carry them out." mode="campaign" marker="Choose / support" />
+    <PageIntro kicker="Primary sitewide action" title="Support Reparations" lede="Choose whether your contribution supports reparations initiatives or the administration needed to carry them out." mode="campaign" marker="Choose / support">
+      <span slot="kicker" data-editable="source" data-path="/src/pages/support-reparations/index.astro" data-key="support-intro-kicker">Primary sitewide action</span>
+      <span slot="title" data-editable="source" data-path="/src/pages/support-reparations/index.astro" data-key="support-intro-title">Support Reparations</span>
+      <span slot="lede" data-editable="source" data-path="/src/pages/support-reparations/index.astro" data-key="support-intro-lede">Choose whether your contribution supports reparations initiatives or the administration needed to carry them out.</span>
+      <span slot="marker" data-editable="source" data-path="/src/pages/support-reparations/index.astro" data-key="support-intro-marker">Choose / support</span>
+    </PageIntro>
     <SourceNotice title="Payments remain on the organization-owned Wix site" />
     <section class="designation-section" aria-labelledby="designation-heading"><div class="section-heading-row"><p class="section-kicker">Current-site designation model</p><h2 id="designation-heading">Two purposes need two clear explanations.</h2></div><ol>{supportHandoffs.map((item, index) => <li><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{item.label}</h3><p>{item.description}</p></div></li>)}</ol></section>
     <section class="unavailable-action" aria-labelledby="support-handoff"><p class="section-kicker">Secure Wix handoff</p><h2 id="support-handoff">Continue to the current donation page.</h2><p>The Astro site does not collect an amount, donor information, dedication, or payment details. The verified handoff belongs to {site.name} and uses HTTPS.</p><a class="button button-primary" href={currentWixRoutes.donate} target="_blank" rel="noreferrer">Donate on the current Wix site <span class="visually-hidden">(opens in a new tab)</span></a></section>

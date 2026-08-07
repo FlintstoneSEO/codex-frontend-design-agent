@@ -3,6 +3,7 @@ import ActionBand from "@/components/ActionBand.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import PageIntro from "@/components/PageIntro.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import pageMeta from "@/content/pages/history.json";
 
 const timelineUrl = "https://www.justiceleagueglm.org/timeline";
 const historyUrl = "https://www.justiceleagueglm.org/history";
@@ -210,8 +211,8 @@ const milestones: Milestone[] = [
 
 <BaseLayout
   pageType="WebPage"
-  title="History and Timeline | Justice League GLM"
-  description="Trace the Justice League of Greater Lansing from its 2021 founding through public education, reparations scholarships, homebuilding, and regional collaboration."
+  title={pageMeta.seo_title}
+  description={pageMeta.meta_description}
 >
   <main id="main-content" class="interior-page" tabindex="-1">
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About", href: "/about/" }, { label: "History" }]} />
@@ -221,7 +222,12 @@ const milestones: Milestone[] = [
       lede="From a faith-rooted call to repair toward scholarships, homeownership, public education, and regional collaboration."
       mode="evidence"
       marker="2021—2026"
-    />
+    >
+      <span slot="kicker" data-editable="source" data-path="/src/pages/about/history/index.astro" data-key="history-intro-kicker">Greater Lansing public record</span>
+      <span slot="title" data-editable="source" data-path="/src/pages/about/history/index.astro" data-key="history-intro-title">History and Timeline</span>
+      <span slot="lede" data-editable="source" data-path="/src/pages/about/history/index.astro" data-key="history-intro-lede">From a faith-rooted call to repair toward scholarships, homeownership, public education, and regional collaboration.</span>
+      <span slot="marker" data-editable="source" data-path="/src/pages/about/history/index.astro" data-key="history-intro-marker">2021—2026</span>
+    </PageIntro>
 
     <aside class="source-notice" aria-label="Content review status">
       <strong>Approved current-site record</strong>
@@ -232,14 +238,14 @@ const milestones: Milestone[] = [
     </aside>
 
     <section class="history-context" aria-labelledby="history-context-heading">
-      <div>
+      <div data-editable="source" data-path="/src/pages/about/history/index.astro" data-key="history-context-heading">
         <p class="section-kicker">Why this history matters</p>
         <h2 id="history-context-heading">Repair responds to structural harm.</h2>
       </div>
       <div class="history-context-copy">
-        <p>The current history page connects the racial wealth divide to slavery and its aftermath, including sharecropping, Jim Crow, redlining, unequal access to public benefits, and continuing structural racism.</p>
-        <p>It argues that structural problems require structural responses and calls faith communities to take a practical first step in acknowledgment, redress, relationship, and repair.</p>
-        <ol class="history-pillars" aria-label="The organization’s three reparations pillars">
+        <p data-editable="source" data-path="/src/pages/about/history/index.astro" data-key="history-context-copy">The current history page connects the racial wealth divide to slavery and its aftermath, including sharecropping, Jim Crow, redlining, unequal access to public benefits, and continuing structural racism.</p>
+        <p data-editable="source" data-path="/src/pages/about/history/index.astro" data-key="history-context-response">It argues that structural problems require structural responses and calls faith communities to take a practical first step in acknowledgment, redress, relationship, and repair.</p>
+        <ol class="history-pillars" aria-label="The organization’s three reparations pillars" data-editable="source" data-path="/src/pages/about/history/index.astro" data-key="history-pillars">
           <li><span>01</span><strong>Educational scholarships</strong></li>
           <li><span>02</span><strong>Homeownership</strong></li>
           <li><span>03</span><strong>Business entrepreneurship</strong></li>
@@ -287,7 +293,7 @@ const milestones: Milestone[] = [
       </ol>
     </section>
 
-    <section class="evidence-note" aria-labelledby="history-standard">
+    <section class="evidence-note" aria-labelledby="history-standard" data-editable="source" data-path="/src/pages/about/history/index.astro" data-key="history-publication-standard">
       <p class="section-kicker">Publication standard</p>
       <h2 id="history-standard">Keep the record accountable.</h2>
       <ul>

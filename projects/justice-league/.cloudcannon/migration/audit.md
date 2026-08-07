@@ -1,86 +1,72 @@
 # CloudCannon migration audit
 
-Observed: 2026-08-06
+Observed: 2026-08-07
 
-## Hosting and content ownership decision
+## Ownership decision
 
-CloudCannon is the static build, preview, and deployment host. Wix remains the canonical editor and backend for public events, media, forms, donations, leadership, scholarship records, and future maintained editorial content. CloudCannon must not create a second, drifting copy of Wix-managed content.
-
-The first CloudCannon pass therefore configures a reproducible Astro build and environment variables. CloudCannon page-builder collections and Visual Editor regions are intentionally deferred unless the organization later decides that specific presentation copy should be owned in CloudCannon instead of Wix.
+CloudCannon now owns approved static presentation copy in the existing Astro pages. Wix, Little Green Light, and third-party services remain authoritative for events, scholarship records, donor records, form/payment flows, and embedded news/video content. This supersedes the 2026-08-06 hosting-only decision, but it does not create a second copy of externally maintained records.
 
 ## Astro and dependencies
 
-- Astro 7.2.0, static output.
-- TypeScript strict configuration.
-- No React, Vue, Svelte, Solid, Tailwind, MDX, remark, or rehype integrations.
-- npm with `package-lock.json`.
-- Node 24.14.0 locally; the repository declares Node `>=22.12.0` and includes `.nvmrc` for CloudCannon.
-- Official Wix packages: `@wix/sdk` and `@wix/events`.
-- CSS is maintained in `src/styles/global.css`.
+- Astro 7.2.0 with static output, directory-format URLs, and trailing slashes.
+- TypeScript 6.0.3 and `@astrojs/check` 0.9.10.
+- npm with `package-lock.json`; Node `>=22.12.0` and `.nvmrc`.
+- No Markdown, MDX, Astro Content Collections, framework islands, Tailwind, remark, or rehype integrations.
+- Plain Astro components and `src/styles/global.css`; images use `public/images` or existing Wix CDN transforms.
 
-## Content collections and data
+## Content and data sources
 
-- No Astro content collections exist.
-- `src/data/site.ts` contains navigation, presentation copy, and prototype fixtures.
-- `src/data/content.ts` contains typed local review fixtures and provisional current-site summaries.
-- Public Wix events will be fetched at build time through a typed adapter. Honest local empty/error states preserve builds when Wix is unavailable.
-- The eLink news publication is third-party runtime content and is not a CloudCannon collection.
+| Source | Current use | Editorial owner after migration |
+| --- | --- | --- |
+| `src/pages/**/*.astro` | Page-specific static presentation copy and route templates | CloudCannon for bounded Source Editable Regions; developer for Astro logic |
+| `src/data/site.ts` | Organization facts, navigation, verified URLs, global metadata | Developer-controlled pending a separately approved global-data migration |
+| `src/data/homepage.ts` | Verified homepage media and third-party URLs | Developer-controlled because responsive Wix transforms and integrations are coupled to the values |
+| `src/data/content.ts` | Verified/provisional typed records and presentation fixtures | Developer-controlled |
+| `src/data/leadership.ts` | Verified leadership roster and image associations | Developer-controlled; source verification is required before publishing changes |
+| `src/data/supporters.ts` | Verified supporter roster and logo associations | Developer-controlled; source verification is required before publishing changes |
+| `src/lib/wix.ts` | Wix Events and scholarship build-time reads | Wix/external; never editable in CloudCannon |
+| `src/lib/donors.ts` and fallback JSON | Little Green Light donor report with privacy filtering and fallback | External/developer; never editable in CloudCannon |
 
-## Routing census
+## Public route and editor census
 
-All routes are explicit Astro files. There are no dynamic, paginated, taxonomy, or server-only routes.
+| Route | Source file | Layout | Static editable content | Developer-controlled content | Pattern |
+| --- | --- | --- | --- | --- | --- |
+| `/` | `src/pages/index.astro` | `BaseLayout` | Hero copy/CTAs, mission framing, founder narrative, methods, participation, trust copy | Wix event results, eLink, YouTube identifiers, responsive Wix media transforms | Source regions |
+| `/about/` | `src/pages/about/index.astro` | `BaseLayout` | Intro, mission framing, vision/work explanation, trust links, action band | Verified mission/vision values imported from typed data | Source regions around static siblings |
+| `/about/history/` | `src/pages/about/history/index.astro` | `BaseLayout` | Intro, contextual explanation, evidence note, action band | Milestone array, verified dates, citations, media associations | Source regions around static siblings |
+| `/about/leadership/` | `src/pages/about/leadership/index.astro` | `BaseLayout` | Intro | Leadership roster, governance gap record, group counts, portraits, focal points | Bounded intro source regions |
+| `/reparations/` | `src/pages/reparations/index.astro` | `BaseLayout` | Intro, definition, local model, faith framing, dated-claim warning, action band | Three-pillar typed array and source notice | Source regions around static siblings |
+| `/scholarship/` | `src/pages/scholarship/index.astro` | `BaseLayout` | Intro and static explanatory labels/copy that do not assert cycle facts | Wix scholarship cycle, recipients, cohorts, dates, eligibility, documents, FAQs, images | Limited source regions; dynamic record remains read-only |
+| `/impact/` | `src/pages/impact/index.astro` | `BaseLayout` | Intro, reporting standard, contextual evidence explanation, navigation, action band | Claims that require source reconciliation remain visibly labelled | Source regions |
+| `/events/` | `src/pages/events/index.astro` | `BaseLayout` | Intro, campaign/meeting framing, event-record standard, action band | Wix Events result, state rendering, registration URLs | Limited source regions |
+| `/news/` | `src/pages/news/index.astro` | `BaseLayout` | Intro | Media/archive explanation, eLink runtime embed, and verified Wix source URLs | Bounded intro source regions |
+| `/join-the-work/` | `src/pages/join-the-work/index.astro` | `BaseLayout` | Intro, form-shell explanation | Participation dataset, prototype form behavior, newsletter integration | Limited source regions |
+| `/support-reparations/` | `src/pages/support-reparations/index.astro` | `BaseLayout` | Intro | Designation dataset, handoff explanations, Wix donation/support-card URLs, organization facts, action band | Bounded intro source regions |
+| `/contact/` | `src/pages/contact/index.astro` | `BaseLayout` | Intro and form-shell explanation | Verified contact facts, routing list, Wix form URL, prototype form behavior, action band | Limited source regions |
+| `/ad-booklet/` | `src/pages/ad-booklet/index.astro` | `BaseLayout` | Intro, campaign explanation, submission guidance, action band | Verified placements/deadline/price data and Wix handoff | Source regions around fixed content; facts remain guarded |
+| `/supporters/` | `src/pages/supporters/index.astro` | `BaseLayout` | Intro, roster explanation, donor distinction, action band | Verified supporter names/logo pairings | Source regions around roster |
+| `/donors/` | `src/pages/donors/index.astro` | `BaseLayout` | Intro | LGL fetch, source explanation, privacy filtering, year groups, names, distinctions, action band, fallback state | Bounded intro source regions |
 
-| Page file | Distinct content sections | Repeated layout? | Editors add similar pages? | CloudCannon classification |
-| --- | --- | --- | --- | --- |
-| `src/pages/index.astro` | hero, priority, mission, founder/video, events/news rail, pathways, newsletter, trust | No | No | Page builder if CloudCannon-owned; retained Wix-backed route |
-| `src/pages/about/index.astro` | intro, mission, context, work, trust, CTA | Partially | No | Page builder if CloudCannon-owned; retained Wix-backed route |
-| `src/pages/about/history/index.astro` | intro, chronology, sources, CTA | No | No | Page builder if CloudCannon-owned; retained route |
-| `src/pages/about/leadership/index.astro` | intro, review notice, rosters, sources | No | No | Fixed schema if CloudCannon-owned; Wix-backed route planned |
-| `src/pages/reparations/index.astro` | intro, context, methods, sources, CTA | Partially | No | Page builder if CloudCannon-owned; retained route |
-| `src/pages/scholarship/index.astro` | status, eligibility, award, process, history, contact | No | No | Page builder if CloudCannon-owned; Wix-backed route planned |
-| `src/pages/impact/index.astro` | intro, evidence policy, scholarship snapshot, gaps | No | No | Page builder if CloudCannon-owned; retained route |
-| `src/pages/events/index.astro` | intro, states, event list, CTA | Yes, with homepage event | Yes, in Wix | Wix Events-backed listing; not a CloudCannon collection |
-| `src/pages/events/demo-priority/index.astro` | demonstration detail | Yes | No | Prototype-only hardcoded route |
-| `src/pages/news/index.astro` | intro, states, story list, newsletter | Yes, with homepage news | Yes, outside CloudCannon | External/Wix-backed listing; not a CloudCannon collection |
-| `src/pages/news/demo-story/index.astro` | demonstration article | Yes | No | Prototype-only hardcoded route |
-| `src/pages/join-the-work/index.astro` | intro, pathways, form shell, CTA | No | No | Page builder if CloudCannon-owned; retained route |
-| `src/pages/support-reparations/index.astro` | intro, designations, handoff, disclosures | No | No | Page builder if CloudCannon-owned; Wix Donations handoff planned |
-| `src/pages/contact/index.astro` | intro, categories, form shell, fallback | No | No | Page builder if CloudCannon-owned; Wix Forms handoff planned |
-| `src/pages/privacy/index.astro` | policy placeholder | No | No | Hardcoded noindex placeholder until approved legal copy exists |
+Excluded from the Pages collection: `404.astro`, `privacy/index.astro`, the demo event/story routes, `sitemap.xml.ts`, redirects, components, layouts, scripts, libraries, and all generated output.
 
-## Layouts and components
+## Component hierarchy
 
-- `BaseLayout.astro` owns metadata, structured data, header, footer, skip link, and the page slot.
-- Shared components cover navigation, action bands, breadcrumbs, prototype forms, newsletter, source notices, and priority states.
-- Interactivity uses small native scripts only; there are no hydrated framework islands.
-- Existing `set:html` use is limited to JSON-LD serialization.
-- There are no scroll-reveal systems or content-hidden entrance animations.
-- Images currently use remote Wix media or plain `<img>` output; responsive Wix CDN transforms will be supplied by the adapter/presentation data.
+- `BaseLayout.astro`: head metadata, canonical, schema, global header/footer, page slot.
+- Shared editorial components: `PageIntro`, `ActionBand`, `Breadcrumbs`, `SourceNotice`.
+- Integration/state components: `UpcomingEvents`, `PriorityModule`, `ElinkNews`, `VideoFeature`, `PrototypeForm`, `NewsletterShell`.
+- `PageIntro` and `ActionBand` are retained and extended with named slots so page-owned static content can remain in the route file and be bounded by Source Editable Regions.
 
-## Primitive/computed and editable-region census
+## Build pipeline and exclusions
 
-No CloudCannon component registry exists. Wix data and presentation-state computations stay inside typed components/adapters rather than becoming CloudCannon editable expressions. There are no CloudCannon `data-editable` regions in this hosting-only pass.
-
-## Build pipeline
-
-- Build command: `npm run build`.
-- Full pipeline: `astro check && astro build`.
-- Output: `dist`.
-- Static directory: `public`; it contains the site favicon and is available for future approved uploads.
-- Canonical site: `https://www.justiceleagueglm.org`.
-- Trailing slashes and directory-format output are enabled.
-- Required public build configuration: Wix client ID and Wix site ID. Both have safe checked-in defaults and may be overridden in CloudCannon environment settings.
-- Network failure must not fail the build; it must produce explicit event error/empty UI.
+- Full build: `npm run build` (`astro check && astro build`).
+- Test: `npm run test`.
+- Output: `dist`; static files: `public`; uploads: `public/images`.
+- Network failure must continue to render guarded fallback states rather than fail the build.
+- CloudCannon must not edit imports, frontmatter code, CSS classes, JavaScript, API calls, environment variables, schema output, redirects, sitemap generation, or generated records.
 
 ## Sizing
 
-- Total page routes: 15 (threshold >30: not tripped).
-- Hardcoded routes that would become CloudCannon collections if CloudCannon owned their content: 11 (threshold >15: not tripped).
-- Distinct CloudCannon content collections proposed: 0 (threshold >5: not tripped).
-- Tripped thresholds: 0/3. A single-pass hosting configuration is appropriate.
-
-## Deferred CloudCannon work
-
-- Visual editing is deferred because Wix is the approved content system.
-- CloudCannon content restructuring is deferred to prevent dual ownership.
-- If presentation copy later moves to CloudCannon, create one multi-schema `pages` collection rather than one collection per route, then repeat the audit and visual-editing phases.
+- Public editorial pages: 15 (threshold >30: not tripped).
+- Hardcoded pages requiring a full page-builder conversion: 0; the current 2026 Source Editable Regions API supports bounded HTML editing without restructuring.
+- Distinct collections: 1 (`pages`; threshold >5: not tripped).
+- Single-pass migration remains appropriate.

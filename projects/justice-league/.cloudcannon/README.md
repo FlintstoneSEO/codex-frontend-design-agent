@@ -1,23 +1,38 @@
-# Justice League website
+# Justice League website editor guide
 
-CloudCannon builds and previews the new Justice League of Greater Lansing Michigan website. The current public Wix website remains live until the new site is approved and the domain is deliberately switched.
+Use **Pages** for routine updates to approved static page copy. Each page opens in a rendered preview; yellow outlines show the content that can be changed safely.
 
-## Where content is managed
+## Quick links
 
-Public events, organization media, forms, donations, and other maintained organization records continue to be managed in Wix. CloudCannon retrieves approved public Wix information while building the site.
+- [Open Pages](cloudcannon:collections/pages)
 
-The “Latest news” area links to and optionally loads the organization’s eLink briefing. It is not edited in CloudCannon.
+## Editing a page
 
-## Previewing changes
+1. Open **Pages** and choose a page by its human-readable name.
+2. In the Visual Editor, click a yellow-outlined heading, paragraph, list, or link.
+3. Edit the content in place. Keep links descriptive and do not remove required notices such as `[NEEDS CLIENT INPUT: ...]`.
+4. Open the **Data** view only when you need to update the page's SEO Title or Meta Description.
+5. Save, wait for the build, and review the preview before publishing.
 
-1. Open the latest CloudCannon build.
-2. Review the homepage at `/`.
-3. Check the current-priority event and the additional upcoming-events area.
-4. Activate the apology video and Latest News controls to review their third-party loading behavior.
-5. Report a missing or stale event in Wix first; the next CloudCannon build will retrieve the updated public record.
+## What remains automatic
 
-## Important boundaries
+The following content is intentionally not editable here:
+
+- Wix Events dates, locations, status, ticketing, and RSVP links
+- Scholarship cycles, eligibility, documents, recipients, essays, and cohort images from Wix CMS
+- Donor names and years from Little Green Light
+- The verified leadership and supporter rosters and their image associations
+- Forms, donations, uploads, newsletter behavior, eLink, and video integration code
+- Navigation logic, redirects, sitemap generation, structured data, scripts, and environment variables
+
+Update those records in their authoritative system or ask a developer to change the verified local dataset. A later CloudCannon build will retrieve supported external updates.
+
+## Images
+
+Approved uploads belong in `public/images`. Existing responsive Wix images and verified roster portraits remain developer-controlled because their source, crop, and record association must stay synchronized.
+
+## Important safety notes
 
 - Do not enter donor, applicant, contact, or form-submission information into repository files.
-- Wix remains the source of truth for business data.
-- The production domain must not be changed until the replacement site is approved.
+- Do not remove prototype, legal, source, or verification notices without client approval.
+- Page creation is disabled because each route has a purpose-built Astro template.

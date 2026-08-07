@@ -5,12 +5,18 @@ import NewsletterShell from "@/components/NewsletterShell.astro";
 import PageIntro from "@/components/PageIntro.astro";
 import { currentWixRoutes } from "@/data/site";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import pageMeta from "@/content/pages/news.json";
 ---
 
-<BaseLayout pageType="WebPage" title="News, Videos, and E-News | Justice League GLM" description="Follow Justice League GLM media coverage, recent videos, the guarded eLink news collection, and the current E-News Brief archive.">
+<BaseLayout pageType="WebPage" title={pageMeta.seo_title} description={pageMeta.meta_description}>
   <main id="main-content" class="interior-page" tabindex="-1">
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "News and stories" }]} />
-    <PageIntro kicker="Community record" title="News, Videos, and E-News" lede="Current coverage is distributed across an eLink collection, the Wix media page, and the E-News Brief archive." mode="documentary" marker="Dated context" />
+    <PageIntro kicker="Community record" title="News, Videos, and E-News" lede="Current coverage is distributed across an eLink collection, the Wix media page, and the E-News Brief archive." mode="documentary" marker="Dated context">
+      <span slot="kicker" data-editable="source" data-path="/src/pages/news/index.astro" data-key="news-intro-kicker">Community record</span>
+      <span slot="title" data-editable="source" data-path="/src/pages/news/index.astro" data-key="news-intro-title">News, Videos, and E-News</span>
+      <span slot="lede" data-editable="source" data-path="/src/pages/news/index.astro" data-key="news-intro-lede">Current coverage is distributed across an eLink collection, the Wix media page, and the E-News Brief archive.</span>
+      <span slot="marker" data-editable="source" data-path="/src/pages/news/index.astro" data-key="news-intro-marker">Dated context</span>
+    </PageIntro>
 
     <section class="documentary-record" aria-labelledby="latest-news-heading">
       <div><p class="section-kicker">Latest news</p><h2 id="latest-news-heading">Open the current editorial collection deliberately.</h2><p>eLink does not provide an RSS feed for this collection. The third-party embed remains consent-gated, with a direct source link available when scripts are blocked or declined.</p><ElinkNews /></div>

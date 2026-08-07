@@ -5,12 +5,18 @@ import PageIntro from "@/components/PageIntro.astro";
 import SourceNotice from "@/components/SourceNotice.astro";
 import { leadershipGroups, leadershipHero } from "@/data/leadership";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import pageMeta from "@/content/pages/leadership.json";
 ---
 
-<BaseLayout pageType="WebPage" title="Leadership and Governance | Justice League GLM" description="Meet the current Justice League GLM executive team, Board of Directors, and Advisory Council.">
+<BaseLayout pageType="WebPage" title={pageMeta.seo_title} description={pageMeta.meta_description}>
   <main id="main-content" class="interior-page leadership-page" tabindex="-1">
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About", href: "/about/" }, { label: "Leadership and governance" }]} />
-    <PageIntro kicker="Accountability record" title="Leadership and Governance" lede="Meet the people currently identified by the Justice League as its executive team, Board of Directors, and Advisory Council." mode="evidence" marker="Who leads" />
+    <PageIntro kicker="Accountability record" title="Leadership and Governance" lede="Meet the people currently identified by the Justice League as its executive team, Board of Directors, and Advisory Council." mode="evidence" marker="Who leads">
+      <span slot="kicker" data-editable="source" data-path="/src/pages/about/leadership/index.astro" data-key="leadership-intro-kicker">Accountability record</span>
+      <span slot="title" data-editable="source" data-path="/src/pages/about/leadership/index.astro" data-key="leadership-intro-title">Leadership and Governance</span>
+      <span slot="lede" data-editable="source" data-path="/src/pages/about/leadership/index.astro" data-key="leadership-intro-lede">Meet the people currently identified by the Justice League as its executive team, Board of Directors, and Advisory Council.</span>
+      <span slot="marker" data-editable="source" data-path="/src/pages/about/leadership/index.astro" data-key="leadership-intro-marker">Who leads</span>
+    </PageIntro>
 
     <figure class="leadership-hero">
       <img src={leadershipHero.image} width={leadershipHero.width} height={leadershipHero.height} alt={leadershipHero.alt} style={`object-position: ${leadershipHero.focalPosition}`} fetchpriority="high" decoding="async" />

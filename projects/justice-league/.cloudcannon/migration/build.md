@@ -1,24 +1,26 @@
 # CloudCannon build verification
 
-Observed: 2026-08-06
+Observed: 2026-08-07
 
-## Local pipeline
+## Local checks
 
-- `npm run check`: passed with zero errors, warnings, or hints.
-- `npm run build`: passed; 15 static routes generated in `dist`.
-- `npm run test`: passed 188 prototype requirements.
-- `npx @cloudcannon/cli validate`: passed both CloudCannon configuration files.
+- `npm run check`: passed with 0 errors, warnings, or hints across 48 Astro/TypeScript files.
+- `npm run build`: passed; 19 normal pages plus configured redirect outputs, sitemap, and 404 generated.
+- `npm run test`: passed all 830 prototype assertions.
+- Official CloudCannon CLI validation: passed for root and project-local configuration and initial-site settings.
+- All 15 Pages collection URLs resolve to built HTML.
+- All 15 page records supply the rendered SEO title and meta description.
+- Built pages contain 90+ Source Editable Region markers; every collection page has at least two.
 
-The network-enabled build retrieved a public upcoming record from Wix Events. A sandboxed build with outbound access denied also completed and rendered the labelled error state, confirming the failure boundary.
+The sandboxed build exercised the existing Wix/Little Green Light fallback paths. Their network failures remained contained and did not fail the build.
 
-## Runtime behavior reviewed
+## Hosted verification still required
 
-- Wix media remains on the Wix CDN with responsive transforms.
-- The YouTube iframe does not exist until the visitor activates the video control.
-- The eLink script and iframe do not exist until the visitor activates Latest News.
-- No framework hydration bundle is shipped for the homepage.
-- The production Wix site and DNS were not changed.
+CloudCannon account access is not present locally. In the hosted site, verify that:
 
-## Preview deployment
-
-Repository configuration is ready for CloudCannon. Creating the provider-generated preview URL still requires an authenticated CloudCannon site connected to the repository; no site ID or account session is present locally.
+1. **Pages** appears in the left sidebar.
+2. Each entry opens the URL named in its manifest.
+3. Yellow editable outlines appear on representative static content.
+4. Changing an outlined heading saves to the expected `src/pages/**/index.astro` file.
+5. Changing SEO Title in Data view saves to the expected `src/content/pages/*.json` file and appears after rebuild.
+6. Dynamic Wix/LGL sections do not expose edit controls.

@@ -5,18 +5,24 @@ import PageIntro from "@/components/PageIntro.astro";
 import { currentWixRoutes } from "@/data/site";
 import { getUpcomingPublicEvents } from "@/lib/wix";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import pageMeta from "@/content/pages/events.json";
 
 const eventsResult = await getUpcomingPublicEvents();
 const events = eventsResult.state === "success" ? eventsResult.events : [];
 const fallbackMessage = eventsResult.state === "success" ? "" : eventsResult.message;
 ---
 
-<BaseLayout pageType="WebPage" title="Events and Meetings | Justice League GLM" description="Find current public Justice League GLM events from Wix Events, review the 2026 Fall Celebration ad campaign, and access committee meeting information.">
+<BaseLayout pageType="WebPage" title={pageMeta.seo_title} description={pageMeta.meta_description}>
   <main id="main-content" class="interior-page" tabindex="-1">
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Events" }]} />
-    <PageIntro kicker="Event discovery" title="Events and Meetings" lede="Current public events are retrieved from Wix Events during each Astro build; ticketing and RSVP actions remain with Wix." mode="campaign" marker="What is next" />
+    <PageIntro kicker="Event discovery" title="Events and Meetings" lede="Current public events are retrieved from Wix Events during each Astro build; ticketing and RSVP actions remain with Wix." mode="campaign" marker="What is next">
+      <span slot="kicker" data-editable="source" data-path="/src/pages/events/index.astro" data-key="events-intro-kicker">Event discovery</span>
+      <span slot="title" data-editable="source" data-path="/src/pages/events/index.astro" data-key="events-intro-title">Events and Meetings</span>
+      <span slot="lede" data-editable="source" data-path="/src/pages/events/index.astro" data-key="events-intro-lede">Current public events are retrieved from Wix Events during each Astro build; ticketing and RSVP actions remain with Wix.</span>
+      <span slot="marker" data-editable="source" data-path="/src/pages/events/index.astro" data-key="events-intro-marker">What is next</span>
+    </PageIntro>
 
-    <section class="campaign-callout" aria-labelledby="ad-booklet-campaign">
+    <section class="campaign-callout" aria-labelledby="ad-booklet-campaign" data-editable="source" data-path="/src/pages/events/index.astro" data-key="events-ad-booklet">
       <div><p class="section-kicker">Current campaign</p><h2 id="ad-booklet-campaign">2026 Fall Celebration Ad Booklet</h2></div>
       <div><p>Program-book advertisements are due <time datetime="2026-09-30">September 30, 2026</time>. Compare the four current-site placements and review the Wix submission handoff.</p><a class="text-action" href="/ad-booklet/">Review ad booklet opportunities</a></div>
     </section>
@@ -43,7 +49,7 @@ const fallbackMessage = eventsResult.state === "success" ? "" : eventsResult.mes
       )}
     </section>
 
-    <section class="campaign-callout" aria-labelledby="meeting-schedule">
+    <section class="campaign-callout" aria-labelledby="meeting-schedule" data-editable="source" data-path="/src/pages/events/index.astro" data-key="events-meetings">
       <div><p class="section-kicker">Organization meetings</p><h2 id="meeting-schedule">General and committee meetings.</h2></div>
       <div><p>The current Wix meeting page lists recurring general, finance, resource development, public relations, advisory council, and administration meetings. Its visible dates are historical, so they are not repeated as upcoming here.</p><a class="text-action" href={currentWixRoutes.meetings} target="_blank" rel="noreferrer">Review the current meeting page <span class="visually-hidden">(opens in a new tab)</span></a></div>
     </section>

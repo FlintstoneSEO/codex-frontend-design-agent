@@ -3,6 +3,7 @@ import ActionBand from "@/components/ActionBand.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import PageIntro from "@/components/PageIntro.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import pageMeta from "@/content/pages/scholarship.json";
 import { currentWixRoutes } from "@/data/site";
 import { getCurrentScholarshipCycle, getPublishedScholarshipRecipients } from "@/lib/wix";
 
@@ -57,8 +58,8 @@ const unavailableMessage = "message" in scholarshipResult
 
 <BaseLayout
   pageType="WebPage"
-  title="Reparations Scholarship | Justice League GLM"
-  description="Check the current Justice League GLM Reparations Scholarship status, award structure, eligibility, dates, required materials, and contact information."
+  title={pageMeta.seo_title}
+  description={pageMeta.meta_description}
 >
   <main id="main-content" class="interior-page" tabindex="-1">
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Scholarship" }]} />
@@ -68,7 +69,10 @@ const unavailableMessage = "message" in scholarshipResult
       lede={cycle ? `${cycle.cycleLabel} cycle information is maintained in Wix CMS. Status comes before eligibility and application details.` : "Scholarship information cannot be presented safely until Wix CMS provides a complete published cycle."}
       mode="campaign"
       marker={cycle?.cycleLabel ?? "Status unavailable"}
-    />
+    >
+      <span slot="kicker" data-editable="source" data-path="/src/pages/scholarship/index.astro" data-key="scholarship-intro-kicker">Program status</span>
+      <span slot="title" data-editable="source" data-path="/src/pages/scholarship/index.astro" data-key="scholarship-intro-title">Reparations Scholarship</span>
+    </PageIntro>
 
     {scholarshipResult.state === "stale" && (
       <aside class="cms-state-notice" aria-label="Scholarship content freshness">

@@ -3,6 +3,7 @@ import ActionBand from "@/components/ActionBand.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import PageIntro from "@/components/PageIntro.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import pageMeta from "@/content/pages/ad-booklet.json";
 
 const wixCampaignUrl = "https://www.justiceleagueglm.org/ad-booklet";
 
@@ -16,8 +17,8 @@ const placements = [
 
 <BaseLayout
   pageType="WebPage"
-  title="2026 Fall Celebration Ad Booklet | Justice League GLM"
-  description="Review 2026 Fall Celebration program-book ad sizes, prices, file requirements, the September 30 deadline, and the verified Wix submission handoff."
+  title={pageMeta.seo_title}
+  description={pageMeta.meta_description}
 >
   <main id="main-content" class="interior-page" tabindex="-1">
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Events", href: "/events/" }, { label: "2026 Ad Booklet" }]} />
@@ -28,7 +29,12 @@ const placements = [
       lede="Share a message of congratulations, support, or encouragement in the Justice League’s 2026 program booklet."
       mode="campaign"
       marker="Ads due / Sep 30"
-    />
+    >
+      <span slot="kicker" data-editable="source" data-path="/src/pages/ad-booklet/index.astro" data-key="ad-booklet-intro-kicker">Five-year Fall Celebration</span>
+      <span slot="title" data-editable="source" data-path="/src/pages/ad-booklet/index.astro" data-key="ad-booklet-intro-title">2026 Fall Celebration Ad Booklet</span>
+      <span slot="lede" data-editable="source" data-path="/src/pages/ad-booklet/index.astro" data-key="ad-booklet-intro-lede">Share a message of congratulations, support, or encouragement in the Justice League’s 2026 program booklet.</span>
+      <span slot="marker" data-editable="source" data-path="/src/pages/ad-booklet/index.astro" data-key="ad-booklet-intro-marker">Ads due / Sep 30</span>
+    </PageIntro>
 
     <aside class="source-notice" aria-label="Campaign source status">
       <strong>Active current-site campaign</strong>
@@ -45,7 +51,7 @@ const placements = [
       <a class="button button-secondary" href={wixCampaignUrl} target="_blank" rel="noreferrer">Continue to the current Wix form <span class="visually-hidden">(opens in a new tab)</span></a>
     </section>
 
-    <section class="campaign-orientation" aria-labelledby="campaign-fit">
+    <section class="campaign-orientation" aria-labelledby="campaign-fit" data-editable="source" data-path="/src/pages/ad-booklet/index.astro" data-key="ad-booklet-orientation">
       <div>
         <p class="section-kicker">Who the invitation is for</p>
         <h2 id="campaign-fit">Mark the occasion with a message of support.</h2>
@@ -72,7 +78,7 @@ const placements = [
       <p class="source-line">Prices and dimensions reflect the current Wix campaign as observed August 7, 2026.</p>
     </section>
 
-    <section class="process-section" aria-labelledby="ad-process">
+    <section class="process-section" aria-labelledby="ad-process" data-editable="source" data-path="/src/pages/ad-booklet/index.astro" data-key="ad-booklet-process">
       <div class="section-heading-row">
         <p class="section-kicker">Submission process</p>
         <h2 id="ad-process">Three decisions, then a secure handoff.</h2>
@@ -110,7 +116,7 @@ const placements = [
       </div>
     </section>
 
-    <section class="evidence-note" aria-labelledby="campaign-launch-gate">
+    <section class="evidence-note" aria-labelledby="campaign-launch-gate" data-editable="source" data-path="/src/pages/ad-booklet/index.astro" data-key="ad-booklet-launch-gate">
       <p class="section-kicker">Prototype integration notice</p>
       <h2 id="campaign-launch-gate">The handoff needs a launch-safe destination.</h2>
       <p>The current organization URL is valid while the Wix homepage remains live. Before DNS cutover, the form needs a verified standalone Wix URL or a preserved legacy Wix hostname so this route does not link back to itself.</p>

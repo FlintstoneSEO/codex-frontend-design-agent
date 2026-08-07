@@ -4,19 +4,25 @@ import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import PageIntro from "@/components/PageIntro.astro";
 import SourceNotice from "@/components/SourceNotice.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import pageMeta from "@/content/pages/impact.json";
 ---
 
-<BaseLayout pageType="WebPage" title="Impact, Supporters, and Accountability | Justice League GLM" description="Review verified Justice League GLM scholarship, homeownership, supporter, and donor records with links to the current public sources.">
+<BaseLayout pageType="WebPage" title={pageMeta.seo_title} description={pageMeta.meta_description}>
   <main id="main-content" class="interior-page" tabindex="-1">
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Impact and accountability" }]} />
-    <PageIntro kicker="Evidence before claims" title="Impact and Accountability" lede="A dated public record of scholarship, homeownership, community support, and the evidence still needed for complete reporting." mode="evidence" marker="Show the work" />
+    <PageIntro kicker="Evidence before claims" title="Impact and Accountability" lede="A dated public record of scholarship, homeownership, community support, and the evidence still needed for complete reporting." mode="evidence" marker="Show the work">
+      <span slot="kicker" data-editable="source" data-path="/src/pages/impact/index.astro" data-key="impact-intro-kicker">Evidence before claims</span>
+      <span slot="title" data-editable="source" data-path="/src/pages/impact/index.astro" data-key="impact-intro-title">Impact and Accountability</span>
+      <span slot="lede" data-editable="source" data-path="/src/pages/impact/index.astro" data-key="impact-intro-lede">A dated public record of scholarship, homeownership, community support, and the evidence still needed for complete reporting.</span>
+      <span slot="marker" data-editable="source" data-path="/src/pages/impact/index.astro" data-key="impact-intro-marker">Show the work</span>
+    </PageIntro>
     <SourceNotice title="Records reviewed across the current timeline, scholarship, supporters, and donors pages" />
 
-    <section class="accountability-grid" aria-labelledby="reporting-standard"><div><p class="section-kicker">Required for every claim</p><h2 id="reporting-standard">Evidence should explain itself.</h2></div><ol><li><span>01</span><strong>Reporting period</strong><p>State exactly when the activity occurred.</p></li><li><span>02</span><strong>Method and source</strong><p>Explain how the information was produced and where it can be checked.</p></li><li><span>03</span><strong>Limits and ownership</strong><p>Name what the evidence does not show, who approved it, and when it will be reviewed.</p></li></ol></section>
+    <section class="accountability-grid" aria-labelledby="reporting-standard" data-editable="source" data-path="/src/pages/impact/index.astro" data-key="impact-reporting-standard"><div><p class="section-kicker">Required for every claim</p><h2 id="reporting-standard">Evidence should explain itself.</h2></div><ol><li><span>01</span><strong>Reporting period</strong><p>State exactly when the activity occurred.</p></li><li><span>02</span><strong>Method and source</strong><p>Explain how the information was produced and where it can be checked.</p></li><li><span>03</span><strong>Limits and ownership</strong><p>Name what the evidence does not show, who approved it, and when it will be reviewed.</p></li></ol></section>
 
-    <section class="provisional-evidence" aria-labelledby="available-record"><div><p class="section-kicker">Current-site evidence</p><h2 id="available-record">Program activity with dates and sources.</h2></div><dl><div><dt>2024 scholarship cohort</dt><dd>Ten publicly named recipients; the timeline records awards of $5,000 each</dd></div><div><dt>2025 scholarship cohort</dt><dd>Ten publicly named recipients; the timeline records awards of $2,500 each</dd></div><div><dt>2026 scholarship cohort</dt><dd>Ten publicly named recipients and published essays</dd></div><div><dt>Homeownership</dt><dd>The timeline records a 2025 home build with the Eastside Community Action Center and a second build underway later that year</dd></div></dl><a class="text-action" href="/scholarship/">Review recipients and published essays</a><a class="text-action" href="/about/history/">Review the dated timeline</a></section>
+    <section class="provisional-evidence" aria-labelledby="available-record" data-editable="source" data-path="/src/pages/impact/index.astro" data-key="impact-available-record"><div><p class="section-kicker">Current-site evidence</p><h2 id="available-record">Program activity with dates and sources.</h2></div><dl><div><dt>2024 scholarship cohort</dt><dd>Ten publicly named recipients; the timeline records awards of $5,000 each</dd></div><div><dt>2025 scholarship cohort</dt><dd>Ten publicly named recipients; the timeline records awards of $2,500 each</dd></div><div><dt>2026 scholarship cohort</dt><dd>Ten publicly named recipients and published essays</dd></div><div><dt>Homeownership</dt><dd>The timeline records a 2025 home build with the Eastside Community Action Center and a second build underway later that year</dd></div></dl><a class="text-action" href="/scholarship/">Review recipients and published essays</a><a class="text-action" href="/about/history/">Review the dated timeline</a></section>
 
-    <section class="acknowledgment-index" aria-labelledby="acknowledgment-index-heading">
+    <section class="acknowledgment-index" aria-labelledby="acknowledgment-index-heading" data-editable="source" data-path="/src/pages/impact/index.astro" data-key="impact-acknowledgments">
       <header>
         <p class="section-kicker">Two public records</p>
         <h2 id="acknowledgment-index-heading">Supporters and donors remain distinct.</h2>

@@ -6,15 +6,16 @@ import PriorityModule from "@/components/PriorityModule.astro";
 import UpcomingEvents from "@/components/UpcomingEvents.astro";
 import VideoFeature from "@/components/VideoFeature.astro";
 import { homepage } from "@/data/homepage";
+import pageMeta from "@/content/pages/home.json";
 import { getUpcomingPublicEvents } from "@/lib/wix";
 
 const eventsResult = await getUpcomingPublicEvents();
 ---
 
-<BaseLayout isHome={true} ogImage={homepage.hero.src}>
+<BaseLayout isHome={true} title={pageMeta.seo_title} description={pageMeta.meta_description} ogImage={homepage.hero.src}>
   <main id="main-content" tabindex="-1">
     <section class="hero" aria-labelledby="homepage-title">
-      <div class="hero-copy">
+      <div class="hero-copy" data-editable="source" data-path="/src/pages/index.astro" data-key="home-hero-copy">
         <p class="section-kicker">Greater Lansing · Michigan</p>
         <h1 id="homepage-title">Repairing the Breach <span>in Greater Lansing</span></h1>
         <p class="hero-deck">Faith-rooted relationships, public education, and reparative action focused on racial wealth equity.</p>
@@ -46,13 +47,13 @@ const eventsResult = await getUpcomingPublicEvents();
 
     <section class="mission-section" aria-labelledby="mission-heading">
       <div class="section-number" aria-hidden="true">01</div>
-      <div class="mission-heading">
+      <div class="mission-heading" data-editable="source" data-path="/src/pages/index.astro" data-key="home-mission-heading">
         <p class="section-kicker">Our mission</p>
         <h2 id="mission-heading">Repair is both a responsibility and a relationship.</h2>
       </div>
       <div class="mission-copy">
         <p class="editorial-lede">{homepage.mission}</p>
-        <div class="inline-links">
+        <div class="inline-links" data-editable="source" data-path="/src/pages/index.astro" data-key="home-mission-links">
           <a class="text-action" href="/about/">About the Justice League</a>
           <a class="text-action" href="/reparations/">Reparations in Greater Lansing</a>
           <a class="text-action" href="/about/history/">History and timeline</a>
@@ -76,10 +77,10 @@ const eventsResult = await getUpcomingPublicEvents();
       </div>
       <div class="founder-copy">
         <p class="section-kicker">The work begins with a question</p>
-        <h2 id="founder-heading">What can people of faith do about the injustice in front of us?</h2>
-        <p class="editorial-lede">Willye Bryan describes the Justice League as growing from 2021 conversations about racial disparities, responsibility, and the need to move from study toward repair in Greater Lansing.</p>
-        <p>Her account connects repentance with practical local relationships—especially between houses of worship and collaborative partners—and with reparative work focused on education, homeownership, and entrepreneurship.</p>
-        <blockquote>
+        <h2 id="founder-heading" data-editable="source" data-path="/src/pages/index.astro" data-key="home-founder-heading">What can people of faith do about the injustice in front of us?</h2>
+        <p class="editorial-lede" data-editable="source" data-path="/src/pages/index.astro" data-key="home-founder-lede">Willye Bryan describes the Justice League as growing from 2021 conversations about racial disparities, responsibility, and the need to move from study toward repair in Greater Lansing.</p>
+        <p data-editable="source" data-path="/src/pages/index.astro" data-key="home-founder-copy">Her account connects repentance with practical local relationships—especially between houses of worship and collaborative partners—and with reparative work focused on education, homeownership, and entrepreneurship.</p>
+        <blockquote data-editable="source" data-path="/src/pages/index.astro" data-key="home-founder-quote">
           <p>“I can stand up, speak out, and apologize to those who continue to be harmed.”</p>
         </blockquote>
         <a class="text-action" href={homepage.willye.profileUrl} target="_blank" rel="noreferrer">
@@ -100,7 +101,7 @@ const eventsResult = await getUpcomingPublicEvents();
       </aside>
     </section>
 
-    <section class="methods-section" aria-labelledby="methods-heading">
+    <section class="methods-section" aria-labelledby="methods-heading" data-editable="source" data-path="/src/pages/index.astro" data-key="home-methods">
       <div class="methods-intro">
         <p class="section-kicker">How the work connects</p>
         <h2 id="methods-heading">From understanding to local action.</h2>
@@ -134,7 +135,7 @@ const eventsResult = await getUpcomingPublicEvents();
       </ol>
     </section>
 
-    <section class="participation-section" aria-labelledby="participation-heading">
+    <section class="participation-section" aria-labelledby="participation-heading" data-editable="source" data-path="/src/pages/index.astro" data-key="home-participation">
       <div class="participation-intro">
         <p class="section-kicker">Participation pathways</p>
         <h2 id="participation-heading">Join at the level that fits.</h2>
@@ -150,7 +151,7 @@ const eventsResult = await getUpcomingPublicEvents();
 
     <NewsletterShell />
 
-    <section class="trust-section" aria-labelledby="trust-heading">
+    <section class="trust-section" aria-labelledby="trust-heading" data-editable="source" data-path="/src/pages/index.astro" data-key="home-trust">
       <div>
         <p class="section-kicker">Governance and transparency</p>
         <h2 id="trust-heading">Trust belongs in the main story.</h2>

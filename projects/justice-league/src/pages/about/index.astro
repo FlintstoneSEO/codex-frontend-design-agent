@@ -6,18 +6,24 @@ import SourceNotice from "@/components/SourceNotice.astro";
 import { vision } from "@/data/content";
 import { site } from "@/data/site";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import pageMeta from "@/content/pages/about.json";
 ---
 
-<BaseLayout pageType="WebPage" title="About the Justice League | Justice League GLM" description="Learn the Justice League of Greater Lansing Michigan mission, faith-rooted reparations vision, three program pillars, and ways to participate.">
+<BaseLayout pageType="WebPage" title={pageMeta.seo_title} description={pageMeta.meta_description}>
   <main id="main-content" class="interior-page" tabindex="-1">
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About" }]} />
-    <PageIntro kicker="Organization overview" title="About the Justice League" lede="A faith-rooted, community-centered approach to locally led reparations in Greater Lansing." mode="documentary" marker="Who we are" />
+    <PageIntro kicker="Organization overview" title="About the Justice League" lede="A faith-rooted, community-centered approach to locally led reparations in Greater Lansing." mode="documentary" marker="Who we are">
+      <span slot="kicker" data-editable="source" data-path="/src/pages/about/index.astro" data-key="about-intro-kicker">Organization overview</span>
+      <span slot="title" data-editable="source" data-path="/src/pages/about/index.astro" data-key="about-intro-title">About the Justice League</span>
+      <span slot="lede" data-editable="source" data-path="/src/pages/about/index.astro" data-key="about-intro-lede">A faith-rooted, community-centered approach to locally led reparations in Greater Lansing.</span>
+      <span slot="marker" data-editable="source" data-path="/src/pages/about/index.astro" data-key="about-intro-marker">Who we are</span>
+    </PageIntro>
     <SourceNotice title="Mission and vision verified against the current site" />
 
     <section class="editorial-split" aria-labelledby="about-mission">
       <div class="section-index">01 / Mission</div>
       <div>
-        <h2 id="about-mission">Repair the breach and increase wealth equity.</h2>
+        <h2 id="about-mission" data-editable="source" data-path="/src/pages/about/index.astro" data-key="about-mission-heading">Repair the breach and increase wealth equity.</h2>
         <p class="editorial-lede">{site.mission}</p>
         <p>{vision.summary}</p>
         <p class="source-line">Mission and vision reviewed against the published organization website on {vision.observedAt}.</p>
@@ -34,7 +40,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       <a class="text-action" href={vision.sourceUrl} target="_blank" rel="noreferrer">Read the current vision statement <span class="visually-hidden">(opens in a new tab)</span></a>
     </section>
 
-    <section class="ruled-section" aria-labelledby="about-work">
+    <section class="ruled-section" aria-labelledby="about-work" data-editable="source" data-path="/src/pages/about/index.astro" data-key="about-work">
       <div class="section-heading-row"><p class="section-kicker">Areas of work</p><h2 id="about-work">Education, homeownership, and entrepreneurship.</h2></div>
       <ol class="pathway-ledger">
         <li><span>01</span><div><h3>Educational scholarships</h3><p>Reparations-funded scholarships support eligible descendants of enslaved Africans in Ingham, Clinton, and Eaton counties.</p></div><a href="/scholarship/">Review scholarship</a></li>
@@ -43,7 +49,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       </ol>
     </section>
 
-    <section class="trust-ledger" aria-labelledby="about-trust">
+    <section class="trust-ledger" aria-labelledby="about-trust" data-editable="source" data-path="/src/pages/about/index.astro" data-key="about-trust">
       <div><p class="section-kicker">Organizational trust</p><h2 id="about-trust">See the record behind the work.</h2></div>
       <nav aria-label="About and governance links">
         <a href="/about/history/">History and timeline <span aria-hidden="true">→</span></a>
@@ -51,6 +57,12 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         <a href="/impact/">Impact and accountability <span aria-hidden="true">→</span></a>
       </nav>
     </section>
-    <ActionBand kicker="Next step" title="Move from interest to participation." text="Choose a current pathway for a meeting, committee, presentation, email updates, or financial support." primaryLabel="Join the Work" primaryHref="/join-the-work/" secondaryLabel="Support Reparations" secondaryHref="/support-reparations/" />
+    <ActionBand kicker="Next step" title="Move from interest to participation." text="Choose a current pathway for a meeting, committee, presentation, email updates, or financial support." primaryLabel="Join the Work" primaryHref="/join-the-work/" secondaryLabel="Support Reparations" secondaryHref="/support-reparations/">
+      <span slot="kicker" data-editable="source" data-path="/src/pages/about/index.astro" data-key="about-action-kicker">Next step</span>
+      <span slot="title" data-editable="source" data-path="/src/pages/about/index.astro" data-key="about-action-title">Move from interest to participation.</span>
+      <span slot="text" data-editable="source" data-path="/src/pages/about/index.astro" data-key="about-action-text">Choose a current pathway for a meeting, committee, presentation, email updates, or financial support.</span>
+      <a slot="primary" class="button button-primary" href="/join-the-work/" data-editable="source" data-path="/src/pages/about/index.astro" data-key="about-action-primary">Join the Work</a>
+      <a slot="secondary" class="button button-secondary" href="/support-reparations/" data-editable="source" data-path="/src/pages/about/index.astro" data-key="about-action-secondary">Support Reparations</a>
+    </ActionBand>
   </main>
 </BaseLayout>

@@ -7,17 +7,21 @@ interface Props {
   marker?: string;
 }
 const { kicker, title, lede, mode = "documentary", marker = "Greater Lansing" } = Astro.props;
+const hasKickerSlot = Astro.slots.has("kicker");
+const hasTitleSlot = Astro.slots.has("title");
+const hasLedeSlot = Astro.slots.has("lede");
+const hasMarkerSlot = Astro.slots.has("marker");
 ---
 
 <header class:list={["page-intro", `page-intro--${mode}`]}>
   <div class="page-intro-copy">
-    <p class="section-kicker">{kicker}</p>
-    <h1>{title}</h1>
-    <p class="page-lede">{lede}</p>
+    <p class="section-kicker">{hasKickerSlot ? <slot name="kicker" /> : kicker}</p>
+    <h1>{hasTitleSlot ? <slot name="title" /> : title}</h1>
+    <p class="page-lede">{hasLedeSlot ? <slot name="lede" /> : lede}</p>
   </div>
   <div class="page-intro-marker" aria-hidden="true">
     <span>{mode}</span>
-    <strong>{marker}</strong>
+    <strong>{hasMarkerSlot ? <slot name="marker" /> : marker}</strong>
     <i>Prototype record / 2026</i>
   </div>
 </header>
