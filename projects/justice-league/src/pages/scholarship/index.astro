@@ -3,12 +3,23 @@ import ActionBand from "@/components/ActionBand.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import PageIntro from "@/components/PageIntro.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { getCurrentScholarshipCycle } from "@/lib/wix";
+import { getCurrentScholarshipCycle, getPublishedScholarshipRecipients } from "@/lib/wix";
 
-const scholarshipResult = await getCurrentScholarshipCycle();
+const [scholarshipResult, recipientResult] = await Promise.all([
+  getCurrentScholarshipCycle(),
+  getPublishedScholarshipRecipients()
+]);
 const cycle = scholarshipResult.state === "success" || scholarshipResult.state === "stale"
   ? scholarshipResult.cycle
   : undefined;
+const recipients = recipientResult.state === "success" || recipientResult.state === "stale"
+  ? recipientResult.recipients
+  : [];
+const cohorts = recipientResult.state === "success" || recipientResult.state === "stale"
+  ? recipientResult.cohorts
+  : [];
+const recipientYears = [...new Set(recipients.map((recipient) => recipient.year))].sort((a, b) => b - a);
+const newestRecipientYear = recipientYears[0];
 
 const statusLabels = {
   active: "Applications are open",
@@ -162,10 +173,85 @@ const unavailableMessage = "message" in scholarshipResult
           </div>
         </section>
 
-        <section class="record-strip" aria-labelledby="historical-record">
-          <div><p class="section-kicker">Historical snapshot</p><h2 id="historical-record">Recipient counts, without unapproved identities.</h2></div>
-          <dl><div><dt>2024</dt><dd>Ten recipients listed</dd></div><div><dt>2025</dt><dd>Ten recipients listed</dd></div></dl>
-          <p>Names, essays, and recipient photography are not reproduced without renewed consent and a media audit.</p>
+        <section class="recipient-archive" aria-labelledby="recipient-archive-heading">
+          <div class="recipient-archive-intro">
+            <div>
+              <p class="section-kicker">Published recipient record</p>
+              <h2 id="recipient-archive-heading">Scholarship recipients and essays.</h2>
+            </div>
+            <div>
+              <p>These are scholarship recipients publicly identified by the Justice League—not the full applicant pool. Names, education details, essay links, and the available group photograph are reproduced with client approval from the current Wix site.</p>
+              <p class="recipient-source">Wix CMS collections: <code>ScholarshipRecipients</code> and <code>ScholarshipCohorts</code>.</p>
+            </div>
+          </div>
+
+          {recipientResult.state === "stale" && (
+            <aside class="recipient-freshness" aria-label="Recipient content freshness">
+              <strong>Dated source snapshot</strong>
+              <p>{recipientResult.message} Source observed August 7, 2026.</p>
+            </aside>
+          )}
+
+          {recipients.length ? (
+            <div class="recipient-years">
+              {recipientYears.map((year) => {
+                const yearRecipients = recipients.filter((recipient) => recipient.year === year);
+                const cohort = cohorts.find((record) => record.year === year && record.imageUrl);
+                return (
+                  <details class="recipient-year" open={year === newestRecipientYear}>
+                    <summary>
+                      <span>{year}</span>
+                      <strong>{yearRecipients.length} published recipients</strong>
+                      <i aria-hidden="true">
+                        <span class="summary-open-label">Open record</span>
+                        <span class="summary-close-label">Close record</span>
+                      </i>
+                    </summary>
+                    <div class="recipient-year-content">
+                      {cohort?.imageUrl && cohort.imageAlt && (
+                        <figure class="cohort-documentary">
+                          <img
+                            src={cohort.imageUrl}
+                            alt={cohort.imageAlt}
+                            width="1222"
+                            height="726"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                          {cohort.imageCaption && <figcaption>{cohort.imageCaption}</figcaption>}
+                        </figure>
+                      )}
+                      <ol class="recipient-ledger">
+                        {yearRecipients.map((recipient) => (
+                          <li>
+                            <span class="recipient-index">{String(recipient.displayOrder).padStart(2, "0")}</span>
+                            <div class="recipient-identity">
+                              <h3>{recipient.name}</h3>
+                              <p>{recipient.city}, Michigan</p>
+                            </div>
+                            <dl>
+                              <div><dt>High school</dt><dd>{recipient.highSchool}</dd></div>
+                              <div><dt>Continuing education</dt><dd>{recipient.institution}</dd></div>
+                            </dl>
+                            <a href={recipient.essayUrl} target="_blank" rel="noreferrer">
+                              Read published essay
+                              <span>{recipient.essayFormat}</span>
+                              <span class="visually-hidden"> by {recipient.name} (opens in a new tab)</span>
+                            </a>
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+                  </details>
+                );
+              })}
+            </div>
+          ) : (
+            <div class="recipient-empty" role="status">
+              <h3>Recipient records are temporarily unavailable.</h3>
+              <p>{"message" in recipientResult ? recipientResult.message : "No approved recipient records are available."}</p>
+            </div>
+          )}
         </section>
       </>
     ) : (

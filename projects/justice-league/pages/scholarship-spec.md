@@ -26,6 +26,9 @@
 - Source observation date: August 7, 2026.
 - Source discrepancy: The current page reports an extended May 1, 2026 deadline while older sections still show April 17. The closed form and extended-deadline notice control the headless status; the discrepancy remains visible in a source note.
 - Build behavior: Query one published cycle by latest application deadline. Validate required fields and allowed status values. Suppress application URLs unless status is `active` and the HTTPS hostname is allowlisted. Show an explicitly stale, dated source snapshot only when a static build cannot reach Wix.
+- Recipient collection: `ScholarshipRecipients`, public-read and admin-write. Contains 30 client-approved public winner records from 2024, 2025, and 2026, including city, high school, continuing-education institution, approved essay URL, source date, and publication controls.
+- Cohort collection: `ScholarshipCohorts`, public-read and admin-write. Contains the approved 2025 group photograph with year-specific alt text and caption.
+- Publication gate: Query only records where `published`, `consentApproved`, and `publicationApproved` are all true. Never query the private `2026ScholarshipApplicants` collection.
 
 ## Section hierarchy
 
@@ -38,7 +41,7 @@
 | 5 | Required materials | What did applicants need? | Completed application, unofficial transcript, and 500-word essay | None while closed |
 | 6 | Essay topics | What did the essay address? | Racial Wealth Gap in America or Generational Wealth | Learn about Reparations |
 | 7 | Source and contact | What if the information conflicts or I need help? | Current-site link, source date, discrepancy note, email, and mailing address | Contact the organization |
-| 8 | Historical record | What is publicly recorded? | Ten recipients in 2024 and ten in 2025; names and media omitted | Impact and accountability |
+| 8 | Published recipients | Who received scholarships and where can I read their work? | Thirty client-approved public winner records from 2024–2026, 30 approved essay links, and the available approved 2025 group photograph | Read a published essay |
 | 9 | Support | How can I support the pathway? | Stable support route without unsupported allocation claims | Support Reparations |
 
 ## CMS states
@@ -53,10 +56,10 @@
 
 ## Requirements
 
-- Media: No recipient names, essays, imagery, or video without renewed consent, rights, useful alt text, captions, and a separate content specification.
+- Media: The client approved reuse of the recipient names, education details, essay links, and imagery already published on the current Wix scholarship page. Future records still require explicit consent and publication approval; individual portraits remain empty because the source page exposes only one 2025 group photograph.
 - Mobile: Status and dates precede eligibility. Dates, currency, county names, email, and address must reflow at 320 CSS pixels. Use ruled lists rather than desktop cards.
 - Accessibility: Never encode status by color alone. Use `time`, `dl`, `ul`, and ordered headings. Do not embed the current Wix upload/signature form until keyboard, signature alternatives, validation, errors, consent, retention, and confirmation behavior pass review.
-- Performance: Static HTML; no page-specific hydration, recipient media, embedded form, or third-party scripts. Wix CMS is queried during the build.
-- Security/privacy: The public adapter queries only `ScholarshipCycles`. Applicant submissions, uploads, signatures, addresses, and phone/email records remain outside the public content boundary.
+- Performance: Static HTML and native `details` cohort disclosure; no page-specific hydration, embedded form, or third-party scripts. The single below-fold group photograph is lazy-loaded with intrinsic dimensions. Wix CMS is queried during the build.
+- Security/privacy: The public adapter queries only `ScholarshipCycles`, `ScholarshipRecipients`, and `ScholarshipCohorts`, with explicit publication and consent filters. Applicant submissions, uploads, signatures, addresses, phone/email records, and unsuccessful applicants remain outside the public content boundary.
 - Unknowns: `[NEEDS CLIENT INPUT: Confirm the next-cycle owner, approval/review schedule, final application destination, accommodation process, privacy and retention policy, consent wording, signature alternatives, confirmation workflow, and treatment of late or mailed applications.]`
-- Acceptance: One H1; current cycle visibly closed; no Apply CTA; CMS state/source visible; all dates semantic; ten/$2,500 structure accurate; eligibility and documents match CMS; source discrepancy disclosed; no recipient identities/media; no submitting form; prototype noindex.
+- Acceptance: One H1; current cycle visibly closed; no Apply CTA; CMS state/source visible; all dates semantic; ten/$2,500 structure accurate; eligibility and documents match CMS; source discrepancy disclosed; 30 approved recipients and essay links grouped by year; approved 2025 group image labelled accurately; no private applicant fields; no submitting form; prototype noindex.

@@ -40,6 +40,8 @@ These items must be resolved or retained as visible placeholders before implemen
 - A public-read, admin-write Wix CMS collection named `ScholarshipCycles` now holds the public cycle status, dates, award structure, eligibility, required materials, essay topics, contact details, and dated source notes.
 - The 2026–2027 record is `closed`; the extended May 1, 2026 deadline and the stale April 17 references are both documented rather than reconciled silently.
 - The public Astro adapter does not query or expose `2026ScholarshipApplicants`, recipient identities, submitted files, signatures, contact details, or other application records.
+- The client approved reuse of the recipient names, education details, essay links, and imagery already public on the current scholarship page. Thirty winner records now live in `ScholarshipRecipients`; the available 2025 group image lives in `ScholarshipCohorts`.
+- Public recipient queries require `published`, `consentApproved`, and `publicationApproved`. Unsuccessful applicants and all private submission fields remain excluded.
 - The next-cycle owner, review cadence, verified application destination, accommodation process, privacy/retention policy, consent wording, signature alternative, confirmation workflow, and late/mailed submission policy remain production blockers.
 
 1. Wix remains the platform.

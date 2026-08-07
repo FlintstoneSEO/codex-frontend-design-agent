@@ -75,6 +75,18 @@ a {
   color: var(--color-canvas);
 }
 
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
 h1,
 h2,
 h3,
@@ -2707,6 +2719,220 @@ textarea {
   white-space: pre-line;
 }
 
+.recipient-archive {
+  padding: var(--section-space) var(--page-gutter);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.recipient-archive-intro {
+  display: grid;
+  grid-template-columns: minmax(16rem, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(2rem, 7vw, 8rem);
+  align-items: end;
+}
+
+.recipient-archive-intro > div:last-child {
+  max-width: var(--reading);
+}
+
+.recipient-source {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.recipient-source code {
+  color: var(--color-action);
+  font-family: inherit;
+  font-weight: 800;
+}
+
+.recipient-freshness {
+  display: grid;
+  grid-template-columns: minmax(10rem, 0.35fr) minmax(0, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+  padding: 1rem 0;
+  border-block: 1px solid var(--color-action);
+}
+
+.recipient-freshness strong {
+  color: var(--color-action);
+  font-size: 0.75rem;
+  font-weight: 950;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.recipient-freshness p {
+  margin: 0;
+}
+
+.recipient-years {
+  margin-top: clamp(3rem, 7vw, 7rem);
+  border-top: 1px solid var(--color-border);
+}
+
+.recipient-year {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.recipient-year summary {
+  display: grid;
+  grid-template-columns: minmax(7rem, 0.3fr) minmax(0, 1fr) auto;
+  gap: 1.5rem;
+  align-items: center;
+  min-height: 6.5rem;
+  cursor: pointer;
+  list-style-position: inside;
+}
+
+.recipient-year summary::marker {
+  color: var(--color-action);
+}
+
+.recipient-year summary > span {
+  font-family: var(--font-civic);
+  font-size: clamp(2.5rem, 5vw, 5.5rem);
+  font-weight: 950;
+  letter-spacing: -0.06em;
+  line-height: 0.9;
+}
+
+.recipient-year summary strong {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+}
+
+.recipient-year summary i {
+  color: var(--color-action);
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.summary-close-label,
+.recipient-year[open] .summary-open-label {
+  display: none;
+}
+
+.recipient-year[open] .summary-close-label {
+  display: inline;
+}
+
+.recipient-year-content {
+  padding-bottom: clamp(3rem, 6vw, 6rem);
+}
+
+.cohort-documentary {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(15rem, 0.5fr);
+  gap: 0;
+  margin: 1rem 0 3rem;
+  border-top: 0.3rem solid var(--color-action);
+  background: var(--color-surface);
+}
+
+.cohort-documentary img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1222 / 726;
+  object-fit: cover;
+}
+
+.cohort-documentary figcaption {
+  align-self: end;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  color: var(--color-text-muted);
+  font-family: var(--font-editorial);
+}
+
+.recipient-ledger {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.recipient-ledger > li {
+  display: grid;
+  grid-template-columns: 3rem minmax(12rem, 0.65fr) minmax(18rem, 1.1fr) minmax(11rem, 0.35fr);
+  gap: clamp(1rem, 3vw, 3rem);
+  align-items: center;
+  padding: clamp(1.4rem, 3vw, 2.5rem) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.recipient-index {
+  align-self: start;
+  color: var(--color-action);
+  font-size: 0.72rem;
+  font-weight: 950;
+}
+
+.recipient-identity h3 {
+  margin-bottom: 0.35rem;
+  font-family: var(--font-civic);
+  font-size: clamp(1.35rem, 2.3vw, 2.2rem);
+  font-weight: 950;
+  overflow-wrap: anywhere;
+  text-transform: uppercase;
+}
+
+.recipient-identity p {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.recipient-ledger dl {
+  min-width: 0;
+  margin: 0;
+}
+
+.recipient-ledger dl > div {
+  display: grid;
+  grid-template-columns: minmax(7rem, 0.45fr) minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.35rem 0;
+}
+
+.recipient-ledger dt {
+  color: var(--color-text-muted);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.recipient-ledger dd {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.recipient-ledger > li > a {
+  display: grid;
+  justify-items: start;
+  color: var(--color-action);
+  font-size: 0.82rem;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.recipient-ledger > li > a span:not(.visually-hidden) {
+  margin-top: 0.35rem;
+  color: var(--color-text-muted);
+  font-size: 0.66rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.recipient-empty {
+  margin-top: 3rem;
+  padding: 2rem 0;
+  border-block: 1px solid var(--color-border);
+}
+
 .record-strip {
   grid-template-columns: minmax(0, 1fr) minmax(14rem, 0.8fr) minmax(14rem, 0.8fr);
   gap: clamp(2rem, 5vw, 5rem);
@@ -3052,6 +3278,12 @@ textarea {
     grid-template-columns: 1fr;
   }
 
+  .recipient-archive-intro,
+  .recipient-freshness,
+  .cohort-documentary {
+    grid-template-columns: 1fr;
+  }
+
   .criteria-ledgers,
   .materials-ledgers {
     grid-template-columns: 1fr;
@@ -3061,6 +3293,15 @@ textarea {
   .materials-ledgers > section + section {
     border-top: 1px solid var(--color-border);
     border-left: 0;
+  }
+
+  .recipient-ledger > li {
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+  }
+
+  .recipient-ledger dl,
+  .recipient-ledger > li > a {
+    grid-column: 2;
   }
 
   .section-heading-row {
@@ -3196,5 +3437,30 @@ textarea {
   .check-instructions > div {
     grid-template-columns: 1fr;
     gap: 0.2rem;
+  }
+
+  .recipient-year summary {
+    grid-template-columns: 1fr auto;
+    gap: 0.4rem 1rem;
+    padding-block: 1.2rem;
+  }
+
+  .recipient-year summary > span {
+    grid-column: 1;
+  }
+
+  .recipient-year summary strong {
+    grid-column: 1 / -1;
+  }
+
+  .recipient-year summary i {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .recipient-ledger dl > div {
+    grid-template-columns: 1fr;
+    gap: 0.1rem;
+    padding-block: 0.45rem;
   }
 }

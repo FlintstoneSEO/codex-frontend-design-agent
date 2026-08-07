@@ -1,6 +1,11 @@
 import { createClient, media, OAuthStrategy } from "@wix/sdk";
 import { items } from "@wix/data";
 import { wixEventsV2 } from "@wix/events";
+import {
+  scholarshipCohortFallback,
+  scholarshipRecipientFallback,
+  type ScholarshipRecipientSnapshot
+} from "@/data/scholarship-recipients";
 
 const wixClientId =
   import.meta.env.WIX_CLIENT_ID ??
@@ -16,6 +21,16 @@ const scholarshipCollectionId =
   import.meta.env.WIX_SCHOLARSHIP_COLLECTION_ID ??
   import.meta.env.PUBLIC_WIX_SCHOLARSHIP_COLLECTION_ID ??
   "ScholarshipCycles";
+
+const scholarshipRecipientsCollectionId =
+  import.meta.env.WIX_SCHOLARSHIP_RECIPIENTS_COLLECTION_ID ??
+  import.meta.env.PUBLIC_WIX_SCHOLARSHIP_RECIPIENTS_COLLECTION_ID ??
+  "ScholarshipRecipients";
+
+const scholarshipCohortsCollectionId =
+  import.meta.env.WIX_SCHOLARSHIP_COHORTS_COLLECTION_ID ??
+  import.meta.env.PUBLIC_WIX_SCHOLARSHIP_COHORTS_COLLECTION_ID ??
+  "ScholarshipCohorts";
 
 export type PublicEvent = {
   id: string;
@@ -69,8 +84,47 @@ export type ScholarshipCycleResult =
   | { state: "empty"; message: string; fetchedAt: string }
   | { state: "error"; message: string; fetchedAt: string };
 
+export type ScholarshipRecipient = ScholarshipRecipientSnapshot & {
+  imageUrl?: string;
+  imageAlt?: string;
+  imageCaption?: string;
+};
+
+export type ScholarshipCohort = {
+  id: string;
+  title: string;
+  year: number;
+  imageUrl?: string;
+  imageAlt?: string;
+  imageCaption?: string;
+  sourceUrl: string;
+  sourceObservedAt: string;
+  reviewStatus: string;
+};
+
+export type ScholarshipRecipientsResult =
+  | { state: "success"; recipients: ScholarshipRecipient[]; cohorts: ScholarshipCohort[]; fetchedAt: string }
+  | { state: "stale"; recipients: ScholarshipRecipient[]; cohorts: ScholarshipCohort[]; message: string; fetchedAt: string }
+  | { state: "empty"; message: string; fetchedAt: string }
+  | { state: "error"; message: string; fetchedAt: string };
+
 type ScholarshipCycleRecord = Partial<Omit<ScholarshipCycle, "id">> & {
   _id?: string;
+  published?: boolean;
+};
+
+type ScholarshipRecipientRecord = Partial<Omit<ScholarshipRecipient, "id" | "name">> & {
+  _id?: string;
+  title?: string;
+  consentApproved?: boolean;
+  publicationApproved?: boolean;
+  published?: boolean;
+};
+
+type ScholarshipCohortRecord = Partial<Omit<ScholarshipCohort, "id">> & {
+  _id?: string;
+  consentApproved?: boolean;
+  publicationApproved?: boolean;
   published?: boolean;
 };
 
@@ -127,6 +181,61 @@ function cleanApplicationUrl(value: unknown, status: ScholarshipCycleStatus): st
   } catch {
     return undefined;
   }
+}
+
+function cleanApprovedUrl(value: unknown, allowedHosts: Set<string>): string | undefined {
+  if (typeof value !== "string") return undefined;
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:" && allowedHosts.has(url.hostname) ? url.href : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+function normalizeScholarshipRecipient(record: ScholarshipRecipientRecord): ScholarshipRecipient | undefined {
+  const essayUrl = cleanApprovedUrl(record.essayUrl, new Set(["www.justiceleagueglm.org", "static.wixstatic.com"]));
+  const sourceUrl = cleanApprovedUrl(record.sourceUrl, new Set(["www.justiceleagueglm.org"]));
+  const essayFormat = record.essayFormat === "PDF" || record.essayFormat === "Image" ? record.essayFormat : undefined;
+
+  if (!record._id || !record.title || typeof record.year !== "number" || typeof record.displayOrder !== "number" || !record.city || !record.highSchool || !record.institution || !essayUrl || !essayFormat || !sourceUrl || !record.sourceObservedAt || !record.reviewStatus) {
+    return undefined;
+  }
+
+  return {
+    id: record._id,
+    name: record.title,
+    year: record.year,
+    displayOrder: record.displayOrder,
+    city: record.city,
+    highSchool: record.highSchool,
+    institution: record.institution,
+    essayUrl,
+    essayFormat,
+    imageUrl: cleanApprovedUrl(record.imageUrl, new Set(["static.wixstatic.com"])),
+    imageAlt: typeof record.imageAlt === "string" ? record.imageAlt : undefined,
+    imageCaption: typeof record.imageCaption === "string" ? record.imageCaption : undefined,
+    sourceUrl,
+    sourceObservedAt: cleanDate(record.sourceObservedAt) ?? record.sourceObservedAt,
+    reviewStatus: record.reviewStatus
+  };
+}
+
+function normalizeScholarshipCohort(record: ScholarshipCohortRecord): ScholarshipCohort | undefined {
+  const sourceUrl = cleanApprovedUrl(record.sourceUrl, new Set(["www.justiceleagueglm.org"]));
+  if (!record._id || !record.title || typeof record.year !== "number" || !sourceUrl || !record.sourceObservedAt || !record.reviewStatus) return undefined;
+
+  return {
+    id: record._id,
+    title: record.title,
+    year: record.year,
+    imageUrl: cleanApprovedUrl(record.imageUrl, new Set(["static.wixstatic.com"])),
+    imageAlt: typeof record.imageAlt === "string" ? record.imageAlt : undefined,
+    imageCaption: typeof record.imageCaption === "string" ? record.imageCaption : undefined,
+    sourceUrl,
+    sourceObservedAt: cleanDate(record.sourceObservedAt) ?? record.sourceObservedAt,
+    reviewStatus: record.reviewStatus
+  };
 }
 
 function normalizeScholarshipCycle(record: ScholarshipCycleRecord): ScholarshipCycle | undefined {
@@ -200,6 +309,48 @@ export async function getCurrentScholarshipCycle(): Promise<ScholarshipCycleResu
       state: "stale",
       cycle: scholarshipFallback,
       message: "Wix CMS could not be reached during this build. A dated source snapshot is shown instead.",
+      fetchedAt
+    };
+  }
+}
+
+export async function getPublishedScholarshipRecipients(): Promise<ScholarshipRecipientsResult> {
+  const fetchedAt = new Date().toISOString();
+  const approvedFilter = { published: true, consentApproved: true, publicationApproved: true };
+
+  try {
+    const [recipientResponse, cohortResponse] = await Promise.all([
+      client.items.query<ScholarshipRecipientRecord>(scholarshipRecipientsCollectionId, {
+        filter: approvedFilter,
+        paging: { limit: 100, offset: 0 }
+      }, { consistentRead: true }),
+      client.items.query<ScholarshipCohortRecord>(scholarshipCohortsCollectionId, {
+        filter: approvedFilter,
+        sort: [{ fieldName: "year", order: "DESC" }],
+        paging: { limit: 20, offset: 0 }
+      }, { consistentRead: true })
+    ]);
+
+    const recipients = recipientResponse.items
+      .map(normalizeScholarshipRecipient)
+      .filter((record): record is ScholarshipRecipient => Boolean(record))
+      .sort((a, b) => b.year - a.year || a.displayOrder - b.displayOrder);
+    const cohorts = cohortResponse.items
+      .map(normalizeScholarshipCohort)
+      .filter((record): record is ScholarshipCohort => Boolean(record));
+
+    if (!recipients.length) {
+      return { state: "empty", message: "No approved scholarship recipient records are published in Wix CMS.", fetchedAt };
+    }
+
+    return { state: "success", recipients, cohorts, fetchedAt };
+  } catch (error) {
+    console.warn("The public scholarship recipient collections could not be loaded during the Astro build.", error);
+    return {
+      state: "stale",
+      recipients: scholarshipRecipientFallback,
+      cohorts: scholarshipCohortFallback,
+      message: "Wix CMS could not be reached during this build. A dated, client-approved source snapshot is shown instead.",
       fetchedAt
     };
   }
