@@ -17,6 +17,8 @@ These items must be resolved or retained as visible placeholders before implemen
 | Medium | Event, newsletter and campaign publishing workflow | Determines CMS patterns and ownership | Website administrator | Implementation planning |
 | Medium | Sponsor and advertisement process | Determines forms, pricing, deadlines and proof | Fundraising/event committee | Campaign pages |
 | Medium | Languages or reading-level needs | Affects content and accessibility | Organization leadership | Content planning |
+| Medium | Final launch approval for the August 7 Wix route reconciliation and legacy redirect table | Determines whether every consolidation and redirect may replace the current Wix URL | Organization leadership / content owner | Pre-launch content sign-off |
+| Medium | Governance-document publication set (terms, charters, conflict policy, Form 990, annual reports) | Leadership roster is verified, but the wider accountability record remains incomplete | Board / legal reviewer | Leadership and impact launch review |
 | Medium | Analytics, Search Console and conversion baseline | Needed to measure improvement | Website administrator | Evaluation |
 | Medium | Required Wix applications and third-party integrations | Affects performance and accessible interaction | Website administrator | Technical planning |
 | Low | Preferred examples or visual references | Helps identify taste but cannot replace strategy | Stakeholders | Art-direction review |
@@ -54,5 +56,6 @@ These items must be resolved or retained as visible placeholders before implemen
 
 - Do not invent scholarship totals, donation impact, membership counts or event attendance.
 - Do not invent leadership titles, credentials, sponsors, deadlines, ticket quantities or prices.
+- The donor-year visibility question is resolved for this prototype: publish 2023 and later after normalization; retain 2022 and earlier in verified source/fallback records.
 - Do not represent stock or AI-generated people as actual community members.
 - Do not claim tax status, financial allocation, awards or partnerships without verification.

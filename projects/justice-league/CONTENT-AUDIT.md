@@ -38,6 +38,65 @@ Production source: <https://www.justiceleagueglm.org/>
 | Contact / Join the Work | `/contact/`, `/join-the-work/` | Email, mailing address, current inquiry choices, and verified Wix form handoff aligned |
 | Registered nonprofit and IRS Form 1023 documents | Global footer | Current document links added |
 
+### Complete route reconciliation
+
+The typed source of truth is `src/data/route-reconciliation.ts`. The table below reflects the live desktop/mobile/footer DOM and page review completed August 7, 2026.
+
+| Wix label | Wix URL | Current public status | Astro destination | Treatment | Navigation location | Content/image status and rationale |
+| --- | --- | --- | --- | --- | --- | --- |
+| Home | `/` | Published | `/` | Dedicated page | Wordmark, homepage, footer pathways | Mission, founder, current priority, apology video, and news pathways retained as the orientation hub |
+| Scholarship | `/scholarship` | Published; current cycle closed | `/scholarship/` | Dedicated page | Our Work, footer, homepage | Cycle, eligibility, recipients, essays, and approved cohort image retained |
+| FAQ | `/faq` | Published shell; reviewed widget exposes no readable questions | `/scholarship/#frequently-asked-questions` | Merged section + redirect | Our Work and scholarship page | Empty source state disclosed and Wix handoff retained; no answers invented |
+| Our Vision | `/vision-justice-league-lansing` | Published | `/about/` | Merged section + redirect | About | Mission, faith-rooted vision, governance model, and pillars retained |
+| History | `/history` | Published | `/about/history/` | Dedicated page + redirect | About, footer | Historical context retained without making dated statistics current |
+| Timeline | `/timeline` | Published | `/about/history/#timeline-heading` | Anchor + redirect | About and contextual links | Curated chronology and approved documentary images retained |
+| Reparations | `/reparations` | Published | `/reparations/` | Dedicated page | Our Work, footer, homepage | Definition, local model, governance, pillars, and dated-goal caveat retained |
+| Faith Based | `/faithbased` | Published | `/reparations/#faith-heading` | Anchor + redirect | Our Work and reparations page | Faith, repentance, relationship, and material-repair framing retained |
+| Supporters | `/supporters` | Published | `/supporters/` | Dedicated page | Our Work, footer, Impact | 18 verified organizations and paired logos retained; distinct from donors |
+| Donors | `/donors` | Published; shows 2026–2023 | `/donors/` | Dedicated page | Our Work, footer, Impact | LGL source retained; named 2023+ public cutoff follows normalization |
+| Our Team | `/ourteam` | Published | `/about/leadership/` | Dedicated page + redirect | About, footer | Verified hero, exact 4/5/7 roster, roles, and 16 person-paired portraits retained |
+| Executive Team | `/ourteam` section | Published | `/about/leadership/#executive-team-heading` | Anchor | Leadership page | Four names, roles, and portraits retained |
+| Board of Directors | `/ourteam` section | Published | `/about/leadership/#board-of-directors-heading` | Anchor | Leadership page | Five names, roles, and portraits retained |
+| Advisory Council | `/ourteam` section | Published | `/about/leadership/#advisory-council-heading` | Anchor | Leadership page | Seven names, published Advisory Council role, and portraits retained |
+| Photos | `/gallery` | Published | `/news/#photo-record` | Merged section + redirect | News & Media, footer | Verified images live with founder, leadership, scholarship, and history context; gallery handoff retained |
+| Videos | Current `/recent-news` media features | Published | `/news/#video-features` | Anchor | News & Media | Two visible video features retained with verified source handoff |
+| Apology 2023 | `/apology-2023` | Published | `/about/history/#apology-2023` | Anchor + redirect | News & Media, homepage, history | Apology video and January/June 2023 dated records retained |
+| E-News Briefs | `/e-news-briefs` | Published shell; no issues exposed | `/news/#enews-heading` | Anchor + redirect | News & Media, footer | Honest empty archive state and source handoff retained |
+| Recent News | `/recent-news` | Published | `/news/` | Dedicated page + redirect | News & Media, footer, homepage | eLink, videos, E-News, and contextual photo pathways consolidated |
+| Upcoming Events | `/upcomingevents` | Published but listing includes a completed event | `/events/` | Dedicated page + redirect | Events & Meetings, footer, homepage | Current Wix Events records take precedence over stale listing copy |
+| Committee Meetings | `/commiteemeetings` | Published; visible dates are historical | `/events/#meeting-schedule` | Anchor + redirect | Events & Meetings, Join the Work | Meeting types retained; expired dates not presented as upcoming |
+| Join the Work | `/contact` | Published form pathway | `/join-the-work/` | Dedicated page | Desktop/mobile, footer, homepage | Four published participation options retained; general contact remains separate |
+| Donate | `/donate` | Published transaction | `/support-reparations/` then Wix | External handoff + redirect | Sitewide primary action, footer | Astro explains two designations and check option; Wix continues transaction |
+| Ad Booklet | `/ad-booklet` | Published current campaign | `/ad-booklet/` | Dedicated page | Events & Meetings, footer | 2026 deadline, placements, formats, checks, imagery, and Wix handoff retained |
+
+Legacy redirects are declared centrally in `astro.config.mjs`. Normal content pages emit one self-canonical, the prototype remains globally `noindex`, `/sitemap.xml` is generated from the reconciled public destinations, `robots.txt` blocks prototype crawling, and `/404.html` provides recovery and broken-link reporting paths.
+
+### Leadership roster and image provenance
+
+- **Roster verification:** The live `/ourteam` page was rechecked August 7, 2026. It publishes 4 Executive Team, 5 Board of Directors, and 7 Advisory Council records with the roles now used in `src/data/leadership.ts`.
+- **Association method:** Each name and role was resolved to the image inside the same Wix repeater item. Repeated `willye2-10-13-3` and `Sallie_Campbell` filenames were ignored as identity evidence.
+- **Asset strategy:** The rendered, Wix-approved crops were acquired through the browser asset inventory and stored as local AVIF files. Intrinsic dimensions and optional focal treatment are centralized with the source URL.
+
+| Person / use | Role | Local asset | Exact verified Wix source |
+| --- | --- | --- | --- |
+| Leadership hero | Page background/hero | `/images/leadership/leadership-hero.avif` | `https://static.wixstatic.com/media/de1bf2_521314e51ce446fa99a3a9d79afd6258~mv2.jpg/v1/fill/w_1265,h_864,al_b,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/de1bf2_521314e51ce446fa99a3a9d79afd6258~mv2.jpg` |
+| Willye Bryan | Founder | `/images/leadership/willye-bryan.avif` | `https://static.wixstatic.com/media/de1bf2_d351de14b3f8433d8295a442f50d67fb~mv2.jpg/v1/fill/w_271,h_307,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/willye2-10-13-3.jpg` |
+| Prince Solace | President | `/images/leadership/prince-solace.avif` | `https://static.wixstatic.com/media/de1bf2_6aea79c991b34b3eaf195dfc11cc26e5~mv2.jpg/v1/fill/w_271,h_307,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/willye2-10-13-3.jpg` |
+| Ross Yednock | Treasurer / Board of Directors | `/images/leadership/ross-yednock.avif` | `https://static.wixstatic.com/media/de1bf2_f2788816036d4bfba10cb80ce29fd031~mv2.jpg/v1/fill/w_271,h_307,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/willye2-10-13-3.jpg` |
+| Dana Watson | Secretary / Board of Directors | `/images/leadership/dana-watson.avif` | `https://static.wixstatic.com/media/ce499e_eeb6be7efa6640f29a87436ca0370c36~mv2.png/v1/fill/w_271,h_307,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/willye2-10-13-3.png` |
+| Betsy Sneller | Board of Directors | `/images/leadership/betsy-sneller.avif` | `https://static.wixstatic.com/media/ce499e_adf708a2869b46c4984365269a224208~mv2.png/v1/fill/w_302,h_307,al_c,lg_1,q_85,enc_avif,quality_auto/Sallie_Campbell.png` |
+| Peggy Vaughn-Payne | Board of Directors | `/images/leadership/peggy-vaughn-payne.avif` | `https://static.wixstatic.com/media/de1bf2_9d403bd3e647480e8d045ff82835e77d~mv2.jpg/v1/fill/w_302,h_307,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Sallie_Campbell.jpg` |
+| Sarah Allen | Board Chair | `/images/leadership/sarah-allen.avif` | `https://static.wixstatic.com/media/de1bf2_61c081cce4004d0a8fcbee7a3eef4511~mv2.jpg/v1/fill/w_302,h_307,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Sallie_Campbell.jpg` |
+| Dr. Nakia Parker | Board of Directors / Advisory Council | `/images/leadership/nakia-parker.avif` | `https://static.wixstatic.com/media/de1bf2_e2539d16903d433d84366bee9e40057b~mv2.jpg/v1/fill/w_302,h_307,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Sallie_Campbell.jpg` |
+| Dr. Sean L. Holland | Board of Directors / Advisory Council | `/images/leadership/sean-holland.avif` | `https://static.wixstatic.com/media/de1bf2_ba8f223ed91d41d8901ad4642974733d~mv2.jpg/v1/fill/w_302,h_307,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Sallie_Campbell.jpg` |
+| Courtney Minor | Advisory Council | `/images/leadership/courtney-minor.avif` | `https://static.wixstatic.com/media/de1bf2_ffd8d60f900f4859aaf3b58779fe9cba~mv2.jpg/v1/fill/w_302,h_317,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/willye2-10-13-3.jpg` |
+| Terrence J. King | Advisory Council | `/images/leadership/terrence-king.avif` | `https://static.wixstatic.com/media/de1bf2_680732a1d9354356a7230f76b7501433~mv2.png/v1/fill/w_302,h_317,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/willye2-10-13-3.png` |
+| Bishop Samuel Duncan, Jr. | Advisory Council | `/images/leadership/samuel-duncan.avif` | `https://static.wixstatic.com/media/de1bf2_917c0c398596449ea1cfc0918bed5c20~mv2.jpg/v1/fill/w_302,h_317,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/willye2-10-13-3.jpg` |
+| Cheryl Smith | Advisory Council | `/images/leadership/cheryl-smith.avif` | `https://static.wixstatic.com/media/de1bf2_aa3436bbedc54149a71a7f38e0b30689~mv2.jpg/v1/fill/w_302,h_317,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/willye2-10-13-3.jpg` |
+| David Foreman | Advisory Council | `/images/leadership/david-foreman.avif` | `https://static.wixstatic.com/media/de1bf2_c31ca0a5693247f5b77fcac4da25126f~mv2.jpg/v1/fill/w_302,h_317,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/willye2-10-13-3.jpg` |
+| Betty Sanford | Advisory Council | `/images/leadership/betty-sanford.avif` | `https://static.wixstatic.com/media/de1bf2_e62e79d9cf084ae785953e1aa6453876~mv2.png/v1/fill/w_302,h_317,al_c,lg_1,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/willye2-10-13-3.png` |
+| Tony Willis | Advisory Council | `/images/leadership/tony-willis.avif` | `https://static.wixstatic.com/media/de1bf2_9314a171d4454ead99929468f8624ffb~mv2.jpg/v1/fill/w_302,h_317,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/willye2-10-13-3.jpg` |
+
 ## Updated
 
 - Centralized the organization name, mission, email, mailing address, Wix source routes, and nonprofit-document links in `src/data/site.ts`.
@@ -165,8 +224,9 @@ Production source: <https://www.justiceleagueglm.org/>
 - **Public fields retained:** `Addressee` and the year derived from each positive fiscal-year column.
 - **Fields intentionally excluded:** `Id`, every fiscal-year amount, `Groups`, cookies, response headers, and any other LGL/account metadata. The fallback file contains only `observedAt`, `year`, and donor display-name arrays. No amounts, IDs, emails, addresses, phone numbers, notes, transactions, or gift histories are serialized to browser assets or HTML. The donor page names Little Green Light as the source but does not link visitors to the raw CSV attachment.
 - **Fallback behavior:** A build first requests the live report with an eight-second timeout. Fetch, HTTP, timeout, schema, or parsing failure logs a warning and renders `src/data/donors-fallback.json`, a sanitized snapshot refreshed by `npm run sync:donors`. The page visibly labels fallback use. If the snapshot also fails validation, the page renders an explanatory unavailable state and no names. A sandboxed build exercised the fallback successfully; a final network-enabled build exercised the live path successfully.
-- **Rendered years and counts on August 7, 2026:** 2026 — 63; 2025 — 162; 2024 — 119; 2023 — 106; 2022 — 2. The empty 2021 column does not render. The production Wix page currently begins at 2023, while the current LGL source contains two positive 2022 acknowledgments; the Astro parser follows the source-of-truth rule and renders every non-empty discovered year.
-- **Live comparison:** Multiple 2026–2023 names visible on the Wix page also appear in the LGL-backed Astro output, including Amber Paxton, Kathryn Fore, Winalee and Ron Zeeb, Alexander L Bennett lll & Linda Bennett, Kristina Schmidgall, Zenon Wisniewski, Adam Moore, Katherine L Hickner, Wendy King, All Saints Episcopal Church, Refreshology, LLC, and Sharon Ketchum. The two 2022 source acknowledgments are Anonymous and First Presbyterian Church of Holt. No obvious truncation was observed.
+- **Intentional public cutoff:** `PUBLIC_DONOR_MIN_YEAR = 2023` in `src/lib/donors.ts` is the named presentation policy. `parseDonorCsv` and fallback validation first retain and normalize every valid source group. `applyDonorPublicationPolicy` then filters only the groups returned to the public page. This matches Wix and is not missing source data.
+- **Publicly rendered years and counts observed August 7, 2026:** 2026 — 63; 2025 — 162; 2024 — 119; 2023 — 106. Years remain newest-first. The LGL source and sanitized fallback still contain 2022 — 2; 2022 and earlier are intentionally not rendered.
+- **Live comparison:** Multiple 2026–2023 names visible on Wix also appear in the LGL-backed Astro output. The two retained but non-public 2022 acknowledgments are Anonymous and First Presbyterian Church of Holt. No obvious truncation was observed.
 
 ### Supporter implementation
 
@@ -177,9 +237,9 @@ Production source: <https://www.justiceleagueglm.org/>
 
 ### Tests and rendered verification
 
-- Parser fixtures cover quoted commas, empty rows, blank addressees, positive-year grouping, deduplication, alphabetical ordering, descending years, malformed CSV rejection, external fetch failure, malformed live payload fallback, and fallback validation.
-- Built-page assertions cover every sanitized year-record, current/prior year headings, representative source names, exactly one H1, SEO metadata, no client data fetch, private-field/value exclusion, all 18 supporter names, name/logo pairing, local asset existence, alt text, responsive CSS rules, concept separation, navigation, footer links, and internal-link resolution.
-- Rendered browser review covered `/donors/`, `/supporters/`, and `/impact/` at 320, 375, 390, 768, 1024, and 1440 CSS pixels. Every state had one H1, no horizontal overflow, no broken supporter image, all 452 donor year-records, and the intended one/two/three-column responsive progression. The mobile menu exposes Supporters and Donors separately under Our Work.
+- Parser fixtures cover quoted commas, empty rows, blank addressees, positive-year grouping, deduplication, alphabetical ordering, descending years, malformed CSV rejection, external fetch failure, malformed live payload fallback, fallback validation, preservation of normalized 2022 data, and post-normalization publication filtering.
+- Built-page assertions cover all 450 publishable donor year-records, public headings 2026–2023, suppression of 2022 and earlier, representative names, exactly one H1, SEO metadata, no client data fetch, private-field/value exclusion, all 18 supporter names, all 16 leadership records and image pairings, local asset existence, alt text, responsive CSS rules, the 24-concept route reconciliation, navigation, redirects, sitemap, 404, footer links, and internal-link resolution.
+- Rendered browser review ran 78 route/viewport checks across the 13 required public routes at 320, 375, 390, 768, 1024, and 1440 CSS pixels. Every check returned one H1, no horizontal overflow, and no broken main-content image. Desktop visual review covered the leadership hero and all three portrait groups; mobile visual review corrected long-word heading breaks on Leadership and Donors. Donor browser output contained only 2026, 2025, 2024, and 2023.
 
 ## Needs human confirmation
 
@@ -188,17 +248,17 @@ Production source: <https://www.justiceleagueglm.org/>
 - Current fund balance, accounting period, program/administrative spending, and annual or audited financial report.
 - Board terms, committee charters, conflict policy, Form 990 publication, and governance-document owner.
 - A launch-safe Wix donation/form hostname or route that will not loop after the main domain moves to Astro.
-- Whether a future editorial policy should intentionally suppress source-backed pre-2023 donor years. The current implementation follows Little Green Light and includes the two non-empty 2022 acknowledgments.
+- Client approval is still required before changing the established 2023+ donor publication cutoff in a future year.
 - Current social-profile URLs and which should appear in the redesigned footer.
 - The authoritative July 2026 scholarship ceremony date for any future event archive.
 - Rights, credits, captions, and crops for any additional Wix gallery images beyond those already approved for reuse.
 
 ## Validation record
 
-- `npm run check`: passes with 0 Astro/TypeScript errors, warnings, or hints across 44 files.
-- `npm run build`: passes and generates all 18 static pages. A sandboxed build exercised the labelled donor, Wix Events, and scholarship fallbacks; the final network-enabled build loaded the live LGL report and current Wix sources successfully.
-- `npm run test`: passes 801 prototype assertions, including every built route, unique metadata, one-H1 and heading-order rules, canonicals, Open Graph metadata, prototype `noindex`, internal-link resolution, donor parser/fallback/privacy behavior, static donor completeness, supporter logo pairing/assets/alt text, concept separation, named controls, form labels, protected new-tab links, external-link HTTPS safety, structured data, source-specific content, and contrast calculations.
-- Rendered review passed for the new `/donors/`, `/supporters/`, and revised `/impact/` routes at 320, 375, 390, 768, 1024, and 1440 CSS pixels with no horizontal overflow and exactly one H1. Donor columns progress from one to two to three, supporter columns from one to two to three, all 18 images load, and mobile navigation exposes both destinations. The existing broader site review remains recorded for the other routes.
+- `npm run check`: passes with 0 Astro/TypeScript errors, warnings, or hints across 48 files.
+- `npm run build`: passes and generates 19 normal pages plus the configured legacy redirect outputs, `/sitemap.xml`, and `/404.html`. Because external network access is sandboxed, the final build intentionally exercised the labelled LGL, Wix Events, and scholarship fallbacks; live Wix facts and assets were separately verified in the in-app browser before implementation.
+- `npm run test`: passes 830 prototype assertions, including every built route, unique metadata, one-H1 and heading-order rules, canonicals, Open Graph metadata, prototype `noindex`, internal-link resolution, donor parse/normalize/publish/privacy behavior, 2023 visibility, 2022 suppression with intact fallback records, leadership roster/role/image pairing, navigation coverage, route reconciliation, sitemap/404 generation, supporter assets, named controls, form labels, structured data, and contrast calculations.
+- Rendered review passed 78 required route/viewport combinations at 320, 375, 390, 768, 1024, and 1440 CSS pixels with no horizontal overflow, exactly one H1, and no broken main images. The leadership hero and every portrait group were visually inspected; face crops are not stretched. Mobile H1 wrapping defects found during review were corrected and rechecked at 320 pixels.
 - Keyboard review verified the skip link focuses the main landmark and the mobile menu closes on Escape with focus restored to its trigger.
 - Important Wix HTML source routes, the eLink publication, the apology video, the replacement Willye Bryan profile source, and all 23 linked Wix-hosted PDFs were verified in a real browser. The check exposed the dead City Pulse destination, which was removed rather than retained or guessed.
 
@@ -213,6 +273,7 @@ Production source: <https://www.justiceleagueglm.org/>
 - [x] Events connected and current/past status reconciled
 - [x] Timeline compared and key missing milestones added
 - [x] Board and leadership roster verified
+- [x] Leadership hero and all 16 portrait associations verified, localized, documented, and rendered
 - [x] Supporters verified, centralized, correctly paired with approved source assets, and rendered on `/supporters/`
 - [x] LGL schema inspected directly; donor parser, privacy boundary, build-time fetch, sanitized fallback, and `/donors/` rendering verified
 - [x] Donation information verified
@@ -223,6 +284,8 @@ Production source: <https://www.justiceleagueglm.org/>
 - [x] Accessibility and multi-viewport review completed after reconciliation
 - [x] Repository searched for major stale facts discovered during this pass
 - [x] Current Wix contradictions documented
+- [x] 2023+ donor presentation policy documented and verified after normalization
+- [x] Complete Wix-to-Astro route reconciliation, legacy redirects, sitemap, and 404 implemented
 - [x] `CONTENT-AUDIT.md` created
 - [x] Production Astro build succeeds
 - [x] No unresolved build or type errors introduced

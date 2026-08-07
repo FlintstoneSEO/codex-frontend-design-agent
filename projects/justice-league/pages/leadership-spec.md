@@ -12,6 +12,15 @@
 - LCP candidate: Text H1.
 - Schema: `WebPage` and `BreadcrumbList`; no `Person` schema before recertification.
 - Canonical/indexability: `/about/leadership/`; noindex until roster and governance materials are approved.
+
+## August 7, 2026 verified-media amendment
+
+- The current Wix roster contains 4 Executive Team, 5 Board of Directors, and 7 Advisory Council records.
+- Render every record from centralized typed data containing group, name, published role, local asset, source URL, dimensions, and optional focal position.
+- Reuse the verified Wix leadership hero and the exact portrait associated with each person in the Wix repeater item. Repeated or misleading filenames are not identity evidence.
+- Use semantic section headings and list markup, one page H1, meaningful portrait alt text containing the person’s name, intrinsic dimensions, `object-fit: cover`, and responsive one/two/three/four-column compositions.
+- “Advisory Council” is the published role. Do not render “Role details not supplied.”
+- The imagery extends the selected Documentary Community / Editorial Evidence direction through restrained crops, source dating, and visible governance context.
 - Internal links: About, History, Impact, Contact, Join.
 
 ## Section hierarchy

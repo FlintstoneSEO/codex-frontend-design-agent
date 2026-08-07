@@ -3,28 +3,46 @@ import ActionBand from "@/components/ActionBand.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import PageIntro from "@/components/PageIntro.astro";
 import SourceNotice from "@/components/SourceNotice.astro";
-import { leadership } from "@/data/content";
+import { leadershipGroups, leadershipHero } from "@/data/leadership";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
-<BaseLayout pageType="WebPage" title="Leadership and Governance | Justice League GLM" description="Meet the current Justice League GLM executive team, Board of Directors, and African American Advisory Council.">
-  <main id="main-content" class="interior-page" tabindex="-1">
+<BaseLayout pageType="WebPage" title="Leadership and Governance | Justice League GLM" description="Meet the current Justice League GLM executive team, Board of Directors, and Advisory Council.">
+  <main id="main-content" class="interior-page leadership-page" tabindex="-1">
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About", href: "/about/" }, { label: "Leadership and governance" }]} />
-    <PageIntro kicker="Accountability record" title="Leadership and Governance" lede="The executive team, Board of Directors, and African American Advisory Council hold distinct responsibilities in the work." mode="evidence" marker="Who leads" />
-    <SourceNotice title="Roster verified against the current team page" />
-    <section class="roster-section" aria-labelledby="executive-heading">
-      <div class="roster-heading"><span>01</span><h2 id="executive-heading">Executive team</h2></div>
-      <dl class="roster-list">{leadership.executive.map(([name, role]) => <div><dt>{name}</dt><dd>{role}</dd></div>)}</dl>
-    </section>
-    <section class="roster-section" aria-labelledby="board-heading">
-      <div class="roster-heading"><span>02</span><h2 id="board-heading">Board</h2></div>
-      <dl class="roster-list">{leadership.board.map(([name, role]) => <div><dt>{name}</dt><dd>{role}</dd></div>)}</dl>
-    </section>
-    <section class="roster-section" aria-labelledby="advisory-heading">
-      <div class="roster-heading"><span>03</span><h2 id="advisory-heading">Advisory council</h2></div>
-      <ul class="name-ledger">{leadership.advisory.map((name) => <li>{name}<span>Role details not supplied</span></li>)}</ul>
-    </section>
-    <section class="evidence-note" aria-labelledby="governance-gaps"><p class="section-kicker">Governance record</p><h2 id="governance-gaps">Public responsibilities and documents.</h2><p>The current timeline states that the African American Advisory Council oversees reparations distributions. Board terms, committee charters, conflict policy, annual reports, Form 990 records, and current financial summaries are not published on the reviewed pages.</p><p>[NEEDS CLIENT INPUT: Confirm which additional governance records should be published in the redesigned site.]</p></section>
+    <PageIntro kicker="Accountability record" title="Leadership and Governance" lede="Meet the people currently identified by the Justice League as its executive team, Board of Directors, and Advisory Council." mode="evidence" marker="Who leads" />
+
+    <figure class="leadership-hero">
+      <img src={leadershipHero.image} width={leadershipHero.width} height={leadershipHero.height} alt={leadershipHero.alt} style={`object-position: ${leadershipHero.focalPosition}`} fetchpriority="high" decoding="async" />
+      <figcaption>Leadership-page image reused from the current Justice League Wix site; source association verified August 7, 2026.</figcaption>
+    </figure>
+
+    <SourceNotice title="Roster and portrait associations verified against the current team page" />
+
+    {leadershipGroups.map((group, groupIndex) => (
+      <section class="leadership-group" aria-labelledby={`${group.id}-heading`}>
+        <header class="leadership-group-heading">
+          <span>{String(groupIndex + 1).padStart(2, "0")}</span>
+          <h2 id={`${group.id}-heading`}>{group.label}</h2>
+          <p>{group.members.length} current {group.members.length === 1 ? "member" : "members"}</p>
+        </header>
+        <ul class="leadership-grid">
+          {group.members.map((person) => (
+            <li>
+              <figure class="leadership-portrait">
+                <img src={person.image} width={person.imageWidth} height={person.imageHeight} alt={person.name} loading="lazy" decoding="async" style={person.focalPosition ? `object-position: ${person.focalPosition}` : undefined} />
+              </figure>
+              <div class="leadership-identity">
+                <h3>{person.name}</h3>
+                <p>{person.role}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+
+    <section class="evidence-note" aria-labelledby="governance-gaps"><p class="section-kicker">Governance record</p><h2 id="governance-gaps">Public responsibilities and documents.</h2><p>The current timeline states that the Advisory Council oversees reparations distributions. Board terms, committee charters, conflict policy, annual reports, Form 990 records, and current financial summaries are not published on the reviewed pages.</p><p>[NEEDS CLIENT INPUT: Confirm which additional governance records should be published in the redesigned site.]</p></section>
     <ActionBand kicker="Corrections and questions" title="Help keep the public roster current." text="Use the public contact path to report a roster correction or ask a governance question." primaryLabel="Contact the organization" primaryHref="/contact/" secondaryLabel="View accountability record" secondaryHref="/impact/" />
   </main>
 </BaseLayout>

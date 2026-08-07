@@ -26,6 +26,9 @@ export const currentWixRoutes = {
   donate: "https://www.justiceleagueglm.org/donate",
   donors: "https://www.justiceleagueglm.org/donors",
   supporters: "https://www.justiceleagueglm.org/supporters",
+  faq: "https://www.justiceleagueglm.org/faq",
+  gallery: "https://www.justiceleagueglm.org/gallery",
+  apology2023: "https://www.justiceleagueglm.org/apology-2023",
   news: "https://www.justiceleagueglm.org/recent-news",
   newsletterArchive: "https://www.justiceleagueglm.org/e-news-briefs",
   contact: "https://www.justiceleagueglm.org/contact",
@@ -47,13 +50,29 @@ export const primaryNav = [
     items: [
       { label: "Reparations in Greater Lansing", href: "/reparations/" },
       { label: "Reparations scholarship", href: "/scholarship/" },
+      { label: "Scholarship FAQ", href: "/scholarship/#frequently-asked-questions" },
       { label: "Impact and accountability", href: "/impact/" },
       { label: "Supporters", href: "/supporters/" },
       { label: "Donors", href: "/donors/" }
     ]
   },
-  { label: "Events", href: "/events/" },
-  { label: "News & Stories", href: "/news/" },
+  {
+    label: "Events & Meetings",
+    items: [
+      { label: "Upcoming events", href: "/events/" },
+      { label: "Committee meetings", href: "/events/#meeting-schedule" },
+      { label: "Ad booklet", href: "/ad-booklet/" }
+    ]
+  },
+  {
+    label: "News & Media",
+    items: [
+      { label: "Recent news and videos", href: "/news/" },
+      { label: "Photos", href: "/news/#photo-record" },
+      { label: "Apology 2023", href: "/about/history/#apology-2023" },
+      { label: "E-News Briefs", href: "/news/#enews-heading" }
+    ]
+  },
   { label: "Join the Work", href: "/join-the-work/" }
 ] as const;
 

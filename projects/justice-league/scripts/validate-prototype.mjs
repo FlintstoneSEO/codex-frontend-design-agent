@@ -1,8 +1,10 @@
 import fs from "node:fs";
 import path from "node:path";
 import { parseDonorCsv } from "../src/lib/donor-csv.ts";
-import { loadDonorGroups } from "../src/lib/donors.ts";
+import { applyDonorPublicationPolicy, loadDonorGroups, PUBLIC_DONOR_MIN_YEAR } from "../src/lib/donors.ts";
 import { supporters } from "../src/data/supporters.ts";
+import { leadershipGroups, leadershipHero, leadershipMembers } from "../src/data/leadership.ts";
+import { routeReconciliation } from "../src/data/route-reconciliation.ts";
 
 const projectRoot = process.cwd();
 const distRoot = path.join(projectRoot, "dist");
@@ -160,7 +162,8 @@ checks.push(["support page has no payment fields", !routeDocuments.find((item) =
 checks.push(["support page uses verified Wix donation handoff", routeDocuments.find((item) => item.route === "support-reparations")?.html.includes("https://www.justiceleagueglm.org/donate")]);
 checks.push(["contact page publishes verified email and mailing address", routeDocuments.find((item) => item.route === "contact")?.html.includes("info@justiceleagueglm.org") && routeDocuments.find((item) => item.route === "contact")?.html.includes("P.O. Box 12105")]);
 checks.push(["about page uses approved mission and current three pillars", routeDocuments.find((item) => item.route === "about")?.html.includes("exists to repair the breach") && routeDocuments.find((item) => item.route === "about")?.html.includes("Business entrepreneurship")]);
-checks.push(["leadership page includes current overlapping roles", routeDocuments.find((item) => item.route === "about/leadership")?.html.includes("Dr. Nakia Parker") && routeDocuments.find((item) => item.route === "about/leadership")?.html.includes("Board Member / Advisory Council")]);
+const leadershipHtml = routeDocuments.find((item) => item.route === "about/leadership")?.html ?? "";
+checks.push(["leadership page includes current overlapping roles", leadershipHtml.includes("Dr. Nakia Parker") && leadershipHtml.includes("Board of Directors / Advisory Council")]);
 checks.push(["site uses corrected Wix listing path", allHtml.includes("https://www.justiceleagueglm.org/upcomingevents")]);
 checks.push(["obsolete Wix event path removed", !allHtml.includes("https://www.justiceleagueglm.org/upcoming-events")]);
 checks.push(["dead City Pulse URL removed", !allHtml.includes("lansingcitypulse.com/stories/the-art-of-repair,125610")]);
@@ -169,18 +172,22 @@ checks.push(["past scholarship ceremony not advertised as upcoming", !routeDocum
 checks.push(["impact page keeps supporter and donor destinations separate", routeDocuments.find((item) => item.route === "impact")?.html.includes('href="/supporters/"') && routeDocuments.find((item) => item.route === "impact")?.html.includes('href="/donors/"') && !routeDocuments.find((item) => item.route === "impact")?.html.includes("StableCommunities Foundation")]);
 
 const validDonorCsv = [
-  '"Id","Addressee","2026 - FY","2025 - FY","Groups"',
-  '"1","Beta, Family","25.00","0.0","Private group"',
-  '"2","Alpha Family","10.00","5.00",""',
-  '"3","","12.00","0.0",""',
+  '"Id","Addressee","2026 - FY","2025 - FY","2022 - FY","Groups"',
+  '"1","Beta, Family","25.00","0.0","0.0","Private group"',
+  '"2","Alpha Family","10.00","5.00","8.00",""',
+  '"3","","12.00","0.0","0.0",""',
   '',
-  '"4","Alpha Family","2.00","0.0",""'
+  '"4","Alpha Family","2.00","0.0","0.0",""'
 ].join("\r\n");
 const parsedFixture = parseDonorCsv(validDonorCsv);
 checks.push(["donor parser groups positive fiscal-year rows", parsedFixture[0]?.year === 2026 && parsedFixture[0]?.donors.length === 2 && parsedFixture[1]?.year === 2025 && parsedFixture[1]?.donors.length === 1]);
 checks.push(["donor parser ignores empty rows and blank addressees", !parsedFixture.some((group) => group.donors.some((name) => name === ""))]);
 checks.push(["donor parser deduplicates and alphabetizes within a year", parsedFixture[0]?.donors.join("|") === "Alpha Family|Beta, Family"]);
 checks.push(["donor parser sorts years descending", parsedFixture.every((group, index) => index === 0 || parsedFixture[index - 1].year > group.year)]);
+checks.push(["donor parser retains pre-cutoff source records", parsedFixture.some((group) => group.year === 2022 && group.donors.includes("Alpha Family"))]);
+const publishedFixture = applyDonorPublicationPolicy(parsedFixture);
+checks.push(["donor publication policy keeps 2023 and later", PUBLIC_DONOR_MIN_YEAR === 2023 && publishedFixture.every((group) => group.year >= 2023)]);
+checks.push(["donor publication policy suppresses 2022 after parsing", !publishedFixture.some((group) => group.year === 2022)]);
 
 let malformedCsvRejected = false;
 try {
@@ -190,12 +197,13 @@ try {
 }
 checks.push(["malformed donor CSV fails safely", malformedCsvRejected]);
 
-const fallbackFixture = { observedAt: "2026-08-07", groups: [{ year: 2026, donors: ["Fallback Donor"] }] };
+const fallbackFixture = { observedAt: "2026-08-07", groups: [{ year: 2026, donors: ["Fallback Donor"] }, { year: 2022, donors: ["Retained Historical Donor"] }] };
 const failedFetchResult = await loadDonorGroups({
   fetchImpl: async () => { throw new Error("fixture network failure"); },
   fallback: fallbackFixture
 });
 checks.push(["donor fetch failure uses sanitized fallback", failedFetchResult.state === "fallback" && failedFetchResult.groups[0]?.donors[0] === "Fallback Donor"]);
+checks.push(["donor fallback records remain intact outside public result", fallbackFixture.groups.some((group) => group.year === 2022) && !failedFetchResult.groups.some((group) => group.year === 2022)]);
 const malformedFetchResult = await loadDonorGroups({
   fetchImpl: async () => new Response('"Id","Addressee","2026 - FY"\r\n"1","Broken","100', { status: 200 }),
   fallback: fallbackFixture
@@ -204,9 +212,13 @@ checks.push(["malformed live donor data uses sanitized fallback", malformedFetch
 
 const donorHtml = routeDocuments.find((item) => item.route === "donors")?.html ?? "";
 const donorFallback = JSON.parse(fs.readFileSync(path.join(projectRoot, "src/data/donors-fallback.json"), "utf8"));
-const donorYearRecordCount = donorFallback.groups.reduce((total, group) => total + group.donors.length, 0);
-checks.push(["donor page renders every sanitized fallback year-record", (donorHtml.match(/class="donor-name"/g) ?? []).length === donorYearRecordCount]);
-checks.push(["donor page renders current and prior dynamic years", donorFallback.groups.every((group) => donorHtml.includes(`id="donor-year-${group.year}"`))]);
+const publishableFallbackGroups = donorFallback.groups.filter((group) => group.year >= PUBLIC_DONOR_MIN_YEAR);
+const donorYearRecordCount = publishableFallbackGroups.reduce((total, group) => total + group.donors.length, 0);
+checks.push(["donor page renders every publishable sanitized fallback year-record", (donorHtml.match(/class="donor-name"/g) ?? []).length === donorYearRecordCount]);
+checks.push(["donor page renders current and prior public years", publishableFallbackGroups.every((group) => donorHtml.includes(`id="donor-year-${group.year}"`))]);
+checks.push(["donor page keeps 2023 public", donorHtml.includes('id="donor-year-2023"')]);
+checks.push(["donor page suppresses 2022 and earlier", !donorHtml.includes('id="donor-year-2022"') && !donorHtml.includes('id="donor-year-2021"')]);
+checks.push(["donor years remain newest-first", [...donorHtml.matchAll(/id="donor-year-(\d{4})"/g)].map((match) => Number(match[1])).every((year, index, years) => index === 0 || years[index - 1] > year)]);
 checks.push(["donor page renders representative source names", donorHtml.includes("Amber Paxton") && donorHtml.includes("Willye Bryan") && donorHtml.includes("All Saints Episcopal Church")]);
 checks.push(["donor page excludes private LGL fields, values, and raw report link", !donorHtml.includes(">Id<") && !donorHtml.includes(">Groups<") && !donorHtml.includes("1019.44") && !donorHtml.includes("947882") && !donorHtml.includes("littlegreenlight.com/rptlink")]);
 checks.push(["donor content is available without a client data fetch", donorHtml.includes("class=\"donor-name\"") && !donorHtml.includes("fetch(")]);
@@ -220,6 +232,24 @@ checks.push(["supporter logo alt text is meaningful", supporters.every((supporte
 checks.push(["supporter page uses dedicated SEO metadata", supportersHtml.includes("<title>Repairers of the Breach | Justice League GLM Supporters</title>")]);
 checks.push(["supporter and donor concepts are cross-linked but not combined", supportersHtml.includes('href="/donors/"') && donorHtml.includes('href="/supporters/"') && !supportersHtml.includes("donor-year-")]);
 checks.push(["acknowledgment layouts include responsive one-column rules", cssSource.includes(".donor-year ul,\n  .supporter-roster > ul") && cssSource.includes("grid-template-columns: 1fr")]);
+
+checks.push(["leadership exact group sizes render", leadershipGroups.map((group) => group.members.length).join("|") === "4|5|7"]);
+checks.push(["leadership names, roles, and portraits remain paired", leadershipMembers.every((person) => leadershipHtml.includes(`src="${person.image}"`) && leadershipHtml.includes(`alt="${person.name}"`) && leadershipHtml.includes(`>${person.role}</p>`))]);
+checks.push(["leadership portrait assets resolve", leadershipMembers.every((person) => fs.existsSync(path.join(projectRoot, "public", person.image.replace(/^\//, "")))) && fs.existsSync(path.join(projectRoot, "public", leadershipHero.image.replace(/^\//, "")))]);
+checks.push(["leadership has no placeholder role text", !leadershipHtml.includes("Role details not supplied")]);
+checks.push(["leadership images protect aspect ratio", leadershipHtml.includes("width=") && leadershipHtml.includes("height=") && cssSource.includes("object-fit: cover")]);
+checks.push(["leadership layout has responsive one-column treatment", cssSource.includes("@media (max-width: 25rem)") && cssSource.includes(".leadership-grid")]);
+
+checks.push(["every reconciled Wix concept has an Astro destination", routeReconciliation.every((route) => route.astroDestination.startsWith("/"))]);
+checks.push(["every reconciled internal destination resolves", routeReconciliation.every((route) => {
+  const pathname = new URL(route.astroDestination, "https://www.justiceleagueglm.org").pathname;
+  const target = pathname === "/" ? indexPath : path.join(distRoot, pathname.replace(/^\/|\/$/g, ""), "index.html");
+  return fs.existsSync(target);
+})]);
+checks.push(["desktop and mobile navigation expose reconciled concepts", ["Scholarship FAQ", "Committee meetings", "Ad booklet", "Recent news and videos", "Photos", "Apology 2023", "E-News Briefs", "Supporters", "Donors"].every((label) => (html.match(new RegExp(`>${escapeRegExp(label)}<`, "g")) ?? []).length >= 2)]);
+checks.push(["supporters and donors remain separate navigation labels", html.includes('href="/supporters/"') && html.includes('href="/donors/"')]);
+checks.push(["sitemap is generated", fs.existsSync(path.join(distRoot, "sitemap.xml"))]);
+checks.push(["custom 404 is generated", fs.existsSync(path.join(distRoot, "404.html"))]);
 checks.push(["ad booklet has no submitting form", !routeDocuments.find((item) => item.route === "ad-booklet")?.html.match(/<form\b/i)]);
 checks.push(["ad booklet has semantic deadline", routeDocuments.find((item) => item.route === "ad-booklet")?.html.includes('<time datetime="2026-09-30">')]);
 checks.push(["ad booklet uses verified Wix handoff", routeDocuments.find((item) => item.route === "ad-booklet")?.html.includes("https://www.justiceleagueglm.org/ad-booklet")]);

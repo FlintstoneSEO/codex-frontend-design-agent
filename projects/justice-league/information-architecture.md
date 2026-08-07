@@ -2,7 +2,7 @@
 
 ## Status and planning basis
 
-- **Status:** Approved prototype architecture; amended August 7, 2026 for dedicated donor and supporter records
+- **Status:** Approved prototype architecture; amended August 7, 2026 for public-route reconciliation, leadership media, and donor publication policy
 - **Site:** Justice League of Greater Lansing Michigan
 - **Frontend / backend:** Astro with TypeScript / Wix Headless
 - **Selected direction:** Lansing in Action, led by Documentary Community with Editorial Evidence and Campaign modes
@@ -53,7 +53,7 @@ Campaign promotion is a CMS content type, not a separate indexable branch in the
 | `/` | Home | All audiences; especially Greater Lansing residents, prospective supporters, and returning participants | Identify the organization, understand its local purpose, see what matters now, and choose a next step | Support Reparations | Join the Work | Brand + Greater Lansing reparations/community organization | Site settings singleton; current-priority CMS record; featured event; featured story; verified evidence records | Index; self-canonical | Approved mission statement, current priority, authentic lead image, verified proof, participation paths, trust links | Ready for page specification; content blockers remain |
 | `/about/` | About the Justice League | Prospective supporters, partners, donors, media, grant makers | Understand mission, vision, local role, organizational model, and legitimacy | Join the Work | Support Reparations | Organization name, mission, Greater Lansing nonprofit | About singleton; governance/document references | Index | Approved mission and vision, organizational description, verified status, governance summary, contact pathway | Planned; needs approved copy and governance evidence |
 | `/about/history/` | History and Timeline | Researchers, educators, supporters, media, partners | Learn how the organization began and trace verified milestones | Explore Reparations | Join the Work | Justice League GLM history, Greater Lansing reparations history | Milestones collection; historical media; citations | Index | Verified founding narrative, dated milestones, sources, image rights/captions | Planned; verify every milestone and quotation |
-| `/about/leadership/` | Leadership and Governance | Donors, partners, members, media, grant makers | Identify accountable leadership and understand governance | Contact the Organization | Join the Work | Justice League GLM leadership, board, governance | People collection; governance singleton; approved documents | Index when complete; otherwise noindex until substantive | Current names, roles, bios, photo permissions, board/advisory distinctions, governance documents | Blocked by leadership/governance inventory |
+| `/about/leadership/` | Leadership and Governance | Donors, partners, members, media, grant makers | Identify accountable leadership and understand governance | Contact the Organization | Join the Work | Justice League GLM leadership, board, governance | Typed verified roster; locally migrated Wix portraits and hero; future people collection | Prototype noindex; index after launch approval | Current names, published roles, verified portraits, group distinctions, correction path, governance gaps | Current roster and media implemented; governance documents still need client input |
 | `/reparations/` | Reparations in Greater Lansing | Residents, houses of worship, partners, educators, donors | Understand what reparations means in this organization and how the local work operates | Support Reparations | Join the Work | Reparations Greater Lansing, faith-based reparations, racial wealth gap Lansing | Reparations page singleton; sources collection; related stories and media | Index | Plain-language definition, local context, methods, source notes, scope of faith relationships, links to evidence and action | Planned; claims and sources require editorial verification |
 | `/scholarship/` | Reparations Scholarship | Applicants, families, educators, donors, partners | Check current cycle, eligibility, requirements, dates, and application status | Apply or view current scholarship status | Support the Scholarship | Greater Lansing reparations scholarship, Lansing scholarship eligibility/application | Scholarship cycle collection; Wix Form/CRM or approved hosted form; document assets; recipient stories with consent | Index; expired cycle content must remain accurate | Current dates/status, award terms, eligibility, requirements, process, accessible application, privacy/consent text, FAQ, contact | Blocked until current cycle and workflow are confirmed |
 | `/impact/` | Impact and Accountability | Donors, partners, grant makers, media, residents | Verify what the organization has done and how support connects to outcomes | Support Reparations | View Governance | Justice League GLM impact, reparations work Lansing | Verified evidence collection; milestone references; approved supporter/partner records; documents | Index only after substantive verified evidence exists | Defined reporting period, methodology, scholarship/program evidence, funding/use explanation, citations, approvals | Blocked by verified evidence and transparency content |
@@ -68,7 +68,7 @@ Campaign promotion is a CMS content type, not a separate indexable branch in the
 
 ## Primary navigation
 
-Recommended desktop navigation order:
+Approved reconciled desktop/mobile navigation order:
 
 1. **About**
    - About the Justice League
@@ -78,8 +78,15 @@ Recommended desktop navigation order:
    - Reparations in Greater Lansing
    - Reparations Scholarship
    - Impact and Accountability
-3. **Events**
-4. **News & Stories**
+3. **Events & Meetings**
+   - Upcoming events
+   - Committee meetings
+   - Ad booklet
+4. **News & Media**
+   - Recent news and videos
+   - Photos
+   - Apology 2023
+   - E-News Briefs
 5. **Join the Work**
 6. **Support Reparations** — visually dominant action, separate from the standard text links
 
@@ -90,6 +97,9 @@ Rationale:
 - Join the Work is a descriptive, lower-commitment participation path.
 - Support Reparations is the only sitewide primary action treatment. Campaign modules may use a more specific CTA when the destination is current and verified.
 - Do not add a “Media” parent containing disconnected photos, videos, news, and newsletters. Media should appear within dated stories, historical evidence, impact, or reparations education according to context.
+- Labels under News & Media link to the relevant contextual record or stable fragment; they do not recreate a context-free media silo.
+
+The authoritative, testable Wix-to-Astro mapping is centralized in `src/data/route-reconciliation.ts`. It records the Wix label and URL, current public state, Astro destination, treatment, navigation location, migration state, and rationale for every exposed public concept reviewed on August 7, 2026.
 
 ## Utility navigation
 

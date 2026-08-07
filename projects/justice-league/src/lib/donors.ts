@@ -4,6 +4,17 @@ import { parseDonorCsv, validateDonorGroups, type DonorGroup } from "./donor-csv
 export const donorReportUrl =
   "https://justiceleagueglm.littlegreenlight.com/rptlink/c6a0a3da-df47-45f3-969e-53a4586160d0";
 
+/**
+ * Public acknowledgment policy mirrored from the current Wix donor page.
+ * Source records remain complete; this cutoff is applied only after parsing
+ * or fallback normalization has succeeded.
+ */
+export const PUBLIC_DONOR_MIN_YEAR = 2023;
+
+export function applyDonorPublicationPolicy(groups: DonorGroup[]): DonorGroup[] {
+  return groups.filter((group) => group.year >= PUBLIC_DONOR_MIN_YEAR);
+}
+
 export type DonorDataResult = {
   state: "live" | "fallback" | "unavailable";
   groups: DonorGroup[];
@@ -35,8 +46,9 @@ export async function loadDonorGroups(options: LoadDonorOptions = {}): Promise<D
     });
     if (!response.ok) throw new Error(`LGL request returned HTTP ${response.status}.`);
 
-    const groups = parseDonorCsv(await response.text());
-    if (groups.length === 0) throw new Error("LGL donor report produced no public donor groups.");
+    const parsedGroups = parseDonorCsv(await response.text());
+    const groups = applyDonorPublicationPolicy(parsedGroups);
+    if (groups.length === 0) throw new Error("LGL donor report produced no publishable donor groups.");
     return {
       state: "live",
       groups,
@@ -48,10 +60,11 @@ export async function loadDonorGroups(options: LoadDonorOptions = {}): Promise<D
 
     try {
       const fallback = validatedFallback(options.fallback ?? fallbackSnapshot);
-      if (fallback.groups.length === 0) throw new Error("Sanitized donor fallback is empty.");
+      const groups = applyDonorPublicationPolicy(fallback.groups);
+      if (groups.length === 0) throw new Error("Sanitized donor fallback has no publishable groups.");
       return {
         state: "fallback",
-        groups: fallback.groups,
+        groups,
         observedAt: fallback.observedAt,
         message: "The live donor report could not be refreshed during this build. This page is showing the last verified public snapshot."
       };

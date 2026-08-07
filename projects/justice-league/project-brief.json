@@ -47,7 +47,7 @@
       "advertisement purchase",
       "advocacy participation"
     ],
-    "status": "[NEEDS CLIENT INPUT: Confirm current first-priority conversion]"
+    "status": "Prototype IA decision: Support Reparations is the stable sitewide primary action; time-sensitive campaigns may temporarily lead within clearly labelled modules. Client confirmation is still required before production launch."
   },
   "secondaryConversions": [
     "subscribe to or read newsletter",
@@ -103,7 +103,7 @@
     "existing event and newsletter content",
     "scholarship communications",
     "event registration pages",
-    "leadership information",
+    "verified current leadership roster, Wix hero image, and 16 person-associated portraits",
     "existing website photography and campaign assets"
   ],
   "mediaPolicy": {
@@ -137,7 +137,7 @@
     "current primary campaign conversion",
     "redesign scope and timeline",
     "approved brand colors and typography",
-    "complete content inventory",
+    "final client sign-off on the completed August 7 public Wix route inventory",
     "photography rights and availability",
     "verified impact metrics",
     "governance and financial transparency content",
@@ -148,9 +148,10 @@
   ],
   "assumptions": [
     "Wix will remain the implementation platform",
-    "primary conversion rotates by campaign",
-    "authentic photography is available for at least some programs and events",
+    "Support Reparations remains the stable sitewide action while current campaigns rotate within labelled modules",
+    "approved Wix photography is available for the founder, leadership, scholarship, history, and selected public records",
+    "the public donor acknowledgment intentionally displays 2023 and later while retaining older normalized source records",
     "the organization wants advocacy urgency balanced with institutional credibility"
   ],
-  "implementationStatus": "Blocked pending art-direction selection and resolution of material missing inputs"
+  "implementationStatus": "Prototype implementation active under the selected Lansing in Action direction; production launch remains blocked by the visible client and legal inputs in the missing-information register"
 }

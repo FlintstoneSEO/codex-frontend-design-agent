@@ -1,5 +1,13 @@
 # Donors Page Specification
 
+## August 7, 2026 publication-policy amendment
+
+- Little Green Light parsing and fallback normalization must retain every valid source year.
+- `PUBLIC_DONOR_MIN_YEAR` is applied only to normalized groups returned for public rendering.
+- The public page renders 2026, 2025, 2024, and 2023 when present; 2022 and earlier remain in source/fallback data but are not rendered.
+- This matches the current Wix public presentation and is not evidence of missing LGL records.
+- Tests must prove that parsed/fallback 2022 records survive normalization while the public result excludes them.
+
 - Route: `/donors/`
 - Page type: Public acknowledgment ledger, Evidence mode
 - Objective: Publish the donor acknowledgment directly on the Astro site from the public Little Green Light report while exposing only donor display names and recognition years.

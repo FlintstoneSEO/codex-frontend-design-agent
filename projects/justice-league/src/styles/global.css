@@ -2008,7 +2008,9 @@ h3 {
 @media (max-width: 50rem) {
   .donor-page .page-intro h1 {
     max-width: 16ch;
-    font-size: clamp(2.2rem, 7.6vw, 3.8rem);
+    font-size: clamp(1.75rem, 8vw, 3.8rem);
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
   .donor-source-status,
@@ -2123,6 +2125,7 @@ textarea {
 
 .page-intro-copy {
   display: flex;
+  min-width: 0;
   max-width: 65rem;
   flex-direction: column;
   justify-content: center;
@@ -2773,6 +2776,146 @@ textarea {
   color: var(--color-text-muted);
   font-size: 0.9rem;
   font-weight: 400;
+}
+
+.leadership-hero {
+  position: relative;
+  max-width: var(--container-wide);
+  margin: 0 auto;
+  padding: clamp(1.25rem, 3vw, 2.5rem) var(--page-gutter) 0;
+}
+
+.leadership-hero img {
+  display: block;
+  width: 100%;
+  height: clamp(18rem, 48vw, 38rem);
+  object-fit: cover;
+  background: var(--color-surface);
+}
+
+.leadership-hero figcaption {
+  max-width: 68ch;
+  padding: 0.75rem 0;
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+}
+
+.leadership-group {
+  max-width: var(--container-wide);
+  margin-inline: auto;
+  padding: clamp(3.5rem, 7vw, 7rem) var(--page-gutter);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.leadership-group-heading {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: baseline;
+  margin-bottom: clamp(2rem, 4vw, 4rem);
+}
+
+.leadership-group-heading > span {
+  color: var(--color-action);
+  font-size: 0.75rem;
+  font-weight: 900;
+}
+
+.leadership-group-heading h2 {
+  margin: 0;
+}
+
+.leadership-group-heading p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.leadership-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1rem, 2.5vw, 2rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.leadership-grid > li {
+  min-width: 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.leadership-portrait {
+  margin: 0;
+  background: var(--color-surface);
+  overflow: hidden;
+}
+
+.leadership-portrait img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 0.95;
+  object-fit: cover;
+  filter: saturate(0.92) contrast(1.02);
+  transition: transform 260ms ease, filter 260ms ease;
+}
+
+.leadership-grid > li:hover .leadership-portrait img {
+  transform: scale(1.015);
+  filter: saturate(1) contrast(1.03);
+}
+
+.leadership-identity {
+  padding: 1rem 0 1.35rem;
+}
+
+.leadership-identity h3 {
+  margin: 0;
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+  text-wrap: balance;
+}
+
+.leadership-identity p {
+  margin: 0.35rem 0 0;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+}
+
+@media (max-width: 64rem) {
+  .leadership-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 48rem) {
+  .leadership-page .page-intro h1 {
+    max-width: 12ch;
+    font-size: clamp(2.25rem, 11.5vw, 3.4rem);
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .leadership-group-heading {
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+  }
+
+  .leadership-group-heading p {
+    grid-column: 2;
+  }
+
+  .leadership-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 25rem) {
+  .leadership-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .leadership-portrait img {
+    aspect-ratio: 4 / 3;
+  }
 }
 
 .status-banner {
