@@ -953,6 +953,10 @@ h3 {
   font-weight: 800;
 }
 
+.newsletter-form .field-help {
+  color: var(--color-canvas);
+}
+
 .newsletter-form .button {
   margin-top: 1rem;
   border-color: var(--color-canvas);

@@ -23,7 +23,7 @@ const { videoId, videoUrl, title } = Astro.props;
       loading="lazy"
       decoding="async"
     />
-    <button type="button" class="video-play" data-video-play aria-label={`Play ${title}`}>
+    <button type="button" class="video-play" data-video-play>
       <span aria-hidden="true">▶</span>
       <span>Play apology video</span>
     </button>
@@ -51,4 +51,3 @@ const { videoId, videoUrl, title } = Astro.props;
     });
   });
 </script>
-

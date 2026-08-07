@@ -1,5 +1,5 @@
 ---
-import { primaryNav, site } from "@/data/site";
+import { primaryNav } from "@/data/site";
 
 interface Props {
   currentPath: string;
@@ -16,9 +16,10 @@ const isCurrent = (href: string) =>
     <span>Placeholders and shells are explicitly labelled</span>
   </div>
   <div class="header-inner">
-    <a class="wordmark" href="/" aria-label={`${site.name}, home`}>
+    <a class="wordmark" href="/">
       <span class="wordmark-primary">Justice League</span>
       <span class="wordmark-secondary">Greater Lansing · Michigan</span>
+      <span class="visually-hidden">, home</span>
     </a>
 
     <nav class="desktop-nav" aria-label="Primary navigation">
