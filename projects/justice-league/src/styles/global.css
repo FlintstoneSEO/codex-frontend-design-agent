@@ -2179,6 +2179,127 @@ textarea {
   border-bottom: 1px solid var(--color-border);
 }
 
+.campaign-orientation,
+.submission-paths,
+.campaign-callout {
+  display: grid;
+  max-width: var(--container-wide);
+  grid-template-columns: minmax(14rem, 0.7fr) minmax(0, 1.3fr);
+  gap: clamp(2rem, 7vw, 8rem);
+  margin-inline: auto;
+  padding: var(--section-space) var(--page-gutter);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.campaign-orientation h2,
+.campaign-callout h2,
+.submission-paths h2 {
+  max-width: 12ch;
+}
+
+.campaign-orientation-copy,
+.campaign-callout > div:last-child,
+.submission-path-list {
+  max-width: 58rem;
+}
+
+.ad-placement-section {
+  max-width: var(--container-wide);
+  margin-inline: auto;
+  padding: var(--section-space) var(--page-gutter);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.ad-placement-ledger,
+.check-instructions {
+  margin: 0;
+}
+
+.ad-placement-ledger > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(13rem, 0.8fr);
+  gap: clamp(1.5rem, 5vw, 5rem);
+  align-items: baseline;
+  padding: clamp(1.25rem, 3vw, 2.25rem) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.ad-placement-ledger dt,
+.ad-placement-ledger dd {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(1rem, 3vw, 3rem);
+  margin: 0;
+}
+
+.ad-placement-ledger dt {
+  font-size: clamp(1.35rem, 2.8vw, 2.5rem);
+  font-weight: 900;
+}
+
+.ad-placement-ledger dt span,
+.ad-placement-ledger dd span {
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.ad-placement-ledger dd {
+  justify-content: space-between;
+}
+
+.ad-placement-ledger dd strong {
+  color: var(--color-action);
+  font-size: clamp(1.5rem, 3vw, 2.75rem);
+}
+
+.submission-paths {
+  align-items: start;
+}
+
+.submission-path-list article {
+  padding: clamp(1.5rem, 4vw, 3rem) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.submission-path-list article:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.submission-path-list h3 {
+  max-width: 24ch;
+  font-size: clamp(1.5rem, 3vw, 2.6rem);
+}
+
+.submission-path-list .button {
+  margin-top: 0.75rem;
+}
+
+.check-instructions {
+  margin-block: 1.5rem;
+}
+
+.check-instructions > div {
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.8rem 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.check-instructions dt {
+  color: var(--color-action);
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.check-instructions dd {
+  margin: 0;
+}
+
 .history-context h2 {
   max-width: 11ch;
 }
@@ -2765,6 +2886,9 @@ textarea {
   .form-section,
   .roster-section,
   .history-context,
+  .campaign-orientation,
+  .submission-paths,
+  .campaign-callout,
   .section-heading-row,
   .timeline-list li,
   .action-band,
@@ -2793,6 +2917,15 @@ textarea {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
+  }
+
+  .ad-placement-ledger > div {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .ad-placement-ledger dd {
+    justify-content: flex-start;
   }
 
   .accountability-grid ol,
@@ -2875,5 +3008,26 @@ textarea {
 
   .record-strip dl {
     grid-template-columns: 1fr;
+  }
+
+  .ad-placement-ledger dt,
+  .ad-placement-ledger dd {
+    align-items: flex-start;
+  }
+
+  .ad-placement-ledger dt {
+    display: grid;
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: 0.75rem;
+  }
+
+  .ad-placement-ledger dd {
+    flex-wrap: wrap;
+    padding-left: 2.75rem;
+  }
+
+  .check-instructions > div {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
   }
 }

@@ -41,6 +41,7 @@ const routeNames = [
   "impact",
   "events",
   "events/demo-priority",
+  "ad-booklet",
   "news",
   "news/demo-story",
   "join-the-work",
@@ -104,6 +105,9 @@ for (const prohibited of [
 checks.push(["join form visibly non-submitting", routeDocuments.find((item) => item.route === "join-the-work")?.html.includes("No information entered here is transmitted or stored")]);
 checks.push(["contact form visibly non-submitting", routeDocuments.find((item) => item.route === "contact")?.html.includes("No information entered here is transmitted or stored")]);
 checks.push(["support page has no payment fields", !routeDocuments.find((item) => item.route === "support-reparations")?.html.match(/type="(?:number|radio)"|name="amount"/i)]);
+checks.push(["ad booklet has no submitting form", !routeDocuments.find((item) => item.route === "ad-booklet")?.html.match(/<form\b/i)]);
+checks.push(["ad booklet has semantic deadline", routeDocuments.find((item) => item.route === "ad-booklet")?.html.includes('<time datetime="2026-09-30">')]);
+checks.push(["ad booklet uses verified Wix handoff", routeDocuments.find((item) => item.route === "ad-booklet")?.html.includes("https://www.justiceleagueglm.org/ad-booklet")]);
 
 function channel(value) {
   const normalized = value / 255;

@@ -1,0 +1,130 @@
+---
+import ActionBand from "@/components/ActionBand.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import PageIntro from "@/components/PageIntro.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const wixCampaignUrl = "https://www.justiceleagueglm.org/ad-booklet";
+
+const placements = [
+  { name: "Full-page ad", dimensions: "7½ × 10 inches", price: "$400" },
+  { name: "Half-page ad", dimensions: "7 × 4¾ inches", price: "$250" },
+  { name: "Quarter-page ad", dimensions: "4½ × 3¼ inches", price: "$125" },
+  { name: "Business-card ad", dimensions: "4 × 2 inches", price: "$75" }
+] as const;
+---
+
+<BaseLayout
+  pageType="WebPage"
+  title="2026 Fall Celebration Ad Booklet | Justice League GLM"
+  description="Review 2026 Fall Celebration program-book ad sizes, prices, file requirements, the September 30 deadline, and the verified Wix submission handoff."
+>
+  <main id="main-content" class="interior-page">
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Events", href: "/events/" }, { label: "2026 Ad Booklet" }]} />
+
+    <PageIntro
+      kicker="Five-year Fall Celebration"
+      title="2026 Fall Celebration Ad Booklet"
+      lede="Share a message of congratulations, support, or encouragement in the Justice League’s 2026 program booklet."
+      mode="campaign"
+      marker="Ads due / Sep 30"
+    />
+
+    <aside class="source-notice" aria-label="Campaign source status">
+      <strong>Active current-site campaign</strong>
+      <p>
+        Details were observed on the organization’s current Wix page on August 7, 2026. The submission and payment workflow remains hosted there.
+        <a href={wixCampaignUrl} target="_blank" rel="noreferrer">Review the current Wix campaign <span class="visually-hidden">(opens in a new tab)</span></a>.
+      </p>
+    </aside>
+
+    <section class="status-banner status-banner--warning" aria-labelledby="ad-deadline">
+      <p class="section-kicker">Submission deadline</p>
+      <h2 id="ad-deadline"><time datetime="2026-09-30">September 30, 2026</time></h2>
+      <p>No countdown or availability claim is used. Confirm any late submission directly with the organization.</p>
+      <a class="button button-secondary" href={wixCampaignUrl} target="_blank" rel="noreferrer">Continue to the current Wix form <span class="visually-hidden">(opens in a new tab)</span></a>
+    </section>
+
+    <section class="campaign-orientation" aria-labelledby="campaign-fit">
+      <div>
+        <p class="section-kicker">Who the invitation is for</p>
+        <h2 id="campaign-fit">Mark the occasion with a message of support.</h2>
+      </div>
+      <div class="campaign-orientation-copy">
+        <p>The current campaign invites businesses, houses of worship, community partners, and supporters to purchase space in the 2026 Fall Celebration program booklet.</p>
+        <p>The source page identifies congratulations, support, and encouragement as appropriate message types. It does not publish circulation, attendance, or audience-reach claims.</p>
+      </div>
+    </section>
+
+    <section class="ad-placement-section" aria-labelledby="placement-heading">
+      <div class="section-heading-row">
+        <p class="section-kicker">Placement ledger</p>
+        <h2 id="placement-heading">Choose the space that fits your message.</h2>
+      </div>
+      <dl class="ad-placement-ledger">
+        {placements.map((placement, index) => (
+          <div>
+            <dt><span>{String(index + 1).padStart(2, "0")}</span>{placement.name}</dt>
+            <dd><span>{placement.dimensions}</span><strong>{placement.price}</strong></dd>
+          </div>
+        ))}
+      </dl>
+      <p class="source-line">Prices and dimensions reflect the current Wix campaign as observed August 7, 2026.</p>
+    </section>
+
+    <section class="process-section" aria-labelledby="ad-process">
+      <div class="section-heading-row">
+        <p class="section-kicker">Submission process</p>
+        <h2 id="ad-process">Three decisions, then a secure handoff.</h2>
+      </div>
+      <ol class="process-list">
+        <li><span>01</span><div><h3>Select your placement</h3><p>Choose one or more ad sizes in the current Wix workflow.</p></div></li>
+        <li><span>02</span><div><h3>Prepare and upload your ad</h3><p>Submit a camera-ready JPG, PNG, DOC/DOCX, or PDF. The Astro prototype does not upload or store files.</p></div></li>
+        <li><span>03</span><div><h3>Choose online or check payment</h3><p>Complete the current Wix payment workflow or submit the Wix check form and mail payment separately.</p></div></li>
+      </ol>
+    </section>
+
+    <section class="submission-paths" aria-labelledby="submission-heading">
+      <div class="submission-paths-intro">
+        <p class="section-kicker">Complete the submission</p>
+        <h2 id="submission-heading">The transaction stays with Wix for now.</h2>
+        <p>No advertiser information, files, quantities, or payments are collected on this Astro prototype.</p>
+      </div>
+      <div class="submission-path-list">
+        <article>
+          <p class="section-index">Online workflow</p>
+          <h3>Submit the ad and pay on the current Wix site.</h3>
+          <p>Use the organization-owned Wix form to select quantities, upload files, and complete payment.</p>
+          <a class="button button-primary" href={wixCampaignUrl} target="_blank" rel="noreferrer">Open the current Wix submission form <span class="visually-hidden">(opens in a new tab)</span></a>
+        </article>
+        <article>
+          <p class="section-index">Check workflow</p>
+          <h3>Submit in Wix, then mail the check separately.</h3>
+          <dl class="check-instructions">
+            <div><dt>Payable to</dt><dd>Justice League of Greater Lansing Michigan</dd></div>
+            <div><dt>Mail to</dt><dd>P.O. Box 12105<br />Lansing, MI 48901</dd></div>
+            <div><dt>Memo</dt><dd>Include your business or organization name</dd></div>
+          </dl>
+          <p>Ad placement is confirmed only after the current Wix page reports that payment and materials have been received.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="evidence-note" aria-labelledby="campaign-launch-gate">
+      <p class="section-kicker">Prototype integration notice</p>
+      <h2 id="campaign-launch-gate">The handoff needs a launch-safe destination.</h2>
+      <p>The current organization URL is valid while the Wix homepage remains live. Before DNS cutover, the form needs a verified standalone Wix URL or a preserved legacy Wix hostname so this route does not link back to itself.</p>
+      <p>[NEEDS CLIENT INPUT: Confirm the final Wix form/payment URL, campaign owner, proofing process, availability limits, cancellation/refund policy, privacy, file retention, receipt, and failure recovery.]</p>
+    </section>
+
+    <ActionBand
+      kicker="Beyond the booklet"
+      title="Follow the celebration or ask a campaign question."
+      text="Event details and campaign support remain separate so advertisers can find the right next step."
+      primaryLabel="Explore Events"
+      primaryHref="/events/"
+      secondaryLabel="Contact"
+      secondaryHref="/contact/"
+    />
+  </main>
+</BaseLayout>

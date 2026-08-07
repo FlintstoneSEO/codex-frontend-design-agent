@@ -9,6 +9,16 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
   <main id="main-content" class="interior-page">
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Events" }]} />
     <PageIntro kicker="Event discovery" title="Events and Meetings" lede="Wix Events is not connected. These labelled states demonstrate how changing event facts will be handled without stale dates or manufactured urgency." mode="campaign" marker="What is next" />
+    <section class="campaign-callout" aria-labelledby="ad-booklet-campaign">
+      <div>
+        <p class="section-kicker">Current campaign</p>
+        <h2 id="ad-booklet-campaign">2026 Fall Celebration Ad Booklet</h2>
+      </div>
+      <div>
+        <p>Program-book advertisements are due <time datetime="2026-09-30">September 30, 2026</time>. Compare the four current-site placements and review the Wix submission handoff.</p>
+        <a class="text-action" href="/ad-booklet/">Review ad booklet opportunities</a>
+      </div>
+    </section>
     <section class="status-banner status-banner--warning" aria-labelledby="events-source"><p class="section-kicker">Integration status</p><h2 id="events-source">No verified event feed is connected</h2><p>[NEEDS CLIENT INPUT: Connect Wix Events and approve public records, checkout destinations, accessibility details, and content ownership.]</p></section>
     <section class="state-review" aria-labelledby="event-states">
       <div class="section-heading-row"><p class="section-kicker">Keyboard-reviewable states</p><h2 id="event-states">Four outcomes, each stated plainly.</h2></div>
