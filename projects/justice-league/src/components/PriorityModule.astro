@@ -1,0 +1,52 @@
+---
+import type { PublicEventsResult } from "@/lib/wix";
+
+interface Props {
+  result: PublicEventsResult;
+}
+
+const { result } = Astro.props;
+const priority = result.state === "success" ? result.events[0] : undefined;
+const fallbackMessage = result.state === "success" ? "" : result.message;
+---
+
+<section class="priority-section" aria-labelledby="priority-heading">
+  <div class="priority-frame">
+    <div class="priority-intro">
+      <p class="section-kicker">What is happening now</p>
+      <h2 id="priority-heading">Current priority</h2>
+      <p class="prototype-note">Public event data is retrieved from Wix during the Astro build. Registration and ticket transactions remain on Wix.</p>
+    </div>
+
+    {priority ? (
+      <article class="priority-record is-active">
+        <div class="priority-copy">
+          <p class="priority-status">Wix Events · Public upcoming event</p>
+          <h3>{priority.title}</h3>
+          <p class="priority-meta"><time datetime={priority.startsAt}>{priority.formattedDate} · {priority.formattedTime}</time></p>
+          {priority.location && <p>{priority.location}</p>}
+          <a class="text-action" href={priority.eventUrl}>{priority.actionLabel} <span aria-hidden="true">↗</span></a>
+        </div>
+        {priority.imageUrl && (
+          <img
+            src={priority.imageUrl}
+            srcset={priority.imageSrcSet}
+            sizes="(max-width: 700px) 100vw, 38vw"
+            alt=""
+            width="720"
+            height="518"
+            loading="lazy"
+            decoding="async"
+          />
+        )}
+      </article>
+    ) : (
+      <div class:list={["priority-record", `is-${result.state}`]} role={result.state === "error" ? "status" : undefined}>
+        <p class="priority-status">{result.state === "error" ? "Wix Events connection error" : "No current public priority"}</p>
+        <h3>{result.state === "error" ? "Current event information is temporarily unavailable." : "No public upcoming event is configured."}</h3>
+        <p>{fallbackMessage}</p>
+        <a class="text-action" href="https://www.justiceleagueglm.org/upcoming-events">View events on the current Wix site</a>
+      </div>
+    )}
+  </div>
+</section>

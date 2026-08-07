@@ -1,0 +1,25 @@
+---
+import ActionBand from "@/components/ActionBand.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import PageIntro from "@/components/PageIntro.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout pageType="WebPage" title="Events and Meetings | Justice League GLM" description="Review the event discovery prototype and how verified Justice League GLM events, meetings, and registration states will appear.">
+  <main id="main-content" class="interior-page">
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Events" }]} />
+    <PageIntro kicker="Event discovery" title="Events and Meetings" lede="Wix Events is not connected. These labelled states demonstrate how changing event facts will be handled without stale dates or manufactured urgency." mode="campaign" marker="What is next" />
+    <section class="status-banner status-banner--warning" aria-labelledby="events-source"><p class="section-kicker">Integration status</p><h2 id="events-source">No verified event feed is connected</h2><p>[NEEDS CLIENT INPUT: Connect Wix Events and approve public records, checkout destinations, accessibility details, and content ownership.]</p></section>
+    <section class="state-review" aria-labelledby="event-states">
+      <div class="section-heading-row"><p class="section-kicker">Keyboard-reviewable states</p><h2 id="event-states">Four outcomes, each stated plainly.</h2></div>
+      <div class="state-stack">
+        <details open><summary><span class="state-dot state-dot--active"></span>Active demonstration</summary><div><p class="placeholder-label">Demonstration fixture—not a real event</p><h3>Example of an available public record</h3><p>A verified record would show date, time zone, location, cost, accessibility, availability, and one maintained registration destination.</p><a class="text-action" href="/events/demo-priority/">Open the demonstration detail</a></div></details>
+        <details><summary><span class="state-dot"></span>Past or closed</summary><div><h3>Registration has ended</h3><p>A useful past record can retain its verified context while removing the transactional action.</p></div></details>
+        <details><summary><span class="state-dot"></span>Empty</summary><div><h3>No upcoming events are available</h3><p>The page offers stable participation routes instead of substituting an expired event.</p></div></details>
+        <details><summary><span class="state-dot state-dot--error"></span>Error</summary><div><h3>Events could not be loaded</h3><p>No cached or invented event is presented as current. Visitors receive a contact fallback.</p></div></details>
+      </div>
+    </section>
+    <section class="fact-standard" aria-labelledby="event-standard"><p class="section-kicker">Required event record</p><h2 id="event-standard">Facts before registration.</h2><dl><div><dt>When</dt><dd>Date, start/end time, and time zone</dd></div><div><dt>Where</dt><dd>Verified venue or virtual access details</dd></div><div><dt>Access</dt><dd>Cost, capacity, accommodations, and contact</dd></div><div><dt>Action</dt><dd>Allowlisted Wix RSVP or ticket URL with a maintained status</dd></div></dl></section>
+    <ActionBand kicker="No event selected" title="Participation remains available between events." text="Review pathways for meetings, committees, presentations, volunteering, partnerships, and updates." primaryLabel="Join the Work" primaryHref="/join-the-work/" secondaryLabel="Contact" secondaryHref="/contact/" />
+  </main>
+</BaseLayout>

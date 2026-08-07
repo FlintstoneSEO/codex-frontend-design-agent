@@ -1,0 +1,38 @@
+---
+import { site } from "@/data/site";
+---
+
+<footer class="site-footer">
+  <div class="footer-statement">
+    <p class="section-kicker">Greater Lansing, Michigan</p>
+    <p class="footer-name">{site.name}</p>
+    <p class="footer-note">Non-production website prototype. Organization details and integrations remain subject to approval.</p>
+  </div>
+  <div class="footer-links">
+    <nav aria-label="Footer explore">
+      <h2>Explore</h2>
+      <a href="/about/">About</a>
+      <a href="/reparations/">Reparations</a>
+      <a href="/scholarship/">Scholarship</a>
+      <a href="/events/">Events</a>
+      <a href="/news/">News & Stories</a>
+    </nav>
+    <nav aria-label="Footer actions">
+      <h2>Take action</h2>
+      <a href="/support-reparations/">Support Reparations</a>
+      <a href="/join-the-work/">Join the Work</a>
+      <a href="/#newsletter">Subscribe</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <nav aria-label="Footer trust links">
+      <h2>Trust</h2>
+      <a href="/about/leadership/">Leadership & Governance</a>
+      <a href="/impact/">Impact & Accountability</a>
+      <a href="/privacy/">Privacy shell</a>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <span>© {new Date().getFullYear()} {site.name}</span>
+    <span>Prototype · Astro + Wix Headless foundation</span>
+  </div>
+</footer>

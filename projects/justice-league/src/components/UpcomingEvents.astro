@@ -1,0 +1,37 @@
+---
+import type { PublicEventsResult } from "@/lib/wix";
+
+interface Props {
+  result: PublicEventsResult;
+  excludeFirst?: boolean;
+}
+
+const { result, excludeFirst = false } = Astro.props;
+const events = result.state === "success" ? result.events.slice(excludeFirst ? 1 : 0, excludeFirst ? 3 : 2) : [];
+---
+
+<section class="upcoming-rail" aria-labelledby="upcoming-rail-heading">
+  <p class="section-kicker">Upcoming events</p>
+  <h3 id="upcoming-rail-heading">Meet the work in public.</h3>
+  {events.length > 0 ? (
+    <ol class="upcoming-list">
+      {events.map((event) => (
+        <li>
+          <p class="event-date"><time datetime={event.startsAt}>{event.formattedDate}</time></p>
+          <h4>{event.title}</h4>
+          <p>{event.formattedTime}{event.location ? ` · ${event.location}` : ""}</p>
+          <a href={event.eventUrl}>{event.actionLabel} <span aria-hidden="true">↗</span></a>
+        </li>
+      ))}
+    </ol>
+  ) : (
+    <div class:list={["content-state", `is-${result.state}`]} role={result.state === "error" ? "status" : undefined}>
+      <p class="state-label">{result.state === "error" ? "Wix Events connection error" : "No additional public events"}</p>
+      <p>{result.state === "error" ? result.message : "The current priority is the only public event selected for this homepage build."}</p>
+    </div>
+  )}
+  <a class="text-action" href="https://www.justiceleagueglm.org/upcoming-events" target="_blank" rel="noreferrer">
+    View all events on Wix <span class="visually-hidden">(opens in a new tab)</span>
+  </a>
+</section>
+

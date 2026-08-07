@@ -1,0 +1,33 @@
+---
+import ActionBand from "@/components/ActionBand.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import PageIntro from "@/components/PageIntro.astro";
+import SourceNotice from "@/components/SourceNotice.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout pageType="WebPage" title="History and Timeline | Justice League GLM" description="Review the developing, source-labelled history of the Justice League of Greater Lansing and its local reparations work.">
+  <main id="main-content" class="interior-page">
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About", href: "/about/" }, { label: "History" }]} />
+    <PageIntro kicker="Developing public record" title="History and Timeline" lede="A chronology should make sources and gaps visible, not turn uncertainty into organizational mythology." mode="evidence" marker="The record" />
+    <SourceNotice title="Timeline evidence is incomplete" />
+    <section class="timeline-section" aria-labelledby="timeline-heading">
+      <div class="section-heading-row"><p class="section-kicker">Verified chronology</p><h2 id="timeline-heading">One observed milestone. More documentation needed.</h2></div>
+      <ol class="timeline-list">
+        <li>
+          <div class="timeline-date"><time datetime="2021">2021</time><span>Provisional</span></div>
+          <div><h3>Organization established</h3><p>The current scholarship page states that the organization was established in 2021. Stakeholder confirmation and a primary source are required before production publication.</p><p class="source-line">Source status: current-site statement observed August 6, 2026.</p></div>
+        </li>
+        <li class="timeline-gap">
+          <div class="timeline-date"><span>Next</span></div>
+          <div><h3>[NEEDS CLIENT INPUT: Verified milestones]</h3><p>Provide dated organizational, scholarship, event, governance, and community milestones with citations, captions, and asset rights.</p></div>
+        </li>
+      </ol>
+    </section>
+    <section class="evidence-note" aria-labelledby="history-standard">
+      <p class="section-kicker">Publication standard</p><h2 id="history-standard">Every milestone needs context.</h2>
+      <ul><li>A specific date or clearly labelled approximate period</li><li>A source and content owner</li><li>Names and quotations approved for publication</li><li>Media rights, identification, and caption details</li></ul>
+    </section>
+    <ActionBand kicker="Continue learning" title="Place the timeline in local context." text="The reparations page shows how definitions, methods, and sources will connect to this record." primaryLabel="Explore reparations" primaryHref="/reparations/" secondaryLabel="About the Justice League" secondaryHref="/about/" />
+  </main>
+</BaseLayout>

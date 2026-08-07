@@ -1,0 +1,23 @@
+---
+interface Props {
+  kicker: string;
+  title: string;
+  lede: string;
+  mode?: "documentary" | "evidence" | "campaign";
+  marker?: string;
+}
+const { kicker, title, lede, mode = "documentary", marker = "Greater Lansing" } = Astro.props;
+---
+
+<header class:list={["page-intro", `page-intro--${mode}`]}>
+  <div class="page-intro-copy">
+    <p class="section-kicker">{kicker}</p>
+    <h1>{title}</h1>
+    <p class="page-lede">{lede}</p>
+  </div>
+  <div class="page-intro-marker" aria-hidden="true">
+    <span>{mode}</span>
+    <strong>{marker}</strong>
+    <i>Prototype record / 2026</i>
+  </div>
+</header>

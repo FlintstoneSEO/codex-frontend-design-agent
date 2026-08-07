@@ -1,0 +1,20 @@
+---
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import NewsletterShell from "@/components/NewsletterShell.astro";
+import PageIntro from "@/components/PageIntro.astro";
+import PrototypeForm from "@/components/PrototypeForm.astro";
+import SourceNotice from "@/components/SourceNotice.astro";
+import { participationPaths } from "@/data/content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout pageType="WebPage" title="Join the Work | Justice League GLM" description="Explore provisional ways to attend, contribute, request a presentation, partner, volunteer, or receive Justice League GLM updates.">
+  <main id="main-content" class="interior-page">
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Join the Work" }]} />
+    <PageIntro kicker="Participation pathway" title="Join the Work" lede="Choose a way to begin a relationship with the work. This is a participation prototype, not a claim about formal membership." mode="documentary" marker="Find your path" />
+    <SourceNotice title="Participation options require confirmation" />
+    <section class="ruled-section" aria-labelledby="participation-options"><div class="section-heading-row"><p class="section-kicker">Ordered by intent</p><h2 id="participation-options">Six ways to start a conversation.</h2></div><ol class="pathway-ledger pathway-ledger--six">{participationPaths.map((path, index) => <li><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{path.label}</h3><p>{path.description}</p><small>Availability: requires confirmation</small></div><a href={path.destination === "newsletter" ? "#newsletter" : path.destination === "contact" ? "/contact/" : "#interest-form"}>{path.destination === "newsletter" ? "Review signup" : path.destination === "contact" ? "Contact" : "Select below"}</a></li>)}</ol></section>
+    <section class="form-section" id="interest-form" aria-labelledby="interest-heading"><div class="form-intro"><p class="section-kicker">Participation interest shell</p><h2 id="interest-heading">Test the form pattern.</h2><p>[NEEDS CLIENT INPUT: Confirm active pathways, meetings, committees, membership policy, routing, response time, consent, and privacy.]</p></div><PrototypeForm kind="join" /></section>
+    <NewsletterShell />
+  </main>
+</BaseLayout>

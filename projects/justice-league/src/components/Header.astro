@@ -1,0 +1,115 @@
+---
+import { primaryNav, site } from "@/data/site";
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+const isCurrent = (href: string) =>
+  href === "/" ? currentPath === href : currentPath.startsWith(href);
+---
+
+<header class="site-header">
+  <div class="prototype-rail">
+    <span>Non-production prototype</span>
+    <span>Placeholders and shells are explicitly labelled</span>
+  </div>
+  <div class="header-inner">
+    <a class="wordmark" href="/" aria-label={`${site.name}, home`}>
+      <span class="wordmark-primary">Justice League</span>
+      <span class="wordmark-secondary">Greater Lansing · Michigan</span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <ul>
+        {primaryNav.map((item) => (
+          <li>
+            {"items" in item ? (
+              <details class="nav-disclosure">
+                <summary>{item.label}</summary>
+                <ul class="nav-popover">
+                  {item.items.map((child) => (
+                    <li>
+                      <a href={child.href} aria-current={isCurrent(child.href) ? "page" : undefined}>
+                        {child.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            ) : (
+              <a href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>
+                {item.label}
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <a class="header-action" href="/support-reparations/">Support Reparations</a>
+
+    <details class="mobile-menu">
+      <summary>Menu</summary>
+      <nav aria-label="Mobile navigation">
+        <a class="mobile-primary-action" href="/support-reparations/">Support Reparations</a>
+        <ul>
+          {primaryNav.map((item) => (
+            <li>
+              {"items" in item ? (
+                <details class="mobile-group">
+                  <summary>{item.label}</summary>
+                  <ul>
+                    {item.items.map((child) => (
+                      <li>
+                        <a href={child.href} aria-current={isCurrent(child.href) ? "page" : undefined}>
+                          {child.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              ) : (
+                <a href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined}>
+                  {item.label}
+                </a>
+              )}
+            </li>
+          ))}
+        </ul>
+        <div class="mobile-utility">
+          <a href="/contact/">Contact</a>
+          <a href="/#newsletter">Subscribe</a>
+        </div>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<script>
+  const disclosures = Array.from(document.querySelectorAll<HTMLDetailsElement>(".site-header details"));
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    const openDisclosure = disclosures.findLast((item) => item.open);
+    if (!openDisclosure) return;
+    openDisclosure.open = false;
+    openDisclosure.querySelector<HTMLElement>("summary")?.focus();
+  });
+
+  document.addEventListener("pointerdown", (event) => {
+    const target = event.target;
+    if (!(target instanceof Node)) return;
+    disclosures.forEach((item) => {
+      if (item.open && !item.contains(target)) item.open = false;
+    });
+  });
+
+  document.querySelectorAll<HTMLAnchorElement>(".mobile-menu a").forEach((link) => {
+    link.addEventListener("click", () => {
+      const menu = link.closest<HTMLDetailsElement>(".mobile-menu");
+      if (menu) menu.open = false;
+    });
+  });
+</script>

@@ -1,0 +1,20 @@
+---
+import ActionBand from "@/components/ActionBand.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import PageIntro from "@/components/PageIntro.astro";
+import SourceNotice from "@/components/SourceNotice.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout pageType="WebPage" title="Reparations Scholarship | Justice League GLM" description="Review provisionally recorded eligibility, award information, historical recipient counts, and current-cycle status for the Reparations Scholarship.">
+  <main id="main-content" class="interior-page">
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Scholarship" }]} />
+    <PageIntro kicker="Program status" title="Reparations Scholarship" lede="Applicants need a current answer first. The 2026 application status is not yet confirmed for this prototype." mode="campaign" marker="Status first" />
+    <section class="status-banner status-banner--warning" aria-labelledby="cycle-status"><p class="section-kicker">2026 cycle</p><h2 id="cycle-status">Application status not confirmed</h2><p>Do not use this prototype to determine whether applications are open or closed.</p><a class="button button-secondary" href="/contact/">Use the contact prototype</a></section>
+    <SourceNotice />
+    <section class="fact-ledger" aria-labelledby="scholarship-snapshot"><div><p class="section-kicker">Current-site snapshot</p><h2 id="scholarship-snapshot">What the public page described.</h2><p>Every fact below is provisional and was observed August 6, 2026.</p></div><dl><div><dt>Award structure</dt><dd>Ten qualifying recipients with $2,500 each</dd></div><div><dt>Applicant types</dt><dd>Graduating seniors, previous graduates or GED recipients, and vocational-school students</dd></div><div><dt>Geography</dt><dd>Residents of Ingham, Clinton, or Eaton County</dd></div></dl></section>
+    <section class="process-section" aria-labelledby="application-path"><div class="section-heading-row"><p class="section-kicker">Application path</p><h2 id="application-path">A complete workflow needs more than an Apply button.</h2></div><ol class="process-list"><li><span>01</span><div><h3>Confirm the cycle</h3><p>[NEEDS CLIENT INPUT: Opening and closing dates, time zone, award terms, and content owner.]</p></div></li><li><span>02</span><div><h3>Publish the requirements</h3><p>[NEEDS CLIENT INPUT: Eligibility, required materials, uploads, selection process, and accommodations.]</p></div></li><li><span>03</span><div><h3>Protect applicant data</h3><p>[NEEDS CLIENT INPUT: Wix form, consent, retention, privacy, confirmation, and support contact.]</p></div></li></ol></section>
+    <section class="record-strip" aria-labelledby="historical-record"><div><p class="section-kicker">Historical snapshot</p><h2 id="historical-record">Recipient counts, without unapproved identities.</h2></div><dl><div><dt>2024</dt><dd>Ten recipients listed</dd></div><div><dt>2025</dt><dd>Ten recipients listed</dd></div></dl><p>No recipient names or photography are reproduced in this prototype.</p></section>
+    <ActionBand kicker="Support the pathway" title="Connect scholarship interest to reparations work." text="No allocation or outcome claim is made until financial and program evidence is approved." primaryLabel="Support Reparations" primaryHref="/support-reparations/" secondaryLabel="Impact and accountability" secondaryHref="/impact/" />
+  </main>
+</BaseLayout>

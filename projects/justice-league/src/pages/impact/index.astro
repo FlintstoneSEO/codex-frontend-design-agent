@@ -1,0 +1,19 @@
+---
+import ActionBand from "@/components/ActionBand.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import PageIntro from "@/components/PageIntro.astro";
+import SourceNotice from "@/components/SourceNotice.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout pageType="WebPage" title="Impact and Accountability | Justice League GLM" description="Review the Justice League's prototype accountability framework and its limited, date-labelled scholarship record.">
+  <main id="main-content" class="interior-page">
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Impact and accountability" }]} />
+    <PageIntro kicker="Evidence before claims" title="Impact and Accountability" lede="This page shows the reporting standard and the narrow public record available today—not a manufactured impact dashboard." mode="evidence" marker="Show the work" />
+    <SourceNotice title="Not yet a production impact report" />
+    <section class="accountability-grid" aria-labelledby="reporting-standard"><div><p class="section-kicker">Required for every claim</p><h2 id="reporting-standard">Evidence should explain itself.</h2></div><ol><li><span>01</span><strong>Reporting period</strong><p>State exactly when the activity occurred.</p></li><li><span>02</span><strong>Method and source</strong><p>Explain how the information was produced and where it can be checked.</p></li><li><span>03</span><strong>Limits and ownership</strong><p>Name what the evidence does not show, who approved it, and when it will be reviewed.</p></li></ol></section>
+    <section class="provisional-evidence" aria-labelledby="available-record"><div><p class="section-kicker">Limited current-site snapshot</p><h2 id="available-record">Scholarship information available for review.</h2></div><dl><div><dt>2024 recipient record</dt><dd>Ten recipients listed on the current site</dd><dd class="evidence-limit">Disbursement and consent not independently confirmed</dd></div><div><dt>2025 recipient record</dt><dd>Ten recipients listed on the current site</dd><dd class="evidence-limit">Disbursement and consent not independently confirmed</dd></div><div><dt>Described award structure</dt><dd>Ten awards of $2,500 each</dd><dd class="evidence-limit">Current terms require stakeholder confirmation</dd></div></dl><a class="text-action" href="/scholarship/">Review the scholarship page</a></section>
+    <section class="withheld-section" aria-labelledby="withheld-heading"><p class="section-kicker">Intentionally withheld</p><h2 id="withheld-heading">Numbers the current record cannot support.</h2><ul><li>Total scholarship dollars distributed</li><li>Total recipients across all years</li><li>Endowment balance or progress toward a past goal</li><li>Donor, congregation, member, presentation, or attendance totals</li><li>Administrative and program spending</li><li>Homeownership or business-development outcomes</li></ul></section>
+    <ActionBand kicker="Governance connection" title="Accountability includes who reviews the record." text="Leadership information is also provisional and remains noindex until recertified." primaryLabel="Leadership and governance" primaryHref="/about/leadership/" secondaryLabel="Contact" secondaryHref="/contact/" />
+  </main>
+</BaseLayout>

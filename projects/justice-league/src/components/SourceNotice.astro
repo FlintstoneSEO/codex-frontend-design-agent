@@ -1,0 +1,12 @@
+---
+interface Props {
+  title?: string;
+  observed?: string;
+}
+const { title = "Provisional current-site record", observed = "August 6, 2026" } = Astro.props;
+---
+
+<aside class="source-notice" aria-label="Content review status">
+  <strong>{title}</strong>
+  <p>Observed on {observed}. This content is included for prototype review and requires stakeholder confirmation before production publication.</p>
+</aside>

@@ -1,0 +1,13 @@
+---
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import PageIntro from "@/components/PageIntro.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Privacy Policy Needed | Justice League GLM Prototype" description="A noindex placeholder identifying the privacy policy required before forms or data integrations launch.">
+  <main id="main-content" class="interior-page">
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Privacy shell" }]} />
+    <PageIntro kicker="Legal content shell" title="Privacy Policy Needed" lede="This route exists to make a launch dependency visible. It is not a privacy policy and provides no legal assurance." mode="evidence" marker="Do not publish" />
+    <section class="unavailable-action" aria-labelledby="privacy-requirements"><p class="section-kicker">Required client input</p><h2 id="privacy-requirements">Data practices must be documented before collection begins.</h2><p>[NEEDS CLIENT INPUT: Provide legally reviewed privacy language covering Wix Forms, Contacts/CRM, scholarship applications, newsletter consent, payment handoffs, analytics, retention, deletion, applicant media, and the responsible contact.]</p></section>
+  </main>
+</BaseLayout>

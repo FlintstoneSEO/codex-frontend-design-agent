@@ -1,0 +1,17 @@
+---
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import NewsletterShell from "@/components/NewsletterShell.astro";
+import PageIntro from "@/components/PageIntro.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout pageType="WebPage" title="News and Stories | Justice League GLM" description="Review the editorial archive prototype for future dated Justice League GLM news, community stories, and updates.">
+  <main id="main-content" class="interior-page">
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "News and stories" }]} />
+    <PageIntro kicker="Community record" title="News and Stories" lede="A credible archive names the publisher, date, source, context, and correction path. The Wix editorial source is not connected." mode="documentary" marker="Dated context" />
+    <section class="status-banner status-banner--warning" aria-labelledby="news-source"><p class="section-kicker">Editorial source</p><h2 id="news-source">Wix Blog or CMS is not selected</h2><p>[NEEDS CLIENT INPUT: Confirm the source, migration inventory, authorship policy, media rights, archive policy, and newsletter provider.]</p></section>
+    <section class="story-review" aria-labelledby="story-treatment"><div class="section-heading-row"><p class="section-kicker">Demonstration treatment</p><h2 id="story-treatment">A story needs more than a thumbnail.</h2></div><article class="story-row"><div class="story-index">Demo / 01</div><div><p class="placeholder-label">Not published reporting</p><h3>Demonstration story structure</h3><p>A labelled fixture for reviewing editorial hierarchy, source notes, corrections, and a contextual next step.</p><a class="text-action" href="/news/demo-story/">Open demonstration story</a></div><dl><div><dt>Publisher</dt><dd>Not supplied</dd></div><div><dt>Publication date</dt><dd>Not supplied</dd></div></dl></article></section>
+    <section class="state-review state-review--compact" aria-labelledby="news-states"><div class="section-heading-row"><p class="section-kicker">Archive resilience</p><h2 id="news-states">Empty and error states stay honest.</h2></div><div class="state-stack"><details open><summary>Empty archive</summary><div><h3>No approved stories are available</h3><p>Visitors can continue to Events or Reparations without seeing invented editorial content.</p></div></details><details><summary>Source error</summary><div><h3>Stories could not be loaded</h3><p>The page does not substitute stale or fabricated records. A retry can be added with the live adapter.</p></div></details></div></section>
+    <NewsletterShell />
+  </main>
+</BaseLayout>

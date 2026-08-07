@@ -1,0 +1,61 @@
+---
+import { homepage } from "@/data/homepage";
+---
+
+<section
+  class="elink-news"
+  aria-labelledby="latest-news-heading"
+  data-elink-module
+  data-elink-embed-url={homepage.elink.embedUrl}
+  data-elink-script-url={homepage.elink.scriptUrl}
+>
+  <p class="section-kicker">Latest news</p>
+  <h3 id="latest-news-heading">A curated external briefing.</h3>
+  <p>The publication is maintained on eLink. Its third-party feed loads only when requested.</p>
+  <button class="button button-secondary elink-load" type="button" data-elink-load>Load latest news</button>
+  <p class="elink-status" role="status" aria-live="polite" data-elink-status></p>
+  <div class="elink-frame" data-elink-frame hidden></div>
+  <a class="text-action" href={homepage.elink.publicationUrl} target="_blank" rel="noreferrer">
+    Open the full news briefing <span class="visually-hidden">(opens in a new tab)</span>
+  </a>
+  <noscript><p>JavaScript is required for the embedded briefing. Use the full news briefing link instead.</p></noscript>
+</section>
+
+<script>
+  document.querySelectorAll("[data-elink-module]").forEach((module) => {
+    const button = module.querySelector("[data-elink-load]");
+    const frame = module.querySelector("[data-elink-frame]");
+    const status = module.querySelector("[data-elink-status]");
+    button?.addEventListener("click", () => {
+      if (!(button instanceof HTMLButtonElement) || !(frame instanceof HTMLElement) || !(status instanceof HTMLElement)) return;
+      button.disabled = true;
+      status.textContent = "Loading the external news briefing…";
+      frame.hidden = false;
+      const embedUrl = module instanceof HTMLElement ? module.dataset.elinkEmbedUrl : undefined;
+      const scriptUrl = module instanceof HTMLElement ? module.dataset.elinkScriptUrl : undefined;
+      if (!embedUrl || !scriptUrl) return;
+      const embed = document.createElement("div");
+      embed.dataset.elink = embedUrl;
+      const fallback = document.createElement("a");
+      fallback.href = "https://elink.io/p/9da922f";
+      fallback.target = "_blank";
+      fallback.rel = "noreferrer";
+      fallback.textContent = "See the original news briefing";
+      embed.append(fallback);
+      frame.append(embed);
+      const script = document.createElement("script");
+      script.src = scriptUrl;
+      script.async = true;
+      script.setAttribute("charset", "utf-8");
+      script.addEventListener("load", () => {
+        status.textContent = "Latest news loaded from eLink.";
+        button.hidden = true;
+      });
+      script.addEventListener("error", () => {
+        status.textContent = "The embedded briefing could not be loaded. Use the full news briefing link.";
+        button.disabled = false;
+      });
+      document.head.append(script);
+    }, { once: true });
+  });
+</script>

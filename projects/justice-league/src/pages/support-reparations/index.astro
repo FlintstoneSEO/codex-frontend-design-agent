@@ -1,0 +1,20 @@
+---
+import ActionBand from "@/components/ActionBand.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import PageIntro from "@/components/PageIntro.astro";
+import SourceNotice from "@/components/SourceNotice.astro";
+import { supportHandoffs } from "@/data/content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout pageType="WebPage" title="Support Reparations | Justice League GLM" description="Review the provisional reparations-payment and administration-support designations before a future verified Wix-hosted contribution handoff.">
+  <main id="main-content" class="interior-page">
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Support Reparations" }]} />
+    <PageIntro kicker="Primary sitewide action" title="Support Reparations" lede="Understand the provisional contribution designations before any future secure payment handoff." mode="campaign" marker="Explain / verify" />
+    <SourceNotice title="No payment is collected in this prototype" />
+    <section class="designation-section" aria-labelledby="designation-heading"><div class="section-heading-row"><p class="section-kicker">Current-site designation model</p><h2 id="designation-heading">Two purposes need two clear explanations.</h2></div><ol>{supportHandoffs.map((item, index) => <li><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{item.label}</h3><p>{item.description}</p></div></li>)}</ol></section>
+    <section class="unavailable-action" aria-labelledby="support-handoff"><p class="section-kicker">Secure handoff status</p><h2 id="support-handoff">A verified payment destination is not available.</h2><p>The prototype does not collect an amount, donor information, dedication, or payment details. It will link to a Wix-hosted transaction only after the product, destination, organization ownership, HTTPS security, designations, and post-payment behavior are confirmed.</p><code>[NEEDS CLIENT INPUT: Verify Wix support destination]</code></section>
+    <section class="withheld-section" aria-labelledby="financial-gaps"><p class="section-kicker">Required before launch</p><h2 id="financial-gaps">Financial clarity is part of the conversion.</h2><ul><li>Approved use-of-funds and designation wording</li><li>Payment product, fees, and recurring-gift behavior</li><li>Tax and legal language</li><li>Receipt, refund, contact, and post-payment flow</li><li>Verified mail-a-check instructions and support-card file</li></ul></section>
+    <ActionBand kicker="Non-financial pathway" title="Participation does not require a payment." text="Review the provisional ways to attend, contribute time, request a presentation, or begin a partnership conversation." primaryLabel="Join the Work" primaryHref="/join-the-work/" secondaryLabel="Understand reparations" secondaryHref="/reparations/" />
+  </main>
+</BaseLayout>

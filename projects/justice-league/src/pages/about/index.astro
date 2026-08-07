@@ -1,0 +1,46 @@
+---
+import ActionBand from "@/components/ActionBand.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import PageIntro from "@/components/PageIntro.astro";
+import SourceNotice from "@/components/SourceNotice.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout pageType="WebPage" title="About the Justice League | Justice League GLM" description="Learn about the Justice League of Greater Lansing's provisional mission, local focus, and pathways for reparations work.">
+  <main id="main-content" class="interior-page">
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About" }]} />
+    <PageIntro kicker="Organization overview" title="About the Justice League" lede="A faith-rooted, community-centered approach to locally led reparations in Greater Lansing." mode="documentary" marker="Who we are" />
+    <SourceNotice />
+
+    <section class="editorial-split" aria-labelledby="about-mission">
+      <div class="section-index">01 / Mission</div>
+      <div>
+        <h2 id="about-mission">Repair requires relationship, learning, and action.</h2>
+        <div class="placeholder-copy">
+          <p class="placeholder-label">Approved prototype mission placeholder</p>
+          <p>The Justice League brings people and partners together to advance reparations and increase wealth equity for African Americans in Greater Lansing.</p>
+        </div>
+        <p>The current public site describes the organization as faith-rooted, historically informed, locally led, and focused on education, relationship building, scholarships, economic repair, and collective action. That description remains provisional for this prototype.</p>
+      </div>
+    </section>
+
+    <section class="ruled-section" aria-labelledby="about-work">
+      <div class="section-heading-row"><p class="section-kicker">Areas of work</p><h2 id="about-work">Connected work, distinct paths.</h2></div>
+      <ol class="pathway-ledger">
+        <li><span>01</span><div><h3>Understand the local context</h3><p>Education and historical context belong with sources, definitions, and room for reflection.</p></div><a href="/reparations/">Explore reparations</a></li>
+        <li><span>02</span><div><h3>Follow scholarship activity</h3><p>Applicants and supporters need one dependable place for cycle status, eligibility, and evidence.</p></div><a href="/scholarship/">Review scholarship</a></li>
+        <li><span>03</span><div><h3>Take part locally</h3><p>Participation, partnership, meetings, and presentations require clearer paths than a generic membership promise.</p></div><a href="/join-the-work/">Join the Work</a></li>
+      </ol>
+    </section>
+
+    <section class="trust-ledger" aria-labelledby="about-trust">
+      <div><p class="section-kicker">Organizational trust</p><h2 id="about-trust">See the record behind the work.</h2></div>
+      <nav aria-label="About and governance links">
+        <a href="/about/history/">History and timeline <span aria-hidden="true">→</span></a>
+        <a href="/about/leadership/">Leadership and governance <span aria-hidden="true">→</span></a>
+        <a href="/impact/">Impact and accountability <span aria-hidden="true">→</span></a>
+      </nav>
+    </section>
+    <ActionBand kicker="Next step" title="Move from interest to participation." text="Compare the provisional participation paths documented on the current site." primaryLabel="Join the Work" primaryHref="/join-the-work/" secondaryLabel="Support Reparations" secondaryHref="/support-reparations/" />
+  </main>
+</BaseLayout>

@@ -1,0 +1,24 @@
+---
+interface Props {
+  kicker: string;
+  title: string;
+  text: string;
+  primaryLabel: string;
+  primaryHref: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+}
+const { kicker, title, text, primaryLabel, primaryHref, secondaryLabel, secondaryHref } = Astro.props;
+---
+
+<section class="action-band" aria-label={title}>
+  <div>
+    <p class="section-kicker">{kicker}</p>
+    <h2>{title}</h2>
+    <p>{text}</p>
+  </div>
+  <div class="action-band-links">
+    <a class="button button-primary" href={primaryHref}>{primaryLabel}</a>
+    {secondaryLabel && secondaryHref && <a class="button button-secondary" href={secondaryHref}>{secondaryLabel}</a>}
+  </div>
+</section>

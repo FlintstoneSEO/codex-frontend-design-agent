@@ -1,0 +1,54 @@
+---
+interface Props {
+  videoId: string;
+  videoUrl: string;
+  title: string;
+}
+
+const { videoId, videoUrl, title } = Astro.props;
+---
+
+<section class="apology-video" aria-labelledby="apology-video-heading">
+  <div class="video-heading">
+    <p class="section-kicker">A public act of acknowledgment</p>
+    <h3 id="apology-video-heading">{title}</h3>
+    <p>The player loads only after activation, reducing initial data use and preventing an unnecessary third-party connection.</p>
+  </div>
+  <div class="video-shell" data-video-shell data-video-id={videoId}>
+    <img
+      src={`https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`}
+      alt=""
+      width="1280"
+      height="720"
+      loading="lazy"
+      decoding="async"
+    />
+    <button type="button" class="video-play" data-video-play aria-label={`Play ${title}`}>
+      <span aria-hidden="true">▶</span>
+      <span>Play apology video</span>
+    </button>
+  </div>
+  <p class="video-fallback">
+    <a href={videoUrl} target="_blank" rel="noreferrer">Watch on YouTube <span class="visually-hidden">(opens in a new tab)</span></a>
+    <span aria-hidden="true">·</span>
+    <span>[NEEDS CLIENT INPUT: Provide an approved transcript or captions review.]</span>
+  </p>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-video-shell]").forEach((shell) => {
+    shell.querySelector<HTMLButtonElement>("[data-video-play]")?.addEventListener("click", () => {
+      const videoId = shell.dataset.videoId;
+      if (!videoId) return;
+      const iframe = document.createElement("iframe");
+      iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
+      iframe.title = "Justice League of Greater Lansing Apology";
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = "strict-origin-when-cross-origin";
+      shell.replaceChildren(iframe);
+      iframe.focus();
+    });
+  });
+</script>
+

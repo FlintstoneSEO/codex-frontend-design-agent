@@ -1,0 +1,25 @@
+{
+  "name": "justice-league-homepage-prototype",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test": "node scripts/validate-prototype.mjs"
+  },
+  "devDependencies": {
+    "@astrojs/check": "latest",
+    "astro": "latest",
+    "typescript": "latest"
+  },
+  "dependencies": {
+    "@wix/events": "^1.0.836",
+    "@wix/sdk": "^1.21.14"
+  }
+}

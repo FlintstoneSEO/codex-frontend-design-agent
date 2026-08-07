@@ -1,0 +1,166 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ElinkNews from "@/components/ElinkNews.astro";
+import NewsletterShell from "@/components/NewsletterShell.astro";
+import PriorityModule from "@/components/PriorityModule.astro";
+import UpcomingEvents from "@/components/UpcomingEvents.astro";
+import VideoFeature from "@/components/VideoFeature.astro";
+import { homepage } from "@/data/homepage";
+import { getUpcomingPublicEvents } from "@/lib/wix";
+
+const eventsResult = await getUpcomingPublicEvents();
+---
+
+<BaseLayout isHome={true} ogImage={homepage.hero.src}>
+  <main id="main-content">
+    <section class="hero" aria-labelledby="homepage-title">
+      <div class="hero-copy">
+        <p class="section-kicker">Greater Lansing · Michigan</p>
+        <h1 id="homepage-title">Repairing the Breach <span>in Greater Lansing</span></h1>
+        <p class="hero-deck">Faith-rooted relationships, public education, and reparative action focused on racial wealth equity.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="/support-reparations/">Support Reparations</a>
+          <a class="button button-secondary" href="/join-the-work/">Join the Work</a>
+        </div>
+        <a class="context-link" href="/reparations/">Understand reparations in Greater Lansing <span aria-hidden="true">↗</span></a>
+      </div>
+      <figure class="hero-documentary">
+        <img
+          src={homepage.hero.src}
+          srcset={homepage.hero.srcSet}
+          sizes="(max-width: 767px) 100vw, 48vw"
+          alt={homepage.hero.alt}
+          width="1200"
+          height="900"
+          fetchpriority="high"
+          decoding="async"
+        />
+        <figcaption>
+          <span>Documentary community</span>
+          <span>Greater Lansing, Michigan</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <PriorityModule result={eventsResult} />
+
+    <section class="mission-section" aria-labelledby="mission-heading">
+      <div class="section-number" aria-hidden="true">01</div>
+      <div class="mission-heading">
+        <p class="section-kicker">Our mission</p>
+        <h2 id="mission-heading">Repair is both a responsibility and a relationship.</h2>
+      </div>
+      <div class="mission-copy">
+        <p class="editorial-lede">{homepage.mission}</p>
+        <div class="inline-links">
+          <a class="text-action" href="/about/">About the Justice League</a>
+          <a class="text-action" href="/reparations/">Reparations in Greater Lansing</a>
+          <a class="text-action" href="/about/history/">History and timeline</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="founder-section" aria-labelledby="founder-heading">
+      <div class="founder-image">
+        <img
+          src={homepage.willye.image}
+          srcset={homepage.willye.imageSrcSet}
+          sizes="(max-width: 767px) 92vw, 34vw"
+          alt={homepage.willye.alt}
+          width="720"
+          height="900"
+          loading="lazy"
+          decoding="async"
+        />
+        <p>Willye Bryan · Founder</p>
+      </div>
+      <div class="founder-copy">
+        <p class="section-kicker">The work begins with a question</p>
+        <h2 id="founder-heading">What can people of faith do about the injustice in front of us?</h2>
+        <p class="editorial-lede">Willye Bryan describes the Justice League as growing from 2021 conversations about racial disparities, responsibility, and the need to move from study toward repair in Greater Lansing.</p>
+        <p>Her account connects repentance with practical local relationships—especially between houses of worship and collaborative partners—and with reparative work focused on education, homeownership, and entrepreneurship.</p>
+        <blockquote>
+          <p>“I can stand up, speak out, and apologize to those who continue to be harmed.”</p>
+        </blockquote>
+        <a class="text-action" href={homepage.willye.cityPulseUrl} target="_blank" rel="noreferrer">
+          Read “The Art of Repair” in City Pulse <span class="visually-hidden">(opens in a new tab)</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="documentary-record" aria-label="Apology video, upcoming events, and latest news">
+      <VideoFeature
+        videoId={homepage.apologyVideo.id}
+        videoUrl={homepage.apologyVideo.url}
+        title={homepage.apologyVideo.title}
+      />
+      <aside class="documentary-rail" aria-label="Current community record">
+        <UpcomingEvents result={eventsResult} excludeFirst={true} />
+        <ElinkNews />
+      </aside>
+    </section>
+
+    <section class="methods-section" aria-labelledby="methods-heading">
+      <div class="methods-intro">
+        <p class="section-kicker">How the work connects</p>
+        <h2 id="methods-heading">From understanding to local action.</h2>
+        <p>Education establishes context. Relationships create accountability. Reparative pathways move the work into Greater Lansing institutions and community life.</p>
+      </div>
+      <ol class="method-list">
+        <li>
+          <span class="method-number">01</span>
+          <div>
+            <h3>Learn the local context</h3>
+            <p>Explore reparations education, historical context, and the organization’s faith-rooted approach.</p>
+          </div>
+          <a href="/reparations/" aria-label="Explore reparations education and local context">Explore <span aria-hidden="true">↗</span></a>
+        </li>
+        <li>
+          <span class="method-number">02</span>
+          <div>
+            <h3>Follow scholarship activity</h3>
+            <p>Review cycle status, eligibility, application information, and approved scholarship evidence.</p>
+          </div>
+          <a href="/scholarship/" aria-label="Explore the reparations scholarship">Explore <span aria-hidden="true">↗</span></a>
+        </li>
+        <li>
+          <span class="method-number">03</span>
+          <div>
+            <h3>Participate or support</h3>
+            <p>Choose a distinct path for financial support, attendance, partnership, or participation.</p>
+          </div>
+          <a href="/join-the-work/" aria-label="Explore ways to join the work">Join the work <span aria-hidden="true">↗</span></a>
+        </li>
+      </ol>
+    </section>
+
+    <section class="participation-section" aria-labelledby="participation-heading">
+      <div class="participation-intro">
+        <p class="section-kicker">Participation pathways</p>
+        <h2 id="participation-heading">Join at the level that fits.</h2>
+        <p>Attend a public event, request a presentation, offer time or skills, begin a partnership conversation, or receive updates.</p>
+        <a class="button button-primary" href="/join-the-work/">Join the Work</a>
+      </div>
+      <ol class="participation-list">
+        <li><span>01</span><strong>Learn or attend</strong><small>Education, presentations, and public events</small></li>
+        <li><span>02</span><strong>Contribute time</strong><small>Volunteer and committee interest</small></li>
+        <li><span>03</span><strong>Partner or connect</strong><small>Houses of worship and community partners</small></li>
+      </ol>
+    </section>
+
+    <NewsletterShell />
+
+    <section class="trust-section" aria-labelledby="trust-heading">
+      <div>
+        <p class="section-kicker">Governance and transparency</p>
+        <h2 id="trust-heading">Trust belongs in the main story.</h2>
+      </div>
+      <p>Leadership, governance, and impact records remain review-dated so public information can be corrected when Wix source records change.</p>
+      <nav aria-label="Governance and transparency routes">
+        <a href="/about/leadership/">Leadership & Governance <span aria-hidden="true">↗</span></a>
+        <a href="/impact/">Impact & Accountability <span aria-hidden="true">↗</span></a>
+        <a href="/contact/">Contact <span aria-hidden="true">↗</span></a>
+      </nav>
+    </section>
+  </main>
+</BaseLayout>
