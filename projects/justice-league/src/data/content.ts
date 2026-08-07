@@ -79,27 +79,6 @@ export const vision = {
   observedAt: "2026-08-07"
 } as const;
 
-export const repairersOfTheBreach = [
-  "StableCommunities Foundation",
-  "Mason First Presbyterian Church",
-  "Reachout Christian Center Church",
-  "University United Methodist Church",
-  "Restorative Actions",
-  "Lansing Church of God In Christ",
-  "Kingdom Ministries",
-  "Matthew 25",
-  "Unity Spiritual Center of Lansing",
-  "Edgewood UCC",
-  "Unitarian Universalist Church of Greater Lansing",
-  "Holt First Presbyterian Church",
-  "Red Cedar Friends",
-  "University Lutheran Church",
-  "Grace Lutheran Church",
-  "All Saints Episcopal",
-  "Sycamore Creek",
-  "Lansing First Presbyterian"
-] as const;
-
 export const leadership = {
   executive: [
     ["Willye Bryan", "Founder"],

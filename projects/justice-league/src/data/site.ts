@@ -47,7 +47,9 @@ export const primaryNav = [
     items: [
       { label: "Reparations in Greater Lansing", href: "/reparations/" },
       { label: "Reparations scholarship", href: "/scholarship/" },
-      { label: "Impact and accountability", href: "/impact/" }
+      { label: "Impact and accountability", href: "/impact/" },
+      { label: "Supporters", href: "/supporters/" },
+      { label: "Donors", href: "/donors/" }
     ]
   },
   { label: "Events", href: "/events/" },

@@ -2,7 +2,7 @@
 
 ## Status and planning basis
 
-- **Status:** Proposed for stakeholder approval before prototype implementation
+- **Status:** Approved prototype architecture; amended August 7, 2026 for dedicated donor and supporter records
 - **Site:** Justice League of Greater Lansing Michigan
 - **Frontend / backend:** Astro with TypeScript / Wix Headless
 - **Selected direction:** Lansing in Action, led by Documentary Community with Editorial Evidence and Campaign modes
@@ -366,3 +366,15 @@ The information architecture is ready for approval when:
 - no route depends on invented organization facts, duplicate location content, or unverified proof;
 - navigation labels are tested against the primary audience tasks; and
 - unresolved content remains visibly marked rather than silently filled.
+
+## Approved donor and supporter amendment — August 7, 2026
+
+The acknowledgment content now has three distinct responsibilities:
+
+- `/impact/` remains the accountability framework and dated program-evidence page. It links to, but does not contain, the full acknowledgment rosters.
+- `/supporters/` is the canonical Repairers of the Breach page. It uses the current Wix Supporters page as the curated roster and logo source.
+- `/donors/` is the canonical donor acknowledgment page. It consumes the public Little Green Light report at static build time and uses a sanitized checked-in fallback if the external request or validation fails.
+
+Add **Supporters** and **Donors** as separate children of **Our Work** in desktop and mobile navigation. Add both to the footer trust group. This keeps the labels explicit and avoids reclassifying either dataset.
+
+Only `Addressee` and derived recognition-year membership may cross the donor integration's public boundary. LGL IDs, fiscal-year amounts, groups, response headers, and cookies are not public page data. See `pages/donors-spec.md` and `pages/supporters-spec.md` for the approved page-level compositions and acceptance criteria.

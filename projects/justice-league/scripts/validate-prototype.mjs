@@ -1,5 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
+import { parseDonorCsv } from "../src/lib/donor-csv.ts";
+import { loadDonorGroups } from "../src/lib/donors.ts";
+import { supporters } from "../src/data/supporters.ts";
 
 const projectRoot = process.cwd();
 const distRoot = path.join(projectRoot, "dist");
@@ -39,6 +42,8 @@ const routeNames = [
   "reparations",
   "scholarship",
   "impact",
+  "supporters",
+  "donors",
   "events",
   "events/demo-priority",
   "ad-booklet",
@@ -161,7 +166,60 @@ checks.push(["obsolete Wix event path removed", !allHtml.includes("https://www.j
 checks.push(["dead City Pulse URL removed", !allHtml.includes("lansingcitypulse.com/stories/the-art-of-repair,125610")]);
 checks.push(["Willye Bryan profile uses verified live source", allHtml.includes("lakemichiganpresbytery.org/2025/02/28/celebrating-elder-willye-bryans-recognition-for-racial-justice")]);
 checks.push(["past scholarship ceremony not advertised as upcoming", !routeDocuments.find((item) => item.route === "events")?.html.includes("2026 Scholarship Acknowledgment Ceremony")]);
-checks.push(["impact page includes current supporter record", routeDocuments.find((item) => item.route === "impact")?.html.includes("StableCommunities Foundation") && routeDocuments.find((item) => item.route === "impact")?.html.includes("Lansing First Presbyterian")]);
+checks.push(["impact page keeps supporter and donor destinations separate", routeDocuments.find((item) => item.route === "impact")?.html.includes('href="/supporters/"') && routeDocuments.find((item) => item.route === "impact")?.html.includes('href="/donors/"') && !routeDocuments.find((item) => item.route === "impact")?.html.includes("StableCommunities Foundation")]);
+
+const validDonorCsv = [
+  '"Id","Addressee","2026 - FY","2025 - FY","Groups"',
+  '"1","Beta, Family","25.00","0.0","Private group"',
+  '"2","Alpha Family","10.00","5.00",""',
+  '"3","","12.00","0.0",""',
+  '',
+  '"4","Alpha Family","2.00","0.0",""'
+].join("\r\n");
+const parsedFixture = parseDonorCsv(validDonorCsv);
+checks.push(["donor parser groups positive fiscal-year rows", parsedFixture[0]?.year === 2026 && parsedFixture[0]?.donors.length === 2 && parsedFixture[1]?.year === 2025 && parsedFixture[1]?.donors.length === 1]);
+checks.push(["donor parser ignores empty rows and blank addressees", !parsedFixture.some((group) => group.donors.some((name) => name === ""))]);
+checks.push(["donor parser deduplicates and alphabetizes within a year", parsedFixture[0]?.donors.join("|") === "Alpha Family|Beta, Family"]);
+checks.push(["donor parser sorts years descending", parsedFixture.every((group, index) => index === 0 || parsedFixture[index - 1].year > group.year)]);
+
+let malformedCsvRejected = false;
+try {
+  parseDonorCsv('"Id","Addressee","2026 - FY"\r\n"1","Broken","100');
+} catch {
+  malformedCsvRejected = true;
+}
+checks.push(["malformed donor CSV fails safely", malformedCsvRejected]);
+
+const fallbackFixture = { observedAt: "2026-08-07", groups: [{ year: 2026, donors: ["Fallback Donor"] }] };
+const failedFetchResult = await loadDonorGroups({
+  fetchImpl: async () => { throw new Error("fixture network failure"); },
+  fallback: fallbackFixture
+});
+checks.push(["donor fetch failure uses sanitized fallback", failedFetchResult.state === "fallback" && failedFetchResult.groups[0]?.donors[0] === "Fallback Donor"]);
+const malformedFetchResult = await loadDonorGroups({
+  fetchImpl: async () => new Response('"Id","Addressee","2026 - FY"\r\n"1","Broken","100', { status: 200 }),
+  fallback: fallbackFixture
+});
+checks.push(["malformed live donor data uses sanitized fallback", malformedFetchResult.state === "fallback"]);
+
+const donorHtml = routeDocuments.find((item) => item.route === "donors")?.html ?? "";
+const donorFallback = JSON.parse(fs.readFileSync(path.join(projectRoot, "src/data/donors-fallback.json"), "utf8"));
+const donorYearRecordCount = donorFallback.groups.reduce((total, group) => total + group.donors.length, 0);
+checks.push(["donor page renders every sanitized fallback year-record", (donorHtml.match(/class="donor-name"/g) ?? []).length === donorYearRecordCount]);
+checks.push(["donor page renders current and prior dynamic years", donorFallback.groups.every((group) => donorHtml.includes(`id="donor-year-${group.year}"`))]);
+checks.push(["donor page renders representative source names", donorHtml.includes("Amber Paxton") && donorHtml.includes("Willye Bryan") && donorHtml.includes("All Saints Episcopal Church")]);
+checks.push(["donor page excludes private LGL fields, values, and raw report link", !donorHtml.includes(">Id<") && !donorHtml.includes(">Groups<") && !donorHtml.includes("1019.44") && !donorHtml.includes("947882") && !donorHtml.includes("littlegreenlight.com/rptlink")]);
+checks.push(["donor content is available without a client data fetch", donorHtml.includes("class=\"donor-name\"") && !donorHtml.includes("fetch(")]);
+checks.push(["donor page uses dedicated SEO metadata", donorHtml.includes("<title>Justice League GLM Donors | Reparations Payees &amp; Administration Fund Supporters</title>")]);
+
+const supportersHtml = routeDocuments.find((item) => item.route === "supporters")?.html ?? "";
+checks.push(["supporter page renders the complete current roster", supporters.length === 18 && supporters.every((supporter) => supportersHtml.includes(`>${supporter.name}</h3>`))]);
+checks.push(["supporter names and logos remain paired", supporters.every((supporter) => supportersHtml.includes(`src="${supporter.logo}" alt="${supporter.alt}"`))]);
+checks.push(["supporter logo assets exist locally", supporters.every((supporter) => fs.existsSync(path.join(projectRoot, "public", supporter.logo.replace(/^\//, ""))))]);
+checks.push(["supporter logo alt text is meaningful", supporters.every((supporter) => supporter.alt === `${supporter.name} logo`)]);
+checks.push(["supporter page uses dedicated SEO metadata", supportersHtml.includes("<title>Repairers of the Breach | Justice League GLM Supporters</title>")]);
+checks.push(["supporter and donor concepts are cross-linked but not combined", supportersHtml.includes('href="/donors/"') && donorHtml.includes('href="/supporters/"') && !supportersHtml.includes("donor-year-")]);
+checks.push(["acknowledgment layouts include responsive one-column rules", cssSource.includes(".donor-year ul,\n  .supporter-roster > ul") && cssSource.includes("grid-template-columns: 1fr")]);
 checks.push(["ad booklet has no submitting form", !routeDocuments.find((item) => item.route === "ad-booklet")?.html.match(/<form\b/i)]);
 checks.push(["ad booklet has semantic deadline", routeDocuments.find((item) => item.route === "ad-booklet")?.html.includes('<time datetime="2026-09-30">')]);
 checks.push(["ad booklet uses verified Wix handoff", routeDocuments.find((item) => item.route === "ad-booklet")?.html.includes("https://www.justiceleagueglm.org/ad-booklet")]);

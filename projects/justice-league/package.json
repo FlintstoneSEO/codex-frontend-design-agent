@@ -11,7 +11,9 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "test": "node scripts/validate-prototype.mjs"
+    "test": "node scripts/validate-prototype.mjs",
+    "sync:donors": "node scripts/sync-donors.mjs",
+    "optimize:supporters": "node scripts/optimize-supporter-assets.mjs"
   },
   "devDependencies": {
     "@astrojs/check": "latest",

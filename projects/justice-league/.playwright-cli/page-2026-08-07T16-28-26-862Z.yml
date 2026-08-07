@@ -1,0 +1,166 @@
+- generic [active] [ref=f83e1]:
+  - link "Skip to main content" [ref=f83e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=f83e3]:
+    - generic [ref=f83e4]: Non-production prototype
+    - generic [ref=f83e6]:
+      - link "Justice League Greater Lansing · Michigan , home" [ref=f83e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f83e8]: Justice League
+        - generic [ref=f83e9]: Greater Lansing · Michigan
+        - generic [ref=f83e10]: ", home"
+      - text: + +
+      - group [ref=f83e11]:
+        - generic "Menu" [ref=f83e12] [cursor=pointer]
+        - text: + +
+  - main [ref=f83e13]:
+    - navigation "Breadcrumb" [ref=f83e14]:
+      - list [ref=f83e15]:
+        - listitem [ref=f83e16]:
+          - link "Home" [ref=f83e17] [cursor=pointer]:
+            - /url: /
+          - text: /
+        - listitem [ref=f83e18]: About
+    - generic [ref=f83e19]:
+      - generic [ref=f83e20]:
+        - paragraph [ref=f83e21]: Organization overview
+        - heading "About the Justice League" [level=1] [ref=f83e22]
+        - paragraph [ref=f83e23]: A faith-rooted, community-centered approach to locally led reparations in Greater Lansing.
+      - generic [ref=f83e24]:
+        - generic [ref=f83e25]: documentary
+        - strong [ref=f83e26]: Who we are
+        - generic [ref=f83e27]: Prototype record / 2026
+    - complementary "Content review status" [ref=f83e28]:
+      - strong [ref=f83e29]: Mission and vision verified against the current site
+      - paragraph [ref=f83e30]: Observed on August 7, 2026 and reconciled against the current published site. Any remaining contradiction or approval need is labelled where it appears.
+    - region [ref=f83e31]:
+      - generic [ref=f83e32]: 01 / Mission
+      - generic [ref=f83e33]:
+        - heading "Repair the breach and increase wealth equity." [level=2] [ref=f83e34]
+        - paragraph [ref=f83e35]: The Justice League of Greater Lansing Michigan exists to repair the breach caused by the historical damage of slavery and its aftermath. In the spirit of repentance for the sin of racism, we seek to build relationships and facilitate reparations between houses of worship and collaborative partners to increase wealth equity for African Americans in the Greater Lansing Area.
+        - paragraph [ref=f83e36]: The Justice League connects faith and racial justice through reparations, with predominantly white houses of worship participating in repair for the harms of slavery and unequal wealth accumulation.
+        - paragraph [ref=f83e37]: Mission and vision reviewed against the published organization website on 2026-08-07.
+    - region [ref=f83e38]:
+      - generic [ref=f83e39]:
+        - paragraph [ref=f83e40]: Public vision
+        - heading "A locally governed, three-pillar model." [level=2] [ref=f83e41]
+      - list [ref=f83e42]:
+        - listitem [ref=f83e43]:
+          - generic [ref=f83e44]: "01"
+          - strong [ref=f83e45]: Build a reparations fund through faith-based, individual, corporate, and community contributions.
+        - listitem [ref=f83e46]:
+          - generic [ref=f83e47]: "02"
+          - strong [ref=f83e48]: Use an African American Advisory Council to govern reparations distributions.
+        - listitem [ref=f83e49]:
+          - generic [ref=f83e50]: "03"
+          - strong [ref=f83e51]: "Direct the work through three pillars: educational scholarships, homeownership, and business entrepreneurship."
+      - link "Read the current vision statement (opens in a new tab)" [ref=f83e52] [cursor=pointer]:
+        - /url: https://www.justiceleagueglm.org/vision-justice-league-lansing
+        - text: Read the current vision statement
+        - generic [ref=f83e53]: (opens in a new tab)
+    - region [ref=f83e54]:
+      - generic [ref=f83e55]:
+        - paragraph [ref=f83e56]: Areas of work
+        - heading "Education, homeownership, and entrepreneurship." [level=2] [ref=f83e57]
+      - list [ref=f83e58]:
+        - listitem [ref=f83e59]:
+          - generic [ref=f83e60]: "01"
+          - generic [ref=f83e61]:
+            - heading "Educational scholarships" [level=3] [ref=f83e62]
+            - paragraph [ref=f83e63]: Reparations-funded scholarships support eligible descendants of enslaved Africans in Ingham, Clinton, and Eaton counties.
+          - link "Review scholarship" [ref=f83e64] [cursor=pointer]:
+            - /url: /scholarship/
+        - listitem [ref=f83e65]:
+          - generic [ref=f83e66]: "02"
+          - generic [ref=f83e67]:
+            - heading "Homeownership" [level=3] [ref=f83e68]
+            - paragraph [ref=f83e69]: The timeline records reparations-supported home construction with the Eastside Community Action Center.
+          - link "Review the timeline" [ref=f83e70] [cursor=pointer]:
+            - /url: /about/history/
+        - listitem [ref=f83e71]:
+          - generic [ref=f83e72]: "03"
+          - generic [ref=f83e73]:
+            - heading "Business entrepreneurship" [level=3] [ref=f83e74]
+            - paragraph [ref=f83e75]: Business development is the third adopted pillar; current public program terms have not yet been published.
+          - link "Understand the framework" [ref=f83e76] [cursor=pointer]:
+            - /url: /reparations/
+    - region [ref=f83e77]:
+      - generic [ref=f83e78]:
+        - paragraph [ref=f83e79]: Organizational trust
+        - heading "See the record behind the work." [level=2] [ref=f83e80]
+      - navigation "About and governance links" [ref=f83e81]:
+        - link "History and timeline" [ref=f83e82] [cursor=pointer]:
+          - /url: /about/history/
+          - text: History and timeline
+          - generic [ref=f83e83]: →
+        - link "Leadership and governance" [ref=f83e84] [cursor=pointer]:
+          - /url: /about/leadership/
+          - text: Leadership and governance
+          - generic [ref=f83e85]: →
+        - link "Impact and accountability" [ref=f83e86] [cursor=pointer]:
+          - /url: /impact/
+          - text: Impact and accountability
+          - generic [ref=f83e87]: →
+    - region "Move from interest to participation." [ref=f83e88]:
+      - generic [ref=f83e89]:
+        - paragraph [ref=f83e90]: Next step
+        - heading "Move from interest to participation." [level=2] [ref=f83e91]
+        - paragraph [ref=f83e92]: Choose a current pathway for a meeting, committee, presentation, email updates, or financial support.
+      - generic [ref=f83e93]:
+        - link "Join the Work" [ref=f83e94] [cursor=pointer]:
+          - /url: /join-the-work/
+        - link "Support Reparations" [ref=f83e95] [cursor=pointer]:
+          - /url: /support-reparations/
+  - contentinfo [ref=f83e96]:
+    - generic [ref=f83e97]:
+      - paragraph [ref=f83e98]: Greater Lansing, Michigan
+      - paragraph [ref=f83e99]: Justice League of Greater Lansing Michigan
+      - generic [ref=f83e100]:
+        - text: P.O. Box 12105Lansing, Michigan 48901
+        - link "info@justiceleagueglm.org" [ref=f83e101] [cursor=pointer]:
+          - /url: mailto:info@justiceleagueglm.org
+    - generic [ref=f83e102]:
+      - navigation "Footer explore" [ref=f83e103]:
+        - heading "Explore" [level=2] [ref=f83e104]
+        - link "About" [ref=f83e105] [cursor=pointer]:
+          - /url: /about/
+        - link "Reparations" [ref=f83e106] [cursor=pointer]:
+          - /url: /reparations/
+        - link "Scholarship" [ref=f83e107] [cursor=pointer]:
+          - /url: /scholarship/
+        - link "Events" [ref=f83e108] [cursor=pointer]:
+          - /url: /events/
+        - link "News & Stories" [ref=f83e109] [cursor=pointer]:
+          - /url: /news/
+      - navigation "Footer actions" [ref=f83e110]:
+        - heading "Take action" [level=2] [ref=f83e111]
+        - link "Support Reparations" [ref=f83e112] [cursor=pointer]:
+          - /url: /support-reparations/
+        - link "Join the Work" [ref=f83e113] [cursor=pointer]:
+          - /url: /join-the-work/
+        - link "Subscribe" [ref=f83e114] [cursor=pointer]:
+          - /url: /#newsletter
+        - link "Contact" [ref=f83e115] [cursor=pointer]:
+          - /url: /contact/
+      - navigation "Footer trust links" [ref=f83e116]:
+        - heading "Trust" [level=2] [ref=f83e117]
+        - link "Leadership & Governance" [ref=f83e118] [cursor=pointer]:
+          - /url: /about/leadership/
+        - link "Impact & Accountability" [ref=f83e119] [cursor=pointer]:
+          - /url: /impact/
+        - link "Registered 501(c)(3) nonprofit" [ref=f83e120] [cursor=pointer]:
+          - /url: https://www.justiceleagueglm.org/_files/ugd/de1bf2_c3e811879e044a5281fc7ace9b1f0be0.pdf
+        - link "IRS Form 1023" [ref=f83e121] [cursor=pointer]:
+          - /url: https://www.justiceleagueglm.org/_files/ugd/de1bf2_0bba4b2bc8c5423a86419ee6d1eca16f.pdf
+        - link "Current donor acknowledgments" [ref=f83e122] [cursor=pointer]:
+          - /url: https://www.justiceleagueglm.org/donors
+        - link "Privacy shell" [ref=f83e123] [cursor=pointer]:
+          - /url: /privacy/
+    - generic [ref=f83e124]:
+      - generic [ref=f83e125]: © 2026 Justice League of Greater Lansing Michigan
+      - generic [ref=f83e126]: Prototype · Astro + Wix Headless foundation
+  - generic [ref=f83e129]:
+    - button [ref=f83e130]
+    - button [ref=f83e136]
+    - button [ref=f83e140]
+    - button [ref=f83e145]

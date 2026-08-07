@@ -1,0 +1,81 @@
+---
+import ActionBand from "@/components/ActionBand.astro";
+import Breadcrumbs from "@/components/Breadcrumbs.astro";
+import PageIntro from "@/components/PageIntro.astro";
+import { loadDonorGroups } from "@/lib/donors";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const donorData = await loadDonorGroups();
+const totalYearRecords = donorData.groups.reduce((total, group) => total + group.donors.length, 0);
+---
+
+<BaseLayout
+  pageType="WebPage"
+  title="Justice League GLM Donors | Reparations Payees & Administration Fund Supporters"
+  description="View Justice League GLM donors acknowledged by year for the Reparations Payees and Administration funds."
+>
+  <main id="main-content" class="interior-page donor-page" tabindex="-1">
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Donors" }]} />
+    <PageIntro
+      kicker="Public donor acknowledgment"
+      title="Grateful Acknowledgment to Our Reparations Payees & Administration Fund Donors"
+      lede="With gratitude, the Justice League recognizes the people and organizations whose reparations payments and administration gifts sustain this work."
+      mode="evidence"
+      marker="By year"
+    />
+
+    <section class:list={["donor-source-status", `donor-source-status--${donorData.state}`]} aria-labelledby="donor-source-heading">
+      <div>
+        <p class="section-kicker">Little Green Light source</p>
+        <h2 id="donor-source-heading">
+          {donorData.state === "live" ? "Current public report loaded." : donorData.state === "fallback" ? "Verified snapshot in use." : "Acknowledgment temporarily unavailable."}
+        </h2>
+      </div>
+      <div>
+        {donorData.message && <p>{donorData.message}</p>}
+        {donorData.observedAt && <p>Source reviewed <time datetime={donorData.observedAt}>{donorData.observedAt}</time>.</p>}
+        {donorData.groups.length > 0 && <p>{totalYearRecords.toLocaleString("en-US")} acknowledgments across {donorData.groups.length} fiscal years.</p>}
+        <p>Only public donor display names and recognition years are retained. Gift amounts, database IDs, groups, and account data are not published.</p>
+      </div>
+    </section>
+
+    {donorData.groups.length > 0 ? (
+      <div class="donor-years" aria-label="Donor acknowledgments by year">
+        {donorData.groups.map((group) => (
+          <section class="donor-year" aria-labelledby={`donor-year-${group.year}`}>
+            <header>
+              <h2 id={`donor-year-${group.year}`}>{group.year}</h2>
+              <p>{group.donors.length.toLocaleString("en-US")} acknowledged {group.donors.length === 1 ? "donor" : "donors"}</p>
+            </header>
+            <ul aria-labelledby={`donor-year-${group.year}`}>
+              {group.donors.map((donor) => <li class="donor-name">{donor}</li>)}
+            </ul>
+          </section>
+        ))}
+      </div>
+    ) : (
+      <section class="evidence-note" aria-labelledby="donor-empty-heading">
+        <p class="section-kicker">No substituted data</p>
+        <h2 id="donor-empty-heading">The acknowledgment cannot be shown right now.</h2>
+        <p>Please return later or contact the organization for help. No donor names have been guessed or reconstructed from another dataset.</p>
+      </section>
+    )}
+
+    <section class="acknowledgment-distinction" aria-labelledby="donor-distinction-heading">
+      <p class="section-kicker">A separate public record</p>
+      <h2 id="donor-distinction-heading">Looking for Repairers of the Breach?</h2>
+      <p>Supporters are a curated roster of community organizations with logos. They are not inferred from this year-based donor report.</p>
+      <a class="text-action" href="/supporters/">View Supporters</a>
+    </section>
+
+    <ActionBand
+      kicker="Continue the work"
+      title="Support reparations in Greater Lansing."
+      text="Review the current payment and administration designations before continuing to the organization-owned donation workflow."
+      primaryLabel="Support Reparations"
+      primaryHref="/support-reparations/"
+      secondaryLabel="Impact and accountability"
+      secondaryHref="/impact/"
+    />
+  </main>
+</BaseLayout>

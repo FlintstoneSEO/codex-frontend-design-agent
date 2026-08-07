@@ -1,0 +1,256 @@
+- generic [active] [ref=f126e1]:
+  - link "Skip to main content" [ref=f126e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=f126e3]:
+    - generic [ref=f126e4]: Non-production prototype
+    - generic [ref=f126e6]:
+      - link "Justice League Greater Lansing · Michigan , home" [ref=f126e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f126e8]: Justice League
+        - generic [ref=f126e9]: Greater Lansing · Michigan
+        - generic [ref=f126e10]: ", home"
+      - text: + +
+      - group [ref=f126e11]:
+        - generic "Menu" [ref=f126e12] [cursor=pointer]
+        - text: + +
+  - main [ref=f126e13]:
+    - region [ref=f126e14]:
+      - generic [ref=f126e15]:
+        - paragraph [ref=f126e16]: Greater Lansing · Michigan
+        - heading "Repairing the Breach in Greater Lansing" [level=1] [ref=f126e17]:
+          - text: Repairing the Breach
+          - generic [ref=f126e18]: in Greater Lansing
+        - paragraph [ref=f126e19]: Faith-rooted relationships, public education, and reparative action focused on racial wealth equity.
+        - generic [ref=f126e20]:
+          - link "Support Reparations" [ref=f126e21] [cursor=pointer]:
+            - /url: /support-reparations/
+          - link "Join the Work" [ref=f126e22] [cursor=pointer]:
+            - /url: /join-the-work/
+        - link "Understand reparations in Greater Lansing" [ref=f126e23] [cursor=pointer]:
+          - /url: /reparations/
+          - text: Understand reparations in Greater Lansing ↗
+      - figure "Documentary community Greater Lansing, Michigan" [ref=f126e24]:
+        - img "Greater Lansing community members gathered near the Michigan State Capitol" [ref=f126e25]
+        - generic [ref=f126e26]:
+          - generic [ref=f126e27]: Documentary community
+          - generic [ref=f126e28]: Greater Lansing, Michigan
+    - region [ref=f126e29]:
+      - generic [ref=f126e30]:
+        - generic [ref=f126e31]:
+          - paragraph [ref=f126e32]: What is happening now
+          - heading "Current priority" [level=2] [ref=f126e33]
+          - paragraph [ref=f126e34]: Public event data is retrieved from Wix during the Astro build. Registration and ticket transactions remain on Wix.
+        - article [ref=f126e35]:
+          - generic [ref=f126e36]:
+            - paragraph [ref=f126e37]: Wix Events · Public upcoming event
+            - heading "Community Roundtable Discussion" [level=3] [ref=f126e38]
+            - paragraph [ref=f126e39]:
+              - time [ref=f126e40]: Aug 13, 2026 · 5:30 PM EDT
+            - paragraph [ref=f126e41]: Lansing Economic Area Partnership
+            - link "View event and RSVP" [ref=f126e42] [cursor=pointer]:
+              - /url: https://www.justiceleagueglm.org/event-details-registration/community-roundtable-discussion
+              - text: View event and RSVP ↗
+    - region [ref=f126e43]:
+      - generic [ref=f126e44]: "01"
+      - generic [ref=f126e45]:
+        - paragraph [ref=f126e46]: Our mission
+        - heading "Repair is both a responsibility and a relationship." [level=2] [ref=f126e47]
+      - generic [ref=f126e48]:
+        - paragraph [ref=f126e49]: The Justice League of Greater Lansing Michigan exists to repair the breach caused by the historical damage of slavery and its aftermath. In the spirit of repentance for the sin of racism, we seek to build relationships and facilitate reparations between houses of worship and collaborative partners to increase wealth equity for African Americans in the Greater Lansing Area.
+        - generic [ref=f126e50]:
+          - link "About the Justice League" [ref=f126e51] [cursor=pointer]:
+            - /url: /about/
+          - link "Reparations in Greater Lansing" [ref=f126e52] [cursor=pointer]:
+            - /url: /reparations/
+          - link "History and timeline" [ref=f126e53] [cursor=pointer]:
+            - /url: /about/history/
+    - region [ref=f126e54]:
+      - generic [ref=f126e55]:
+        - img "Willye Bryan, founder of the Justice League of Greater Lansing Michigan" [ref=f126e56]
+        - paragraph [ref=f126e57]: Willye Bryan · Founder
+      - generic [ref=f126e58]:
+        - paragraph [ref=f126e59]: The work begins with a question
+        - heading "What can people of faith do about the injustice in front of us?" [level=2] [ref=f126e60]
+        - paragraph [ref=f126e61]: Willye Bryan describes the Justice League as growing from 2021 conversations about racial disparities, responsibility, and the need to move from study toward repair in Greater Lansing.
+        - paragraph [ref=f126e62]: Her account connects repentance with practical local relationships—especially between houses of worship and collaborative partners—and with reparative work focused on education, homeownership, and entrepreneurship.
+        - blockquote [ref=f126e63]:
+          - paragraph [ref=f126e64]: “I can stand up, speak out, and apologize to those who continue to be harmed.”
+        - link "Read “The Art of Repair” in City Pulse (opens in a new tab)" [ref=f126e65] [cursor=pointer]:
+          - /url: https://www.lansingcitypulse.com/stories/the-art-of-repair,125610
+          - text: Read “The Art of Repair” in City Pulse
+          - generic [ref=f126e66]: (opens in a new tab)
+    - region "Apology video, upcoming events, and latest news" [ref=f126e67]:
+      - region [ref=f126e68]:
+        - generic [ref=f126e69]:
+          - paragraph [ref=f126e70]: A public act of acknowledgment
+          - heading "Justice League of Greater Lansing Apology" [level=3] [ref=f126e71]
+          - paragraph [ref=f126e72]: The player loads only after activation, reducing initial data use and preventing an unnecessary third-party connection.
+        - button "Play apology video" [ref=f126e74] [cursor=pointer]:
+          - generic [ref=f126e75]: ▶
+        - paragraph [ref=f126e77]:
+          - link "Watch on YouTube (opens in a new tab)" [ref=f126e78] [cursor=pointer]:
+            - /url: https://youtu.be/A6rXWBNGYeQ
+            - text: Watch on YouTube
+            - generic [ref=f126e79]: (opens in a new tab)
+          - generic [ref=f126e80]: ·
+          - generic [ref=f126e81]: "[NEEDS CLIENT INPUT: Provide an approved transcript or captions review.]"
+      - complementary "Current community record" [ref=f126e82]:
+        - region [ref=f126e83]:
+          - paragraph [ref=f126e84]: Upcoming events
+          - heading "Meet the work in public." [level=3] [ref=f126e85]
+          - list [ref=f126e86]:
+            - listitem [ref=f126e87]:
+              - paragraph [ref=f126e88]:
+                - time [ref=f126e89]: Aug 18, 2026
+              - heading "Public Relations Meeting" [level=4] [ref=f126e90]
+              - paragraph [ref=f126e91]: 4:00 PM EDT · Zoom Conference Call
+              - link "View event and RSVP" [ref=f126e92] [cursor=pointer]:
+                - /url: https://www.justiceleagueglm.org/event-details-registration/public-relations-meeting-2026-08-18-16-00
+                - text: View event and RSVP ↗
+            - listitem [ref=f126e93]:
+              - paragraph [ref=f126e94]:
+                - time [ref=f126e95]: Sep 15, 2026
+              - heading "Public Relations Meeting" [level=4] [ref=f126e96]
+              - paragraph [ref=f126e97]: 4:00 PM EDT · Zoom Conference Call
+              - link "View event and RSVP" [ref=f126e98] [cursor=pointer]:
+                - /url: https://www.justiceleagueglm.org/event-details-registration/public-relations-meeting-2026-09-15-16-00
+                - text: View event and RSVP ↗
+          - link "View all events on Wix (opens in a new tab)" [ref=f126e99] [cursor=pointer]:
+            - /url: https://www.justiceleagueglm.org/upcomingevents
+            - text: View all events on Wix
+            - generic [ref=f126e100]: (opens in a new tab)
+        - region [ref=f126e101]:
+          - paragraph [ref=f126e102]: Latest news
+          - heading "A curated external briefing." [level=3] [ref=f126e103]
+          - paragraph [ref=f126e104]: The publication is maintained on eLink. Its third-party feed loads only when requested.
+          - button "Load latest news" [ref=f126e105]
+          - status [ref=f126e106]
+          - link "Open the full news briefing (opens in a new tab)" [ref=f126e107] [cursor=pointer]:
+            - /url: https://elink.io/p/9da922f
+            - text: Open the full news briefing
+            - generic [ref=f126e108]: (opens in a new tab)
+    - region [ref=f126e109]:
+      - generic [ref=f126e110]:
+        - paragraph [ref=f126e111]: How the work connects
+        - heading "From understanding to local action." [level=2] [ref=f126e112]
+        - paragraph [ref=f126e113]: Education establishes context. Relationships create accountability. Reparative pathways move the work into Greater Lansing institutions and community life.
+      - list [ref=f126e114]:
+        - listitem [ref=f126e115]:
+          - generic [ref=f126e116]: "01"
+          - generic [ref=f126e117]:
+            - heading "Learn the local context" [level=3] [ref=f126e118]
+            - paragraph [ref=f126e119]: Explore reparations education, historical context, and the organization’s faith-rooted approach.
+          - link "Explore reparations education and local context" [ref=f126e120] [cursor=pointer]:
+            - /url: /reparations/
+            - text: Explore ↗
+        - listitem [ref=f126e121]:
+          - generic [ref=f126e122]: "02"
+          - generic [ref=f126e123]:
+            - heading "Follow scholarship activity" [level=3] [ref=f126e124]
+            - paragraph [ref=f126e125]: Review cycle status, eligibility, application information, and approved scholarship evidence.
+          - link "Explore the reparations scholarship" [ref=f126e126] [cursor=pointer]:
+            - /url: /scholarship/
+            - text: Explore ↗
+        - listitem [ref=f126e127]:
+          - generic [ref=f126e128]: "03"
+          - generic [ref=f126e129]:
+            - heading "Participate or support" [level=3] [ref=f126e130]
+            - paragraph [ref=f126e131]: Choose a distinct path for financial support, attendance, partnership, or participation.
+          - link "Explore ways to join the work" [ref=f126e132] [cursor=pointer]:
+            - /url: /join-the-work/
+            - text: Join the work ↗
+    - region [ref=f126e133]:
+      - generic [ref=f126e134]:
+        - paragraph [ref=f126e135]: Participation pathways
+        - heading "Join at the level that fits." [level=2] [ref=f126e136]
+        - paragraph [ref=f126e137]: Attend a public event, request a presentation, offer time or skills, begin a partnership conversation, or receive updates.
+        - link "Join the Work" [ref=f126e138] [cursor=pointer]:
+          - /url: /join-the-work/
+      - list [ref=f126e139]:
+        - listitem [ref=f126e140]:
+          - generic [ref=f126e141]: "01"
+          - strong [ref=f126e142]: Learn or attend
+          - generic [ref=f126e143]: Education, presentations, and public events
+        - listitem [ref=f126e144]:
+          - generic [ref=f126e145]: "02"
+          - strong [ref=f126e146]: Contribute time
+          - generic [ref=f126e147]: Volunteer and committee interest
+        - listitem [ref=f126e148]:
+          - generic [ref=f126e149]: "03"
+          - strong [ref=f126e150]: Partner or connect
+          - generic [ref=f126e151]: Houses of worship and community partners
+    - region [ref=f126e152]:
+      - generic [ref=f126e153]:
+        - paragraph [ref=f126e154]: Stay connected
+        - heading "Updates without the noise." [level=2] [ref=f126e155]
+        - paragraph [ref=f126e156]: Review the accessible signup pattern. This prototype does not transmit or store an email address.
+      - generic [ref=f126e157]:
+        - generic [ref=f126e158]:
+          - generic [ref=f126e159]: Email address
+          - textbox "Email address" [ref=f126e160]
+          - paragraph [ref=f126e161]: "Prototype shell: no data will be sent."
+        - button "Test signup state" [ref=f126e162]
+        - status [ref=f126e163]
+    - region [ref=f126e164]:
+      - generic [ref=f126e165]:
+        - paragraph [ref=f126e166]: Governance and transparency
+        - heading "Trust belongs in the main story." [level=2] [ref=f126e167]
+      - paragraph [ref=f126e168]: Leadership, governance, and impact records remain review-dated so public information can be corrected when Wix source records change.
+      - navigation "Governance and transparency routes" [ref=f126e169]:
+        - link "Leadership & Governance" [ref=f126e170] [cursor=pointer]:
+          - /url: /about/leadership/
+          - text: Leadership & Governance ↗
+        - link "Impact & Accountability" [ref=f126e171] [cursor=pointer]:
+          - /url: /impact/
+          - text: Impact & Accountability ↗
+        - link "Contact" [ref=f126e172] [cursor=pointer]:
+          - /url: /contact/
+          - text: Contact ↗
+  - contentinfo [ref=f126e173]:
+    - generic [ref=f126e174]:
+      - paragraph [ref=f126e175]: Greater Lansing, Michigan
+      - paragraph [ref=f126e176]: Justice League of Greater Lansing Michigan
+      - generic [ref=f126e177]:
+        - text: P.O. Box 12105Lansing, Michigan 48901
+        - link "info@justiceleagueglm.org" [ref=f126e178] [cursor=pointer]:
+          - /url: mailto:info@justiceleagueglm.org
+    - generic [ref=f126e179]:
+      - navigation "Footer explore" [ref=f126e180]:
+        - heading "Explore" [level=2] [ref=f126e181]
+        - link "About" [ref=f126e182] [cursor=pointer]:
+          - /url: /about/
+        - link "Reparations" [ref=f126e183] [cursor=pointer]:
+          - /url: /reparations/
+        - link "Scholarship" [ref=f126e184] [cursor=pointer]:
+          - /url: /scholarship/
+        - link "Events" [ref=f126e185] [cursor=pointer]:
+          - /url: /events/
+        - link "News & Stories" [ref=f126e186] [cursor=pointer]:
+          - /url: /news/
+      - navigation "Footer actions" [ref=f126e187]:
+        - heading "Take action" [level=2] [ref=f126e188]
+        - link "Support Reparations" [ref=f126e189] [cursor=pointer]:
+          - /url: /support-reparations/
+        - link "Join the Work" [ref=f126e190] [cursor=pointer]:
+          - /url: /join-the-work/
+        - link "Subscribe" [ref=f126e191] [cursor=pointer]:
+          - /url: /#newsletter
+        - link "Contact" [ref=f126e192] [cursor=pointer]:
+          - /url: /contact/
+      - navigation "Footer trust links" [ref=f126e193]:
+        - heading "Trust" [level=2] [ref=f126e194]
+        - link "Leadership & Governance" [ref=f126e195] [cursor=pointer]:
+          - /url: /about/leadership/
+        - link "Impact & Accountability" [ref=f126e196] [cursor=pointer]:
+          - /url: /impact/
+        - link "Registered 501(c)(3) nonprofit" [ref=f126e197] [cursor=pointer]:
+          - /url: https://www.justiceleagueglm.org/_files/ugd/de1bf2_c3e811879e044a5281fc7ace9b1f0be0.pdf
+        - link "IRS Form 1023" [ref=f126e198] [cursor=pointer]:
+          - /url: https://www.justiceleagueglm.org/_files/ugd/de1bf2_0bba4b2bc8c5423a86419ee6d1eca16f.pdf
+        - link "Current donor acknowledgments" [ref=f126e199] [cursor=pointer]:
+          - /url: https://www.justiceleagueglm.org/donors
+        - link "Privacy shell" [ref=f126e200] [cursor=pointer]:
+          - /url: /privacy/
+    - generic [ref=f126e201]:
+      - generic [ref=f126e202]: © 2026 Justice League of Greater Lansing Michigan
+      - generic [ref=f126e203]: Prototype · Astro + Wix Headless foundation

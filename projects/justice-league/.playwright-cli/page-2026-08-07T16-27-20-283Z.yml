@@ -1,0 +1,347 @@
+- generic [active] [ref=f81e1]:
+  - link "Skip to main content" [ref=f81e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=f81e3]:
+    - generic [ref=f81e4]: Non-production prototype
+    - generic [ref=f81e6]:
+      - link "Justice League Greater Lansing · Michigan , home" [ref=f81e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f81e8]: Justice League
+        - generic [ref=f81e9]: Greater Lansing · Michigan
+        - generic [ref=f81e10]: ", home"
+      - text: + +
+      - group [ref=f81e11]:
+        - generic "Menu" [ref=f81e12] [cursor=pointer]
+        - text: + +
+  - main [ref=f81e13]:
+    - navigation "Breadcrumb" [ref=f81e14]:
+      - list [ref=f81e15]:
+        - listitem [ref=f81e16]:
+          - link "Home" [ref=f81e17] [cursor=pointer]:
+            - /url: /
+          - text: /
+        - listitem [ref=f81e18]:
+          - link "About" [ref=f81e19] [cursor=pointer]:
+            - /url: /about/
+          - text: /
+        - listitem [ref=f81e20]: History
+    - generic [ref=f81e21]:
+      - generic [ref=f81e22]:
+        - paragraph [ref=f81e23]: Greater Lansing public record
+        - heading "History and Timeline" [level=1] [ref=f81e24]
+        - paragraph [ref=f81e25]: From a faith-rooted call to repair toward scholarships, homeownership, public education, and regional collaboration.
+      - generic [ref=f81e26]:
+        - generic [ref=f81e27]: evidence
+        - strong [ref=f81e28]: 2021—2026
+        - generic [ref=f81e29]: Prototype record / 2026
+    - complementary "Content review status" [ref=f81e30]:
+      - strong [ref=f81e31]: Approved current-site record
+      - paragraph [ref=f81e32]:
+        - text: Content and selected photographs were observed on the current Wix site and approved for prototype reuse on August 7, 2026.
+        - link "Review the full current timeline (opens in a new tab)" [ref=f81e33] [cursor=pointer]:
+          - /url: https://www.justiceleagueglm.org/timeline
+          - text: Review the full current timeline
+          - generic [ref=f81e34]: (opens in a new tab)
+        - text: .
+    - region [ref=f81e35]:
+      - generic [ref=f81e36]:
+        - paragraph [ref=f81e37]: Why this history matters
+        - heading "Repair responds to structural harm." [level=2] [ref=f81e38]
+      - generic [ref=f81e39]:
+        - paragraph [ref=f81e40]: The current history page connects the racial wealth divide to slavery and its aftermath, including sharecropping, Jim Crow, redlining, unequal access to public benefits, and continuing structural racism.
+        - paragraph [ref=f81e41]: It argues that structural problems require structural responses and calls faith communities to take a practical first step in acknowledgment, redress, relationship, and repair.
+        - list "The organization’s three reparations pillars" [ref=f81e42]:
+          - listitem [ref=f81e43]:
+            - generic [ref=f81e44]: "01"
+            - strong [ref=f81e45]: Educational scholarships
+          - listitem [ref=f81e46]:
+            - generic [ref=f81e47]: "02"
+            - strong [ref=f81e48]: Homeownership
+          - listitem [ref=f81e49]:
+            - generic [ref=f81e50]: "03"
+            - strong [ref=f81e51]: Business entrepreneurship
+        - paragraph [ref=f81e52]:
+          - link "Read the current Wix history context (opens in a new tab)" [ref=f81e53] [cursor=pointer]:
+            - /url: https://www.justiceleagueglm.org/history
+            - text: Read the current Wix history context
+            - generic [ref=f81e54]: (opens in a new tab)
+          - text: .
+    - region [ref=f81e55]:
+      - generic [ref=f81e56]:
+        - paragraph [ref=f81e57]: Curated chronology
+        - heading "From formation to visible local repair." [level=2] [ref=f81e58]
+      - list [ref=f81e59]:
+        - listitem [ref=f81e60]:
+          - generic [ref=f81e61]:
+            - time [ref=f81e62]: "2021"
+            - generic [ref=f81e63]: Current-site record
+          - article [ref=f81e64]:
+            - heading "A faith-rooted reparations model begins" [level=3] [ref=f81e65]
+            - generic [ref=f81e66]:
+              - paragraph [ref=f81e67]: The current timeline identifies Willye Bryan as the founder of the Justice League of Greater Lansing Michigan and places the organization’s founding in 2021.
+              - paragraph [ref=f81e68]: It describes an African American Advisory Council overseeing a three-pillar framework focused on educational scholarships, homeownership, and business entrepreneurship.
+            - figure "Willye Bryan, founder of the Justice League of Greater Lansing Michigan. Image reused from the approved current Wix timeline." [ref=f81e69]:
+              - img "Portrait of Justice League founder Willye Bryan" [ref=f81e70]
+            - paragraph [ref=f81e72]:
+              - link "View this milestone in the full current timeline (opens in a new tab)" [ref=f81e73] [cursor=pointer]:
+                - /url: https://www.justiceleagueglm.org/timeline
+                - text: View this milestone in the full current timeline
+                - generic [ref=f81e74]: (opens in a new tab)
+        - listitem [ref=f81e75]:
+          - generic [ref=f81e76]:
+            - time [ref=f81e77]: October 2022
+            - generic [ref=f81e78]: Current-site record
+          - article [ref=f81e79]:
+            - heading "The first formal public presentation" [level=3] [ref=f81e80]
+            - generic [ref=f81e81]:
+              - paragraph [ref=f81e82]: "The organization hosted Rev. Jimmie R. Hawkins for public discussions of Unbroken and Unbowed: The History of Black Protest in America."
+              - paragraph [ref=f81e83]: Events at Socialight Society and the Downtown Capital Area District Library introduced the reparations framework to a broader Greater Lansing audience.
+            - figure "The October 2022 public presentation connected local reparations work with the history of Black protest and public witness. Image reused from the approved current Wix timeline." [ref=f81e84]:
+              - img "Public presentation at Socialight Society in Lansing" [ref=f81e85]
+            - paragraph [ref=f81e87]:
+              - link "View this milestone in the full current timeline (opens in a new tab)" [ref=f81e88] [cursor=pointer]:
+                - /url: https://www.justiceleagueglm.org/timeline
+                - text: View this milestone in the full current timeline
+                - generic [ref=f81e89]: (opens in a new tab)
+        - listitem [ref=f81e90]:
+          - generic [ref=f81e91]:
+            - time [ref=f81e92]: January 2023
+            - generic [ref=f81e93]: Current-site record
+          - article [ref=f81e94]:
+            - heading "A public apology at Lansing Reachout Christian Center" [level=3] [ref=f81e95]
+            - generic [ref=f81e96]:
+              - paragraph [ref=f81e97]: The Justice League coordinated an apology and reparations gathering at Lansing Reachout Christian Center on Lansing’s south side.
+              - paragraph [ref=f81e98]: The current account describes the event as joining a liturgy of repentance with a public call for structural action.
+            - figure "The Lansing Reachout gathering made acknowledgment and repair visible in a community setting. Image reused from the approved current Wix timeline." [ref=f81e99]:
+              - img "Participants at the January 2023 apology event at Lansing Reachout Christian Center" [ref=f81e100]
+            - paragraph [ref=f81e102]:
+              - link "View this milestone in the full current timeline (opens in a new tab)" [ref=f81e103] [cursor=pointer]:
+                - /url: https://www.justiceleagueglm.org/timeline
+                - text: View this milestone in the full current timeline
+                - generic [ref=f81e104]: (opens in a new tab)
+        - listitem [ref=f81e105]:
+          - generic [ref=f81e106]:
+            - time [ref=f81e107]: June 2023
+            - generic [ref=f81e108]: Current-site record
+          - article [ref=f81e109]:
+            - heading "The apology moves to the Capitol lawn" [level=3] [ref=f81e110]
+            - generic [ref=f81e111]:
+              - paragraph [ref=f81e112]: On June 19–20, faith leaders and community members gathered at the Michigan State Capitol during Juneteenth to deliver a formal apology for slavery based on a Presbyterian Church (USA) litany of repentance.
+              - paragraph [ref=f81e113]: The current timeline records participation from faith communities across the Lansing region and remarks from State Senator Sarah Anthony.
+            - figure "The Juneteenth gathering brought the apology into a public civic setting. Image reused from the approved current Wix timeline." [ref=f81e114]:
+              - img "State Senator Sarah Anthony speaking at the 2023 Capitol apology gathering" [ref=f81e115]
+            - paragraph [ref=f81e117]:
+              - link "View this milestone in the full current timeline (opens in a new tab)" [ref=f81e118] [cursor=pointer]:
+                - /url: https://www.justiceleagueglm.org/timeline
+                - text: View this milestone in the full current timeline
+                - generic [ref=f81e119]: (opens in a new tab)
+        - listitem [ref=f81e120]:
+          - generic [ref=f81e121]:
+            - time [ref=f81e122]: April–August 2023
+            - generic [ref=f81e123]: Current-site record
+          - article [ref=f81e124]:
+            - heading "Congregations make early reparations commitments" [level=3] [ref=f81e125]
+            - generic [ref=f81e126]:
+              - paragraph [ref=f81e127]: The current timeline records a $20,000 commitment from First Presbyterian Church of Holt and a $7,000 payment from Red Cedar Friends Meeting.
+              - paragraph [ref=f81e128]: It later records a total reparations payment of $173,260 connected with Edgewood United Church and a $130,470.62 contribution from All Saints Episcopal Church. These are dated historical commitments, not current fund balances.
+            - paragraph [ref=f81e129]:
+              - link "View this milestone in the full current timeline (opens in a new tab)" [ref=f81e130] [cursor=pointer]:
+                - /url: https://www.justiceleagueglm.org/timeline
+                - text: View this milestone in the full current timeline
+                - generic [ref=f81e131]: (opens in a new tab)
+        - listitem [ref=f81e132]:
+          - generic [ref=f81e133]:
+            - time [ref=f81e134]: January–April 2024
+            - generic [ref=f81e135]: Current-site record
+          - article [ref=f81e136]:
+            - heading "Public education reaches local and national audiences" [level=3] [ref=f81e137]
+            - generic [ref=f81e138]:
+              - paragraph [ref=f81e139]: The Justice League joined a screening and panel for The Cost of Inheritance, followed by the first How Did We Get Here? community dialogue at the East Lansing Public Library.
+              - paragraph [ref=f81e140]: In April, NPR reported on the Greater Lansing faith-based reparations effort, extending attention beyond the region.
+            - paragraph [ref=f81e141]:
+              - link "View this milestone in the full current timeline (opens in a new tab)" [ref=f81e142] [cursor=pointer]:
+                - /url: https://www.justiceleagueglm.org/timeline
+                - text: View this milestone in the full current timeline
+                - generic [ref=f81e143]: (opens in a new tab)
+        - listitem [ref=f81e144]:
+          - generic [ref=f81e145]:
+            - time [ref=f81e146]: August 2024
+            - generic [ref=f81e147]: Current-site record
+          - article [ref=f81e148]:
+            - heading "The first reparations scholarships are awarded" [level=3] [ref=f81e149]
+            - generic [ref=f81e150]:
+              - paragraph [ref=f81e151]: The current timeline reports that ten African American graduates received $5,000 each in the first reparations scholarship cohort.
+              - paragraph [ref=f81e152]: Students were selected through essays about the racial wealth gap, interviews, and verified enrollment. The recognition gathering brought together students, families, clergy, and Justice League leadership.
+            - figure "The inaugural scholarship cohort marked the first reported distribution through the education pillar. Image reused from the approved current Wix timeline." [ref=f81e153]:
+              - img "The 2024 Justice League reparations scholarship recognition gathering" [ref=f81e154]
+            - paragraph [ref=f81e156]:
+              - link "View this milestone in the full current timeline (opens in a new tab)" [ref=f81e157] [cursor=pointer]:
+                - /url: https://www.justiceleagueglm.org/timeline
+                - text: View this milestone in the full current timeline
+                - generic [ref=f81e158]: (opens in a new tab)
+        - listitem [ref=f81e159]:
+          - generic [ref=f81e160]:
+            - time [ref=f81e161]: April 2025
+            - generic [ref=f81e162]: Current-site record
+          - article [ref=f81e163]:
+            - heading "Reparations support a first home build" [level=3] [ref=f81e164]
+            - generic [ref=f81e165]:
+              - paragraph [ref=f81e166]: In partnership with the Eastside Community Action Center, the Justice League supported construction of a home for a senior African American first-time homebuyer on McCullough Street.
+              - paragraph [ref=f81e167]: The current timeline reports that nearly $70,000 in reparations funds supported construction while the partner organization provided homeowner preparation and transition support.
+            - figure "The McCullough Street project moved the homeownership pillar into a tangible local asset. Image reused from the approved current Wix timeline." [ref=f81e168]:
+              - img "Reparations-supported home construction on McCullough Street in Lansing" [ref=f81e169]
+            - paragraph [ref=f81e171]:
+              - link "View this milestone in the full current timeline (opens in a new tab)" [ref=f81e172] [cursor=pointer]:
+                - /url: https://www.justiceleagueglm.org/timeline
+                - text: View this milestone in the full current timeline
+                - generic [ref=f81e173]: (opens in a new tab)
+        - listitem [ref=f81e174]:
+          - generic [ref=f81e175]:
+            - time [ref=f81e176]: July 2025
+            - generic [ref=f81e177]: Current-site record
+          - article [ref=f81e178]:
+            - heading "The model is adopted in Kalamazoo" [level=3] [ref=f81e179]
+            - generic [ref=f81e180]:
+              - paragraph [ref=f81e181]: The Justice League of Greater Kalamazoo formally launched after preparatory meetings with Greater Lansing leadership.
+              - paragraph [ref=f81e182]: The current site describes this as the first regional adoption of the faith-based structure, African American Advisory Council governance, and three reparations pillars.
+            - figure "Kalamazoo became the first regional organization reported to adopt the Lansing model. Image reused from the approved current Wix timeline." [ref=f81e183]:
+              - img "Justice League of Greater Kalamazoo launch gathering" [ref=f81e184]
+            - paragraph [ref=f81e186]:
+              - link "View this milestone in the full current timeline (opens in a new tab)" [ref=f81e187] [cursor=pointer]:
+                - /url: https://www.justiceleagueglm.org/timeline
+                - text: View this milestone in the full current timeline
+                - generic [ref=f81e188]: (opens in a new tab)
+        - listitem [ref=f81e189]:
+          - generic [ref=f81e190]:
+            - time [ref=f81e191]: August 2025
+            - generic [ref=f81e192]: Current-site record
+          - article [ref=f81e193]:
+            - heading "A second scholarship cohort continues the education pillar" [level=3] [ref=f81e194]
+            - generic [ref=f81e195]:
+              - paragraph [ref=f81e196]: The current timeline reports that a second cohort of ten African American students received $2,500 scholarships, for a total of $25,000.
+              - paragraph [ref=f81e197]: The same essay, interview, and enrollment-verification approach continued for the second year.
+            - figure "The second scholarship cohort continued the organization’s reported education pathway. Image reused from the approved current Wix timeline." [ref=f81e198]:
+              - img "The 2025 reparations scholarship cohort with Justice League leaders" [ref=f81e199]
+            - paragraph [ref=f81e201]:
+              - link "View this milestone in the full current timeline (opens in a new tab)" [ref=f81e202] [cursor=pointer]:
+                - /url: https://www.justiceleagueglm.org/timeline
+                - text: View this milestone in the full current timeline
+                - generic [ref=f81e203]: (opens in a new tab)
+        - listitem [ref=f81e204]:
+          - generic [ref=f81e205]:
+            - time [ref=f81e206]: September 2025
+            - generic [ref=f81e207]: Current-site record
+          - article [ref=f81e208]:
+            - heading "A second home build advances the housing pillar" [level=3] [ref=f81e209]
+            - generic [ref=f81e210]:
+              - paragraph [ref=f81e211]: The current timeline records a second reparations-supported home underway on McCullough Street next to the first project.
+              - paragraph [ref=f81e212]: The entry describes the same partnership model with the Eastside Community Action Center and approximately $70,000 in Justice League reparations funding for construction.
+            - paragraph [ref=f81e213]:
+              - link "View this milestone in the full current timeline (opens in a new tab)" [ref=f81e214] [cursor=pointer]:
+                - /url: https://www.justiceleagueglm.org/timeline
+                - text: View this milestone in the full current timeline
+                - generic [ref=f81e215]: (opens in a new tab)
+        - listitem [ref=f81e216]:
+          - generic [ref=f81e217]:
+            - time [ref=f81e218]: November 2025
+            - generic [ref=f81e219]: Current-site record
+          - article [ref=f81e220]:
+            - heading "Four years of work are reviewed in public" [level=3] [ref=f81e221]
+            - generic [ref=f81e222]:
+              - paragraph [ref=f81e223]: The fourth anniversary Fall Celebration at MSU Federal Credit Union reviewed fund development, scholarship awards, housing investments, coalition growth, and the next phase of the three pillars.
+              - paragraph [ref=f81e224]: The current timeline also records a $100,000 multi-year pledge from University United Methodist Church through congregational giving and endowment funds.
+            - figure "The fourth anniversary program assembled the organization’s reported progress across education, housing, and coalition building. Image reused from the approved current Wix timeline." [ref=f81e225]:
+              - img "Justice League fourth anniversary Fall Celebration at MSU Federal Credit Union" [ref=f81e226]
+            - paragraph [ref=f81e228]:
+              - link "View this milestone in the full current timeline (opens in a new tab)" [ref=f81e229] [cursor=pointer]:
+                - /url: https://www.justiceleagueglm.org/timeline
+                - text: View this milestone in the full current timeline
+                - generic [ref=f81e230]: (opens in a new tab)
+        - listitem [ref=f81e231]:
+          - generic [ref=f81e232]:
+            - time [ref=f81e233]: February 2026
+            - generic [ref=f81e234]: Current-site record
+          - article [ref=f81e235]:
+            - heading "Public education and community support continue" [level=3] [ref=f81e236]
+            - generic [ref=f81e237]:
+              - paragraph [ref=f81e238]: How Did We Get Here? Part II continued the public panel series at the Delta Township District Library and expanded the conversation among church partners.
+              - paragraph [ref=f81e239]: The current timeline also identifies the Justice League as a new Stables Communities Foundation grant recipient supported by LAFCU.
+            - figure "Part II continued the Justice League’s public education series in February 2026. Image reused from the approved current Wix timeline." [ref=f81e240]:
+              - img "How Did We Get Here? Part II event graphic" [ref=f81e241]
+            - paragraph [ref=f81e243]:
+              - link "View this milestone in the full current timeline (opens in a new tab)" [ref=f81e244] [cursor=pointer]:
+                - /url: https://www.justiceleagueglm.org/timeline
+                - text: View this milestone in the full current timeline
+                - generic [ref=f81e245]: (opens in a new tab)
+    - region [ref=f81e246]:
+      - paragraph [ref=f81e247]: Publication standard
+      - heading "Keep the record accountable." [level=2] [ref=f81e248]
+      - list [ref=f81e249]:
+        - listitem [ref=f81e250]: New milestones need a date, approved narrative, and public source.
+        - listitem [ref=f81e251]: Photographs need confirmed reuse permission, useful alt text, and a caption.
+        - listitem [ref=f81e252]: Financial or program claims need an owner and a scheduled review date.
+        - listitem [ref=f81e253]: Corrections should identify what changed and when.
+      - paragraph [ref=f81e254]: "[NEEDS CLIENT INPUT: Confirm who owns ongoing history corrections and milestone approval after launch.]"
+    - region "Understand the method, then choose a role." [ref=f81e255]:
+      - generic [ref=f81e256]:
+        - paragraph [ref=f81e257]: Continue the record
+        - heading "Understand the method, then choose a role." [level=2] [ref=f81e258]
+        - paragraph [ref=f81e259]: Explore how the Justice League frames reparations in Greater Lansing or find a participation path that fits.
+      - generic [ref=f81e260]:
+        - link "Explore reparations" [ref=f81e261] [cursor=pointer]:
+          - /url: /reparations/
+        - link "Join the work" [ref=f81e262] [cursor=pointer]:
+          - /url: /join-the-work/
+  - contentinfo [ref=f81e263]:
+    - generic [ref=f81e264]:
+      - paragraph [ref=f81e265]: Greater Lansing, Michigan
+      - paragraph [ref=f81e266]: Justice League of Greater Lansing Michigan
+      - generic [ref=f81e267]:
+        - text: P.O. Box 12105Lansing, Michigan 48901
+        - link "info@justiceleagueglm.org" [ref=f81e268] [cursor=pointer]:
+          - /url: mailto:info@justiceleagueglm.org
+    - generic [ref=f81e269]:
+      - navigation "Footer explore" [ref=f81e270]:
+        - heading "Explore" [level=2] [ref=f81e271]
+        - link "About" [ref=f81e272] [cursor=pointer]:
+          - /url: /about/
+        - link "Reparations" [ref=f81e273] [cursor=pointer]:
+          - /url: /reparations/
+        - link "Scholarship" [ref=f81e274] [cursor=pointer]:
+          - /url: /scholarship/
+        - link "Events" [ref=f81e275] [cursor=pointer]:
+          - /url: /events/
+        - link "News & Stories" [ref=f81e276] [cursor=pointer]:
+          - /url: /news/
+      - navigation "Footer actions" [ref=f81e277]:
+        - heading "Take action" [level=2] [ref=f81e278]
+        - link "Support Reparations" [ref=f81e279] [cursor=pointer]:
+          - /url: /support-reparations/
+        - link "Join the Work" [ref=f81e280] [cursor=pointer]:
+          - /url: /join-the-work/
+        - link "Subscribe" [ref=f81e281] [cursor=pointer]:
+          - /url: /#newsletter
+        - link "Contact" [ref=f81e282] [cursor=pointer]:
+          - /url: /contact/
+      - navigation "Footer trust links" [ref=f81e283]:
+        - heading "Trust" [level=2] [ref=f81e284]
+        - link "Leadership & Governance" [ref=f81e285] [cursor=pointer]:
+          - /url: /about/leadership/
+        - link "Impact & Accountability" [ref=f81e286] [cursor=pointer]:
+          - /url: /impact/
+        - link "Registered 501(c)(3) nonprofit" [ref=f81e287] [cursor=pointer]:
+          - /url: https://www.justiceleagueglm.org/_files/ugd/de1bf2_c3e811879e044a5281fc7ace9b1f0be0.pdf
+        - link "IRS Form 1023" [ref=f81e288] [cursor=pointer]:
+          - /url: https://www.justiceleagueglm.org/_files/ugd/de1bf2_0bba4b2bc8c5423a86419ee6d1eca16f.pdf
+        - link "Current donor acknowledgments" [ref=f81e289] [cursor=pointer]:
+          - /url: https://www.justiceleagueglm.org/donors
+        - link "Privacy shell" [ref=f81e290] [cursor=pointer]:
+          - /url: /privacy/
+    - generic [ref=f81e291]:
+      - generic [ref=f81e292]: © 2026 Justice League of Greater Lansing Michigan
+      - generic [ref=f81e293]: Prototype · Astro + Wix Headless foundation
+  - generic [ref=f81e296]:
+    - button [ref=f81e297]
+    - button [ref=f81e303]
+    - button [ref=f81e307]
+    - button [ref=f81e312]
