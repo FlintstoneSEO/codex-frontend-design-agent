@@ -2,19 +2,190 @@
 import ActionBand from "@/components/ActionBand.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import PageIntro from "@/components/PageIntro.astro";
-import SourceNotice from "@/components/SourceNotice.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getCurrentScholarshipCycle } from "@/lib/wix";
+
+const scholarshipResult = await getCurrentScholarshipCycle();
+const cycle = scholarshipResult.state === "success" || scholarshipResult.state === "stale"
+  ? scholarshipResult.cycle
+  : undefined;
+
+const statusLabels = {
+  active: "Applications are open",
+  closed: "Applications are closed",
+  upcoming: "Applications have not opened",
+  paused: "Applications are paused"
+} as const;
+
+function formatDate(value?: string) {
+  if (!value) return undefined;
+  return new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC"
+  }).format(new Date(`${value}T12:00:00Z`));
+}
+
+function formatAward(amount?: number, currency = "USD") {
+  if (typeof amount !== "number") return undefined;
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency,
+    maximumFractionDigits: 0
+  }).format(amount);
+}
+
+const contactHref = cycle?.contactEmail ? `mailto:${cycle.contactEmail}` : "/contact/";
+const contactLabel = cycle?.contactEmail ? `Email ${cycle.contactEmail}` : "Contact the organization";
+const unavailableMessage = "message" in scholarshipResult
+  ? scholarshipResult.message
+  : "Scholarship information is unavailable.";
 ---
 
-<BaseLayout pageType="WebPage" title="Reparations Scholarship | Justice League GLM" description="Review provisionally recorded eligibility, award information, historical recipient counts, and current-cycle status for the Reparations Scholarship.">
+<BaseLayout
+  pageType="WebPage"
+  title="Reparations Scholarship | Justice League GLM"
+  description="Check the current Justice League GLM Reparations Scholarship status, award structure, eligibility, dates, required materials, and contact information."
+>
   <main id="main-content" class="interior-page">
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Scholarship" }]} />
-    <PageIntro kicker="Program status" title="Reparations Scholarship" lede="Applicants need a current answer first. The 2026 application status is not yet confirmed for this prototype." mode="campaign" marker="Status first" />
-    <section class="status-banner status-banner--warning" aria-labelledby="cycle-status"><p class="section-kicker">2026 cycle</p><h2 id="cycle-status">Application status not confirmed</h2><p>Do not use this prototype to determine whether applications are open or closed.</p><a class="button button-secondary" href="/contact/">Use the contact prototype</a></section>
-    <SourceNotice />
-    <section class="fact-ledger" aria-labelledby="scholarship-snapshot"><div><p class="section-kicker">Current-site snapshot</p><h2 id="scholarship-snapshot">What the public page described.</h2><p>Every fact below is provisional and was observed August 6, 2026.</p></div><dl><div><dt>Award structure</dt><dd>Ten qualifying recipients with $2,500 each</dd></div><div><dt>Applicant types</dt><dd>Graduating seniors, previous graduates or GED recipients, and vocational-school students</dd></div><div><dt>Geography</dt><dd>Residents of Ingham, Clinton, or Eaton County</dd></div></dl></section>
-    <section class="process-section" aria-labelledby="application-path"><div class="section-heading-row"><p class="section-kicker">Application path</p><h2 id="application-path">A complete workflow needs more than an Apply button.</h2></div><ol class="process-list"><li><span>01</span><div><h3>Confirm the cycle</h3><p>[NEEDS CLIENT INPUT: Opening and closing dates, time zone, award terms, and content owner.]</p></div></li><li><span>02</span><div><h3>Publish the requirements</h3><p>[NEEDS CLIENT INPUT: Eligibility, required materials, uploads, selection process, and accommodations.]</p></div></li><li><span>03</span><div><h3>Protect applicant data</h3><p>[NEEDS CLIENT INPUT: Wix form, consent, retention, privacy, confirmation, and support contact.]</p></div></li></ol></section>
-    <section class="record-strip" aria-labelledby="historical-record"><div><p class="section-kicker">Historical snapshot</p><h2 id="historical-record">Recipient counts, without unapproved identities.</h2></div><dl><div><dt>2024</dt><dd>Ten recipients listed</dd></div><div><dt>2025</dt><dd>Ten recipients listed</dd></div></dl><p>No recipient names or photography are reproduced in this prototype.</p></section>
-    <ActionBand kicker="Support the pathway" title="Connect scholarship interest to reparations work." text="No allocation or outcome claim is made until financial and program evidence is approved." primaryLabel="Support Reparations" primaryHref="/support-reparations/" secondaryLabel="Impact and accountability" secondaryHref="/impact/" />
+    <PageIntro
+      kicker="Program status"
+      title="Reparations Scholarship"
+      lede={cycle ? `${cycle.cycleLabel} cycle information is maintained in Wix CMS. Status comes before eligibility and application details.` : "Scholarship information cannot be presented safely until Wix CMS provides a complete published cycle."}
+      mode="campaign"
+      marker={cycle?.cycleLabel ?? "Status unavailable"}
+    />
+
+    {scholarshipResult.state === "stale" && (
+      <aside class="cms-state-notice" aria-label="Scholarship content freshness">
+        <strong>Stale source snapshot</strong>
+        <p>{scholarshipResult.message} Source observed {formatDate(cycle?.sourceObservedAt)}.</p>
+      </aside>
+    )}
+
+    {cycle ? (
+      <>
+        <section class={`status-banner scholarship-status scholarship-status--${cycle.publicStatus}`} aria-labelledby="cycle-status">
+          <p class="section-kicker">{cycle.cycleLabel} cycle</p>
+          <h2 id="cycle-status">{statusLabels[cycle.publicStatus]}</h2>
+          <p>{cycle.statusMessage}</p>
+          {cycle.publicStatus === "active" && cycle.applicationUrl ? (
+            <a class="button button-secondary" href={cycle.applicationUrl} target="_blank" rel="noreferrer">Open the verified application <span class="visually-hidden">(opens in a new tab)</span></a>
+          ) : (
+            <a class="button button-secondary" href={contactHref}>{contactLabel}</a>
+          )}
+        </section>
+
+        <aside class="source-notice" aria-label="Scholarship CMS source">
+          <strong>Wix CMS record · {cycle.reviewStatus}</strong>
+          <p>
+            Published from the `ScholarshipCycles` collection and checked against the current site observed {formatDate(cycle.sourceObservedAt)}.
+            <a href={cycle.sourceUrl} target="_blank" rel="noreferrer">Review the current Wix source <span class="visually-hidden">(opens in a new tab)</span></a>.
+          </p>
+        </aside>
+
+        <section class="scholarship-dates" aria-labelledby="cycle-dates">
+          <div>
+            <p class="section-kicker">Cycle chronology</p>
+            <h2 id="cycle-dates">Dates without stale urgency.</h2>
+          </div>
+          <dl>
+            {cycle.applicationOpenDate && <div><dt>Applications opened</dt><dd><time datetime={cycle.applicationOpenDate}>{formatDate(cycle.applicationOpenDate)}</time></dd></div>}
+            {cycle.applicationDeadline && <div><dt>Extended deadline</dt><dd><time datetime={cycle.applicationDeadline}>{formatDate(cycle.applicationDeadline)}</time></dd></div>}
+            {cycle.recipientNotificationDate && <div><dt>Notification date</dt><dd><time datetime={cycle.recipientNotificationDate}>{formatDate(cycle.recipientNotificationDate)}</time></dd></div>}
+          </dl>
+        </section>
+
+        <section class="fact-ledger" aria-labelledby="scholarship-snapshot">
+          <div>
+            <p class="section-kicker">Program snapshot</p>
+            <h2 id="scholarship-snapshot">Education as a reparations pathway.</h2>
+            <p>These terms describe the closed {cycle.cycleLabel} cycle. They do not promise that a future cycle will use the same terms.</p>
+          </div>
+          <dl>
+            {typeof cycle.awardCount === "number" && <div><dt>Planned recipients</dt><dd>{cycle.awardCount} qualifying individuals</dd></div>}
+            {typeof cycle.awardAmount === "number" && <div><dt>Award amount</dt><dd>{formatAward(cycle.awardAmount, cycle.awardCurrency)} each</dd></div>}
+            <div><dt>Study pathways</dt><dd>Accredited college, university, or vocational school</dd></div>
+          </dl>
+        </section>
+
+        <section class="scholarship-criteria" aria-labelledby="eligibility-heading">
+          <div class="section-heading-row">
+            <p class="section-kicker">Eligibility snapshot</p>
+            <h2 id="eligibility-heading">Who the closed cycle was designed to serve.</h2>
+          </div>
+          <div class="criteria-ledgers">
+            <section aria-labelledby="applicant-types">
+              <h3 id="applicant-types">Applicant types</h3>
+              <ul>{cycle.eligibleApplicantTypes.map((item) => <li>{item}</li>)}</ul>
+            </section>
+            <section aria-labelledby="eligible-counties">
+              <h3 id="eligible-counties">Residency</h3>
+              <p>Applicants were required to live in one of these Greater Lansing counties:</p>
+              <ul>{cycle.eligibleCounties.map((county) => <li>{county} County</li>)}</ul>
+            </section>
+          </div>
+        </section>
+
+        <section class="scholarship-materials" aria-labelledby="materials-heading">
+          <div>
+            <p class="section-kicker">Closed-cycle requirements</p>
+            <h2 id="materials-heading">What a complete submission required.</h2>
+          </div>
+          <div class="materials-ledgers">
+            <section aria-labelledby="documents-heading">
+              <h3 id="documents-heading">Required materials</h3>
+              <ol>{cycle.requiredDocuments.map((item, index) => <li><span>{String(index + 1).padStart(2, "0")}</span>{item}</li>)}</ol>
+            </section>
+            <section aria-labelledby="topics-heading">
+              <h3 id="topics-heading">Essay topic choices</h3>
+              <ul>{cycle.essayTopics.map((topic) => <li>{topic}</li>)}</ul>
+              <a class="text-action" href="/reparations/">Understand the reparations context</a>
+            </section>
+          </div>
+        </section>
+
+        <section class="scholarship-source-detail" aria-labelledby="source-detail-heading">
+          <div>
+            <p class="section-kicker">Source and contact</p>
+            <h2 id="source-detail-heading">A closed cycle still needs a correction path.</h2>
+          </div>
+          <div>
+            {cycle.sourceNote && <p class="source-discrepancy"><strong>Source note:</strong> {cycle.sourceNote}</p>}
+            <dl class="check-instructions">
+              {cycle.contactEmail && <div><dt>Email</dt><dd><a href={`mailto:${cycle.contactEmail}`}>{cycle.contactEmail}</a></dd></div>}
+              {cycle.mailingAddress && <div><dt>Mail</dt><dd class="multiline-value">{cycle.mailingAddress}</dd></div>}
+            </dl>
+            <p>Contact the organization before mailing application materials after a published deadline. This page does not imply that late submissions are accepted.</p>
+          </div>
+        </section>
+
+        <section class="record-strip" aria-labelledby="historical-record">
+          <div><p class="section-kicker">Historical snapshot</p><h2 id="historical-record">Recipient counts, without unapproved identities.</h2></div>
+          <dl><div><dt>2024</dt><dd>Ten recipients listed</dd></div><div><dt>2025</dt><dd>Ten recipients listed</dd></div></dl>
+          <p>Names, essays, and recipient photography are not reproduced without renewed consent and a media audit.</p>
+        </section>
+      </>
+    ) : (
+      <section class="unavailable-action" aria-labelledby="scholarship-unavailable">
+        <p class="section-kicker">CMS state · {scholarshipResult.state}</p>
+        <h2 id="scholarship-unavailable">Scholarship information is unavailable.</h2>
+        <p>{unavailableMessage}</p>
+        <p>No application status, deadline, or eligibility terms are substituted from an unverified record.</p>
+        <a class="button button-secondary" href="/contact/">Contact the organization</a>
+      </section>
+    )}
+
+    <ActionBand
+      kicker="Support the pathway"
+      title="Connect scholarship interest to reparations work."
+      text="No allocation or future-cycle claim is made until financial and program evidence is approved."
+      primaryLabel="Support Reparations"
+      primaryHref="/support-reparations/"
+      secondaryLabel="Impact and accountability"
+      secondaryHref="/impact/"
+    />
   </main>
 </BaseLayout>

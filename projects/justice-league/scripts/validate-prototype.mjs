@@ -109,6 +109,15 @@ checks.push(["ad booklet has no submitting form", !routeDocuments.find((item) =>
 checks.push(["ad booklet has semantic deadline", routeDocuments.find((item) => item.route === "ad-booklet")?.html.includes('<time datetime="2026-09-30">')]);
 checks.push(["ad booklet uses verified Wix handoff", routeDocuments.find((item) => item.route === "ad-booklet")?.html.includes("https://www.justiceleagueglm.org/ad-booklet")]);
 
+const scholarshipHtml = routeDocuments.find((item) => item.route === "scholarship")?.html ?? "";
+checks.push(["scholarship uses public Wix CMS collection", scholarshipHtml.includes("ScholarshipCycles")]);
+checks.push(["scholarship visibly closed", scholarshipHtml.includes("Applications are closed")]);
+checks.push(["scholarship has no application form", !/<form\b/i.test(scholarshipHtml)]);
+checks.push(["closed scholarship has no application CTA", !scholarshipHtml.includes("Open the verified application")]);
+checks.push(["scholarship has semantic extended deadline", scholarshipHtml.includes('<time datetime="2026-05-01">')]);
+checks.push(["scholarship discloses source discrepancy", scholarshipHtml.includes("older sections still show April 17")]);
+checks.push(["scholarship omits recipient identities and media", scholarshipHtml.includes("Recipient counts, without unapproved identities") && !/<img\b/i.test(scholarshipHtml)]);
+
 function channel(value) {
   const normalized = value / 255;
   return normalized <= 0.04045

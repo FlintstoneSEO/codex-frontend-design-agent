@@ -19,6 +19,7 @@
     "typescript": "latest"
   },
   "dependencies": {
+    "@wix/data": "^1.0.503",
     "@wix/events": "^1.0.836",
     "@wix/sdk": "^1.21.14"
   }

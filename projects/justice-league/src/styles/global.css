@@ -2555,6 +2555,158 @@ textarea {
   color: var(--color-canvas);
 }
 
+.cms-state-notice {
+  display: grid;
+  grid-template-columns: minmax(10rem, 0.45fr) minmax(0, 1fr);
+  gap: 1.5rem;
+  padding: 1rem var(--page-gutter);
+  border-block: 1px solid var(--color-action);
+  background: var(--color-surface);
+}
+
+.cms-state-notice strong {
+  color: var(--color-action);
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cms-state-notice p {
+  margin: 0;
+}
+
+.scholarship-status {
+  border-top: 0.5rem solid var(--color-action);
+  background: var(--color-surface);
+}
+
+.scholarship-status--active {
+  border-top-color: var(--color-green);
+}
+
+.scholarship-status--closed,
+.scholarship-status--paused {
+  border-top-color: var(--color-red);
+}
+
+.scholarship-status > *,
+.scholarship-status .button {
+  min-width: 0;
+}
+
+.scholarship-status .button {
+  overflow-wrap: anywhere;
+}
+
+.scholarship-dates,
+.scholarship-materials,
+.scholarship-source-detail {
+  display: grid;
+  grid-template-columns: minmax(14rem, 0.7fr) minmax(0, 1.3fr);
+  gap: clamp(2rem, 6vw, 7rem);
+  padding: var(--section-space) var(--page-gutter);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.scholarship-dates dl,
+.check-instructions {
+  margin: 0;
+}
+
+.scholarship-dates dl > div,
+.check-instructions > div {
+  display: grid;
+  grid-template-columns: minmax(9rem, 0.7fr) minmax(0, 1fr);
+  gap: 1rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.scholarship-dates dt,
+.check-instructions dt {
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.scholarship-dates dd,
+.check-instructions dd {
+  min-width: 0;
+  margin: 0;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.scholarship-criteria {
+  padding: var(--section-space) var(--page-gutter);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.criteria-ledgers,
+.materials-ledgers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: clamp(2rem, 5vw, 4rem);
+  border-block: 1px solid var(--color-border);
+}
+
+.criteria-ledgers > section,
+.materials-ledgers > section {
+  min-width: 0;
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+.criteria-ledgers > section + section,
+.materials-ledgers > section + section {
+  border-left: 1px solid var(--color-border);
+}
+
+.criteria-ledgers h3,
+.materials-ledgers h3 {
+  font-family: var(--font-civic);
+  font-size: clamp(1.5rem, 3vw, 2.6rem);
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.criteria-ledgers ul,
+.materials-ledgers ul,
+.materials-ledgers ol {
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.criteria-ledgers li,
+.materials-ledgers li {
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.materials-ledgers ol li {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.materials-ledgers ol span {
+  color: var(--color-action);
+  font-weight: 950;
+}
+
+.source-discrepancy {
+  padding: 1rem;
+  border-left: 0.35rem solid var(--color-action);
+  background: var(--color-surface);
+}
+
+.multiline-value {
+  white-space: pre-line;
+}
+
 .record-strip {
   grid-template-columns: minmax(0, 1fr) minmax(14rem, 0.8fr) minmax(14rem, 0.8fr);
   gap: clamp(2rem, 5vw, 5rem);
@@ -2892,8 +3044,23 @@ textarea {
   .section-heading-row,
   .timeline-list li,
   .action-band,
-  .status-banner {
+  .status-banner,
+  .cms-state-notice,
+  .scholarship-dates,
+  .scholarship-materials,
+  .scholarship-source-detail {
     grid-template-columns: 1fr;
+  }
+
+  .criteria-ledgers,
+  .materials-ledgers {
+    grid-template-columns: 1fr;
+  }
+
+  .criteria-ledgers > section + section,
+  .materials-ledgers > section + section {
+    border-top: 1px solid var(--color-border);
+    border-left: 0;
   }
 
   .section-heading-row {

@@ -2,32 +2,61 @@
 
 - Route: `/scholarship/`
 - Page type: Program status and application orientation, Campaign mode
-- Objective: Make current status, provisional eligibility, award terms, and application dependencies understandable without implying an open cycle.
-- Audience/intent: Applicants, families, educators, donors, and partners checking eligibility and next steps.
-- Primary conversion: View current scholarship status. Secondary: Support Reparations.
-- Search intent: Greater Lansing reparations scholarship eligibility and application.
+- Objective: Give applicants and families a current, CMS-controlled answer about the 2026–2027 cycle, then present verified eligibility, award terms, required materials, dates, and contact details without reopening a closed application.
+- Audience/intent: Applicants, families, educators, donors, and partners checking status, eligibility, requirements, dates, and next steps.
+- Primary conversion: View the current scholarship status. When and only when Wix CMS marks a cycle active and supplies an allowlisted HTTPS URL, continue to the application.
+- Secondary conversion: Contact the organization or Support Reparations.
+- Search intent: Greater Lansing reparations scholarship eligibility, dates, and application status.
 - Proposed title: `Reparations Scholarship | Justice League GLM`
-- Meta description: `Review provisionally recorded eligibility, award information, historical recipient counts, and current-cycle status for the Reparations Scholarship.`
+- Meta description: `Check the current Justice League GLM Reparations Scholarship status, award structure, eligibility, dates, required materials, and contact information.`
 - H1: `Reparations Scholarship`
-- LCP candidate: Text H1 and status band.
-- Schema: `WebPage` and `BreadcrumbList`; no offer, event, or application schema.
-- Canonical/indexability: `/scholarship/`; prototype noindex, intended index after current-cycle confirmation.
-- Internal links: Reparations, Impact, Events, Support, Contact.
+- LCP candidate: Text H1 and CMS-driven status band.
+- Schema: `WebPage` and `BreadcrumbList`; no offer, award, person, event, or application schema.
+- Canonical/indexability: `/scholarship/`; prototype remains noindex. Intended production indexability follows content approval, application-flow accessibility review, and form privacy approval.
+- Internal links: Reparations, Impact, Events, Support Reparations, and Contact.
+
+## Wix CMS source
+
+- Collection ID: `ScholarshipCycles`
+- Collection purpose: Public scholarship-cycle content only. Never expose or query `2026ScholarshipApplicants` from the public frontend.
+- Permissions: Anyone may read; only Wix CMS editors/admins may insert, update, or remove.
+- Current item ID: `15d8e4e3-4f25-4f92-a8df-407360e5824a`
+- Current public status: `closed`
+- Source URL: `https://www.justiceleagueglm.org/scholarship`
+- Source observation date: August 7, 2026.
+- Source discrepancy: The current page reports an extended May 1, 2026 deadline while older sections still show April 17. The closed form and extended-deadline notice control the headless status; the discrepancy remains visible in a source note.
+- Build behavior: Query one published cycle by latest application deadline. Validate required fields and allowed status values. Suppress application URLs unless status is `active` and the HTTPS hostname is allowlisted. Show an explicitly stale, dated source snapshot only when a static build cannot reach Wix.
 
 ## Section hierarchy
 
 | Order | Section | User question | Proof/content | Action |
 |---:|---|---|---|---|
-| 1 | Cycle status | Can I apply now? | `Status not confirmed`; no active application CTA | Contact |
-| 2 | Program snapshot | What does the current site describe? | Ten awards of $2,500; eligible applicant types; three counties, all dated provisional | None |
-| 3 | Application path | What will be required? | Pending workflow, dates, uploads, consent, and confirmation | None |
-| 4 | Historical record | What is publicly recorded? | Ten recipients in 2024 and ten in 2025; no names | Impact |
-| 5 | Support | How can I help? | Support pathway without allocation claims | Support Reparations |
+| 1 | Cycle status | Can I apply now? | CMS status `closed`, status message, and cycle label | Contact; no application CTA |
+| 2 | Dates | When did this cycle run? | February 28 opening, May 1 extended deadline, May 26 notification date | None |
+| 3 | Program snapshot | What was offered? | Ten qualifying recipients with $2,500 each for college, university, or vocational study | Explore Reparations |
+| 4 | Eligibility | Who qualified? | Applicant types and Ingham, Clinton, or Eaton County residency from CMS | Contact with interpretation questions |
+| 5 | Required materials | What did applicants need? | Completed application, unofficial transcript, and 500-word essay | None while closed |
+| 6 | Essay topics | What did the essay address? | Racial Wealth Gap in America or Generational Wealth | Learn about Reparations |
+| 7 | Source and contact | What if the information conflicts or I need help? | Current-site link, source date, discrepancy note, email, and mailing address | Contact the organization |
+| 8 | Historical record | What is publicly recorded? | Ten recipients in 2024 and ten in 2025; names and media omitted | Impact and accountability |
+| 9 | Support | How can I support the pathway? | Stable support route without unsupported allocation claims | Support Reparations |
+
+## CMS states
+
+- `active`: Show opening/deadline and application CTA only if `applicationUrl` passes the HTTPS allowlist.
+- `closed`: State that applications are closed and remove the application CTA.
+- `upcoming`: Show the opening date and do not expose an early application URL.
+- `paused`: Explain that the cycle is unavailable and direct questions to Contact.
+- `empty`: State that no published cycle is available; do not substitute an old cycle as current.
+- `error`: State that the published record is incomplete.
+- `stale`: Display the dated, source-confirmed fallback with an explicit CMS-unavailable notice.
 
 ## Requirements
 
-- Media: No recipient imagery or names without renewed consent and asset audit.
-- Mobile: Status precedes all descriptive copy; eligibility uses a readable definition list.
-- Accessibility/performance: Never encode open/closed by color alone; no form or third-party JS.
-- Unknowns: `[NEEDS CLIENT INPUT: Confirm 2026 status, dates, eligibility, award terms, application URL, privacy, consent, and contact owner.]`
-- Acceptance: Does not say applications are open; every numerical fact carries the August 6, 2026 observation label; one H1.
+- Media: No recipient names, essays, imagery, or video without renewed consent, rights, useful alt text, captions, and a separate content specification.
+- Mobile: Status and dates precede eligibility. Dates, currency, county names, email, and address must reflow at 320 CSS pixels. Use ruled lists rather than desktop cards.
+- Accessibility: Never encode status by color alone. Use `time`, `dl`, `ul`, and ordered headings. Do not embed the current Wix upload/signature form until keyboard, signature alternatives, validation, errors, consent, retention, and confirmation behavior pass review.
+- Performance: Static HTML; no page-specific hydration, recipient media, embedded form, or third-party scripts. Wix CMS is queried during the build.
+- Security/privacy: The public adapter queries only `ScholarshipCycles`. Applicant submissions, uploads, signatures, addresses, and phone/email records remain outside the public content boundary.
+- Unknowns: `[NEEDS CLIENT INPUT: Confirm the next-cycle owner, approval/review schedule, final application destination, accommodation process, privacy and retention policy, consent wording, signature alternatives, confirmation workflow, and treatment of late or mailed applications.]`
+- Acceptance: One H1; current cycle visibly closed; no Apply CTA; CMS state/source visible; all dates semantic; ten/$2,500 structure accurate; eligibility and documents match CMS; source discrepancy disclosed; no recipient identities/media; no submitting form; prototype noindex.

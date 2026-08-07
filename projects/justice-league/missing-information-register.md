@@ -35,6 +35,13 @@ These items must be resolved or retained as visible placeholders before implemen
 - `/ad-booklet/` is retained as a distinct campaign route and may link to the current organization-owned Wix workflow during staging.
 - A standalone Wix form/payment destination or preserved legacy Wix hostname, campaign owner, proofing, privacy, retention, receipt, cancellation/refund, and failure-recovery policies remain production blockers.
 
+### Resolved for the scholarship prototype on August 7, 2026
+
+- A public-read, admin-write Wix CMS collection named `ScholarshipCycles` now holds the public cycle status, dates, award structure, eligibility, required materials, essay topics, contact details, and dated source notes.
+- The 2026–2027 record is `closed`; the extended May 1, 2026 deadline and the stale April 17 references are both documented rather than reconciled silently.
+- The public Astro adapter does not query or expose `2026ScholarshipApplicants`, recipient identities, submitted files, signatures, contact details, or other application records.
+- The next-cycle owner, review cadence, verified application destination, accommodation process, privacy/retention policy, consent wording, signature alternative, confirmation workflow, and late/mailed submission policy remain production blockers.
+
 1. Wix remains the platform.
 2. The homepage needs a replaceable current-priority campaign module.
 3. The visual system should balance advocacy, education and institutional trust.
