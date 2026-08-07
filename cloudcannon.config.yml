@@ -1,0 +1,13 @@
+paths:
+  static: public
+  uploads: public/uploads
+timezone: America/New_York
+markdown:
+  engine: commonmark
+  options:
+    gfm: true
+source: /projects/justice-league/
+collections_config:
+  source:
+    path: ''
+    icon: package_2
