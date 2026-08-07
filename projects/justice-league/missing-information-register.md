@@ -23,6 +23,12 @@ These items must be resolved or retained as visible placeholders before implemen
 
 ## Assumptions currently permitted for concept work
 
+### Resolved for the history prototype on August 7, 2026
+
+- Current Wix History and Timeline information is approved for reuse in the consolidated `/about/history/` prototype.
+- Selected current-site photographs are approved for reuse with contextual alt text and captions.
+- Ongoing correction ownership and milestone approval remain unresolved launch-governance questions.
+
 1. Wix remains the platform.
 2. The homepage needs a replaceable current-priority campaign module.
 3. The visual system should balance advocacy, education and institutional trust.
