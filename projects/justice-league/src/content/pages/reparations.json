@@ -3,5 +3,36 @@
   "url": "/reparations/",
   "source_path": "/src/pages/reparations/index.astro",
   "seo_title": "Reparations in Greater Lansing | Justice League GLM",
-  "meta_description": "Learn how Justice League GLM connects faith, historical repair, African American governance, scholarships, homeownership, and entrepreneurship in Greater Lansing."
+  "meta_description": "Learn how Justice League GLM advances faith-based reparations, African American wealth equity, scholarships, homeownership, and business development.",
+  "hero": {
+    "eyebrow": "Reparations",
+    "heading": "Repairing the Breach",
+    "description": "We bring faith communities and collaborative partners together to address the lasting economic harm of slavery and systemic racism through locally directed reparative action in Greater Lansing.",
+    "primary_cta_text": "Support Reparations",
+    "primary_cta_url": "/support-reparations/",
+    "secondary_cta_text": "Learn About Our Approach",
+    "secondary_cta_url": "#our-approach"
+  },
+  "definition": {
+    "eyebrow": "What reparations means to us",
+    "heading": "Repair is more than acknowledgment.",
+    "body": [
+      "For the Justice League, reparations means making amends for harm. Our local model connects faith, repentance, racial justice, accountable relationships, and material action to increase wealth equity for African Americans in the Greater Lansing Area.",
+      "This work does not replace state or federal responsibility. It is a local, faith-rooted response: people and institutions confronting the benefits and burdens created by racial injustice, then joining African American community leadership in the work of repair."
+    ],
+    "callout": "Acknowledgment names the breach. Relationship builds accountability. Reparative action begins to close it."
+  },
+  "history_heading": "The wealth divide was built over generations.",
+  "model_heading": "A local model for material repair.",
+  "pathways_heading": "Three pathways toward wealth equity.",
+  "faith_heading": "Faith becomes credible through action.",
+  "action": {
+    "eyebrow": "Participate in reparations",
+    "heading": "Take part in the work of repair.",
+    "description": "Individuals, houses of worship, community organizations, and collaborative partners can contribute, learn, share the work, or begin a conversation about participation.",
+    "primary_cta_text": "Support Reparations",
+    "primary_cta_url": "/support-reparations/",
+    "secondary_cta_text": "Join the Work",
+    "secondary_cta_url": "/join-the-work/"
+  }
 }

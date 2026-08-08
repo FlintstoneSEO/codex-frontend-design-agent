@@ -70,8 +70,8 @@ for (const document of routeDocuments) {
   const h1Count = (document.html.match(/<h1\b/g) ?? []).length;
   const title = document.html.match(/<title>(.*?)<\/title>/)?.[1];
   checks.push([`${routeLabel} exactly one H1`, h1Count === 1]);
-  const isHomepage = document.route === "";
-  checks.push([`${routeLabel} ${isHomepage ? "indexable production page" : "noindex prototype"}`, isHomepage ? document.html.includes('content="index, follow"') : document.html.includes('content="noindex, nofollow"')]);
+  const isProductionPage = document.route === "" || document.route === "reparations";
+  checks.push([`${routeLabel} ${isProductionPage ? "indexable production page" : "noindex prototype"}`, isProductionPage ? document.html.includes('content="index, follow"') : document.html.includes('content="noindex, nofollow"')]);
   checks.push([`${routeLabel} canonical`, document.html.includes('rel="canonical"')]);
   checks.push([`${routeLabel} meta description`, document.html.includes('name="description"')]);
   checks.push([`${routeLabel} unique title`, Boolean(title) && !titles.has(title)]);
@@ -254,6 +254,14 @@ checks.push(["custom 404 is generated", fs.existsSync(path.join(distRoot, "404.h
 checks.push(["ad booklet has no submitting form", !routeDocuments.find((item) => item.route === "ad-booklet")?.html.match(/<form\b/i)]);
 checks.push(["ad booklet has semantic deadline", routeDocuments.find((item) => item.route === "ad-booklet")?.html.includes('<time datetime="2026-09-30">')]);
 checks.push(["ad booklet uses verified Wix handoff", routeDocuments.find((item) => item.route === "ad-booklet")?.html.includes("https://www.justiceleagueglm.org/ad-booklet")]);
+
+const reparationsHtml = routeDocuments.find((item) => item.route === "reparations")?.html ?? "";
+checks.push(["reparations page explains the three adopted pathways", ["Education", "Homeownership", "Business development"].every((term) => reparationsHtml.includes(term))]);
+checks.push(["reparations page exposes the local model as a semantic sequence", reparationsHtml.includes('class="reparations-model__flow"') && (reparationsHtml.match(/reparations-model__number/g) ?? []).length === 4]);
+checks.push(["reparations page links all key next steps", ["/about/", "/about/history/", "/scholarship/", "/impact/", "/support-reparations/", "/join-the-work/"].every((href) => reparationsHtml.includes(`href="${href}"`))]);
+checks.push(["expired million-dollar goal is absent from reparations page", !reparationsHtml.includes("$1 million") && !reparationsHtml.includes("end of 2025")]);
+checks.push(["reparations page does not advertise unsupported applications or awards", !/apply (?:now|today)|applications? (?:are )?open|accepting applications|awards? of \$/i.test(reparationsHtml)]);
+checks.push(["reparations page styles include deliberate narrow reflow", cssSource.includes(".reparations-model__flow") && cssSource.includes(".reparations-hero__actions .button")]);
 
 const scholarshipHtml = routeDocuments.find((item) => item.route === "scholarship")?.html ?? "";
 checks.push(["scholarship uses public Wix CMS collection", scholarshipHtml.includes("ScholarshipCycles")]);
