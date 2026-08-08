@@ -27,13 +27,13 @@ const checks = [
   ["skip link", html.includes('href="#main-content"')],
   ["prototype labelling", html.includes("Non-production prototype")],
   ["approved mission", html.includes("exists to repair the breach caused by the historical damage of slavery")],
-  ["controlled documentary hero", html.includes('class="hero-documentary"') && html.includes("static.wixstatic.com")],
+  ["full-width documentary hero", html.includes('class="hero"') && html.includes("--hero-image") && html.includes("static.wixstatic.com")],
   ["video loads by consent", html.includes("data-video-play") && !/<video\b|<iframe\b/i.test(html)],
   ["Wix event source or labelled fallback", html.includes("Wix Events")],
   ["guarded eLink treatment", html.includes("data-elink-load") && html.includes("https://elink.io/p/9da922f")],
   ["reduced motion", cssSource.includes("prefers-reduced-motion: reduce")],
   ["320px reflow-safe body", cssSource.includes("min-width: 0")],
-  ["no gradients", !/gradient\(/i.test(cssSource)]
+  ["hero contrast overlay", /\.hero\s*\{[\s\S]*?linear-gradient\(/i.test(cssSource)]
 ];
 
 const routeNames = [

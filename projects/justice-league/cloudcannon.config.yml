@@ -38,6 +38,12 @@ collections_config:
         type: textarea
         label: Meta Description
         comment: A concise summary for search results and link previews.
+      hero:
+        type: object
+        label: Homepage Hero
+        comment: Homepage only. The layout, crop, and contrast overlay remain developer controlled.
+        options:
+          structures: _structures.homepage_hero
 
 collection_groups:
   - heading: Content
@@ -52,3 +58,42 @@ _editables:
     link: true
     bulletedlist: true
     numberedlist: true
+
+_structures:
+  homepage_hero:
+    values:
+      - label: Homepage Hero
+        value:
+          eyebrow: ""
+          heading: ""
+          description: ""
+          image: ""
+          image_alt: ""
+          primary_cta_text: ""
+          primary_cta_url: ""
+          secondary_cta_text: ""
+          secondary_cta_url: ""
+        _inputs:
+          eyebrow:
+            type: text
+          heading:
+            type: text
+          description:
+            type: textarea
+          image:
+            type: image
+            options:
+              paths:
+                uploads: public/images
+                static: public
+          image_alt:
+            type: text
+            comment: Describe the people, place, and activity shown; do not repeat the heading.
+          primary_cta_text:
+            type: text
+          primary_cta_url:
+            type: url
+          secondary_cta_text:
+            type: text
+          secondary_cta_url:
+            type: url

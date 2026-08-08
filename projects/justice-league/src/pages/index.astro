@@ -12,35 +12,20 @@ import { getUpcomingPublicEvents } from "@/lib/wix";
 const eventsResult = await getUpcomingPublicEvents();
 ---
 
-<BaseLayout isHome={true} title={pageMeta.seo_title} description={pageMeta.meta_description} ogImage={homepage.hero.src}>
+<BaseLayout isHome={true} title={pageMeta.seo_title} description={pageMeta.meta_description} ogImage={pageMeta.hero.image} ogImageAlt={pageMeta.hero.image_alt}>
   <main id="main-content" tabindex="-1">
-    <section class="hero" aria-labelledby="homepage-title">
-      <div class="hero-copy" data-editable="source" data-path="/src/pages/index.astro" data-key="home-hero-copy">
-        <p class="section-kicker">Greater Lansing · Michigan</p>
-        <h1 id="homepage-title">Repairing the Breach <span>in Greater Lansing</span></h1>
-        <p class="hero-deck">Faith-rooted relationships, public education, and reparative action focused on racial wealth equity.</p>
+    <section class="hero" aria-labelledby="homepage-title" style={`--hero-image: url("${pageMeta.hero.image}")`}>
+      <span class="visually-hidden" role="img" aria-label={pageMeta.hero.image_alt}></span>
+      <div class="hero-copy">
+        <p class="section-kicker">{pageMeta.hero.eyebrow}</p>
+        <h1 id="homepage-title">{pageMeta.hero.heading}</h1>
+        <p class="hero-deck">{pageMeta.hero.description}</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="/support-reparations/">Support Reparations</a>
-          <a class="button button-secondary" href="/join-the-work/">Join the Work</a>
+          <a class="button button-primary" href={pageMeta.hero.primary_cta_url}>{pageMeta.hero.primary_cta_text}</a>
+          <a class="button button-secondary" href={pageMeta.hero.secondary_cta_url}>{pageMeta.hero.secondary_cta_text}</a>
         </div>
         <a class="context-link" href="/reparations/">Understand reparations in Greater Lansing <span aria-hidden="true">↗</span></a>
       </div>
-      <figure class="hero-documentary">
-        <img
-          src={homepage.hero.src}
-          srcset={homepage.hero.srcSet}
-          sizes="(max-width: 767px) 100vw, 48vw"
-          alt={homepage.hero.alt}
-          width="1200"
-          height="900"
-          fetchpriority="high"
-          decoding="async"
-        />
-        <figcaption>
-          <span>Documentary community</span>
-          <span>Greater Lansing, Michigan</span>
-        </figcaption>
-      </figure>
     </section>
 
     <PriorityModule result={eventsResult} />
