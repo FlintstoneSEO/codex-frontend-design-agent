@@ -28,11 +28,7 @@ const { videoId, videoUrl, title } = Astro.props;
       <span>Play apology video</span>
     </button>
   </div>
-  <p class="video-fallback">
-    <a href={videoUrl} target="_blank" rel="noreferrer">Watch on YouTube <span class="visually-hidden">(opens in a new tab)</span></a>
-    <span aria-hidden="true">·</span>
-    <span>[NEEDS CLIENT INPUT: Provide an approved transcript or captions review.]</span>
-  </p>
+  <p class="video-fallback"><a href={videoUrl} target="_blank" rel="noreferrer">Watch on YouTube <span class="visually-hidden">(opens in a new tab)</span></a></p>
 </section>
 
 <script>

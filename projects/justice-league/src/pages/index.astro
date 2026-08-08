@@ -12,7 +12,7 @@ import { getUpcomingPublicEvents } from "@/lib/wix";
 const eventsResult = await getUpcomingPublicEvents();
 ---
 
-<BaseLayout isHome={true} title={pageMeta.seo_title} description={pageMeta.meta_description} ogImage={pageMeta.hero.image} ogImageAlt={pageMeta.hero.image_alt}>
+<BaseLayout isHome={true} noindex={false} title={pageMeta.seo_title} description={pageMeta.meta_description} ogImage={pageMeta.hero.image} ogImageAlt={pageMeta.hero.image_alt}>
   <main id="main-content" tabindex="-1">
     <section class="hero" aria-labelledby="homepage-title" style={`--hero-image: url("${pageMeta.hero.image}")`}>
       <span class="visually-hidden" role="img" aria-label={pageMeta.hero.image_alt}></span>
@@ -141,7 +141,7 @@ const eventsResult = await getUpcomingPublicEvents();
         <p class="section-kicker">Governance and transparency</p>
         <h2 id="trust-heading">Trust belongs in the main story.</h2>
       </div>
-      <p>Leadership, governance, and impact records remain review-dated so public information can be corrected when Wix source records change.</p>
+      <p>Explore the people, public records, and ongoing work that help keep this mission accountable to the community.</p>
       <nav aria-label="Governance and transparency routes">
         <a href="/about/leadership/">Leadership & Governance <span aria-hidden="true">↗</span></a>
         <a href="/impact/">Impact & Accountability <span aria-hidden="true">↗</span></a>

@@ -25,11 +25,11 @@ const checks = [
   ["WebSite schema", html.includes('"@type":"WebSite"')],
   ["WebPage schema", html.includes('"@type":"WebPage"')],
   ["skip link", html.includes('href="#main-content"')],
-  ["prototype labelling", html.includes("Non-production prototype")],
+  ["homepage production labelling removed", !html.includes("Non-production prototype")],
   ["approved mission", html.includes("exists to repair the breach caused by the historical damage of slavery")],
   ["full-width documentary hero", html.includes('class="hero"') && html.includes("--hero-image") && html.includes("static.wixstatic.com")],
   ["video loads by consent", html.includes("data-video-play") && !/<video\b|<iframe\b/i.test(html)],
-  ["Wix event source or labelled fallback", html.includes("Wix Events")],
+  ["upcoming events module", html.includes("Upcoming events")],
   ["guarded eLink treatment", html.includes("data-elink-load") && html.includes("https://elink.io/p/9da922f")],
   ["reduced motion", cssSource.includes("prefers-reduced-motion: reduce")],
   ["320px reflow-safe body", cssSource.includes("min-width: 0")],
@@ -70,12 +70,13 @@ for (const document of routeDocuments) {
   const h1Count = (document.html.match(/<h1\b/g) ?? []).length;
   const title = document.html.match(/<title>(.*?)<\/title>/)?.[1];
   checks.push([`${routeLabel} exactly one H1`, h1Count === 1]);
-  checks.push([`${routeLabel} noindex prototype`, document.html.includes('content="noindex, nofollow"')]);
+  const isHomepage = document.route === "";
+  checks.push([`${routeLabel} ${isHomepage ? "indexable production page" : "noindex prototype"}`, isHomepage ? document.html.includes('content="index, follow"') : document.html.includes('content="noindex, nofollow"')]);
   checks.push([`${routeLabel} canonical`, document.html.includes('rel="canonical"')]);
   checks.push([`${routeLabel} meta description`, document.html.includes('name="description"')]);
   checks.push([`${routeLabel} unique title`, Boolean(title) && !titles.has(title)]);
   if (title) titles.add(title);
-  checks.push([`${routeLabel} prototype label`, document.html.includes("Non-production prototype")]);
+  checks.push([`${routeLabel} production label removed`, !document.html.includes("Non-production prototype")]);
   checks.push([`${routeLabel} no submitting form action`, !/<form[^>]+action=/i.test(document.html)]);
   checks.push([`${routeLabel} focusable main landmark`, /<main\b[^>]*id="main-content"[^>]*tabindex="-1"/i.test(document.html)]);
   checks.push([`${routeLabel} Open Graph title`, document.html.includes('property="og:title"')]);
@@ -164,7 +165,7 @@ checks.push(["contact page publishes verified email and mailing address", routeD
 checks.push(["about page uses approved mission and current three pillars", routeDocuments.find((item) => item.route === "about")?.html.includes("exists to repair the breach") && routeDocuments.find((item) => item.route === "about")?.html.includes("Business entrepreneurship")]);
 const leadershipHtml = routeDocuments.find((item) => item.route === "about/leadership")?.html ?? "";
 checks.push(["leadership page includes current overlapping roles", leadershipHtml.includes("Dr. Nakia Parker") && leadershipHtml.includes("Board of Directors / Advisory Council")]);
-checks.push(["site uses corrected Wix listing path", allHtml.includes("https://www.justiceleagueglm.org/upcomingevents")]);
+checks.push(["site uses the production events route", allHtml.includes('href="/events/"')]);
 checks.push(["obsolete Wix event path removed", !allHtml.includes("https://www.justiceleagueglm.org/upcoming-events")]);
 checks.push(["dead City Pulse URL removed", !allHtml.includes("lansingcitypulse.com/stories/the-art-of-repair,125610")]);
 checks.push(["Willye Bryan profile uses verified live source", allHtml.includes("lakemichiganpresbytery.org/2025/02/28/celebrating-elder-willye-bryans-recognition-for-racial-justice")]);
@@ -231,7 +232,7 @@ checks.push(["supporter logo assets exist locally", supporters.every((supporter)
 checks.push(["supporter logo alt text is meaningful", supporters.every((supporter) => supporter.alt === `${supporter.name} logo`)]);
 checks.push(["supporter page uses dedicated SEO metadata", supportersHtml.includes("<title>Repairers of the Breach | Justice League GLM Supporters</title>")]);
 checks.push(["supporter and donor concepts are cross-linked but not combined", supportersHtml.includes('href="/donors/"') && donorHtml.includes('href="/supporters/"') && !supportersHtml.includes("donor-year-")]);
-checks.push(["acknowledgment layouts include responsive one-column rules", cssSource.includes(".donor-year ul,\n  .supporter-roster > ul") && cssSource.includes("grid-template-columns: 1fr")]);
+checks.push(["acknowledgment layouts include responsive one-column rules", /\.donor-year ul,\s*\.supporter-roster > ul\s*\{\s*grid-template-columns: 1fr;/m.test(cssSource)]);
 
 checks.push(["leadership exact group sizes render", leadershipGroups.map((group) => group.members.length).join("|") === "4|5|7"]);
 checks.push(["leadership names, roles, and portraits remain paired", leadershipMembers.every((person) => leadershipHtml.includes(`src="${person.image}"`) && leadershipHtml.includes(`alt="${person.name}"`) && leadershipHtml.includes(`>${person.role}</p>`))]);

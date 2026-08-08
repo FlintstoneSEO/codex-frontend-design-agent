@@ -1,6 +1,5 @@
 ---
 import type { PublicEventsResult } from "@/lib/wix";
-import { currentWixRoutes } from "@/data/site";
 
 interface Props {
   result: PublicEventsResult;
@@ -27,11 +26,9 @@ const events = result.state === "success" ? result.events.slice(excludeFirst ? 1
     </ol>
   ) : (
     <div class:list={["content-state", `is-${result.state}`]} role={result.state === "error" ? "status" : undefined}>
-      <p class="state-label">{result.state === "error" ? "Wix Events connection error" : "No additional public events"}</p>
-      <p>{result.state === "error" ? result.message : "The current priority is the only public event selected for this homepage build."}</p>
+      <p class="state-label">{result.state === "error" ? "Events are temporarily unavailable" : "No additional upcoming events"}</p>
+      <p>{result.state === "error" ? result.message : "Check back soon for the next opportunity to gather with the Justice League."}</p>
     </div>
   )}
-  <a class="text-action" href={currentWixRoutes.events} target="_blank" rel="noreferrer">
-    View all events on Wix <span class="visually-hidden">(opens in a new tab)</span>
-  </a>
+  <a class="text-action" href="/events/">View all events</a>
 </section>

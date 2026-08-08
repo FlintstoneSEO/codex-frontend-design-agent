@@ -2,42 +2,10 @@
   <div>
     <p class="section-kicker">Stay connected</p>
     <h2 id="newsletter-heading">Updates without the noise.</h2>
-    <p>Review the accessible signup pattern. This prototype does not transmit or store an email address.</p>
+    <p>Receive news, events, and initiatives from the Justice League of Greater Lansing.</p>
   </div>
-  <form class="newsletter-form" data-newsletter-shell novalidate>
-    <div class="field-group">
-      <label for="newsletter-email">Email address</label>
-      <input
-        id="newsletter-email"
-        name="email"
-        type="email"
-        inputmode="email"
-        autocomplete="email"
-        aria-describedby="newsletter-help newsletter-error"
-        required
-      />
-      <p id="newsletter-help" class="field-help">Prototype shell: no data will be sent.</p>
-      <p id="newsletter-error" class="field-error" hidden></p>
-    </div>
-    <button class="button button-primary" type="submit">Test signup state</button>
-    <p class="form-status" data-newsletter-status role="status"></p>
-  </form>
+  <div class="newsletter-form">
+    <p class="field-help">Newsletter signup is securely managed through the Justice League's Wix site.</p>
+    <a class="button button-primary" href="https://www.justiceleagueglm.org/">Sign up for updates <span class="visually-hidden">on the Justice League Wix site</span></a>
+  </div>
 </section>
-
-<script>
-  const form = document.querySelector<HTMLFormElement>("[data-newsletter-shell]");
-  const email = form?.querySelector<HTMLInputElement>("[type=email]");
-  const error = form?.querySelector<HTMLElement>("#newsletter-error");
-  const status = form?.querySelector<HTMLElement>("[data-newsletter-status]");
-
-  form?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    if (!email || !error || !status) return;
-    const valid = email.validity.valid;
-    error.hidden = valid;
-    error.textContent = valid ? "" : "Enter an email address in the format name@example.com.";
-    email.setAttribute("aria-invalid", String(!valid));
-    status.textContent = valid ? "Prototype success state: no data was sent or stored." : "";
-    if (!valid) email.focus();
-  });
-</script>
