@@ -92,12 +92,20 @@ h2,
 h3,
 p {
   margin-block-start: 0;
+  min-width: 0;
+  hyphens: none;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 h1,
 h2,
 h3 {
   text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 h2 {
@@ -1668,6 +1676,15 @@ h3 {
     position: static;
   }
 
+  .methods-intro h2,
+  .participation-intro h2,
+  .newsletter-section h2,
+  .trust-section h2,
+  .event-section h2 {
+    width: 100%;
+    max-width: 100%;
+  }
+
   .method-list li {
     grid-template-columns: auto minmax(0, 1fr);
   }
@@ -1727,12 +1744,6 @@ h3 {
 }
 
 @media (max-width: 31rem) {
-  main h1,
-  main h2,
-  main h3 {
-    overflow-wrap: anywhere;
-  }
-
   .prototype-rail {
     justify-content: center;
     text-align: center;
@@ -1775,6 +1786,23 @@ h3 {
 
   .section-number {
     font-size: 2.5rem;
+  }
+
+  .mission-section,
+  .context-section {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .mission-heading,
+  .context-heading {
+    min-width: 0;
+  }
+
+  .mission-heading h2,
+  .context-heading h2 {
+    width: 100%;
+    max-width: 100%;
   }
 
   .state-controls {
@@ -1823,7 +1851,6 @@ h3 {
 .donor-page .page-intro h1 {
   max-width: 17ch;
   font-size: clamp(3rem, 5.4vw, 5.5rem);
-  overflow-wrap: anywhere;
 }
 
 .donor-source-status,
@@ -1975,7 +2002,6 @@ h3 {
   font-family: var(--font-civic);
   font-size: clamp(1.2rem, 2vw, 1.8rem);
   font-weight: 950;
-  overflow-wrap: anywhere;
   text-transform: uppercase;
 }
 
@@ -3265,7 +3291,6 @@ textarea {
   font-family: var(--font-civic);
   font-size: clamp(1.35rem, 2.3vw, 2.2rem);
   font-weight: 950;
-  overflow-wrap: anywhere;
   text-transform: uppercase;
 }
 
@@ -3628,9 +3653,11 @@ textarea {
 
   .page-intro h1,
   .article-header h1 {
-    max-width: 10ch;
+    width: 100%;
+    max-width: 100%;
     font-size: clamp(2.35rem, 8vw, 4rem);
-    overflow-wrap: anywhere;
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
   .page-intro-marker {
