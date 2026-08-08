@@ -5,6 +5,7 @@ import NewsletterShell from "@/components/NewsletterShell.astro";
 import PriorityModule from "@/components/PriorityModule.astro";
 import UpcomingEvents from "@/components/UpcomingEvents.astro";
 import VideoFeature from "@/components/VideoFeature.astro";
+import HeroWordCloud from "@/components/HeroWordCloud.astro";
 import { homepage } from "@/data/homepage";
 import pageMeta from "@/content/pages/home.json";
 import { getUpcomingPublicEvents } from "@/lib/wix";
@@ -14,21 +15,22 @@ const eventsResult = await getUpcomingPublicEvents();
 
 <BaseLayout isHome={true} title={pageMeta.seo_title} description={pageMeta.meta_description} ogImage={pageMeta.hero.image} ogImageAlt={pageMeta.hero.image_alt}>
   <main id="main-content" tabindex="-1">
-    <section class="hero" aria-labelledby="homepage-title" style={`--hero-image: url("${pageMeta.hero.image}")`}>
-      <span class="visually-hidden" role="img" aria-label={pageMeta.hero.image_alt}></span>
-      <div class="hero-copy">
-        <p class="section-kicker">{pageMeta.hero.eyebrow}</p>
-        <h1 id="homepage-title">{pageMeta.hero.heading}</h1>
-        <p class="hero-deck">{pageMeta.hero.description}</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href={pageMeta.hero.primary_cta_url}>{pageMeta.hero.primary_cta_text}</a>
-          <a class="button button-secondary" href={pageMeta.hero.secondary_cta_url}>{pageMeta.hero.secondary_cta_text}</a>
+    <div class="hero-opening">
+      <section class="hero" aria-labelledby="homepage-title" style={`--hero-image: url("${pageMeta.hero.image}")`}>
+        <span class="visually-hidden" role="img" aria-label={pageMeta.hero.image_alt}></span>
+        <div class="hero-copy">
+          <p class="section-kicker">{pageMeta.hero.eyebrow}</p>
+          <h1 id="homepage-title">{pageMeta.hero.heading}</h1>
+          <p class="hero-deck">{pageMeta.hero.description}</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href={pageMeta.hero.primary_cta_url}>{pageMeta.hero.primary_cta_text}</a>
+            {pageMeta.hero.secondary_cta_text && <a class="button button-secondary" href={pageMeta.hero.secondary_cta_url}>{pageMeta.hero.secondary_cta_text}</a>}
+          </div>
+          <a class="context-link" href="/reparations/">Understand reparations in Greater Lansing <span aria-hidden="true">↗</span></a>
         </div>
-        <a class="context-link" href="/reparations/">Understand reparations in Greater Lansing <span aria-hidden="true">↗</span></a>
-      </div>
-    </section>
-
-    <PriorityModule result={eventsResult} />
+      </section>
+      {pageMeta.hero_word_cloud.enabled && <HeroWordCloud words={pageMeta.hero_word_cloud.words} />}
+    </div>
 
     <section class="mission-section" aria-labelledby="mission-heading">
       <div class="section-number" aria-hidden="true">01</div>
@@ -45,6 +47,8 @@ const eventsResult = await getUpcomingPublicEvents();
         </div>
       </div>
     </section>
+
+    <PriorityModule result={eventsResult} />
 
     <section class="founder-section" aria-labelledby="founder-heading">
       <div class="founder-image">

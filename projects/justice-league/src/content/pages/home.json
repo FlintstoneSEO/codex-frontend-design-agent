@@ -5,14 +5,41 @@
   "seo_title": "Justice League of Greater Lansing | Reparations in Action",
   "meta_description": "Learn how the Justice League of Greater Lansing advances reparations locally, explore current work, and find ways to support or participate.",
   "hero": {
-    "eyebrow": "Greater Lansing · Michigan",
-    "heading": "Repairing the Breach in Greater Lansing",
+    "eyebrow": "Justice League of Greater Lansing",
+    "heading": "Restoring What History Has Taken.",
     "description": "Faith-rooted relationships, public education, and reparative action focused on racial wealth equity.",
     "image": "https://static.wixstatic.com/media/de1bf2_8dc3a92965864e6d9d39e132f59e7726~mv2.jpg/v1/fill/w_1600,h_1200,fp_0.50_0.55,q_82,enc_auto/de1bf2_8dc3a92965864e6d9d39e132f59e7726~mv2.jpg",
     "image_alt": "Greater Lansing community members gathered near the Michigan State Capitol",
-    "primary_cta_text": "Support Reparations",
-    "primary_cta_url": "/support-reparations/",
-    "secondary_cta_text": "Join the Work",
-    "secondary_cta_url": "/join-the-work/"
+    "primary_cta_text": "Our Mission",
+    "primary_cta_url": "#mission-heading",
+    "secondary_cta_text": "Support Reparations",
+    "secondary_cta_url": "/support-reparations/"
+  },
+  "hero_word_cloud": {
+    "enabled": true,
+    "words": [
+      { "text": "History", "size": "featured", "tone": "light", "emphasis": true },
+      { "text": "Faith-Based", "size": "large", "tone": "green", "emphasis": true },
+      { "text": "Housing", "size": "large", "tone": "gold", "emphasis": true },
+      { "text": "Reparations", "size": "featured", "tone": "red", "emphasis": true },
+      { "text": "Supporters", "size": "large", "tone": "green", "emphasis": true },
+      { "text": "Justice", "size": "large", "tone": "light", "emphasis": true },
+      { "text": "Wealth Gap", "size": "featured", "tone": "red", "emphasis": true },
+      { "text": "Healing", "size": "medium", "tone": "green", "emphasis": false },
+      { "text": "Legacy", "size": "large", "tone": "gold", "emphasis": true },
+      { "text": "Community", "size": "large", "tone": "green", "emphasis": true },
+      { "text": "Lansing", "size": "medium", "tone": "light", "emphasis": true },
+      { "text": "Education", "size": "medium", "tone": "gold", "emphasis": false },
+      { "text": "Equity", "size": "small", "tone": "muted", "emphasis": false },
+      { "text": "Repair", "size": "medium", "tone": "light", "emphasis": false },
+      { "text": "Scholarships", "size": "small", "tone": "gold", "emphasis": false },
+      { "text": "Historical", "size": "small", "tone": "muted", "emphasis": false },
+      { "text": "Discrimination", "size": "medium", "tone": "red", "emphasis": false },
+      { "text": "Faith", "size": "small", "tone": "green", "emphasis": false },
+      { "text": "Ownership", "size": "medium", "tone": "gold", "emphasis": false },
+      { "text": "Collaboration", "size": "small", "tone": "green", "emphasis": false },
+      { "text": "Relationships", "size": "small", "tone": "light", "emphasis": false },
+      { "text": "Systemic", "size": "medium", "tone": "red", "emphasis": false }
+    ]
   }
 }

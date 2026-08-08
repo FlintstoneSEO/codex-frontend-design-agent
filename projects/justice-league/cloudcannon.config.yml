@@ -44,6 +44,25 @@ collections_config:
         comment: Homepage only. The layout, crop, and contrast overlay remain developer controlled.
         options:
           structures: _structures.homepage_hero
+      hero_word_cloud:
+        type: object
+        label: Hero Word Cloud
+        comment: Homepage only. Uses controlled sizes and brand-safe color roles.
+        options:
+          structures: _structures.hero_word_cloud
+
+_select_data:
+  word_sizes:
+    - small
+    - medium
+    - large
+    - featured
+  word_tones:
+    - light
+    - green
+    - gold
+    - red
+    - muted
 
 collection_groups:
   - heading: Content
@@ -97,3 +116,49 @@ _structures:
             type: text
           secondary_cta_url:
             type: url
+  hero_word_cloud:
+    values:
+      - label: Hero Word Cloud
+        preview:
+          text:
+            - Hero Word Cloud
+          icon:
+            - format_size
+        value:
+          enabled: true
+          words: []
+        _inputs:
+          enabled:
+            type: switch
+            comment: Show or hide the word cloud without deleting its terms.
+          words:
+            type: array
+            options:
+              structures: _structures.hero_word_cloud_words
+  hero_word_cloud_words:
+    values:
+      - label: Word
+        preview:
+          text:
+            - key: text
+            - Word
+          icon:
+            - title
+        value:
+          text: ""
+          size: medium
+          tone: light
+          emphasis: false
+        _inputs:
+          text:
+            type: text
+          size:
+            type: select
+            options:
+              values: _select_data.word_sizes
+          tone:
+            type: select
+            options:
+              values: _select_data.word_tones
+          emphasis:
+            type: switch

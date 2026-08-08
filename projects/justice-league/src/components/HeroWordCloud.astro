@@ -1,0 +1,107 @@
+---
+export type WordSize = "small" | "medium" | "large" | "featured";
+export type WordTone = "light" | "green" | "gold" | "red" | "muted";
+
+export interface Word {
+  text: string;
+  size: string;
+  tone: string;
+  emphasis: boolean;
+}
+
+interface Props {
+  words: Word[];
+}
+
+const { words } = Astro.props;
+const wordSizes = new Set<WordSize>(["small", "medium", "large", "featured"]);
+const wordTones = new Set<WordTone>(["light", "green", "gold", "red", "muted"]);
+
+const normalizedWords = words.map((word) => ({
+  ...word,
+  size: wordSizes.has(word.size as WordSize) ? word.size : "medium",
+  tone: wordTones.has(word.tone as WordTone) ? word.tone : "light",
+}));
+---
+
+<aside class="word-cloud" aria-label="Issues and ideas that shape the Justice League's work">
+  <ul>
+    {normalizedWords.map((word, index) => (
+      <li
+        class:list={[
+          `word-size-${word.size}`,
+          `word-tone-${word.tone}`,
+          { "word-emphasis": word.emphasis, "word-secondary": index > 11 },
+        ]}
+      >
+        {word.text}
+      </li>
+    ))}
+  </ul>
+</aside>
+
+<style>
+  .word-cloud {
+    width: min(48rem, calc(100% - (2 * var(--page-gutter))));
+    margin: clamp(-10rem, -10vw, -7rem) var(--page-gutter) 0 auto;
+    padding: clamp(1.5rem, 3vw, 2.75rem);
+    border: 1px solid color-mix(in srgb, var(--color-border) 48%, transparent);
+    border-radius: 3.75rem 1.25rem 3.75rem 1.25rem;
+    background: #101010;
+    box-shadow: 0 1.5rem 3.5rem rgba(0, 0, 0, 0.38);
+    position: relative;
+    z-index: 3;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: center;
+    gap: clamp(0.35rem, 1.1vw, 0.85rem) clamp(0.7rem, 2vw, 1.5rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+  }
+
+  li {
+    max-width: 100%;
+    color: var(--color-text-muted);
+    font-size: clamp(0.78rem, 1.3vw, 1rem);
+    font-weight: 700;
+    letter-spacing: 0.035em;
+    line-height: 1;
+    overflow-wrap: anywhere;
+    text-transform: uppercase;
+  }
+
+  .word-size-medium { font-size: clamp(1rem, 1.75vw, 1.4rem); }
+  .word-size-large { font-size: clamp(1.3rem, 2.5vw, 2rem); }
+  .word-size-featured {
+    font-size: clamp(1.65rem, 3.6vw, 3rem);
+    letter-spacing: -0.035em;
+  }
+
+  .word-emphasis { font-weight: 950; }
+  .word-tone-light { color: var(--color-text); }
+  .word-tone-green { color: var(--color-green); }
+  .word-tone-gold { color: var(--color-action); }
+  .word-tone-red { color: var(--color-red); }
+  .word-tone-muted { color: var(--color-text-muted); }
+
+  @media (max-width: 50rem) {
+    .word-cloud {
+      width: calc(100% - (2 * var(--page-gutter)));
+      margin-top: -2.25rem;
+      border-radius: 2rem 0.75rem 2rem 0.75rem;
+    }
+
+    .word-secondary { display: none; }
+  }
+
+  @media (max-width: 25rem) {
+    .word-cloud { padding: 1.25rem; }
+    li { letter-spacing: 0; }
+  }
+</style>
