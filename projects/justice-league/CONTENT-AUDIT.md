@@ -4,6 +4,15 @@ Last reviewed: August 7, 2026
 Astro project: `projects/justice-league`
 Production source: <https://www.justiceleagueglm.org/>
 
+## August 8, 2026 completion pass
+
+- Rechecked every Astro content route, shared component, typed content source, page metadata record, and public asset for prototype markers and unsupported claims.
+- Reworked the homepage opening from a split copy/image-card composition to a full-width photographic background using the same approved Wix organization image already associated with the homepage. The responsive crop, desktop directional overlay, and stronger mobile overlay are developer controlled.
+- Moved the eight requested homepage hero fields into `src/content/pages/home.json` so CloudCannon editors can update copy, links, the image, and alternative text without editing Astro.
+- Confirmed that supporter logos remain a verified local typed record and that donor names continue to come from the public Little Green Light report, with the sanitized checked-in fallback used only when the source is unavailable during a build.
+- Retained visible `[NEEDS CLIENT INPUT: ...]` notices only where publishing unverified legal, privacy, governance, event, or workflow facts would be misleading. Demonstration fixtures remain unlinked, excluded from the sitemap, and explicitly `noindex`; they are test fixtures rather than organization content.
+- The authenticated Wix/plugin transport was unavailable in this execution environment. The reconciliation below therefore relies on the repository's August 7 Wix inventory and exact source URLs; no new fact was inferred from an inaccessible page.
+
 ## Source and publication rules
 
 - The current published Justice League GLM Wix site is the primary factual source.

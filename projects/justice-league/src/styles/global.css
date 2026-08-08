@@ -350,22 +350,34 @@ h3 {
 }
 
 .hero {
-  display: grid;
-  min-height: min(56rem, calc(100svh - 6.5rem));
-  grid-template-columns: minmax(0, 1.18fr) minmax(20rem, 0.82fr);
+  position: relative;
+  display: flex;
+  min-height: clamp(36rem, calc(100svh - 6.5rem), 56rem);
+  align-items: center;
+  overflow: hidden;
   border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-canvas);
+  background-image:
+    linear-gradient(90deg, rgba(8, 8, 8, 0.96) 0%, rgba(8, 8, 8, 0.82) 42%, rgba(8, 8, 8, 0.24) 76%, rgba(8, 8, 8, 0.1) 100%),
+    var(--hero-image);
+  background-position: center, 50% 55%;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .hero-copy {
   display: flex;
   min-width: 0;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
   justify-content: center;
+  width: min(100%, 62rem);
   padding: clamp(4rem, 8vw, 8rem) var(--page-gutter);
 }
 
 .hero h1 {
-  max-width: 12ch;
+  max-width: 13ch;
   margin-bottom: clamp(2rem, 5vw, 4rem);
   font-family: var(--font-civic);
   font-size: clamp(2.75rem, 7.2vw, 7.5rem);
@@ -373,19 +385,6 @@ h3 {
   letter-spacing: -0.07em;
   line-height: 0.82;
   text-transform: uppercase;
-}
-
-.hero h1 span {
-  display: block;
-  margin-top: 0.14em;
-  color: var(--color-action);
-  font-family: var(--font-editorial);
-  font-size: 0.53em;
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  text-transform: none;
 }
 
 .placeholder-copy {
@@ -1129,7 +1128,7 @@ h3 {
 .hero-deck {
   max-width: 42rem;
   margin-bottom: 2rem;
-  color: var(--color-text-muted);
+  color: var(--color-text);
   font-family: var(--font-editorial);
   font-size: clamp(1.15rem, 1.7vw, 1.45rem);
   line-height: 1.42;
@@ -1584,17 +1583,21 @@ h3 {
   }
 
   .hero {
-    min-height: 0;
-    grid-template-columns: minmax(0, 1fr);
+    min-height: clamp(34rem, 78svh, 46rem);
+    align-items: end;
+    background-image:
+      linear-gradient(180deg, rgba(8, 8, 8, 0.28) 0%, rgba(8, 8, 8, 0.7) 42%, rgba(8, 8, 8, 0.97) 100%),
+      var(--hero-image);
+    background-position: center, 58% 50%;
   }
 
   .hero-copy {
-    min-height: auto;
-    padding-block: clamp(3.5rem, 14vw, 6rem);
+    min-height: 100%;
+    padding-block: clamp(8rem, 30vw, 13rem) clamp(3rem, 10vw, 5rem);
   }
 
   .hero h1 {
-    max-width: 10ch;
+    max-width: 12ch;
     font-size: clamp(2.8rem, 14.5vw, 5.4rem);
     line-height: 0.85;
   }

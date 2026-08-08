@@ -3,5 +3,16 @@
   "url": "/",
   "source_path": "/src/pages/index.astro",
   "seo_title": "Justice League of Greater Lansing | Reparations in Action",
-  "meta_description": "Learn how the Justice League of Greater Lansing advances reparations locally, explore current work, and find ways to support or participate."
+  "meta_description": "Learn how the Justice League of Greater Lansing advances reparations locally, explore current work, and find ways to support or participate.",
+  "hero": {
+    "eyebrow": "Greater Lansing · Michigan",
+    "heading": "Repairing the Breach in Greater Lansing",
+    "description": "Faith-rooted relationships, public education, and reparative action focused on racial wealth equity.",
+    "image": "https://static.wixstatic.com/media/de1bf2_8dc3a92965864e6d9d39e132f59e7726~mv2.jpg/v1/fill/w_1600,h_1200,fp_0.50_0.55,q_82,enc_auto/de1bf2_8dc3a92965864e6d9d39e132f59e7726~mv2.jpg",
+    "image_alt": "Greater Lansing community members gathered near the Michigan State Capitol",
+    "primary_cta_text": "Support Reparations",
+    "primary_cta_url": "/support-reparations/",
+    "secondary_cta_text": "Join the Work",
+    "secondary_cta_url": "/join-the-work/"
+  }
 }

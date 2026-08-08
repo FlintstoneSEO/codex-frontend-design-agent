@@ -11,6 +11,7 @@ interface Props {
   isHome?: boolean;
   pageType?: "WebPage";
   ogImage?: string;
+  ogImageAlt?: string;
 }
 
 const {
@@ -19,7 +20,8 @@ const {
   noindex = true,
   isHome = false,
   pageType,
-  ogImage
+  ogImage,
+  ogImageAlt
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
@@ -80,7 +82,7 @@ const structuredData = isHome
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content={site.name} />
     {ogImage && <meta property="og:image" content={ogImage} />}
-    {ogImage && <meta property="og:image:alt" content="Greater Lansing community members gathered near the Michigan State Capitol" />}
+    {ogImage && ogImageAlt && <meta property="og:image:alt" content={ogImageAlt} />}
     <meta name="twitter:card" content={ogImage ? "summary_large_image" : "summary"} />
     <title>{title}</title>
     {structuredData && (
