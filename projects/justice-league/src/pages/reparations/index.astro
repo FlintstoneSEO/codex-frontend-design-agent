@@ -1,38 +1,85 @@
 ---
 import ActionBand from "@/components/ActionBand.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
-import PageIntro from "@/components/PageIntro.astro";
-import SourceNotice from "@/components/SourceNotice.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import pageMeta from "@/content/pages/reparations.json";
+import page from "@/content/pages/reparations.json";
 
-const pillars = [
-  { name: "Educational scholarships", text: "Support eligible descendants of enslaved Africans pursuing college, university, or vocational education." },
-  { name: "Homeownership", text: "Use reparations funding with community partners to support first-time Black homeowners." },
-  { name: "Business entrepreneurship", text: "Address barriers to startup capital through a business-development pillar whose current public program terms are still being developed." }
+const history = [
+  { title: "Freedom without economic repair", text: "Emancipation ended legal slavery, but it did not compensate formerly enslaved people for generations of stolen labor or establish equal access to land and capital." },
+  { title: "Exclusion from opportunity", text: "Jim Crow laws and unequal administration of public benefits—including land programs and the GI Bill—limited access to education, property, and economic mobility." },
+  { title: "Housing discrimination", text: "Redlining, restrictive practices, and discriminatory lending denied many African American families the chance to own appreciating property in neighborhoods of their choice." },
+  { title: "A wealth divide carried forward", text: "When families are blocked from owning assets, they have less wealth to pass to the next generation. The effects remain visible in access to education, homeownership, and startup capital today." }
+] as const;
+
+const model = [
+  { label: "Partners commit", text: "Predominantly white houses of worship, individuals, organizations, and community partners make reparations contributions and build accountable relationships." },
+  { label: "Resources are gathered", text: "Contributions build a locally focused reparations and endowment fund rather than a short-term charitable campaign." },
+  { label: "Community guides", text: "African American community representation and advisory leadership guide how reparations resources are distributed." },
+  { label: "Opportunity grows", text: "Resources support direct pathways to education, homeownership, and business development in Greater Lansing." }
+] as const;
+
+const pathways = [
+  { number: "01", title: "Education", text: "Reparations Scholarships expand access to college, university, vocational, and other educational opportunities for eligible African American students in the Greater Lansing area.", link: "/scholarship/", label: "Explore Reparations Scholarships" },
+  { number: "02", title: "Homeownership", text: "Reparations resources are intended to confront the legacy of housing discrimination by supporting pathways to homeownership and the intergenerational wealth an owned home can help build. The Justice League timeline documents reparations-supported home construction with a local partner; current application terms are not publicly available.", link: "/about/history/", label: "See housing milestones" },
+  { number: "03", title: "Business development", text: "The adopted business-development pillar seeks to help African American entrepreneurs establish or grow businesses—another route to asset ownership and lasting wealth. Public grant amounts, eligibility rules, deadlines, and current application availability have not been announced.", link: "/join-the-work/", label: "Ask about partnership" }
 ] as const;
 ---
 
-<BaseLayout pageType="WebPage" title={pageMeta.seo_title} description={pageMeta.meta_description}>
-  <main id="main-content" class="interior-page" tabindex="-1">
+<BaseLayout pageType="WebPage" title={page.seo_title} description={page.meta_description} noindex={false}>
+  <main id="main-content" class="interior-page reparations-page" tabindex="-1">
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Reparations" }]} />
-    <PageIntro kicker="Local education" title="Reparations in Greater Lansing" lede="A faith-rooted response to historical racial harm, governed locally and directed toward wealth-building pathways." mode="evidence" marker="Learn / act">
-      <span slot="kicker" data-editable="source" data-path="/src/pages/reparations/index.astro" data-key="reparations-intro-kicker">Local education</span>
-      <span slot="title" data-editable="source" data-path="/src/pages/reparations/index.astro" data-key="reparations-intro-title">Reparations in Greater Lansing</span>
-      <span slot="lede" data-editable="source" data-path="/src/pages/reparations/index.astro" data-key="reparations-intro-lede">A faith-rooted response to historical racial harm, governed locally and directed toward wealth-building pathways.</span>
-      <span slot="marker" data-editable="source" data-path="/src/pages/reparations/index.astro" data-key="reparations-intro-marker">Learn / act</span>
-    </PageIntro>
-    <SourceNotice title="Framework verified across the current history, reparations, vision, and timeline pages" />
 
-    <section class="definition-block" aria-labelledby="definition-heading" data-editable="source" data-path="/src/pages/reparations/index.astro" data-key="reparations-definition"><p class="section-kicker">Organization definition</p><h2 id="definition-heading">Repair means making amends for harm.</h2><p class="editorial-lede">The organization describes reparations as making amends for a wrong that has been done. Its local model asks faith communities that benefited from racial inequity to acknowledge that history, build accountable relationships, and participate in material repair.</p><p>This is not presented as a replacement for federal or state action. The current history page describes it as a local first step led by Greater Lansing faith communities.</p></section>
+    <header class="reparations-hero">
+      <div class="reparations-hero__copy">
+        <p class="section-kicker">{page.hero.eyebrow}</p>
+        <h1>{page.hero.heading}</h1>
+        <p class="reparations-hero__lede">{page.hero.description}</p>
+        <div class="reparations-hero__actions">
+          <a class="button button-primary" href={page.hero.primary_cta_url}>{page.hero.primary_cta_text}</a>
+          <a class="button button-secondary" href={page.hero.secondary_cta_url}>{page.hero.secondary_cta_text}</a>
+        </div>
+      </div>
+      <div class="reparations-hero__statement" aria-hidden="true"><span>Faith</span><span>Relationship</span><span>Repair</span></div>
+    </header>
 
-    <section class="editorial-split" aria-labelledby="local-heading" data-editable="source" data-path="/src/pages/reparations/index.astro" data-key="reparations-local"><div class="section-index">01 / Local</div><div><h2 id="local-heading">From acknowledgment to locally governed action.</h2><p>The current model brings together predominantly white houses of worship, African American churches and community leaders, individual donors, and collaborative partners. The published timeline states that an African American Advisory Council oversees reparations distributions.</p><a class="text-action" href="/about/leadership/">Meet the current leadership groups</a></div></section>
+    <section id="our-approach" class="reparations-definition" aria-labelledby="definition-heading">
+      <div>
+        <p class="section-kicker">{page.definition.eyebrow}</p>
+        <h2 id="definition-heading">{page.definition.heading}</h2>
+      </div>
+      <div class="reparations-definition__copy">
+        {page.definition.body.map((paragraph) => <p>{paragraph}</p>)}
+        <blockquote><p>{page.definition.callout}</p></blockquote>
+      </div>
+    </section>
 
-    <section class="ruled-section" aria-labelledby="methods-heading"><div class="section-heading-row"><p class="section-kicker">Three-pillar framework</p><h2 id="methods-heading">The adopted paths for repair.</h2></div><ol class="method-rail">{pillars.map((pillar, index) => <li><span>{String(index + 1).padStart(2, "0")}</span><strong>{pillar.name}</strong><p>{pillar.text}</p></li>)}</ol></section>
+    <section class="reparations-history" aria-labelledby="history-heading">
+      <div class="reparations-section-heading"><p class="section-kicker">Why repair is necessary</p><h2 id="history-heading">{page.history_heading}</h2><p>Historical exclusion restricted asset ownership. Restricted ownership limited what families could pass forward. Reparations responds to that continuing economic breach with intentional, locally directed repair.</p></div>
+      <ol class="reparations-history__list">{history.map((item, index) => <li><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{item.title}</h3><p>{item.text}</p></div></li>)}</ol>
+      <a class="text-action" href="/about/history/">Explore the Justice League history and milestones</a>
+    </section>
 
-    <section class="evidence-note" aria-labelledby="faith-heading" data-editable="source" data-path="/src/pages/reparations/index.astro" data-key="reparations-faith"><p class="section-kicker">Faith-based framing</p><h2 id="faith-heading">A payment is part of a longer relationship.</h2><p>The current faith-based statement argues that a financial transfer without spiritual rigor can become charity rather than repair. The Justice League frames the work through repentance, relationship, accountability, and sustained change toward the Beloved Community.</p><a class="text-action" href="https://www.justiceleagueglm.org/faithbased" target="_blank" rel="noreferrer">Read the current faith-based statement <span class="visually-hidden">(opens in a new tab)</span></a></section>
+    <section class="reparations-model" aria-labelledby="model-heading">
+      <div class="reparations-section-heading"><p class="section-kicker">How the model works</p><h2 id="model-heading">{page.model_heading}</h2><p>Participation moves through a clear, community-accountable sequence. The fund is a means—not the endpoint. Its purpose is to create durable wealth-building opportunity.</p></div>
+      <ol class="reparations-model__flow">{model.map((step, index) => <li><span class="reparations-model__number">{String(index + 1).padStart(2, "0")}</span><div><h3>{step.label}</h3><p>{step.text}</p></div></li>)}</ol>
+      <p class="reparations-model__note"><strong>Governance matters:</strong> African American community guidance helps keep local reparations accountable to the people and priorities the work is intended to serve. <a href="/about/leadership/">Learn about leadership</a>.</p>
+    </section>
 
-    <section class="withheld-section" aria-labelledby="dated-plan"><p class="section-kicker">Dated planning claim</p><h2 id="dated-plan">The former 2025 fund goal is historical—not a current target.</h2><p>The current reparations page still contains a goal of reaching $1 million by the end of 2025, while the timeline cites different dated fund milestones. The redesign does not present the expired goal or any single endowment balance as current without a reconciled financial source.</p></section>
-    <ActionBand kicker="Primary action" title="Support the work after understanding it." text="Choose a reparations or administration designation on the verified support path, or begin with a meeting or presentation." primaryLabel="Support Reparations" primaryHref="/support-reparations/" secondaryLabel="Join the Work" secondaryHref="/join-the-work/" />
+    <section class="reparations-pathways" aria-labelledby="pathways-heading">
+      <div class="reparations-section-heading"><p class="section-kicker">Three pathways to repair</p><h2 id="pathways-heading">{page.pathways_heading}</h2><p>Each pathway addresses a place where historic exclusion has constrained access to assets, opportunity, and intergenerational wealth.</p></div>
+      <ol>{pathways.map((pathway) => <li><span class="reparations-pathways__number">{pathway.number}</span><div><h3>{pathway.title}</h3><p>{pathway.text}</p><a class="text-action" href={pathway.link}>{pathway.label}</a></div></li>)}</ol>
+    </section>
+
+    <section class="reparations-faith" aria-labelledby="faith-heading">
+      <p class="section-kicker">Faith into action</p><h2 id="faith-heading">{page.faith_heading}</h2>
+      <div><p>The Justice League asks faith communities to do more than acknowledge historical racial injustice. Repentance calls for changed relationships and material participation in repair.</p><p>Through sustained relationship, reparative contribution, and accountability, houses of worship and partners can help move Greater Lansing toward the Beloved Community—and become “repairers of the breach.”</p></div>
+    </section>
+
+    <section class="reparations-action-record" aria-labelledby="action-record-heading">
+      <div><p class="section-kicker">Reparations in action</p><h2 id="action-record-heading">Follow the documented work.</h2></div>
+      <nav aria-label="Reparations evidence and updates"><a href="/about/"><strong>About</strong><span>Mission, vision, and the organization behind the model</span></a><a href="/about/history/"><strong>History</strong><span>Dated scholarship, housing, congregational, and fund milestones</span></a><a href="/scholarship/"><strong>Scholarship</strong><span>Program information and published recipient records</span></a><a href="/impact/"><strong>Impact</strong><span>Evidence, accountability, supporters, and donor records</span></a></nav>
+    </section>
+
+    <ActionBand kicker={page.action.eyebrow} title={page.action.heading} text={page.action.description} primaryLabel={page.action.primary_cta_text} primaryHref={page.action.primary_cta_url} secondaryLabel={page.action.secondary_cta_text} secondaryHref={page.action.secondary_cta_url} />
   </main>
 </BaseLayout>

@@ -40,10 +40,28 @@ collections_config:
         comment: A concise summary for search results and link previews.
       hero:
         type: object
-        label: Homepage Hero
-        comment: Homepage only. The layout, crop, and contrast overlay remain developer controlled.
-        options:
-          structures: _structures.homepage_hero
+        label: Page Hero
+        comment: Homepage and Reparations page. Layout and heading hierarchy remain developer controlled.
+      definition:
+        type: object
+        label: Reparations Definition
+        comment: Reparations page only. Keep claims aligned with approved Justice League source material.
+      history_heading:
+        type: text
+        label: Historical Context Heading
+      model_heading:
+        type: text
+        label: Local Model Heading
+      pathways_heading:
+        type: text
+        label: Pathways Heading
+      faith_heading:
+        type: text
+        label: Faith Section Heading
+      action:
+        type: object
+        label: Closing Action
+        comment: CTA labels and internal destinations for the Reparations page.
 
 collection_groups:
   - heading: Content
