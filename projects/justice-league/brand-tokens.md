@@ -17,9 +17,11 @@ These tokens are **provisional and approved for the non-production homepage prot
 | `--color-action` | `#F3C84B` | Gold primary action and focus |
 | `--color-action-hover` | `#FFD86A` | Gold hover/active emphasis |
 | `--color-red` | `#D7544D` | Justice League red accent and error emphasis |
-| `--color-green` | `#48A77D` | Justice League green accent and positive/current emphasis |
+| `--color-accent` | `#006633` | Justice Green for bounded impact, participation, and action emphasis |
+| `--color-accent-hover` | `#005229` | Hover/active state for Justice Green controls |
+| `--color-accent-soft` | `#E6F2EC` | Accessible green-family text and focus treatment on dark surfaces |
 
-Red and green never communicate state without accompanying text. Gold is the only primary action color.
+Red and green never communicate state without accompanying text. Gold remains the default primary action color; Justice Green is reserved for selected participation and support actions.
 
 ## Contrast evidence
 
@@ -32,11 +34,16 @@ Ratios use WCAG relative luminance calculations.
 | `#F3C84B` | `#080808` | 12.56:1 | Links, headings, focus indicators |
 | `#080808` | `#F3C84B` | 12.56:1 | Primary button text |
 | `#D7544D` | `#080808` | 5.02:1 | Normal-size accent/error text with textual state |
-| `#48A77D` | `#080808` | 6.77:1 | Normal-size accent/current text with textual state |
+| `#F7F3E8` | `#006633` | 6.42:1 | Button and marker text on Justice Green |
+| `#FFFFFF` | `#006633` | 7.12:1 | Text on Justice Green where pure white is used |
+| `#E6F2EC` | `#080808` | 17.43:1 | Accent text and focus indicators on the primary canvas |
+| `#E6F2EC` | `#171717` | 15.60:1 | Accent text on raised surfaces |
 | `#F7F3E8` | `#171717` | 16.17:1 | Surface text |
 | `#B9B4AA` | `#171717` | 8.68:1 | Surface supporting text |
 
 All implemented hover, focus, disabled, validation, and disclosure states must be checked in their actual combinations. The prototype may not infer production logo-color accuracy from these accessibility-safe approximations.
+
+`#006633` is not approved as text or a meaningful icon directly on the dark canvas (2.81:1). Use `--color-accent-soft` on dark surfaces, or use the primary accent as a background with light text.
 
 ## Typography
 
@@ -63,4 +70,3 @@ All implemented hover, focus, disabled, validation, and disclosure states must b
 - Transform/opacity/color only
 - No scroll-triggered entrance effects, parallax, autoplay, or hidden-until-JavaScript content
 - `prefers-reduced-motion: reduce` disables nonessential transition and smooth-scroll behavior
-

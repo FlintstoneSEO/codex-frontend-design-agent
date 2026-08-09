@@ -9,7 +9,9 @@
   --color-action: #f3c84b;
   --color-action-hover: #ffd86a;
   --color-red: #d7544d;
-  --color-green: #48a77d;
+  --color-accent: #006633;
+  --color-accent-hover: #005229;
+  --color-accent-soft: #e6f2ec;
   --font-civic: Arial, Helvetica, sans-serif;
   --font-editorial: Georgia, "Times New Roman", serif;
   --page-gutter: clamp(1rem, 4vw, 4rem);
@@ -66,7 +68,7 @@ a {
 }
 
 :focus-visible {
-  outline: 0.2rem solid var(--color-action);
+  outline: 0.2rem solid var(--color-accent-soft);
   outline-offset: 0.25rem;
 }
 
@@ -273,6 +275,16 @@ h3 {
   color: var(--color-canvas);
 }
 
+.desktop-nav a[aria-current="page"] {
+  box-shadow: inset 0 -0.2rem var(--color-accent-soft);
+}
+
+.mobile-menu a[aria-current="page"] {
+  text-decoration-color: var(--color-accent-soft);
+  text-decoration-line: underline;
+  text-decoration-thickness: 0.2rem;
+}
+
 .header-action,
 .mobile-primary-action {
   display: inline-flex;
@@ -311,7 +323,7 @@ h3 {
 .placeholder-label,
 .priority-status {
   margin-bottom: 1rem;
-  color: var(--color-action);
+  color: var(--color-accent-soft);
   font-size: 0.76rem;
   font-weight: 900;
   letter-spacing: 0.12em;
@@ -339,6 +351,21 @@ h3 {
 .button-primary {
   background: var(--color-action);
   color: var(--color-canvas);
+}
+
+.button-accent,
+.header-action,
+.mobile-primary-action {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-text);
+}
+
+.button-accent:hover,
+.header-action:hover,
+.mobile-primary-action:hover {
+  background: var(--color-accent-hover);
+  color: var(--color-text);
 }
 
 .button-secondary {
@@ -454,7 +481,7 @@ h3 {
   bottom: -13rem;
   width: 27rem;
   height: 27rem;
-  border: 4rem solid var(--color-green);
+  border: 4rem solid var(--color-accent);
   border-radius: 50%;
   opacity: 0.8;
 }
@@ -632,7 +659,7 @@ h3 {
 }
 
 .priority-status {
-  color: var(--color-green);
+  color: var(--color-accent-soft);
 }
 
 .priority-record.is-expired .priority-status,
@@ -818,7 +845,7 @@ h3 {
 
 .empty-signal span:nth-child(3) {
   height: 60%;
-  background: var(--color-green);
+  background: var(--color-accent);
 }
 
 .event-section {
@@ -897,7 +924,7 @@ h3 {
 
 .participation-list span {
   grid-row: 1 / 3;
-  color: var(--color-green);
+  color: var(--color-accent-soft);
   font-weight: 900;
 }
 
@@ -917,12 +944,12 @@ h3 {
   grid-template-columns: 0.85fr 1.15fr;
   gap: clamp(3rem, 8vw, 9rem);
   padding: var(--section-space) var(--page-gutter);
-  background: var(--color-green);
-  color: var(--color-canvas);
+  background: var(--color-accent);
+  color: var(--color-text);
 }
 
 .newsletter-section .section-kicker {
-  color: var(--color-canvas);
+  color: var(--color-accent-soft);
 }
 
 .newsletter-section h2 {
@@ -950,15 +977,15 @@ h3 {
   width: 100%;
   min-height: 3.5rem;
   border: 0;
-  border-bottom: 0.2rem solid var(--color-canvas);
+  border-bottom: 0.2rem solid var(--color-accent-soft);
   border-radius: 0;
   background: transparent;
-  color: var(--color-canvas);
+  color: var(--color-text);
   font-size: 1.2rem;
 }
 
 .field-group input:focus-visible {
-  outline-color: var(--color-canvas);
+  outline-color: var(--color-accent-soft);
 }
 
 .field-help,
@@ -973,14 +1000,14 @@ h3 {
 }
 
 .newsletter-form .field-help {
-  color: var(--color-canvas);
+  color: var(--color-accent-soft);
 }
 
 .newsletter-form .button {
   margin-top: 1rem;
-  border-color: var(--color-canvas);
-  background: var(--color-canvas);
-  color: var(--color-action);
+  border-color: var(--color-text);
+  background: var(--color-text);
+  color: var(--color-accent);
 }
 
 .trust-section {
@@ -1396,7 +1423,7 @@ h3 {
 
 .upcoming-list .event-date {
   margin-bottom: 0.35rem;
-  color: var(--color-green);
+  color: var(--color-accent-soft);
   font-weight: 900;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -1442,7 +1469,7 @@ h3 {
 
 .elink-status {
   min-height: 1.5em;
-  color: var(--color-green);
+  color: var(--color-accent-soft);
   font-size: 0.8rem;
 }
 
@@ -1866,7 +1893,7 @@ h3 {
 }
 
 .donor-source-status {
-  border-top: 0.4rem solid var(--color-green);
+  border-top: 0.4rem solid var(--color-accent);
   background: var(--color-surface);
 }
 
@@ -2327,12 +2354,13 @@ textarea {
 .reparations-faith {
   max-width: none;
   grid-template-columns: minmax(10rem, 0.4fr) minmax(13rem, 0.65fr) minmax(0, 0.95fr);
-  background: var(--color-green);
-  color: var(--color-canvas);
+  border-top: 0.4rem solid var(--color-accent);
+  background: var(--color-surface);
+  color: var(--color-text);
 }
 
 .reparations-faith .section-kicker,
-.reparations-faith > div > p { color: var(--color-canvas); }
+.reparations-faith > div > p { color: var(--color-accent-soft); }
 
 .reparations-action-record nav { display: flex; flex-direction: column; }
 .reparations-action-record a { display: grid; grid-template-columns: minmax(10rem, 0.45fr) minmax(0, 1fr); gap: 1rem; min-height: 5rem; align-items: center; border-top: 1px solid var(--color-border); text-decoration: none; }
@@ -2489,8 +2517,8 @@ textarea {
 }
 
 .page-intro--documentary .page-intro-marker {
-  background: var(--color-green);
-  color: var(--color-canvas);
+  background: var(--color-accent);
+  color: var(--color-text);
 }
 
 .page-intro--evidence .page-intro-marker {
@@ -2638,7 +2666,7 @@ textarea {
 .pathway-ledger small {
   display: block;
   margin-top: 0.6rem;
-  color: var(--color-green);
+  color: var(--color-accent-soft);
 }
 
 .trust-ledger nav {
@@ -3265,7 +3293,7 @@ textarea {
 }
 
 .scholarship-status--active {
-  border-top-color: var(--color-green);
+  border-top-color: var(--color-accent);
 }
 
 .scholarship-status--closed,
@@ -3619,6 +3647,17 @@ textarea {
   font-weight: 950;
 }
 
+.provisional-evidence .impact-value {
+  display: inline-block;
+  min-width: 3.6rem;
+  margin-right: 0.5rem;
+  padding: 0.12rem 0.4rem;
+  background: var(--color-accent);
+  color: var(--color-text);
+  font-weight: 950;
+  text-align: center;
+}
+
 .accountability-grid ol {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -3674,7 +3713,7 @@ textarea {
 }
 
 .state-dot--active {
-  background: var(--color-green);
+  background: var(--color-accent);
 }
 
 .state-dot--error {
@@ -3858,7 +3897,7 @@ textarea {
 
 .form-status {
   min-height: 1.5rem;
-  color: var(--color-green);
+  color: var(--color-accent-soft);
   font-weight: 800;
 }
 
