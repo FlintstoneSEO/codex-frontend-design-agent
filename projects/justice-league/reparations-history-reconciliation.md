@@ -33,7 +33,7 @@ The implementation was compared with the existing Astro pages, the previously ap
 |---|---|---|---|
 | Willye Bryan founder portrait | Already used | 2021 timeline milestone | Retained with intrinsic dimensions, alt, caption, lazy loading |
 | October 2022 Socialight Society presentation | Already used | October 2022 timeline milestone | Retained |
-| January 2023 Lansing Reachout apology gathering | Reuse in a second, contextually distinct crop | January 2023 timeline milestone and Reparations faith/action section | The Reparations variant is a bounded 900×598 Wix transform, not a new duplicate file |
+| January 2023 Lansing Reachout apology gathering | Reuse in a second, contextually distinct crop | January 2023 timeline milestone and Reparations faith/action section | Documentary-photo reuse permission was confirmed by the stakeholder on August 9, 2026; the Reparations variant is a bounded 900×598 Wix transform, not a new duplicate file |
 | June 2023 Capitol apology gathering | Already used | June 2023 timeline milestone | Retained |
 | 2024 scholarship cohort | Already used | August 2024 timeline milestone | Retained |
 | McCullough Street home build | Already used | April 2025 timeline milestone | Retained |
@@ -51,5 +51,5 @@ The implementation was compared with the existing Astro pages, the previously ap
 - Congregational dollar figures, scholarship awards, and home-build amounts remain only in dated timeline entries and are explicitly historical records rather than current balances or availability.
 - The legacy “$1 million by the end of 2025” target is intentionally omitted.
 - No current endowment balance, grant amount, application availability, eligibility, or deadline was introduced.
-- Client confirmation remains required for: rights to remotely reuse all selected Wix photographs; source/rights for legacy research graphics; exact wording and evidence for Greater Lansing/East Lansing housing discrimination; the current African American advisory governance name and remit; ongoing history content ownership and approval.
-
+- The stakeholder confirmed permission on August 9, 2026, to reuse all remotely referenced Wix documentary photographs. This confirmation applies to the organization-owned Wix photography used by the Astro site; it does not establish republication rights for third-party research graphics.
+- Client confirmation remains required for: source/rights for legacy research graphics; exact wording and evidence for Greater Lansing/East Lansing housing discrimination; the current African American advisory governance name and remit; ongoing history content ownership and approval.
