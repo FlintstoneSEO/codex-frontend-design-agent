@@ -5,6 +5,7 @@ import { applyDonorPublicationPolicy, loadDonorGroups, PUBLIC_DONOR_MIN_YEAR } f
 import { supporters } from "../src/data/supporters.ts";
 import { leadershipGroups, leadershipHero, leadershipMembers } from "../src/data/leadership.ts";
 import { routeReconciliation } from "../src/data/route-reconciliation.ts";
+import { timelineMilestones } from "../src/data/timeline.ts";
 
 const projectRoot = process.cwd();
 const distRoot = path.join(projectRoot, "dist");
@@ -264,6 +265,14 @@ checks.push(["reparations page does not advertise unsupported applications or aw
 checks.push(["reparations page styles include deliberate narrow reflow", cssSource.includes(".reparations-model__flow") && cssSource.includes(".reparations-hero__actions .button")]);
 
 const scholarshipHtml = routeDocuments.find((item) => item.route === "scholarship")?.html ?? "";
+const historyHtml = routeDocuments.find((item) => item.route === "about/history")?.html ?? "";
+const requiredTimelineMilestones = ["holt-2023", "red-cedar-2023", "edgewood-2023", "all-saints-2023", "fall-celebration-2024", "flint-2025", "second-home-2025", "how-did-we-get-here-2"];
+checks.push(["timeline covers required restored milestones", requiredTimelineMilestones.every((id) => timelineMilestones.some((milestone) => milestone.id === id) && historyHtml.includes(`id="${id}"`))]);
+checks.push(["timeline does not compress 2023 congregational records", ["holt-2023", "red-cedar-2023", "edgewood-2023", "all-saints-2023"].every((id) => historyHtml.includes(`id="${id}"`)) && !historyHtml.includes("April–August 2023")]);
+checks.push(["timeline preserves required image associations", [["holt-2023", "Holt"], ["red-cedar-2023", "Red Cedar Friends"], ["edgewood-2023", "Edgewood"], ["all-saints-2023", "All Saints"], ["fall-celebration-2024", "Fall Celebration"], ["flint-2025", "Flint"], ["second-home-2025", "second reparations-supported Lansing home"], ["how-did-we-get-here-2", "Stables Communities"]].every(([id, term]) => timelineMilestones.find((milestone) => milestone.id === id)?.images?.some((image) => `${image.alt} ${image.caption}`.includes(term)))]);
+checks.push(["timeline images include accessible alt text", timelineMilestones.flatMap((milestone) => milestone.images ?? []).every((image) => image.alt.trim().length > 4 && !/\.(?:jpg|jpeg|png|webp)$/i.test(image.alt))]);
+checks.push(["timeline images reserve dimensions and lazy loading", (historyHtml.match(/<img\b(?=[^>]*\bloading="lazy")(?=[^>]*\bdecoding="async")(?=[^>]*\bwidth="\d+")(?=[^>]*\bheight="\d+")[^>]*>/gi) ?? []).length >= timelineMilestones.flatMap((milestone) => milestone.images ?? []).length]);
+checks.push(["timeline supports multiple historical images", timelineMilestones.some((milestone) => (milestone.images?.length ?? 0) > 1) && historyHtml.includes("timeline-media-group--multiple")]);
 checks.push(["scholarship uses public Wix CMS collection", scholarshipHtml.includes("ScholarshipCycles")]);
 checks.push(["scholarship visibly closed", scholarshipHtml.includes("Applications are closed")]);
 checks.push(["scholarship has no application form", !/<form\b/i.test(scholarshipHtml)]);

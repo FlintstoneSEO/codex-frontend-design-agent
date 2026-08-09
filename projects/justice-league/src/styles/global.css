@@ -2918,9 +2918,20 @@ textarea {
   max-width: 66ch;
 }
 
-.timeline-media {
+.timeline-media-group {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
   max-width: 58rem;
   margin: clamp(1.5rem, 4vw, 3rem) 0 1rem;
+}
+
+.timeline-media-group--multiple {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+}
+
+.timeline-media {
+  max-width: 58rem;
+  margin: 0;
 }
 
 .timeline-media img {
@@ -2932,6 +2943,16 @@ textarea {
   background: var(--color-surface);
   object-fit: contain;
   object-position: left center;
+}
+
+.timeline-media--logo img,
+.timeline-media--third-party img {
+  max-width: min(100%, 26rem);
+  padding: clamp(1rem, 3vw, 2rem);
+}
+
+.timeline-media--logo img {
+  max-height: 15rem;
 }
 
 .timeline-media figcaption {

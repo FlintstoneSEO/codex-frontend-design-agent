@@ -4,315 +4,58 @@ import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import PageIntro from "@/components/PageIntro.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import pageMeta from "@/content/pages/history.json";
+import { timelineMilestones } from "@/data/timeline";
 
 const timelineUrl = "https://www.justiceleagueglm.org/timeline";
 const historyUrl = "https://www.justiceleagueglm.org/history";
-
-type Milestone = {
-  id?: string;
-  date: string;
-  datetime: string;
-  title: string;
-  paragraphs: string[];
-  image?: { src: string; width: number; height: number; alt: string; caption: string };
-};
-
-const milestones: Milestone[] = [
-  {
-    date: "2021",
-    datetime: "2021",
-    title: "A faith-rooted reparations model begins",
-    paragraphs: [
-      "The current timeline identifies Willye Bryan as the founder of the Justice League of Greater Lansing Michigan and places the organization’s founding in 2021.",
-      "It describes an African American Advisory Council overseeing a three-pillar framework focused on educational scholarships, homeownership, and business entrepreneurship."
-    ],
-    image: {
-      src: "https://static.wixstatic.com/media/ce499e_6a0df4ddb6854c9bb5eec5572f3c5969~mv2.png/v1/crop/x_6,y_4,w_503,h_324/fill/w_604,h_388,al_c,lg_1,q_85,enc_avif,quality_auto/ce499e_6a0df4ddb6854c9bb5eec5572f3c5969~mv2.png",
-      width: 604,
-      height: 388,
-      alt: "Portrait of Justice League founder Willye Bryan",
-      caption: "Willye Bryan, founder of the Justice League of Greater Lansing Michigan."
-    }
-  },
-  {
-    date: "October 2022",
-    datetime: "2022-10",
-    title: "The first formal public presentation",
-    paragraphs: [
-      "The organization hosted Rev. Jimmie R. Hawkins for public discussions of Unbroken and Unbowed: The History of Black Protest in America.",
-      "Events at Socialight Society and the Downtown Capital Area District Library introduced the reparations framework to a broader Greater Lansing audience."
-    ],
-    image: {
-      src: "https://static.wixstatic.com/media/de1bf2_68b404033e04400896af2e847fdce2d0~mv2.jpg/v1/fill/w_486,h_363,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/de1bf2_68b404033e04400896af2e847fdce2d0~mv2.jpg",
-      width: 486,
-      height: 363,
-      alt: "Public presentation at Socialight Society in Lansing",
-      caption: "The October 2022 public presentation connected local reparations work with the history of Black protest and public witness."
-    }
-  },
-  {
-    date: "January 2023",
-    id: "apology-2023",
-    datetime: "2023-01",
-    title: "A public apology at Lansing Reachout Christian Center",
-    paragraphs: [
-      "The Justice League coordinated an apology and reparations gathering at Lansing Reachout Christian Center on Lansing’s south side.",
-      "The current account describes the event as joining a liturgy of repentance with a public call for structural action."
-    ],
-    image: {
-      src: "https://static.wixstatic.com/media/de1bf2_3db3fad3b2d4409f94a145ec04ddb86f~mv2.jpg/v1/fill/w_556,h_369,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/de1bf2_3db3fad3b2d4409f94a145ec04ddb86f~mv2.jpg",
-      width: 556,
-      height: 369,
-      alt: "Participants at the January 2023 apology event at Lansing Reachout Christian Center",
-      caption: "The Lansing Reachout gathering made acknowledgment and repair visible in a community setting."
-    }
-  },
-  {
-    date: "June 2023",
-    datetime: "2023-06-19",
-    title: "The apology moves to the Capitol lawn",
-    paragraphs: [
-      "On June 19–20, faith leaders and community members gathered at the Michigan State Capitol during Juneteenth to deliver a formal apology for slavery based on a Presbyterian Church (USA) litany of repentance.",
-      "The current timeline records participation from faith communities across the Lansing region and remarks from State Senator Sarah Anthony."
-    ],
-    image: {
-      src: "https://static.wixstatic.com/media/de1bf2_394fe20be86f49fb81cf3fa3f170c7a4~mv2.jpg/v1/fill/w_530,h_352,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/de1bf2_394fe20be86f49fb81cf3fa3f170c7a4~mv2.jpg",
-      width: 530,
-      height: 352,
-      alt: "State Senator Sarah Anthony speaking at the 2023 Capitol apology gathering",
-      caption: "The Juneteenth gathering brought the apology into a public civic setting."
-    }
-  },
-  {
-    date: "April–August 2023",
-    datetime: "2023-04",
-    title: "Congregations make early reparations commitments",
-    paragraphs: [
-      "The current timeline records a $20,000 commitment from First Presbyterian Church of Holt and a $7,000 payment from Red Cedar Friends Meeting.",
-      "It later records a total reparations payment of $173,260 connected with Edgewood United Church and a $130,470.62 contribution from All Saints Episcopal Church. These are dated historical commitments, not current fund balances."
-    ]
-  },
-  {
-    date: "January–April 2024",
-    datetime: "2024-01",
-    title: "Public education reaches local and national audiences",
-    paragraphs: [
-      "The Justice League joined a screening and panel for The Cost of Inheritance, followed by the first How Did We Get Here? community dialogue at the East Lansing Public Library.",
-      "In April, NPR reported on the Greater Lansing faith-based reparations effort, extending attention beyond the region."
-    ]
-  },
-  {
-    date: "August 2024",
-    datetime: "2024-08",
-    title: "The first reparations scholarships are awarded",
-    paragraphs: [
-      "The current timeline reports that ten African American graduates received $5,000 each in the first reparations scholarship cohort.",
-      "Students were selected through essays about the racial wealth gap, interviews, and verified enrollment. The recognition gathering brought together students, families, clergy, and Justice League leadership."
-    ],
-    image: {
-      src: "https://static.wixstatic.com/media/de1bf2_1563b9351ab3478ca04031c462539529~mv2.jpg/v1/fill/w_926,h_413,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/de1bf2_1563b9351ab3478ca04031c462539529~mv2.jpg",
-      width: 926,
-      height: 413,
-      alt: "The 2024 Justice League reparations scholarship recognition gathering",
-      caption: "The inaugural scholarship cohort marked the first reported distribution through the education pillar."
-    }
-  },
-  {
-    date: "April 2025",
-    datetime: "2025-04",
-    title: "Reparations support a first home build",
-    paragraphs: [
-      "In partnership with the Eastside Community Action Center, the Justice League supported construction of a home for a senior African American first-time homebuyer on McCullough Street.",
-      "The current timeline reports that nearly $70,000 in reparations funds supported construction while the partner organization provided homeowner preparation and transition support."
-    ],
-    image: {
-      src: "https://static.wixstatic.com/media/de1bf2_ca26ca10d62d4cb9bcb1175b9918beeb~mv2.jpg/v1/crop/x_2,y_1,w_505,h_404/fill/w_548,h_438,al_c,lg_1,q_80,enc_avif,quality_auto/Housebuild%20pic%201.jpg",
-      width: 548,
-      height: 438,
-      alt: "Reparations-supported home construction on McCullough Street in Lansing",
-      caption: "The McCullough Street project moved the homeownership pillar into a tangible local asset."
-    }
-  },
-  {
-    date: "July 2025",
-    datetime: "2025-07",
-    title: "The model is adopted in Kalamazoo",
-    paragraphs: [
-      "The Justice League of Greater Kalamazoo formally launched after preparatory meetings with Greater Lansing leadership.",
-      "The current site describes this as the first regional adoption of the faith-based structure, African American Advisory Council governance, and three reparations pillars."
-    ],
-    image: {
-      src: "https://static.wixstatic.com/media/de1bf2_f7997b989bbd4b16a66fd9880d331b80~mv2.jpg/v1/fill/w_486,h_400,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/de1bf2_f7997b989bbd4b16a66fd9880d331b80~mv2.jpg",
-      width: 486,
-      height: 400,
-      alt: "Justice League of Greater Kalamazoo launch gathering",
-      caption: "Kalamazoo became the first regional organization reported to adopt the Lansing model."
-    }
-  },
-  {
-    date: "August 2025",
-    datetime: "2025-08",
-    title: "A second scholarship cohort continues the education pillar",
-    paragraphs: [
-      "The current timeline reports that a second cohort of ten African American students received $2,500 scholarships, for a total of $25,000.",
-      "The same essay, interview, and enrollment-verification approach continued for the second year."
-    ],
-    image: {
-      src: "https://static.wixstatic.com/media/de1bf2_59c188973427435f9dc026b58f8e6961~mv2.jpg/v1/fill/w_528,h_315,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/de1bf2_59c188973427435f9dc026b58f8e6961~mv2.jpg",
-      width: 528,
-      height: 315,
-      alt: "The 2025 reparations scholarship cohort with Justice League leaders",
-      caption: "The second scholarship cohort continued the organization’s reported education pathway."
-    }
-  },
-  {
-    date: "September 2025",
-    datetime: "2025-09",
-    title: "A second home build advances the housing pillar",
-    paragraphs: [
-      "The current timeline records a second reparations-supported home underway on McCullough Street next to the first project.",
-      "The entry describes the same partnership model with the Eastside Community Action Center and approximately $70,000 in Justice League reparations funding for construction."
-    ]
-  },
-  {
-    date: "November 2025",
-    datetime: "2025-11",
-    title: "Four years of work are reviewed in public",
-    paragraphs: [
-      "The fourth anniversary Fall Celebration at MSU Federal Credit Union reviewed fund development, scholarship awards, housing investments, coalition growth, and the next phase of the three pillars.",
-      "The current timeline also records a $100,000 multi-year pledge from University United Methodist Church through congregational giving and endowment funds."
-    ],
-    image: {
-      src: "https://static.wixstatic.com/media/de1bf2_e2be833e46f9407a85241450c0ca1de2~mv2.jpg/v1/fill/w_578,h_424,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/de1bf2_e2be833e46f9407a85241450c0ca1de2~mv2.jpg",
-      width: 578,
-      height: 424,
-      alt: "Justice League fourth anniversary Fall Celebration at MSU Federal Credit Union",
-      caption: "The fourth anniversary program assembled the organization’s reported progress across education, housing, and coalition building."
-    }
-  },
-  {
-    date: "February 2026",
-    datetime: "2026-02",
-    title: "Public education and community support continue",
-    paragraphs: [
-      "How Did We Get Here? Part II continued the public panel series at the Delta Township District Library and expanded the conversation among church partners.",
-      "The current timeline also identifies the Justice League as a new Stables Communities Foundation grant recipient supported by LAFCU."
-    ],
-    image: {
-      src: "https://static.wixstatic.com/media/de1bf2_34e267ab05664304a0f3a24298a9eb33~mv2.png/v1/fill/w_361,h_472,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/How%20did%20we%20get%20here%20Part%20ll%20.png",
-      width: 361,
-      height: 472,
-      alt: "How Did We Get Here? Part II event graphic",
-      caption: "Part II continued the Justice League’s public education series in February 2026."
-    }
-  }
-];
 ---
 
-<BaseLayout
-  pageType="WebPage"
-  title={pageMeta.seo_title}
-  description={pageMeta.meta_description}
->
+<BaseLayout pageType="WebPage" title={pageMeta.seo_title} description={pageMeta.meta_description}>
   <main id="main-content" class="interior-page" tabindex="-1">
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About", href: "/about/" }, { label: "History" }]} />
-    <PageIntro
-      kicker="Greater Lansing public record"
-      title="History and Timeline"
-      lede="From a faith-rooted call to repair toward scholarships, homeownership, public education, and regional collaboration."
-      mode="evidence"
-      marker="2021—2026"
-    >
+    <PageIntro kicker="Greater Lansing public record" title="History and Timeline" lede="From a faith-rooted call to repair toward scholarships, homeownership, public education, and regional collaboration." mode="evidence" marker="2021–2026">
       <span slot="kicker" data-editable="source" data-path="/src/pages/about/history/index.astro" data-key="history-intro-kicker">Greater Lansing public record</span>
       <span slot="title" data-editable="source" data-path="/src/pages/about/history/index.astro" data-key="history-intro-title">History and Timeline</span>
       <span slot="lede" data-editable="source" data-path="/src/pages/about/history/index.astro" data-key="history-intro-lede">From a faith-rooted call to repair toward scholarships, homeownership, public education, and regional collaboration.</span>
-      <span slot="marker" data-editable="source" data-path="/src/pages/about/history/index.astro" data-key="history-intro-marker">2021—2026</span>
+      <span slot="marker" data-editable="source" data-path="/src/pages/about/history/index.astro" data-key="history-intro-marker">2021–2026</span>
     </PageIntro>
 
-    <aside class="source-notice" aria-label="Content review status">
-      <strong>Approved current-site record</strong>
-      <p>
-        Content and selected photographs were observed on the current Wix site and approved for prototype reuse on August 7, 2026.
-        <a href={timelineUrl} target="_blank" rel="noreferrer">Review the full current timeline <span class="visually-hidden">(opens in a new tab)</span></a>.
-      </p>
-    </aside>
+    <aside class="source-notice" aria-label="Content review status"><strong>Approved current-site record</strong><p>Timeline content and imagery were reconciled against the live Wix page on August 9, 2026. <a href={timelineUrl} target="_blank" rel="noreferrer">Review the live timeline <span class="visually-hidden">(opens in a new tab)</span></a>.</p></aside>
 
     <section class="history-context" aria-labelledby="history-context-heading">
-      <div data-editable="source" data-path="/src/pages/about/history/index.astro" data-key="history-context-heading">
-        <p class="section-kicker">Why this history matters</p>
-        <h2 id="history-context-heading">Repair responds to structural harm.</h2>
-      </div>
+      <div><p class="section-kicker">Why this history matters</p><h2 id="history-context-heading">Repair responds to structural harm.</h2></div>
       <div class="history-context-copy">
-        <p data-editable="source" data-path="/src/pages/about/history/index.astro" data-key="history-context-copy">The current history page connects the racial wealth divide to slavery and its aftermath, including sharecropping, Jim Crow, redlining, unequal access to public benefits, and continuing structural racism.</p>
-        <p data-editable="source" data-path="/src/pages/about/history/index.astro" data-key="history-context-response">It argues that structural problems require structural responses and calls faith communities to take a practical first step in acknowledgment, redress, relationship, and repair.</p>
-        <ol class="history-pillars" aria-label="The organization’s three reparations pillars" data-editable="source" data-path="/src/pages/about/history/index.astro" data-key="history-pillars">
-          <li><span>01</span><strong>Educational scholarships</strong></li>
-          <li><span>02</span><strong>Homeownership</strong></li>
-          <li><span>03</span><strong>Business entrepreneurship</strong></li>
-        </ol>
+        <p>The current history page connects the racial wealth divide to slavery and its aftermath, including sharecropping, Jim Crow, redlining, unequal access to public benefits, and continuing structural racism.</p>
+        <p>It argues that structural problems require structural responses and calls faith communities to take a practical first step in acknowledgment, redress, relationship, and repair.</p>
+        <ol class="history-pillars" aria-label="The organization’s three reparations pillars"><li><span>01</span><strong>Educational scholarships</strong></li><li><span>02</span><strong>Homeownership</strong></li><li><span>03</span><strong>Business entrepreneurship</strong></li></ol>
         <p class="source-line"><a href={historyUrl} target="_blank" rel="noreferrer">Read the current Wix history context <span class="visually-hidden">(opens in a new tab)</span></a>.</p>
       </div>
     </section>
 
     <section class="timeline-section" aria-labelledby="timeline-heading">
-      <div class="section-heading-row">
-        <p class="section-kicker">Curated chronology</p>
-        <h2 id="timeline-heading">From formation to visible local repair.</h2>
-      </div>
+      <div class="section-heading-row"><p class="section-kicker">Reconciled chronology</p><h2 id="timeline-heading">From formation to visible local repair.</h2></div>
       <ol class="timeline-list">
-        {milestones.map((milestone) => (
+        {timelineMilestones.map((milestone) => (
           <li>
-            <div class="timeline-date">
-              <time datetime={milestone.datetime}>{milestone.date}</time>
-              <span>Current-site record</span>
-            </div>
+            <div class="timeline-date"><time datetime={milestone.datetime}>{milestone.date}</time><span>Current-site record</span></div>
             <article class="timeline-entry-content" id={milestone.id}>
               <h3>{milestone.title}</h3>
-              <div class="timeline-entry-copy">
-                {milestone.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
-              </div>
-              {milestone.image && (
-                <figure class="timeline-media">
-                  <img
-                    src={milestone.image.src}
-                    width={milestone.image.width}
-                    height={milestone.image.height}
-                    alt={milestone.image.alt}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <figcaption>{milestone.image.caption} Image reused from the approved current Wix timeline.</figcaption>
-                </figure>
-              )}
-              <p class="source-line">
-                <a href={timelineUrl} target="_blank" rel="noreferrer">View this milestone in the full current timeline <span class="visually-hidden">(opens in a new tab)</span></a>
-              </p>
+              <div class="timeline-entry-copy">{milestone.paragraphs.map((paragraph) => <p>{paragraph}</p>)}</div>
+              {milestone.images && <div class:list={["timeline-media-group", { "timeline-media-group--multiple": milestone.images.length > 1 }]}>
+                {milestone.images.map((image) => <figure class:list={["timeline-media", `timeline-media--${image.kind ?? "photo"}`]}>
+                  <img src={image.src} width={image.width} height={image.height} alt={image.alt} loading="lazy" decoding="async" />
+                  <figcaption>{image.caption} Image reused from the approved current Wix timeline.</figcaption>
+                </figure>)}
+              </div>}
+              {milestone.links && <p class="source-line">{milestone.links.map((link, index) => <>{index > 0 && " · "}<a href={link.href} target="_blank" rel="noreferrer">{link.label} <span class="visually-hidden">(opens in a new tab)</span></a></>)}</p>}
+              <p class="source-line"><a href={timelineUrl} target="_blank" rel="noreferrer">View this milestone in the full current timeline <span class="visually-hidden">(opens in a new tab)</span></a></p>
             </article>
           </li>
         ))}
       </ol>
     </section>
 
-    <section class="evidence-note" aria-labelledby="history-standard" data-editable="source" data-path="/src/pages/about/history/index.astro" data-key="history-publication-standard">
-      <p class="section-kicker">Publication standard</p>
-      <h2 id="history-standard">Keep the record accountable.</h2>
-      <ul>
-        <li>New milestones need a date, approved narrative, and public source.</li>
-        <li>Photographs need confirmed reuse permission, useful alt text, and a caption.</li>
-        <li>Financial or program claims need an owner and a scheduled review date.</li>
-        <li>Corrections should identify what changed and when.</li>
-      </ul>
-      <p>[NEEDS CLIENT INPUT: Confirm who owns ongoing history corrections and milestone approval after launch.]</p>
-    </section>
-
-    <ActionBand
-      kicker="Continue the record"
-      title="Understand the method, then choose a role."
-      text="Explore how the Justice League frames reparations in Greater Lansing or find a participation path that fits."
-      primaryLabel="Explore reparations"
-      primaryHref="/reparations/"
-      secondaryLabel="Join the work"
-      secondaryHref="/join-the-work/"
-    />
+    <section class="evidence-note" aria-labelledby="history-standard"><p class="section-kicker">Publication standard</p><h2 id="history-standard">Keep the record accountable.</h2><ul><li>New milestones need a date, approved narrative, and public source.</li><li>Photographs need confirmed reuse permission, useful alt text, and a caption.</li><li>Financial or program claims need an owner and a scheduled review date.</li><li>Corrections should identify what changed and when.</li></ul><p>[NEEDS CLIENT INPUT: Confirm who owns ongoing history corrections and milestone approval after launch.]</p></section>
+    <ActionBand kicker="Continue the record" title="Understand the method, then choose a role." text="Explore how the Justice League frames reparations in Greater Lansing or find a participation path that fits." primaryLabel="Explore reparations" primaryHref="/reparations/" secondaryLabel="Join the work" secondaryHref="/join-the-work/" />
   </main>
 </BaseLayout>
