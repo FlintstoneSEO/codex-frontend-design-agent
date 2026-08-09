@@ -3,30 +3,17 @@ import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import ElinkNews from "@/components/ElinkNews.astro";
 import NewsletterShell from "@/components/NewsletterShell.astro";
 import PageIntro from "@/components/PageIntro.astro";
-import { currentWixRoutes } from "@/data/site";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import pageMeta from "@/content/pages/news.json";
 ---
 
-<BaseLayout pageType="WebPage" title={pageMeta.seo_title} description={pageMeta.meta_description}>
+<BaseLayout pageType="WebPage" title={pageMeta.seo_title} description="Read the latest Justice League GLM coverage, explore community stories, and find videos and newsletter updates.">
   <main id="main-content" class="interior-page" tabindex="-1">
-    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "News and stories" }]} />
-    <PageIntro kicker="Community record" title="News, Videos, and E-News" lede="Current coverage is distributed across an eLink collection, the Wix media page, and the E-News Brief archive." mode="documentary" marker="Dated context">
-      <span slot="kicker" data-editable="source" data-path="/src/pages/news/index.astro" data-key="news-intro-kicker">Community record</span>
-      <span slot="title" data-editable="source" data-path="/src/pages/news/index.astro" data-key="news-intro-title">News, Videos, and E-News</span>
-      <span slot="lede" data-editable="source" data-path="/src/pages/news/index.astro" data-key="news-intro-lede">Current coverage is distributed across an eLink collection, the Wix media page, and the E-News Brief archive.</span>
-      <span slot="marker" data-editable="source" data-path="/src/pages/news/index.astro" data-key="news-intro-marker">Dated context</span>
-    </PageIntro>
-
-    <section class="documentary-record" aria-labelledby="latest-news-heading">
-      <div><p class="section-kicker">Latest news</p><h2 id="latest-news-heading">Open the current editorial collection deliberately.</h2><p>eLink does not provide an RSS feed for this collection. The third-party embed remains consent-gated, with a direct source link available when scripts are blocked or declined.</p><ElinkNews /></div>
-    </section>
-
-    <section class="story-review" id="video-features" aria-labelledby="video-treatment"><div class="section-heading-row"><p class="section-kicker">Recent video features</p><h2 id="video-treatment">Stories published through the current media page.</h2></div><article class="story-row"><div class="story-index">Video / 01</div><div><h3>The Story Behind the Justice League of Greater Lansing</h3><p>The current Wix page presents an organization overview focused on reparations, community, and justice.</p><a class="text-action" href={currentWixRoutes.news} target="_blank" rel="noreferrer">Watch on the current site <span class="visually-hidden">(opens in a new tab)</span></a></div></article><article class="story-row"><div class="story-index">Video / 02</div><div><h3>MSU Broad Art Museum: Reparations Reframed</h3><p>The current media page also features the Justice League's collaboration with the MSU Broad Art Museum.</p><a class="text-action" href={currentWixRoutes.news} target="_blank" rel="noreferrer">Watch on the current site <span class="visually-hidden">(opens in a new tab)</span></a></div></article></section>
-
-    <section class="evidence-note" id="photo-record" aria-labelledby="photo-record-heading"><p class="section-kicker">Photos and documentary context</p><h2 id="photo-record-heading">Approved images live with the events and people they document.</h2><p>The Wix gallery remains inventoried, while the redesign places verified photographs with the founder profile, leadership roster, scholarship cohorts, and dated history milestones. This avoids detaching people and events from their source context.</p><div class="inline-links"><a class="text-action" href="/about/history/#timeline-heading">Browse the illustrated timeline</a><a class="text-action" href={currentWixRoutes.gallery} target="_blank" rel="noreferrer">Review the current Wix gallery <span class="visually-hidden">(opens in a new tab)</span></a></div></section>
-
-    <section class="evidence-note" aria-labelledby="enews-heading"><p class="section-kicker">E-News Briefs</p><h2 id="enews-heading">The current archive page does not expose entries.</h2><p>Its public table currently shows only the Date, Subject, and View More headings. No newsletter issue is invented or migrated without a visible source record.</p><a class="text-action" href={currentWixRoutes.newsletterArchive} target="_blank" rel="noreferrer">Check the current E-News archive <span class="visually-hidden">(opens in a new tab)</span></a></section>
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "News & stories" }]} />
+    <PageIntro kicker="Justice League in the community" title="News & Stories" lede="Follow community coverage, initiatives, and conversations connected to the Justice League’s work in Greater Lansing." mode="evidence" marker="Latest coverage" />
+    <section class="documentary-record" aria-labelledby="latest-news-heading"><div><p class="section-kicker">Latest news</p><h2 id="latest-news-heading">Read recent coverage and community stories.</h2><p>Explore the Justice League’s current editorial collection for news, updates, and stories from the community.</p><ElinkNews /></div></section>
+    <section class="evidence-note" aria-labelledby="media-heading"><p class="section-kicker">Photos & videos</p><h2 id="media-heading">See the work in motion.</h2><p>Watch Justice League videos and explore documentary photography from community events, reparations conversations, and scholarship celebrations.</p><a class="button button-secondary" href="/media/">Explore photos & videos</a></section>
+    <section class="evidence-note" aria-labelledby="enews-heading"><p class="section-kicker">E-News</p><h2 id="enews-heading">Get Justice League updates by email.</h2><p>Subscribe below to stay connected with news, events, and opportunities to participate.</p></section>
     <NewsletterShell />
   </main>
 </BaseLayout>

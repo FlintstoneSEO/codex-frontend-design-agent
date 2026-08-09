@@ -4,7 +4,6 @@ import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import PageIntro from "@/components/PageIntro.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import pageMeta from "@/content/pages/scholarship.json";
-import { currentWixRoutes } from "@/data/site";
 import { getCurrentScholarshipCycle, getPublishedScholarshipRecipients } from "@/lib/wix";
 
 const [scholarshipResult, recipientResult] = await Promise.all([
@@ -98,7 +97,7 @@ const unavailableMessage = "message" in scholarshipResult
           <strong>Wix CMS record · {cycle.reviewStatus}</strong>
           <p>
             Published from the `ScholarshipCycles` collection and checked against the current site observed {formatDate(cycle.sourceObservedAt)}.
-            <a href={cycle.sourceUrl} target="_blank" rel="noreferrer">Review the current Wix source <span class="visually-hidden">(opens in a new tab)</span></a>.
+            <a href={cycle.sourceUrl} target="_blank" rel="noreferrer">View scholarship details <span class="visually-hidden">(opens in a new tab)</span></a>.
           </p>
         </aside>
 
@@ -182,7 +181,7 @@ const unavailableMessage = "message" in scholarshipResult
           <p class="section-kicker">Frequently asked questions</p>
           <h2 id="faq-heading">The current FAQ widget exposes no readable questions.</h2>
           <p>The public Wix FAQ destination remains part of the content inventory, but its reviewed widget does not currently expose question-and-answer content that can be migrated accurately. Eligibility, dates, required materials, and contact details are presented above without inventing missing answers.</p>
-          <a class="text-action" href={currentWixRoutes.faq} target="_blank" rel="noreferrer">Check the current Wix FAQ <span class="visually-hidden">(opens in a new tab)</span></a>
+          <a class="text-action" href="mailto:info@justiceleagueglm.org?subject=Scholarship%20question">Ask a scholarship question</a>
         </section>
 
         <section class="recipient-archive" aria-labelledby="recipient-archive-heading">

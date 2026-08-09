@@ -38,4 +38,4 @@ export const routeReconciliation: readonly RouteReconciliation[] = [
   { wixLabel: "Ad Booklet", wixUrl: "https://www.justiceleagueglm.org/ad-booklet", publicStatus: "Published current campaign", astroDestination: "/ad-booklet/", treatment: "dedicated page", navigationLocation: "Events & Meetings and footer", migrationStatus: "2026 placements, deadline, formats, and handoff migrated", rationale: "The campaign has distinct comparison and submission intent." }
 ] as const;
 
-export const publicAstroRoutes = [...new Set(routeReconciliation.map((route) => route.astroDestination.split("#")[0]))].sort();
+export const publicAstroRoutes = [...new Set([...routeReconciliation.map((route) => route.astroDestination.split("#")[0]), "/media/"])].sort();

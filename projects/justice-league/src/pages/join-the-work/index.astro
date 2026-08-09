@@ -2,8 +2,6 @@
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import NewsletterShell from "@/components/NewsletterShell.astro";
 import PageIntro from "@/components/PageIntro.astro";
-import PrototypeForm from "@/components/PrototypeForm.astro";
-import SourceNotice from "@/components/SourceNotice.astro";
 import { participationPaths } from "@/data/content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import pageMeta from "@/content/pages/join-the-work.json";
@@ -12,15 +10,9 @@ import pageMeta from "@/content/pages/join-the-work.json";
 <BaseLayout pageType="WebPage" title={pageMeta.seo_title} description={pageMeta.meta_description}>
   <main id="main-content" class="interior-page" tabindex="-1">
     <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Join the Work" }]} />
-    <PageIntro kicker="Participation pathway" title="Join the Work" lede="Begin with a meeting, committee, presentation, or email update request—the participation options currently published by the organization." mode="documentary" marker="Find your path">
-      <span slot="kicker" data-editable="source" data-path="/src/pages/join-the-work/index.astro" data-key="join-intro-kicker">Participation pathway</span>
-      <span slot="title" data-editable="source" data-path="/src/pages/join-the-work/index.astro" data-key="join-intro-title">Join the Work</span>
-      <span slot="lede" data-editable="source" data-path="/src/pages/join-the-work/index.astro" data-key="join-intro-lede">Begin with a meeting, committee, presentation, or email update request—the participation options currently published by the organization.</span>
-      <span slot="marker" data-editable="source" data-path="/src/pages/join-the-work/index.astro" data-key="join-intro-marker">Find your path</span>
-    </PageIntro>
-    <SourceNotice title="Options verified against the current contact form" />
-    <section class="ruled-section" aria-labelledby="participation-options"><div class="section-heading-row"><p class="section-kicker">Current public options</p><h2 id="participation-options">Four ways to start a conversation.</h2></div><ol class="pathway-ledger pathway-ledger--six">{participationPaths.map((path, index) => <li><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{path.label}</h3><p>{path.description}</p></div><a href={path.destination === "newsletter" ? "#newsletter" : "#interest-form"}>{path.destination === "newsletter" ? "Review signup" : "Select below"}</a></li>)}</ol></section>
-    <section class="form-section" id="interest-form" aria-labelledby="interest-heading"><div class="form-intro" data-editable="source" data-path="/src/pages/join-the-work/index.astro" data-key="join-form-intro"><p class="section-kicker">Participation interest shell</p><h2 id="interest-heading">Preview the future headless form.</h2><p>No formal membership, dues, voting rights, or guaranteed committee placement is claimed. The current meeting schedule and response time still require confirmation.</p></div><PrototypeForm kind="join" /></section>
+    <PageIntro kicker="Participation pathway" title="Join the Work" lede="Begin with a meeting, committee, presentation, or email update request." mode="documentary" marker="Find your path" />
+    <section class="ruled-section" aria-labelledby="participation-options"><div class="section-heading-row"><p class="section-kicker">Ways to participate</p><h2 id="participation-options">Four ways to start a conversation.</h2></div><ol class="pathway-ledger pathway-ledger--six">{participationPaths.map((path, index) => <li><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{path.label}</h3><p>{path.description}</p></div><a href={path.destination === "newsletter" ? "#newsletter" : `mailto:info@justiceleagueglm.org?subject=${encodeURIComponent(path.label)}`}>{path.destination === "newsletter" ? "Subscribe" : "Email the Justice League"}</a></li>)}</ol></section>
+    <section class="contact-orientation" aria-labelledby="interest-heading"><div><p class="section-kicker">Get in touch</p><h2 id="interest-heading">Tell us how you would like to participate.</h2></div><p>For committee interest, meeting access, presentations, or partnerships, email <a href="mailto:info@justiceleagueglm.org">info@justiceleagueglm.org</a>. Please do not include sensitive personal information in your message.</p></section>
     <NewsletterShell />
   </main>
 </BaseLayout>

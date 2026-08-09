@@ -11,7 +11,7 @@ export default defineConfig({
     "/ourteam": "/about/leadership/",
     "/faithbased": "/reparations/#faith-heading",
     "/faq": "/scholarship/#frequently-asked-questions",
-    "/gallery": "/news/#photo-record",
+    "/gallery": "/media/",
     "/apology-2023": "/about/history/#apology-2023",
     "/e-news-briefs": "/news/#enews-heading",
     "/recent-news": "/news/",

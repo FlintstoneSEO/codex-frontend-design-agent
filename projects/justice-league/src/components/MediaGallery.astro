@@ -1,0 +1,31 @@
+---
+import { featuredVideos, galleryPhotos } from "@/data/media";
+---
+
+<section class="media-gallery" aria-labelledby="media-videos-heading">
+  <div class="section-heading-row"><p class="section-kicker">Video gallery</p><h2 id="media-videos-heading">Stories from the Justice League in the community.</h2></div>
+  <div class="media-video-grid">
+    {featuredVideos.map((video) => <article class="media-video-card"><div class="video-shell" data-video-shell data-video-id={video.id}><img src={`https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`} alt="" width="480" height="360" loading="lazy" decoding="async" /><button type="button" class="video-play" data-video-play aria-label={`Play ${video.title}`}><span aria-hidden="true">▶</span><span>Play video</span></button></div><div><h3>{video.title}</h3><p>{video.description}</p><a class="text-action" href={`https://www.youtube.com/watch?v=${video.id}`} target="_blank" rel="noreferrer">Watch on YouTube <span class="visually-hidden">(opens in a new tab)</span></a></div></article>)}
+  </div>
+</section>
+<section class="media-gallery media-gallery--photos" aria-labelledby="media-photos-heading">
+  <div class="section-heading-row"><p class="section-kicker">Photo gallery</p><h2 id="media-photos-heading">Moments from the work.</h2></div>
+  <div class="photo-grid">{galleryPhotos.map((photo) => <figure><img src={photo.src} alt={photo.alt} width="1200" height="675" loading="lazy" decoding="async" /></figure>)}</div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-video-shell]").forEach((shell) => {
+    shell.querySelector<HTMLButtonElement>("[data-video-play]")?.addEventListener("click", () => {
+      const videoId = shell.dataset.videoId;
+      if (!videoId) return;
+      const iframe = document.createElement("iframe");
+      iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
+      iframe.title = shell.closest("article")?.querySelector("h3")?.textContent || "Justice League GLM video";
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = "strict-origin-when-cross-origin";
+      shell.replaceChildren(iframe);
+      iframe.focus();
+    });
+  });
+</script>

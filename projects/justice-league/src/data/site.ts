@@ -24,6 +24,7 @@ export const currentWixRoutes = {
   events: "https://www.justiceleagueglm.org/upcomingevents",
   meetings: "https://www.justiceleagueglm.org/commiteemeetings",
   donate: "https://www.justiceleagueglm.org/donate",
+  paypalDonate: "https://www.paypal.com/donate/?hosted_button_id=5V2S9XJLU675A",
   donors: "https://www.justiceleagueglm.org/donors",
   supporters: "https://www.justiceleagueglm.org/supporters",
   faq: "https://www.justiceleagueglm.org/faq",
@@ -67,8 +68,8 @@ export const primaryNav = [
   {
     label: "News & Media",
     items: [
-      { label: "Recent news and videos", href: "/news/" },
-      { label: "Photos", href: "/news/#photo-record" },
+      { label: "News & stories", href: "/news/" },
+      { label: "Photos & videos", href: "/media/" },
       { label: "Apology 2023", href: "/about/history/#apology-2023" },
       { label: "E-News Briefs", href: "/news/#enews-heading" }
     ]
