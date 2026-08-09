@@ -49,6 +49,13 @@ collections_config:
       history_heading:
         type: text
         label: Historical Context Heading
+      history_intro:
+        type: textarea
+        label: Historical Progression Introduction
+      history_records:
+        type: array
+        label: Historical Progression Records
+        comment: Reparations page only. Preserve chronology, cautious wording, and source context; do not add undated statistics.
       model_heading:
         type: text
         label: Local Model Heading
