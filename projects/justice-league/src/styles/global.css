@@ -22,6 +22,29 @@
   --transition: 150ms ease;
 }
 
+.media-gallery { padding: var(--section-space) var(--page-gutter); border-bottom: 1px solid var(--color-border); }
+.media-video-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.5rem, 3vw, 3rem); margin-top: clamp(2rem, 5vw, 4rem); }
+.media-video-card { min-width: 0; border-top: 1px solid var(--color-border); }
+.media-video-card > div:last-child { padding-top: 1rem; }
+.media-video-card h3 { font-family: var(--font-civic); font-size: clamp(1.15rem, 2vw, 1.55rem); line-height: 1.15; }
+.media-video-card p { color: var(--color-text-muted); }
+.media-video-card .video-shell, .media-social-poster { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; margin-top: 0.75rem; }
+.media-record-label { color: var(--color-text-muted); font-size: 0.85rem; }
+.photo-grid { columns: 3 16rem; column-gap: clamp(1rem, 2vw, 2rem); margin-top: clamp(2rem, 5vw, 4rem); }
+.photo-grid figure { break-inside: avoid; margin: 0 0 clamp(1rem, 2vw, 2rem); }
+.photo-expand { display: block; width: 100%; padding: 0; border: 0; background: var(--color-surface); cursor: zoom-in; }
+.photo-expand img { display: block; width: 100%; height: auto; transition: transform 180ms ease; }
+.photo-expand:hover img, .photo-expand:focus-visible img { transform: scale(1.015); }
+.photo-grid figcaption { display: flex; justify-content: space-between; gap: 1rem; padding-top: 0.7rem; color: var(--color-text-muted); font-size: 0.9rem; line-height: 1.35; }
+.photo-grid figcaption strong { color: var(--color-text); }
+.photo-grid dialog { max-width: min(92vw, 70rem); padding: 1rem; border: 1px solid var(--color-border); background: var(--color-surface); color: var(--color-text); }
+.photo-grid dialog::backdrop { background: rgba(0, 0, 0, 0.78); }
+.photo-grid dialog img { display: block; max-width: 100%; max-height: 78vh; margin: 1rem auto 0; }
+.dialog-close { margin-left: auto; padding: 0.45rem 0.7rem; border: 1px solid var(--color-border); background: transparent; color: var(--color-text); cursor: pointer; }
+
+@media (max-width: 64rem) { .media-video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 31rem) { .media-video-grid { grid-template-columns: 1fr; } .photo-grid { columns: 1; } }
+
 *,
 *::before,
 *::after {
@@ -2902,6 +2925,60 @@ textarea {
 
 .history-pillars strong {
   font-size: clamp(1.2rem, 2.4vw, 1.8rem);
+}
+
+.reparations-history__period {
+  margin-bottom: 0.4rem;
+  color: var(--color-accent-soft);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.reparations-history details {
+  max-width: 68ch;
+  margin-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.reparations-history summary {
+  width: fit-content;
+  padding-block: 0.85rem;
+  color: var(--color-action);
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.reparations-history summary:focus-visible {
+  outline: 0.2rem solid var(--color-accent-soft);
+  outline-offset: 0.2rem;
+}
+
+.reparations-history details p {
+  margin-top: 0;
+  color: var(--color-text-muted);
+}
+
+.reparations-faith__media {
+  grid-column: 1 / -1;
+  max-width: 58rem;
+  margin: clamp(1.5rem, 4vw, 3rem) 0 0 auto;
+}
+
+.reparations-faith__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-block: 0.3rem solid var(--color-action);
+}
+
+.reparations-faith__media figcaption {
+  max-width: 66ch;
+  margin-top: 0.7rem;
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  line-height: 1.55;
 }
 
 .timeline-entry-content h3 {

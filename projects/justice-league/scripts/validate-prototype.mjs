@@ -258,11 +258,15 @@ checks.push(["ad booklet uses verified Wix handoff", routeDocuments.find((item) 
 
 const reparationsHtml = routeDocuments.find((item) => item.route === "reparations")?.html ?? "";
 checks.push(["reparations page explains the three adopted pathways", ["Education", "Homeownership", "Business development"].every((term) => reparationsHtml.includes(term))]);
+checks.push(["reparations page reconciles the historical progression", ["Slavery and uncompensated labor", "Special Field Orders No. 15", "Homestead Acts", "sharecropping", "Jim Crow", "G.I. Bill", "Levittown", "Greater Lansing and East Lansing", "Redlining", "structural racism"].every((term) => reparationsHtml.toLowerCase().includes(term.toLowerCase()))]);
+checks.push(["reparations history uses accessible native disclosure", (reparationsHtml.match(/<details>/g) ?? []).length === 6 && (reparationsHtml.match(/<summary>/g) ?? []).length >= 6]);
+checks.push(["reparations documentary image has intrinsic accessible treatment", reparationsHtml.includes('width="900" height="598"') && reparationsHtml.includes('loading="lazy" decoding="async"') && reparationsHtml.includes('alt="Participants gathered for the January 2023 apology')]);
 checks.push(["reparations page exposes the local model as a semantic sequence", reparationsHtml.includes('class="reparations-model__flow"') && (reparationsHtml.match(/reparations-model__number/g) ?? []).length === 4]);
 checks.push(["reparations page links all key next steps", ["/about/", "/about/history/", "/scholarship/", "/impact/", "/support-reparations/", "/join-the-work/"].every((href) => reparationsHtml.includes(`href="${href}"`))]);
 checks.push(["expired million-dollar goal is absent from reparations page", !reparationsHtml.includes("$1 million") && !reparationsHtml.includes("end of 2025")]);
 checks.push(["reparations page does not advertise unsupported applications or awards", !/apply (?:now|today)|applications? (?:are )?open|accepting applications|awards? of \$/i.test(reparationsHtml)]);
 checks.push(["reparations page styles include deliberate narrow reflow", cssSource.includes(".reparations-model__flow") && cssSource.includes(".reparations-hero__actions .button")]);
+checks.push(["reparations disclosure focus uses the approved semantic green token", cssSource.includes(".reparations-history summary:focus-visible") && cssSource.includes("outline: 0.2rem solid var(--color-accent-soft)")]);
 
 const scholarshipHtml = routeDocuments.find((item) => item.route === "scholarship")?.html ?? "";
 const historyHtml = routeDocuments.find((item) => item.route === "about/history")?.html ?? "";

@@ -68,7 +68,7 @@ export const primaryNav = [
     label: "News & Media",
     items: [
       { label: "Recent news and videos", href: "/news/" },
-      { label: "Photos", href: "/news/#photo-record" },
+      { label: "Photos & videos", href: "/media/" },
       { label: "Apology 2023", href: "/about/history/#apology-2023" },
       { label: "E-News Briefs", href: "/news/#enews-heading" }
     ]
@@ -76,51 +76,4 @@ export const primaryNav = [
   { label: "Join the Work", href: "/join-the-work/" }
 ] as const;
 
-export type PriorityState = "active" | "expired" | "empty" | "error";
 
-export type PriorityFixture = {
-  state: PriorityState;
-  label: string;
-  title: string;
-  meta?: string;
-  summary: string;
-  href?: string;
-  action?: string;
-};
-
-export const priorityFixtures: PriorityFixture[] = [
-  {
-    state: "active",
-    label: "Demo fixture · Active state",
-    title: "Demonstration priority record",
-    meta: "Prototype review state — not a real event or deadline",
-    summary:
-      "This labelled fixture demonstrates how a current Wix campaign, event, or scholarship priority will appear after an approved record is connected.",
-    href: "/events/demo-priority/",
-    action: "Open demo destination"
-  },
-  {
-    state: "expired",
-    label: "Demo fixture · Closed state",
-    title: "This priority has closed",
-    meta: "Prototype review state — no live date is represented",
-    summary:
-      "Closed records keep an explicit status and remove the time-sensitive action instead of manufacturing urgency.",
-    href: "/events/",
-    action: "View the events shell"
-  },
-  {
-    state: "empty",
-    label: "Demo fixture · Empty state",
-    title: "No current priority is configured",
-    summary:
-      "The homepage remains coherent when Wix has no approved priority record. The stable Support Reparations and Join the Work paths remain available."
-  },
-  {
-    state: "error",
-    label: "Demo fixture · Error state",
-    title: "The current priority could not be loaded",
-    summary:
-      "The error state does not expose technical details or substitute stale campaign information. Reviewers can retry the local demonstration."
-  }
-];

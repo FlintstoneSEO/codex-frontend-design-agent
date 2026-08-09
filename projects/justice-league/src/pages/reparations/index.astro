@@ -4,13 +4,6 @@ import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import page from "@/content/pages/reparations.json";
 
-const history = [
-  { title: "Freedom without economic repair", text: "Emancipation ended legal slavery, but it did not compensate formerly enslaved people for generations of stolen labor or establish equal access to land and capital." },
-  { title: "Exclusion from opportunity", text: "Jim Crow laws and unequal administration of public benefits—including land programs and the GI Bill—limited access to education, property, and economic mobility." },
-  { title: "Housing discrimination", text: "Redlining, restrictive practices, and discriminatory lending denied many African American families the chance to own appreciating property in neighborhoods of their choice." },
-  { title: "A wealth divide carried forward", text: "When families are blocked from owning assets, they have less wealth to pass to the next generation. The effects remain visible in access to education, homeownership, and startup capital today." }
-] as const;
-
 const model = [
   { label: "Partners commit", text: "Predominantly white houses of worship, individuals, organizations, and community partners make reparations contributions and build accountable relationships." },
   { label: "Resources are gathered", text: "Contributions build a locally focused reparations and endowment fund rather than a short-term charitable campaign." },
@@ -54,8 +47,8 @@ const pathways = [
     </section>
 
     <section class="reparations-history" aria-labelledby="history-heading">
-      <div class="reparations-section-heading"><p class="section-kicker">Why repair is necessary</p><h2 id="history-heading">{page.history_heading}</h2><p>Historical exclusion restricted asset ownership. Restricted ownership limited what families could pass forward. Reparations responds to that continuing economic breach with intentional, locally directed repair.</p></div>
-      <ol class="reparations-history__list">{history.map((item, index) => <li><span>{String(index + 1).padStart(2, "0")}</span><div><h3>{item.title}</h3><p>{item.text}</p></div></li>)}</ol>
+      <div class="reparations-section-heading"><p class="section-kicker">Why repair is necessary</p><h2 id="history-heading">{page.history_heading}</h2><p>{page.history_intro}</p></div>
+      <ol class="reparations-history__list">{page.history_records.map((item, index) => <li><span>{String(index + 1).padStart(2, "0")}</span><div><p class="reparations-history__period">{item.period}</p><h3>{item.heading}</h3><p>{item.summary}</p><details><summary>Read the historical context</summary><p>{item.detail}</p></details></div></li>)}</ol>
       <a class="text-action" href="/about/history/">Explore the Justice League history and milestones</a>
     </section>
 
@@ -73,6 +66,10 @@ const pathways = [
     <section class="reparations-faith" aria-labelledby="faith-heading">
       <p class="section-kicker">Faith into action</p><h2 id="faith-heading">{page.faith_heading}</h2>
       <div><p>The Justice League asks faith communities to do more than acknowledge historical racial injustice. Repentance calls for changed relationships and material participation in repair.</p><p>Through sustained relationship, reparative contribution, and accountability, houses of worship and partners can help move Greater Lansing toward the Beloved Community—and become “repairers of the breach.”</p></div>
+      <figure class="reparations-faith__media">
+        <img src="https://static.wixstatic.com/media/de1bf2_3db3fad3b2d4409f94a145ec04ddb86f~mv2.jpg/v1/fill/w_900,h_598,al_c,q_82,enc_avif,quality_auto/de1bf2_3db3fad3b2d4409f94a145ec04ddb86f~mv2.jpg" width="900" height="598" alt="Participants gathered for the January 2023 apology and reparations event at Lansing Reachout Christian Center" loading="lazy" decoding="async" />
+        <figcaption>The January 2023 Lansing Reachout gathering joined a public liturgy of repentance with a call for structural action. Photograph reused from the Justice League’s current Wix timeline.</figcaption>
+      </figure>
     </section>
 
     <section class="reparations-action-record" aria-labelledby="action-record-heading">

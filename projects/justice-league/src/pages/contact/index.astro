@@ -2,7 +2,6 @@
 import ActionBand from "@/components/ActionBand.astro";
 import Breadcrumbs from "@/components/Breadcrumbs.astro";
 import PageIntro from "@/components/PageIntro.astro";
-import PrototypeForm from "@/components/PrototypeForm.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { currentWixRoutes, site } from "@/data/site";
 import pageMeta from "@/content/pages/contact.json";
@@ -18,7 +17,7 @@ import pageMeta from "@/content/pages/contact.json";
       <span slot="marker" data-editable="source" data-path="/src/pages/contact/index.astro" data-key="contact-intro-marker">Start a conversation</span>
     </PageIntro>
     <section class="contact-orientation" aria-labelledby="contact-routing"><div><p class="section-kicker">Public contact details</p><h2 id="contact-routing">Email or write to the organization.</h2></div><address><a href={`mailto:${site.email}`}>{site.email}</a><br />{site.mailingAddress.line1}<br />{site.mailingAddress.line2}</address><ul><li>Join a committee</li><li>Attend a general meeting</li><li>Request a presentation</li><li>Scholarship or event question</li><li>Donation or general inquiry</li></ul><a class="text-action" href={currentWixRoutes.contact} target="_blank" rel="noreferrer">Use the current Wix contact form <span class="visually-hidden">(opens in a new tab)</span></a></section>
-    <section class="form-section" aria-labelledby="contact-form-heading"><div class="form-intro" data-editable="source" data-path="/src/pages/contact/index.astro" data-key="contact-form-intro"><p class="section-kicker">Inquiry form shell</p><h2 id="contact-form-heading">Preview the future headless form.</h2><p>This accessible shell does not transmit information. Until Wix Forms is connected headlessly, use the verified Wix form or email address above.</p></div><PrototypeForm kind="contact" /></section>
+    <section class="contact-orientation" aria-labelledby="contact-form-heading"><div><p class="section-kicker">Email the Justice League</p><h2 id="contact-form-heading">Start your message with the details that will help us respond.</h2></div><p>Include your name, return email address, and topic. Please do not send private financial, medical, or other sensitive information by email.</p><a class="button button-primary" href={`mailto:${site.email}?subject=Justice%20League%20GLM%20inquiry`}>Email {site.email}</a></section>
     <ActionBand kicker="Participation inquiry" title="Looking for a way to take part?" text="The Join page separates general meetings, committee interest, presentation requests, and email updates." primaryLabel="Join the Work" primaryHref="/join-the-work/" secondaryLabel="Privacy shell" secondaryHref="/privacy/" />
   </main>
 </BaseLayout>

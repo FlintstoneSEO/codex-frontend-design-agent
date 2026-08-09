@@ -1,5 +1,5 @@
 {
-  "name": "justice-league-homepage-prototype",
+  "name": "justice-league-glm",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -11,7 +11,8 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "test": "node scripts/validate-prototype.mjs",
+    "test": "node scripts/validate-production.mjs",
+    "validate:production": "node scripts/validate-production.mjs",
     "sync:donors": "node scripts/sync-donors.mjs",
     "optimize:supporters": "node scripts/optimize-supporter-assets.mjs"
   },
