@@ -2904,6 +2904,60 @@ textarea {
   font-size: clamp(1.2rem, 2.4vw, 1.8rem);
 }
 
+.reparations-history__period {
+  margin-bottom: 0.4rem;
+  color: var(--color-accent-soft);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.reparations-history details {
+  max-width: 68ch;
+  margin-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.reparations-history summary {
+  width: fit-content;
+  padding-block: 0.85rem;
+  color: var(--color-action);
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.reparations-history summary:focus-visible {
+  outline: 0.2rem solid var(--color-accent-soft);
+  outline-offset: 0.2rem;
+}
+
+.reparations-history details p {
+  margin-top: 0;
+  color: var(--color-text-muted);
+}
+
+.reparations-faith__media {
+  grid-column: 1 / -1;
+  max-width: 58rem;
+  margin: clamp(1.5rem, 4vw, 3rem) 0 0 auto;
+}
+
+.reparations-faith__media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-block: 0.3rem solid var(--color-action);
+}
+
+.reparations-faith__media figcaption {
+  max-width: 66ch;
+  margin-top: 0.7rem;
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
 .timeline-entry-content h3 {
   max-width: 22ch;
   margin-bottom: 1.2rem;
