@@ -23,6 +23,45 @@
     "callout": "Acknowledgment names the breach. Relationship builds accountability. Reparative action begins to close it."
   },
   "history_heading": "The wealth divide was built over generations.",
+  "history_intro": "The breach is not one event. It is a sequence in which uncompensated labor was followed by freedom without economic repair, government-supported exclusion, and barriers to owning assets that could be passed to the next generation.",
+  "history_records": [
+    {
+      "period": "The breach",
+      "heading": "Slavery and uncompensated labor",
+      "summary": "Enslaved African Americans created wealth while being denied wages, legal autonomy, and the ability to build assets for their own families.",
+      "detail": "Emancipation ended legal slavery, but it did not compensate formerly enslaved people for stolen labor. Special Field Orders No. 15—the source of the phrase ‘40 acres and a mule’—briefly reserved land for settlement by formerly enslaved families, but much of that land was later returned to former Confederate owners."
+    },
+    {
+      "period": "Freedom without economic repair",
+      "heading": "Land, labor, and opportunity remained unequal",
+      "summary": "Freedom arrived without a durable land settlement or equal access to the public programs that helped other families accumulate property.",
+      "detail": "The federal Homestead Acts distributed land on terms that were legally open after the Civil War but, in practice, were far less accessible to formerly enslaved people. Across the South, sharecropping frequently bound Black families to landowners through debt and exploitative contracts rather than building ownership."
+    },
+    {
+      "period": "Government-supported exclusion",
+      "heading": "Law and public benefits reinforced the divide",
+      "summary": "Jim Crow laws enforced racial separation while discriminatory administration narrowed access to education, property, and economic mobility.",
+      "detail": "The G.I. Bill promised education, housing, and business benefits to veterans, but locally administered programs often excluded Black veterans or steered them away from the opportunities available to white veterans. Formal rules and discriminatory implementation worked together to restrict wealth building."
+    },
+    {
+      "period": "Housing and generational wealth",
+      "heading": "Where families could live shaped what they could own",
+      "summary": "Redlining, restrictive covenants, lending discrimination, and segregated development blocked many African American families from buying appreciating homes.",
+      "detail": "Levittown is a widely cited example: postwar financing and sales practices helped many white families become homeowners while excluding Black buyers. The Justice League’s original narrative also points to discrimination in Greater Lansing and East Lansing, connecting the national pattern to local housing access."
+    },
+    {
+      "period": "The result",
+      "heading": "A racial wealth divide carried forward",
+      "summary": "When families are blocked from owning land, homes, and businesses, they have fewer assets to pass forward and fewer resources for education or entrepreneurship.",
+      "detail": "Generational wealth is cumulative. Structural racism describes how policies, institutions, and recurring practices can reproduce unequal outcomes even when no single rule explains the whole divide. Historical statistics on the legacy page require their original date and source before republication, so this page does not present them as current conditions."
+    },
+    {
+      "period": "Repairing the breach",
+      "heading": "Local reparations connect acknowledgment to material action",
+      "summary": "The Justice League’s response brings faith communities and partners into accountable relationship with African American community leadership.",
+      "detail": "Its original Reparations Endowment concept joined sustained congregational commitments, capital campaigns, financial stewardship, and African American advisory governance. The strategy continues through three wealth-equity pathways—education, homeownership, and business development—without presenting the legacy 2025 fundraising target or unverified current fund terms."
+    }
+  ],
   "model_heading": "A local model for material repair.",
   "pathways_heading": "Three pathways toward wealth equity.",
   "faith_heading": "Faith becomes credible through action.",
