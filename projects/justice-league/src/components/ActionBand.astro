@@ -14,6 +14,7 @@ const hasTitleSlot = Astro.slots.has("title");
 const hasTextSlot = Astro.slots.has("text");
 const hasPrimarySlot = Astro.slots.has("primary");
 const hasSecondarySlot = Astro.slots.has("secondary");
+const primaryClass = ["button", "button-primary", /^\/(support-reparations|join-the-work)\//.test(primaryHref) && "button-accent"];
 ---
 
 <section class="action-band" aria-label={title}>
@@ -23,7 +24,7 @@ const hasSecondarySlot = Astro.slots.has("secondary");
     <p>{hasTextSlot ? <slot name="text" /> : text}</p>
   </div>
   <div class="action-band-links">
-    {hasPrimarySlot ? <slot name="primary" /> : <a class="button button-primary" href={primaryHref}>{primaryLabel}</a>}
+    {hasPrimarySlot ? <slot name="primary" /> : <a class:list={primaryClass} href={primaryHref}>{primaryLabel}</a>}
     {hasSecondarySlot ? <slot name="secondary" /> : secondaryLabel && secondaryHref && <a class="button button-secondary" href={secondaryHref}>{secondaryLabel}</a>}
   </div>
 </section>
