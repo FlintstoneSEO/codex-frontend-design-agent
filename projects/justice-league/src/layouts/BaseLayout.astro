@@ -94,5 +94,12 @@ const structuredData = isHome
     <Header currentPath={Astro.url.pathname} />
     <slot />
     <Footer />
+    <script>
+      if ("inEditorMode" in window && window.inEditorMode) {
+        import("../cloudcannon/registerComponents").catch((error) => {
+          console.warn("Failed to load CloudCannon component registration:", error);
+        });
+      }
+    </script>
   </body>
 </html>
