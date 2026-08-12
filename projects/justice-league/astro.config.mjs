@@ -1,9 +1,11 @@
 import { defineConfig } from "astro/config";
+import editableRegions from "@cloudcannon/editable-regions/astro-integration";
 
 export default defineConfig({
   site: "https://www.justiceleagueglm.org",
   output: "static",
   trailingSlash: "always",
+  integrations: [editableRegions()],
   redirects: {
     "/vision-justice-league-lansing": "/about/",
     "/history": "/about/history/",
