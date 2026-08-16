@@ -4,7 +4,9 @@ import { requiredGalleryPhotoIds, requiredGalleryVideoIds } from "../src/data/me
 
 const dist = path.join(process.cwd(), "dist");
 const mediaPath = path.join(dist, "media", "index.html");
+const adBookletPath = path.join(dist, "ad-booklet", "index.html");
 const media = fs.existsSync(mediaPath) ? fs.readFileSync(mediaPath, "utf8") : "";
+const adBooklet = fs.existsSync(adBookletPath) ? fs.readFileSync(adBookletPath, "utf8") : "";
 const sitemap = fs.existsSync(path.join(dist, "sitemap.xml")) ? fs.readFileSync(path.join(dist, "sitemap.xml"), "utf8") : "";
 const checks = [
   ["media route exists", Boolean(media)],
@@ -18,7 +20,12 @@ const checks = [
   ["privacy-enhanced YouTube embeds", media.includes("youtube-nocookie.com/embed/")],
   ["photos have meaningful alt text", requiredGalleryPhotoIds.every((id) => new RegExp(`id="${id}"[\\s\\S]*?<img[^>]+alt="[^\"]{12,}"`).test(media))],
   ["media is in sitemap", sitemap.includes("/media/")],
-  ["no prototype-facing copy", !/prototype|placeholder|demonstration priority/i.test(media)]
+  ["no prototype-facing copy", !/prototype|placeholder|demonstration priority/i.test(media)],
+  ["ad booklet route exists", Boolean(adBooklet)],
+  ["ad booklet online Wix form attached", adBooklet.includes("619eb4d2-04dc-415a-9d9d-d962ca47b424")],
+  ["ad booklet check Wix form attached", adBooklet.includes("69e07670-5f12-44b0-ade5-3dc341f40260")],
+  ["ad booklet links to live form anchors", adBooklet.includes("https://www.justiceleagueglm.org/ad-booklet#online-form") && adBooklet.includes("https://www.justiceleagueglm.org/ad-booklet#check-form")],
+  ["ad booklet has no launch blocker copy", !/prototype|launch-safe|NEEDS CLIENT INPUT|does not upload or store files/i.test(adBooklet)]
 ];
 for (const [label, pass] of checks) console.log(`${pass ? "PASS" : "FAIL"} ${label}`);
 if (checks.some(([, pass]) => !pass)) process.exitCode = 1;

@@ -13,6 +13,25 @@ const placements = [
   { name: "Quarter-page ad", dimensions: "4½ × 3¼ inches", price: "$125" },
   { name: "Business-card ad", dimensions: "4 × 2 inches", price: "$75" }
 ] as const;
+
+const adBookletForms = [
+  {
+    heading: "Online payment form",
+    name: "Online Ad Booklet Form",
+    id: "619eb4d2-04dc-415a-9d9d-d962ca47b424",
+    href: `${wixCampaignUrl}#online-form`,
+    description: "Use this form to enter advertiser contact details, choose ad quantities, upload artwork, and pay online.",
+    details: ["Wix payment field", "File upload field", "Business contact fields"]
+  },
+  {
+    heading: "Check payment form",
+    name: "Check Ad Booklet Form",
+    id: "69e07670-5f12-44b0-ade5-3dc341f40260",
+    href: `${wixCampaignUrl}#check-form`,
+    description: "Use this form to submit advertiser details and artwork when payment will be mailed by check.",
+    details: ["Quantity fields by ad size", "File upload field", "Check acknowledgement fields"]
+  }
+] as const;
 ---
 
 <BaseLayout
@@ -39,7 +58,7 @@ const placements = [
     <aside class="source-notice" aria-label="Campaign source status">
       <strong>Active current-site campaign</strong>
       <p>
-        Details were observed on the organization’s current Wix page on August 7, 2026. The submission and payment workflow remains hosted there.
+        Details were verified against the organization’s current Wix page and form schemas. The submission and payment workflow is attached below through the active Wix forms.
         <a href={wixCampaignUrl} target="_blank" rel="noreferrer">Review the current Wix campaign <span class="visually-hidden">(opens in a new tab)</span></a>.
       </p>
     </aside>
@@ -48,7 +67,7 @@ const placements = [
       <p class="section-kicker">Submission deadline</p>
       <h2 id="ad-deadline"><time datetime="2026-09-30">September 30, 2026</time></h2>
       <p>No countdown or availability claim is used. Confirm any late submission directly with the organization.</p>
-      <a class="button button-secondary" href={wixCampaignUrl} target="_blank" rel="noreferrer">Continue to the current Wix form <span class="visually-hidden">(opens in a new tab)</span></a>
+      <a class="button button-secondary" href="#ad-booklet-forms">Go to forms</a>
     </section>
 
     <section class="campaign-orientation" aria-labelledby="campaign-fit" data-editable="source" data-path="/src/pages/ad-booklet/index.astro" data-key="ad-booklet-orientation">
@@ -84,43 +103,43 @@ const placements = [
         <h2 id="ad-process">Three decisions, then a secure handoff.</h2>
       </div>
       <ol class="process-list">
-        <li><span>01</span><div><h3>Select your placement</h3><p>Choose one or more ad sizes in the current Wix workflow.</p></div></li>
-        <li><span>02</span><div><h3>Prepare and upload your ad</h3><p>Submit a camera-ready JPG, PNG, DOC/DOCX, or PDF. The Astro prototype does not upload or store files.</p></div></li>
-        <li><span>03</span><div><h3>Choose online or check payment</h3><p>Complete the current Wix payment workflow or submit the Wix check form and mail payment separately.</p></div></li>
+        <li><span>01</span><div><h3>Select your placement</h3><p>Choose one or more ad sizes in the attached Wix form.</p></div></li>
+        <li><span>02</span><div><h3>Prepare and upload your ad</h3><p>Submit a camera-ready JPG, PNG, DOC/DOCX, or PDF through the Wix upload field.</p></div></li>
+        <li><span>03</span><div><h3>Choose online or check payment</h3><p>Complete payment online or submit the check-payment form and mail payment separately.</p></div></li>
       </ol>
     </section>
 
-    <section class="submission-paths" aria-labelledby="submission-heading">
+    <section class="submission-paths" id="ad-booklet-forms" aria-labelledby="submission-heading">
       <div class="submission-paths-intro">
         <p class="section-kicker">Complete the submission</p>
-        <h2 id="submission-heading">The transaction stays with Wix for now.</h2>
-        <p>No advertiser information, files, quantities, or payments are collected on this Astro prototype.</p>
+        <h2 id="submission-heading">Choose the form that matches your payment method.</h2>
+        <p>The live Wix forms remain the system of record for advertiser information, file uploads, quantities, receipts, and payment status.</p>
       </div>
       <div class="submission-path-list">
-        <article>
-          <p class="section-index">Online workflow</p>
-          <h3>Submit the ad and pay on the current Wix site.</h3>
-          <p>Use the organization-owned Wix form to select quantities, upload files, and complete payment.</p>
-          <a class="button button-primary" href={wixCampaignUrl} target="_blank" rel="noreferrer">Open the current Wix submission form <span class="visually-hidden">(opens in a new tab)</span></a>
-        </article>
-        <article>
-          <p class="section-index">Check workflow</p>
-          <h3>Submit in Wix, then mail the check separately.</h3>
-          <dl class="check-instructions">
-            <div><dt>Payable to</dt><dd>Justice League of Greater Lansing Michigan</dd></div>
-            <div><dt>Mail to</dt><dd>P.O. Box 12105<br />Lansing, MI 48901</dd></div>
-            <div><dt>Memo</dt><dd>Include your business or organization name</dd></div>
-          </dl>
-          <p>Ad placement is confirmed only after the current Wix page reports that payment and materials have been received.</p>
-        </article>
+        {adBookletForms.map((form) => (
+          <article class="attached-form-card" data-wix-form-id={form.id}>
+            <p class="section-index">{form.heading}</p>
+            <h3>{form.name}</h3>
+            <p>{form.description}</p>
+            <ul aria-label={`${form.name} includes`}>
+              {form.details.map((detail) => <li>{detail}</li>)}
+            </ul>
+            <a class="button button-primary" href={form.href} target="_blank" rel="noreferrer">Open {form.heading} <span class="visually-hidden">(opens in a new tab)</span></a>
+            <p class="form-source-id">Wix form ID: <code>{form.id}</code></p>
+          </article>
+        ))}
       </div>
     </section>
 
-    <section class="evidence-note" aria-labelledby="campaign-launch-gate" data-editable="source" data-path="/src/pages/ad-booklet/index.astro" data-key="ad-booklet-launch-gate">
-      <p class="section-kicker">Prototype integration notice</p>
-      <h2 id="campaign-launch-gate">The handoff needs a launch-safe destination.</h2>
-      <p>The current organization URL is valid while the Wix homepage remains live. Before DNS cutover, the form needs a verified standalone Wix URL or a preserved legacy Wix hostname so this route does not link back to itself.</p>
-      <p>[NEEDS CLIENT INPUT: Confirm the final Wix form/payment URL, campaign owner, proofing process, availability limits, cancellation/refund policy, privacy, file retention, receipt, and failure recovery.]</p>
+    <section class="evidence-note" aria-labelledby="check-payment-instructions" data-editable="source" data-path="/src/pages/ad-booklet/index.astro" data-key="ad-booklet-check-payment">
+      <p class="section-kicker">Check payment instructions</p>
+      <h2 id="check-payment-instructions">Mail checks after submitting the check form.</h2>
+      <dl class="check-instructions">
+        <div><dt>Payable to</dt><dd>Justice League of Greater Lansing Michigan</dd></div>
+        <div><dt>Mail to</dt><dd>P.O. Box 12105<br />Lansing, MI 48901</dd></div>
+        <div><dt>Memo</dt><dd>Include your business or organization name</dd></div>
+      </dl>
+      <p>Ad placement is confirmed after the organization receives the form submission, artwork, and payment.</p>
     </section>
 
     <ActionBand
