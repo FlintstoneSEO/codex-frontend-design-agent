@@ -12,6 +12,7 @@
 - `references/client-discovery-template.md`
 - `references/design-review-rubric.md`
 - `references/page-brief-template.md`
+- `references/platform-delivery.md`
 - `references/responsive-checklist.md`
 - `references/screenshot-review-workflow.md`
 - `references/seo-checklist.md`
