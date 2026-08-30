@@ -29,6 +29,12 @@ Do not default to standalone `.html` files. First inspect the target repository 
 
 Read `references/platform-delivery.md` before selecting a stack for a new project or when a request involves Shopify, Wix, CMS editing, forms, user data, or authentication.
 
+## Icons
+
+Use Lucide as the default interface icon system unless the project already has an approved icon library. Use `lucide-astro`, `lucide-react`, `lucide-vue-next`, or `lucide-svelte` for the corresponding framework, and import only the icons actually rendered. Do not replace recognizable brand marks with generic icons.
+
+Decorative icons must be hidden from assistive technology. Give icon-only controls an accessible name, a visible focus state, and a tooltip when their meaning is not self-evident. Do not use emoji or hand-drawn SVGs as a substitute for a Lucide icon that already fits the meaning.
+
 ## Workflow
 
 1. Inspect repository conventions and select or confirm the delivery platform.

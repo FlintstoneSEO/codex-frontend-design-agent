@@ -57,6 +57,9 @@ A substantially different art direction changes composition, content emphasis, i
 - The visual identity should remain recognizable when the logo is removed.
 - Do not reproduce the identifiable composition, artwork, copy, or interaction sequence of a reference website.
 - Prefer authentic client imagery. Disclose and constrain AI imagery. Never imply synthetic people are actual staff, customers, beneficiaries, or athletes.
+- Use [Lucide](https://lucide.dev) as the default icon system for interface icons when the project does not already use an approved icon library. Import only the icons that are rendered; do not substitute emoji, hand-drawn SVGs, or a second general-purpose icon pack where Lucide has an appropriate icon.
+- Preserve an existing project icon system unless the request includes a deliberate migration. Use the platform-native Lucide package when adding it: `lucide-astro`, `lucide-react`, `lucide-vue-next`, or `lucide-svelte`.
+- Decorative icons must be hidden from assistive technology. Icon-only controls need an accessible name, visible keyboard focus, and a tooltip when the meaning is not obvious.
 - Compose mobile deliberately. Do not merely stack desktop columns.
 - Use semantic HTML before ARIA. Use native controls whenever possible.
 - Accessibility, SEO, and performance are planning constraints, not final audits.

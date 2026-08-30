@@ -26,6 +26,12 @@ When the user needs a client to update content after launch, avoid scattering pa
 
 Treat interactions as implementation requirements, not visual decorations. Contact forms, payments, event registration, newsletter signup, search, filtering, dashboards, authentication, uploads, and workflow actions need their actual integration, data handling, error state, confirmation state, and access control when applicable.
 
+## Interface icons
+
+For new interface work, use [Lucide](https://lucide.dev) as the default icon system unless the target project has an approved existing icon library. Use the framework-native package (`lucide-astro`, `lucide-react`, `lucide-vue-next`, or `lucide-svelte`) and import individual icons instead of an entire icon bundle. Preserve actual brand marks and intentional custom artwork.
+
+Treat icons as part of the accessible interface: decorative icons are hidden from assistive technology; icon-only controls have an accessible name, visible focus treatment, and a tooltip when needed. Do not use emoji or custom SVG approximations when a Lucide icon provides the intended meaning.
+
 ## Footer attribution
 
 Use the shared footer wherever the framework supports one. The footer must render this accessible link on every public page:
