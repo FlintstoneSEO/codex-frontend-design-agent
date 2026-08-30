@@ -82,6 +82,11 @@ A substantially different art direction changes composition, content emphasis, i
 - Need sitemap or navigation: `information-architecture`
 - Need page-level planning: `page-content-planner`
 - Ready to implement: `frontend-ui-builder`
+- CloudCannon configuration, collections, or inputs: `.agents/skills/cloudcannon-configuration`
+- CloudCannon visual editing or editable regions: `.agents/skills/cloudcannon-visual-editing`
+- CloudCannon snippets: `.agents/skills/cloudcannon-snippets`
+- Migrating an Astro site to CloudCannon: `.agents/skills/migrating-to-cloudcannon`
+- CloudCannon multilingual content: `.agents/skills/make-site-multilingual` and `.agents/skills/translate-multilingual`
 - Rendered interface needs critique: `visual-design-review`
 - Multi-viewport behavior needs critique: `responsive-design-review`
 - Accessibility compliance: `accessibility-audit`
