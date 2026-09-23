@@ -7,8 +7,12 @@
 
 ## Visual and responsive
 - [ ] Screenshot review completed at required widths
+- [ ] Full-page mobile and desktop views pass the composition diversity gate
 - [ ] No clipping, overlap, overflow, broken crop, or orphan heading
 - [ ] Brand and industry fit pass rubric
+- [ ] Eyebrows, introductions, alignments, silhouettes, spacing cadence, density, and hierarchy sources were audited for accidental repetition
+- [ ] Mobile adaptations preserve the planned hierarchy rather than merely stacking columns
+- [ ] Remaining repetition and universal CMS/component fields are justified by actual content relationships
 
 ## Accessibility
 - [ ] Automated scan plus keyboard and screen-reader smoke tests

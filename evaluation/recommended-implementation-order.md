@@ -4,10 +4,10 @@
 2. Test `design-discovery` on one real project.
 3. Add industry research and `industry-design-research`.
 4. Test `art-direction-generator`; reject color-only variants.
-5. Add IA and page specification workflows.
-6. Integrate builder rules and project brand tokens.
+5. Add IA, page specification, and page composition map workflows.
+6. Validate hierarchy diversity before integrating builder rules and project brand tokens.
 7. Add screenshot capture at required viewports.
-8. Add visual, responsive, and anti-template reviews.
+8. Add full-page visual, responsive, composition repetition, and anti-template reviews.
 9. Add accessibility, SEO, and performance automation plus manual protocols.
 10. Run integrated website QA.
 11. Complete three baseline comparisons.

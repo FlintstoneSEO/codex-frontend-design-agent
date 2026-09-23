@@ -37,8 +37,11 @@ Do not code a page until these artifacts exist:
 3. Selected art direction and decision rationale
 4. Approved information architecture
 5. Page specification for the page being implemented
+6. Implementation-ready page composition map, either inside the page specification or as a linked artifact
 
-A substantially different art direction changes composition, content emphasis, image behavior, density, component grammar, and interaction treatment. A palette or font swap does not qualify.
+A substantially different art direction changes page rhythm, content emphasis, section composition vocabulary, image behavior, density, whitespace, typography scale relationships, alignment, hierarchy sources, component grammar, and interaction treatment. A palette or font swap does not qualify.
+
+The composition map must define each major section's purpose, composition archetype, dominant element, hierarchy source, alignment, media behavior, CTA behavior, and mobile adaptation before implementation begins.
 
 ## Truthfulness
 
@@ -50,6 +53,9 @@ A substantially different art direction changes composition, content emphasis, i
 ## Design rules
 
 - Design from business context and user intent, not from a default landing-page formula.
+- Distinguish consistency from sameness. Consistency should primarily come from typography, color, spacing systems, interaction behavior, imagery treatment, iconography, and brand voice. Variety may come from composition, scale, density, alignment, section height, media placement, whitespace, content hierarchy, interaction, and sequencing.
+- Component reuse and visual consistency are not the same as repeating the same composition. Reuse tokens and primitives aggressively. Reuse major section compositions only when the content relationship genuinely calls for the same structure.
+- A design system should constrain visual language without forcing every page into the same sentence structure.
 - Do not automatically use an oversized hero, centered headline, three cards, gradient background, glass panels, pills, or rounded containers.
 - Use cards only for separate objects users benefit from scanning, comparing, sorting, or selecting.
 - Every section must have a defined user or business purpose.
@@ -61,8 +67,27 @@ A substantially different art direction changes composition, content emphasis, i
 - Preserve an existing project icon system unless the request includes a deliberate migration. Use the platform-native Lucide package when adding it: `lucide-astro`, `lucide-react`, `lucide-vue-next`, or `lucide-svelte`.
 - Decorative icons must be hidden from assistive technology. Icon-only controls need an accessible name, visible keyboard focus, and a tooltip when the meaning is not obvious.
 - Compose mobile deliberately. Do not merely stack desktop columns.
+- Preserve each composition's design idea on mobile through priority, scale, spacing, crop, sequence, or interaction. An asymmetric section must not automatically become a bland centered stack.
 - Use semantic HTML before ARIA. Use native controls whenever possible.
 - Accessibility, SEO, and performance are planning constraints, not final audits.
+
+### Section hierarchy diversity
+
+For a typical marketing page with five or more major content sections, apply these as content-sensitive heuristics rather than quotas:
+
+- Use eyebrow or kicker labels on no more than roughly 40% of major sections unless the labels carry necessary orientation or category information.
+- Do not use `eyebrow -> heading -> paragraph` for consecutive major sections without a documented reason. Do not populate an eyebrow merely because a component or CMS field supports one.
+- Omit generic labels such as `OUR SERVICES`, `WHY US`, `OUR PROCESS`, `ABOUT US`, and `LEARN MORE` when they add no context. Prefer useful labels such as `Step 02`, `Since 1998`, `Lansing, Michigan`, `For Parents`, `Case Study`, or a real category.
+- Avoid more than three consecutive sections with the same primary alignment.
+- Avoid consecutive sections with identical container width, vertical padding, heading width, and text rhythm unless the repetition communicates a meaningful relationship.
+- On a sufficiently long page, let at least two major sections derive hierarchy from something other than a conventional heading block when supported by the content: imagery, products, statistics, quotes, numbered steps, portfolio work, diagrams, maps, comparisons, timelines, schedules, pricing, testimonials, large statements, or interactive controls.
+- Do not force variety when the content cannot support it. Record intentional repetition and its rationale in the page composition map.
+
+Use `research/section-composition-patterns.md` as a vocabulary, not a rotation of templates.
+
+### CMS content models
+
+CMS schemas must preserve composition-specific semantics rather than homogenize every section into `eyebrow`, `heading`, `description`, and `button`. Model editorial stories, metrics, quotes, processes, showcases, and other compositions with fields that match their content. An optional eyebrow field is acceptable; its presence never implies that it should be populated.
 
 ## Default quality targets
 

@@ -8,7 +8,7 @@
 
 ## Gate 2: Concept
 
-- [ ] Three directions change composition, hierarchy, image behavior, density, and component grammar.
+- [ ] Three directions change page rhythm, content density, composition vocabulary, hierarchy sources, image behavior, whitespace, alignment, typography scale relationships, interaction, and component grammar.
 - [ ] Each direction names its strategic idea and intended emotional response.
 - [ ] The recommended direction is justified against the business brief.
 - [ ] The design remains recognizable without the logo.
@@ -25,6 +25,12 @@
 - [ ] Rounded corners have a defined role and limited radius scale.
 - [ ] Gradients and glass effects have a documented reason.
 - [ ] Empty sections added to create page length are removed.
+- [ ] The page specification contains an implementation-ready composition map.
+- [ ] Three or more sections do not repeat equivalent eyebrow / heading / body introductions.
+- [ ] Eyebrow and kicker usage is selective; generic labels that add no orientation are removed.
+- [ ] Consecutive sections do not repeat alignment, container width, heading measure, spacing cadence, density, media ratio, or silhouette without a documented reason.
+- [ ] Multiple content types carry hierarchy where the content supports them; headings do not mechanically lead every section.
+- [ ] Repeated CTA bands and image-left / image-right alternation have been challenged.
 
 ## Gate 4: Content
 
@@ -44,10 +50,12 @@
 - [ ] Repeated stacking does not create excessive scroll or disconnected labels.
 - [ ] Sticky elements do not cover content or controls.
 - [ ] No horizontal overflow at 320px and target review widths.
+- [ ] Each section's mobile adaptation preserves its intended hierarchy through scale, spacing, sequence, crop, or interaction rather than becoming a generic centered stack.
 
 ## Gate 6: Implementation
 
 - [ ] Components expose brand tokens rather than shipping a fixed component-library appearance.
+- [ ] Major section components and CMS schemas reflect content semantics rather than one universal `eyebrow`, `heading`, `description`, and `button` model.
 - [ ] Semantic HTML and native controls precede ARIA.
 - [ ] Motion has reduced-motion behavior.
 - [ ] Image dimensions prevent layout shifts.
@@ -63,3 +71,17 @@
 5. What would a real customer doubt at this point in the page?
 6. What is the page’s primary action, and is anything competing with it?
 7. Does the mobile version preserve meaning or only preserve components?
+8. Does the full-page screenshot have deliberate changes in scale, density, alignment, media behavior, and whitespace?
+9. Could several sections be swapped without materially changing the experience?
+10. Which repetition is intentional, and where is its rationale recorded?
+
+## Composition Diversity Gate
+
+- [ ] No accidental repeated section-heading formula
+- [ ] Eyebrows and kickers used selectively
+- [ ] Consecutive sections do not share the same hierarchy without justification
+- [ ] Page includes meaningful variation in scale, density, alignment, media behavior, and whitespace
+- [ ] Visual hierarchy comes from multiple content types where appropriate
+- [ ] Mobile composition was designed rather than merely stacked
+- [ ] Repetition that remains is intentional and documented
+- [ ] Components reflect content semantics rather than one universal section schema

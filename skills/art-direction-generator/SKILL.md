@@ -17,10 +17,11 @@ Generate, compare, and recommend three structural art directions.
 ## Workflow
 
 1. Select three distinct taxonomy families.
-2. Define strategy, emotion, type, color, layout, image, components, motion, mobile, accessibility, and performance.
-3. Explain structural differences.
-4. Score fit and risk.
-5. Recommend one while preserving all three.
+2. Define strategy, emotion, type, color, page rhythm, content density, section composition vocabulary, media behavior, whitespace, typography scale relationships, alignment, hierarchy sources, components, interaction, mobile, accessibility, and performance.
+3. Give content-supported examples of likely section compositions for each direction without fixing the project to a template.
+4. Explain structural differences across composition, sequencing, media, density, alignment, and interaction. A palette, font, or surface-style change does not constitute a new direction.
+5. Score fit and risk.
+6. Recommend one while preserving all three.
 
 ## Output
 
@@ -31,6 +32,7 @@ Three completed art-direction documents and recommendation.
 - `research/design-taxonomy.md`
 - `references/art-direction-template.md`
 - `research/anti-template-patterns.md`
+- `research/section-composition-patterns.md`
 
 ## Scripts and tools
 
@@ -39,11 +41,13 @@ Use repository-native tooling first. Applicable tools may include browser screen
 ## Failure conditions
 
 - Directions differ only by color/type
+- Directions preserve the same page rhythm, composition vocabulary, media behavior, alignment, and hierarchy sources
 - Available content cannot support a direction
 
 ## Quality checks
 
 - [ ] Distinct compositions
+- [ ] Distinct page rhythm, density, whitespace, media behavior, alignment, interaction, and hierarchy sources
 - [ ] Explicit mobile behavior
 - [ ] Risks and tradeoffs
 - [ ] No copied composition

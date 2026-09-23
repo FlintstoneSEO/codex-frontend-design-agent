@@ -63,6 +63,8 @@ Dark interfaces are appropriate when media, atmosphere, premium positioning, per
 
 ## 4. Layout
 
+Consistency is not sameness. Build consistency through typography, color, spacing systems, interaction behavior, imagery treatment, iconography, and brand voice. Vary composition, scale, density, alignment, section height, media placement, whitespace, content hierarchy, interaction, and sequencing when those changes clarify the page narrative.
+
 Use an intrinsic layout system:
 
 - Page gutters: fluid, with a minimum appropriate for 320–390px screens
@@ -88,6 +90,8 @@ Vary composition with:
 - Product grids when product comparison is the task
 
 Asymmetry is useful when it guides sequence, creates tension appropriate to the brand, or allows media to carry meaning. It is harmful when it disrupts reading order or produces awkward mobile reflow.
+
+Use `research/section-composition-patterns.md` for a content-driven composition vocabulary. The archetypes are not templates or a requirement to maximize variety.
 
 ## 5. Card decision test
 
@@ -158,10 +162,13 @@ Design mobile from user priorities:
 - Prevent headings from producing one-word orphan lines.
 - Keep primary actions reachable without persistent overlays covering content.
 - Validate landscape, text zoom, and 320px reflow in addition to named screenshots.
+- Preserve the desktop composition's design idea rather than merely stacking columns. Use priority, scale, inset, crop, sequence, or accessible scrolling to carry the hierarchy into mobile.
 
 ## 9. Content density and section rhythm
 
 Alternate intensity deliberately. A dense proof or product section may need a quieter explanation afterward. Do not use identical padding on every section. Rhythm can come from changes in column count, measure, background, alignment, media scale, border treatment, and content type, not decorative blobs.
+
+Component reuse and visual consistency are not the same as repeating the same composition. Reuse tokens and primitives aggressively. Reuse major section compositions only when the content relationship genuinely calls for the same structure. A design system should constrain visual language without forcing every page into the same sentence structure.
 
 ## 10. Decision record
 

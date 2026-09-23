@@ -9,7 +9,28 @@
   "metaDescription": "[DRAFT]",
   "h1": "[DRAFT]",
   "structuredData": [],
-  "sections": [],
+  "compositionStrategy": {
+    "pageRhythm": "[DEFINE]",
+    "dominantPatterns": [],
+    "intentionalRepetition": [],
+    "patternsToAvoid": [],
+    "sectionDiversityNotes": "[DEFINE]"
+  },
+  "sections": [
+    {
+      "id": "[DEFINE]",
+      "purpose": "[DEFINE]",
+      "keyMessage": "[DEFINE]",
+      "contentType": "[DEFINE]",
+      "composition": "[DEFINE]",
+      "hierarchySource": "[DEFINE]",
+      "dominantElement": "[DEFINE]",
+      "alignment": "[DEFINE]",
+      "mediaBehavior": "[DEFINE]",
+      "ctaBehavior": "[DEFINE]",
+      "mobileComposition": "[DEFINE]"
+    }
+  ],
   "internalLinks": [],
   "images": [],
   "mobileAdaptations": [],

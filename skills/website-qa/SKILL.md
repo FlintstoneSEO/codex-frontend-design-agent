@@ -19,7 +19,7 @@ Coordinate content, functional, visual, browser, accessibility, SEO, and perform
 
 1. Resolve placeholders.
 2. Test links/forms/states.
-3. Run screenshot reviews.
+3. Run full-page screenshot reviews and the composition diversity gate.
 4. Run accessibility, SEO, performance checks.
 5. Test representative browsers/devices.
 6. Record blockers and sign-off evidence.
@@ -47,6 +47,17 @@ Use repository-native tooling first. Applicable tools may include browser screen
 - [ ] No automatic failures
 - [ ] Evidence attached
 - [ ] Known risks documented
+
+## Composition diversity gate
+
+- [ ] No accidental repeated section-heading formula
+- [ ] Eyebrows and kickers are selective and semantically useful
+- [ ] Consecutive sections do not share the same hierarchy without justification
+- [ ] Page rhythm includes meaningful, content-supported variation in scale, density, alignment, media, and whitespace
+- [ ] Visual hierarchy comes from multiple content types where appropriate
+- [ ] Mobile composition was designed rather than merely stacked
+- [ ] Remaining repetition is intentional and documented
+- [ ] Components and CMS fields reflect content semantics rather than one universal section schema
 
 ## Dependencies
 

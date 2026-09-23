@@ -16,4 +16,6 @@ Primary conversion: estimate request or phone call. Test service/location archit
 
 Primary conversion: purchase. Test category and product pages, size/variant controls, product photography, shipping/returns, boutique identity, and mobile product UX.
 
-For each project, prepare a fixed content-and-assets packet, baseline run, system run, screenshots, audits, rubric scores, and retrospective.
+For each project, prepare a fixed content-and-assets packet, baseline run, system run, full-page mobile and desktop screenshots, audits, rubric scores, section-composition inventory, and retrospective.
+
+Across the set, compare eyebrow frequency, repeated introduction and alignment runs, component silhouettes, composition archetype and hierarchy-source diversity, semantic appropriateness, mobile composition quality, and distinctiveness between projects. Do not reward novelty that weakens comprehension, conversion, accessibility, or content truthfulness.

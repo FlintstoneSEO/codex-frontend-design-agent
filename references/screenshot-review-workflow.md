@@ -2,6 +2,8 @@
 
 Render each priority page at 375, 390, 768, 1024, and 1440 pixels.
 
+Capture or inspect the complete page at representative mobile and desktop widths before reviewing isolated crops. A set of polished sections can still produce a monotonous page.
+
 ## Inspect
 
 - Above-the-fold composition
@@ -14,10 +16,16 @@ Render each priority page at 375, 390, 768, 1024, and 1440 pixels.
 - Navigation state
 - Heading wrapping
 - Repetition and generic patterns
+- Eyebrow frequency and repeated section-introduction formulas
+- Alignment runs, component silhouettes, media ratios, and spacing cadence
+- Variety and semantic fit of hierarchy sources
+- Whether mobile preserves or flattens the planned composition
 - Overflow and clipped effects
 - Empty space
 - Mobile ergonomics
 - Brand and industry appropriateness
+
+For composition repetition findings, name every affected section, identify which section should change, recommend a content-appropriate alternative, and explain why it better serves the page narrative. Do not prescribe difference for difference's sake.
 
 ## Issue format
 

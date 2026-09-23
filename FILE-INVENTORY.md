@@ -28,6 +28,7 @@
 - `research/methodology.md`
 - `research/performance-standards.md`
 - `research/seo-standards.md`
+- `research/section-composition-patterns.md`
 - `research/source-register.md`
 - `research/universal-design-principles.md`
 - `scripts/README.md`

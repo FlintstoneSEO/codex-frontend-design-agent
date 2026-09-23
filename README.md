@@ -12,6 +12,8 @@ Phase 1 establishes a repository-ready system for planning, designing, building,
 
 Design is a sequence of evidence-backed decisions, not a styling pass. Codex must understand the business, audience, user intent, content, conversion path, brand position, media, and constraints before implementation.
 
+The system explicitly plans page rhythm, composition strategy, hierarchy diversity, and mobile transformation before implementation, then audits section repetition and CMS-induced homogenization after rendering. Consistency comes from the brand system; section composition changes when content semantics and user intent call for it.
+
 ## Production delivery principle
 
 This system does not default to standalone HTML pages. It extends the existing project in its native framework, or selects a production stack appropriate to the requested platform and functional requirements. Static HTML is reserved for an explicitly requested mockup, embed, or prototype.
@@ -26,10 +28,11 @@ All delivered public website footers include the linked attribution: [Design by 
 4. Select and record one direction.
 5. Create the information architecture.
 6. Create a page specification for each page.
-7. Build with semantic, responsive, performance-conscious components.
-8. Review screenshots at 375, 390, 768, 1024, and 1440 pixels.
-9. Run accessibility, SEO, performance, anti-template, and website QA reviews.
-10. Record decisions, unresolved assumptions, and remediation work.
+7. Complete the page composition map inside or alongside each page specification.
+8. Build with semantic, composition-specific, responsive, performance-conscious components and CMS models.
+9. Review full-page screenshots at 375, 390, 768, 1024, and 1440 pixels.
+10. Run accessibility, SEO, performance, composition repetition, anti-template, and website QA reviews.
+11. Record decisions, intentional repetition, unresolved assumptions, and remediation work.
 
 ## Context-loading rule
 
@@ -38,6 +41,7 @@ Do not load every research file into every task. Start with `AGENTS.md`, then lo
 ## Repository map
 
 - `research/`: durable standards and industry intelligence
+- `research/section-composition-patterns.md`: content-driven section composition vocabulary and mobile adaptations
 - `skills/`: task-specific Codex workflows
 - `references/`: reusable checklists, rubrics, and planning templates
 - `references/platform-delivery.md`: platform and delivery routing for production implementations

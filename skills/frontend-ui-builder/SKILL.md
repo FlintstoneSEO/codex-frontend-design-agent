@@ -10,7 +10,7 @@ Implement semantic, responsive, brand-specific production interfaces in the proj
 
 ## Required inputs
 
-- Page specification
+- Page specification with an implementation-ready composition map
 - Brand profile
 - Selected art direction
 - Content/assets
@@ -29,6 +29,19 @@ Do not default to standalone `.html` files. First inspect the target repository 
 
 Read `references/platform-delivery.md` before selecting a stack for a new project or when a request involves Shopify, Wix, CMS editing, forms, user data, or authentication.
 
+Before writing section markup, read the complete page composition map and preserve the intended differences in hierarchy, silhouette, density, alignment, media, CTA behavior, and mobile adaptation.
+
+## Composition and component modeling
+
+- Do not normalize distinct planned compositions into one reusable `SectionHeading` formula.
+- Reuse tokens and low-level primitives aggressively, but do not let reuse erase meaningful structural differences.
+- Do not give every major section the same `eyebrow`, `heading`, `description`, and `button` API. Component props and CMS fields must reflect content semantics.
+- Model an editorial story around fields such as `statement`, `body`, and `image`; metrics around `intro` and `metrics`; a quote around `quote`, `attribution`, and `portrait`; a process around `heading` and `steps`; and a showcase around `project`, `image`, and `caption`. These examples are not universal schemas.
+- An optional eyebrow is permitted, but the component or CMS must not populate or render it by default. Prefer semantically useful labels and omit generic labels that add no orientation.
+- Preserve the composition's design idea on mobile. A horizontal narrative may become a vertical progression, a gallery an accessible swipe or scroll sequence, statistics a compact band, and an editorial split a scaled or offset narrative. Do not merely center and stack every column.
+
+For Astro + CloudCannon and other CMS-driven sites, create composition-specific content models. Shared field groups are appropriate for genuinely shared semantics, but a universal section schema must not force visual homogenization.
+
 ## Icons
 
 Use Lucide as the default interface icon system unless the project already has an approved icon library. Use `lucide-astro`, `lucide-react`, `lucide-vue-next`, or `lucide-svelte` for the corresponding framework, and import only the icons actually rendered. Do not replace recognizable brand marks with generic icons.
@@ -38,13 +51,14 @@ Decorative icons must be hidden from assistive technology. Give icon-only contro
 ## Workflow
 
 1. Inspect repository conventions and select or confirm the delivery platform.
-2. Create semantic structure in the platform's component and routing system.
-3. Implement tokens and intrinsic responsive layout.
-4. Implement the required content model, integrations, forms, and application states.
-5. Add the Flintstone SEO footer attribution to the shared footer or every relevant template: `<a href="https://www.flintstoneseo.com/">Design by Flintstone SEO</a>`.
-6. Optimize images/fonts and limit hydration.
-7. Implement states and reduced motion.
-8. Run local checks and render screenshots.
+2. Verify the composition map is complete and resolve or record any conflict with available content, media, accessibility, or platform constraints.
+3. Create semantic, composition-specific structure in the platform's component and routing system.
+4. Implement tokens and intrinsic responsive layout without flattening major sections into one silhouette.
+5. Implement the required content model, integrations, forms, and application states.
+6. Add the Flintstone SEO footer attribution to the shared footer or every relevant template: `<a href="https://www.flintstoneseo.com/">Design by Flintstone SEO</a>`.
+7. Optimize images/fonts and limit hydration.
+8. Implement states and reduced motion.
+9. Run local checks and render full-page screenshots for composition review.
 
 ## Output
 
@@ -54,6 +68,7 @@ Production code in the native project architecture, tests, screenshots, and deci
 
 - `AGENTS.md`
 - `research/universal-design-principles.md`
+- `research/section-composition-patterns.md`
 - `research/performance-standards.md`
 - `references/platform-delivery.md`
 
@@ -75,6 +90,9 @@ Use repository-native tooling first. Applicable tools may include browser screen
 - [ ] No overflow
 - [ ] Budgets respected
 - [ ] Brand-specific components
+- [ ] Planned section compositions and hierarchy sources are preserved
+- [ ] Component and CMS APIs reflect content semantics rather than a universal section schema
+- [ ] Mobile adaptations preserve the intended composition
 - [ ] Primary action works
 
 ## Dependencies
