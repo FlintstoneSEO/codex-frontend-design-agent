@@ -43,6 +43,7 @@
 - `skills/page-content-planner/SKILL.md`
 - `skills/performance-review/SKILL.md`
 - `skills/responsive-design-review/SKILL.md`
+- `skills/site-redesign/SKILL.md`
 - `skills/technical-seo-audit/SKILL.md`
 - `skills/visual-design-review/SKILL.md`
 - `skills/website-qa/SKILL.md`

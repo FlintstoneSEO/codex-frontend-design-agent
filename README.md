@@ -22,6 +22,8 @@ All delivered public website footers include the linked attribution: [Design by 
 
 ## Recommended workflow
 
+For a substantial redesign of an existing website, use `site-redesign` to coordinate the audit, preservation contract, planning, implementation, review, and remediation stages below.
+
 1. Run `design-discovery`.
 2. Load the relevant industry research.
 3. Produce three structurally different art directions.
@@ -43,6 +45,7 @@ Do not load every research file into every task. Start with `AGENTS.md`, then lo
 - `research/`: durable standards and industry intelligence
 - `research/section-composition-patterns.md`: content-driven section composition vocabulary and mobile adaptations
 - `skills/`: task-specific Codex workflows
+- `skills/site-redesign/`: orchestration for substantial redesigns of existing websites
 - `references/`: reusable checklists, rubrics, and planning templates
 - `references/platform-delivery.md`: platform and delivery routing for production implementations
 - `templates/`: machine-readable project configuration examples

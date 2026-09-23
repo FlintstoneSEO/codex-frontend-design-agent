@@ -119,6 +119,7 @@ CMS schemas must preserve composition-specific semantics rather than homogenize 
 ## Skill routing
 
 - Ambiguous or incomplete project: `design-discovery`
+- Existing website needs substantial strategic redesign: `site-redesign`
 - Need market conventions and differentiation: `industry-design-research`
 - Need three concepts: `art-direction-generator`
 - Need sitemap or navigation: `information-architecture`
