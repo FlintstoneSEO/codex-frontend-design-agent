@@ -31,6 +31,8 @@
 - [ ] Consecutive sections do not repeat alignment, container width, heading measure, spacing cadence, density, media ratio, or silhouette without a documented reason.
 - [ ] Multiple content types carry hierarchy where the content supports them; headings do not mechanically lead every section.
 - [ ] Repeated CTA bands and image-left / image-right alternation have been challenged.
+- [ ] Oversized type and constrained heading measures do not manufacture accidental fragments or imitation-editorial wrapping.
+- [ ] Large negative space, viewport-height heroes, and column offsets have content-supported purposes and competent cross-viewport execution.
 
 ## Gate 4: Content
 
@@ -51,6 +53,8 @@
 - [ ] Sticky elements do not cover content or controls.
 - [ ] No horizontal overflow at 320px and target review widths.
 - [ ] Each section's mobile adaptation preserves its intended hierarchy through scale, spacing, sequence, crop, or interaction rather than becoming a generic centered stack.
+- [ ] Prominent line breaks remain intentional and readable rather than becoming fragments or avoidable orphans.
+- [ ] Desktop offsets and viewport-height rules do not become mobile dead space or delay primary content.
 
 ## Gate 6: Implementation
 

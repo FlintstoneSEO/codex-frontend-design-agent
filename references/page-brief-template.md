@@ -30,6 +30,8 @@
 
 Check neighboring sections for repeated introductions, primary alignment, container width, spacing cadence, density, media ratio, and hierarchy source. Do not proceed to implementation until repetition is either changed or documented as intentional.
 
+When prominent type or substantial negative space carries a section, record the intended heading measure, any essential manual line break and its rationale, and what the whitespace frames, separates, emphasizes, or contributes to rhythm.
+
 ## Media requirements
 ## Mobile adaptations
 ## Accessibility risks

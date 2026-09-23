@@ -14,18 +14,20 @@ Capture or inspect the complete page at representative mobile and desktop widths
 - Image crop and focal point
 - Button prominence and competition
 - Navigation state
-- Heading wrapping
+- Prominent heading and CTA wrapping: isolated characters, punctuation-only lines, fragments, short final lines, avoidable orphans, restrictive measures, and manual breaks
 - Repetition and generic patterns
 - Eyebrow frequency and repeated section-introduction formulas
 - Alignment runs, component silhouettes, media ratios, and spacing cadence
 - Variety and semantic fit of hierarchy sources
 - Whether mobile preserves or flattens the planned composition
 - Overflow and clipped effects
-- Empty space
+- Empty-space purpose, especially hero and split-layout column starts, centers of gravity, section height, offsets, and fold position
 - Mobile ergonomics
 - Brand and industry appropriateness
 
 For composition repetition findings, name every affected section, identify which section should change, recommend a content-appropriate alternative, and explain why it better serves the page narrative. Do not prescribe difference for difference's sake.
+
+For each large empty region, ask whether it frames, separates, emphasizes, or creates intentional rhythm. If it does none of these, treat it as unused layout area and inspect min-height, viewport units, padding, alignment, and hard-coded offsets. For every prominent text break, distinguish intentional editorial treatment from unavoidable responsive wrapping and accidental layout failure.
 
 ## Issue format
 

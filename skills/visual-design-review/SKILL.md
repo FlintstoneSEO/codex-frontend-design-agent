@@ -20,10 +20,24 @@ Evaluate strategic fit, hierarchy, page rhythm, composition diversity, type, spa
 1. Compare rendered result to strategy.
 2. Inspect the full page before isolated sections. Ask whether the page has a recognizable rhythm; whether major sections have differentiated roles; whether scale, density, alignment, media behavior, and whitespace change meaningfully; and whether repetition feels intentional.
 3. Test whether multiple sections could be swapped without materially changing the experience, whether the long screenshot becomes monotonous, whether the design remains distinctive without the logo or brand name, and whether the composition fits this industry and content.
-4. Compare desktop and mobile composition maps to the rendered adaptations.
-5. Score the rubric. Do not award a strong page-level score merely because individual sections are polished.
-6. Identify viewport-specific issues using the exact issue format.
-7. Prioritize remediation and re-score.
+4. Run the Composition Balance and Dead-Space Audit below.
+5. Compare desktop and mobile composition maps to the rendered adaptations.
+6. Score the rubric. Do not award a strong page-level score merely because individual sections are polished.
+7. Identify viewport-specific issues using the exact issue format.
+8. Prioritize remediation and re-score.
+
+## Composition Balance and Dead-Space Audit
+
+For every hero and major split composition, inspect top and bottom offsets, column start positions, content-block and media heights, visual center of gravity, whitespace distribution, section min-height and viewport-height use, the fold, image focal point, and dominant visual anchors. Review the columns as one composition, not as independently successful regions.
+
+Ask: **Is this negative space actively contributing to the composition, or is it merely unused layout area?** Space should frame, separate, emphasize, or create intentional rhythm. If its purpose is unclear, require remediation or a documented art-direction rationale.
+
+Flag unexplained dead zones; text beginning substantially below adjacent imagery; primary messaging delayed unnecessarily; imbalance caused by arbitrary offsets, bottom alignment, or independently positioned columns; artificial drama created by excessive padding or section height, including unjustified `min-height: 100vh` or `100svh`; and viewport-specific offsets that succeed at only one width. Do not penalize purposeful asymmetry or useful negative space.
+
+## Automatic failures
+
+- A hero contains a large unexplained dead zone caused by layout mechanics rather than art direction.
+- Primary hero content is substantially delayed below adjacent media without a compositional purpose.
 
 ## Output
 
@@ -51,6 +65,8 @@ Use repository-native tooling first. Applicable tools may include browser screen
 - [ ] Complete-page rhythm and composition diversity assessed
 - [ ] Intentional and accidental repetition distinguished
 - [ ] Mobile preserves each major composition's design idea
+- [ ] Heroes and major split layouts pass the Composition Balance and Dead-Space Audit
+- [ ] Negative space has an identifiable compositional function or documented rationale
 
 ## Dependencies
 

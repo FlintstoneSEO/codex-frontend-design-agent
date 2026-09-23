@@ -42,6 +42,19 @@ Before writing section markup, read the complete page composition map and preser
 
 For Astro + CloudCannon and other CMS-driven sites, create composition-specific content models. Shared field groups are appropriate for genuinely shared semantics, but a universal section schema must not force visual homogenization.
 
+## Prominent typography
+
+- Review the intended wrapping of every H1, H2, display heading, oversized statement, major CTA label, and other prominent text while implementing it.
+- Do not add a narrow `max-width` merely to manufacture dramatic wrapping. Prefer intrinsic responsive sizing and solve poor breaks in this order: grid or column allocation, available inline size, heading measure, fluid type scale, font size, letter spacing, adjacent column proportions, then composition.
+- Treat isolated characters, punctuation-only lines, awkward word fragments, extremely short final lines, avoidable one-word orphans, and unnecessarily tall headings as defects. Do not default to shrinking display type when space can be allocated better.
+- Use manual `<br>` elements only for an intentional art-direction decision. Record the rationale and verify that the break improves the composition at every supported viewport; otherwise allow natural wrapping.
+
+## Vertical composition
+
+- Build heroes and split sections as unified compositions. Coordinate column start positions, content and media heights, vertical center of gravity, image focal point, and the fold instead of positioning each column independently.
+- Prefer intrinsic layout over viewport-specific magic numbers. Avoid excessive fixed or viewport-relative hero heights such as unjustified `min-height: 100vh` or `100svh`, top padding, hard-coded offsets, and bottom-aligned text when they create unused space or delay primary messaging.
+- Preserve intentional asymmetry and negative space only when the space frames, separates, emphasizes, or creates meaningful rhythm. If its function is unclear, rebalance the section.
+
 ## Icons
 
 Use Lucide as the default interface icon system unless the project already has an approved icon library. Use `lucide-astro`, `lucide-react`, `lucide-vue-next`, or `lucide-svelte` for the corresponding framework, and import only the icons actually rendered. Do not replace recognizable brand marks with generic icons.
@@ -58,7 +71,7 @@ Decorative icons must be hidden from assistive technology. Give icon-only contro
 6. Add the Flintstone SEO footer attribution to the shared footer or every relevant template: `<a href="https://www.flintstoneseo.com/">Design by Flintstone SEO</a>`.
 7. Optimize images/fonts and limit hydration.
 8. Implement states and reduced motion.
-9. Run local checks and render full-page screenshots for composition review.
+9. Run local checks and render full-page screenshots at the required widths. Verify prominent heading wraps and hero or split-layout balance before considering implementation complete.
 
 ## Output
 
@@ -93,6 +106,10 @@ Use repository-native tooling first. Applicable tools may include browser screen
 - [ ] Planned section compositions and hierarchy sources are preserved
 - [ ] Component and CMS APIs reflect content semantics rather than a universal section schema
 - [ ] Mobile adaptations preserve the intended composition
+- [ ] No prominent text has accidental character or punctuation fragments, broken words, or avoidable orphan lines
+- [ ] Heading measure and line breaks remain intentional at every required viewport
+- [ ] Hero whitespace is compositionally justified and primary messaging is not artificially delayed
+- [ ] Split-layout vertical relationships are intentional, with no dead space created by sizing, padding, alignment, or magic-number offsets
 - [ ] Primary action works
 
 ## Dependencies

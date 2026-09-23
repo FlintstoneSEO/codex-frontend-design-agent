@@ -6,10 +6,10 @@ Multiple implementations of one archetype should still differ when their content
 
 | Strategy | Hierarchy source and appropriate use | Mobile composition idea |
 |---|---|---|
-| Editorial split | A large statement in one region and narrative content offset beside it; useful when a thesis and explanation need simultaneous weight. | Preserve the statement's scale, then place the narrative with deliberate indentation, rules, or spacing rather than centering both. |
+| Editorial split | A large statement in one region and narrative content offset beside it; useful when a thesis and explanation need simultaneous weight. The offset and resulting negative space need a stated compositional role. | Preserve the statement's scale, then place the narrative with deliberate indentation, rules, or spacing rather than centering both or retaining desktop dead space. |
 | Image-led | Photography or illustration establishes context before text; useful when authentic visual evidence can answer the user's first question. | Re-crop to retain the subject, keep the decisive text attached to the image, and avoid shrinking the image into a thumbnail. |
 | Statement | One oversized phrase or sentence with minimal support; useful for a defining promise, belief, or transition. | Maintain typographic dominance and shorten the measure; reduce scale only enough to prevent broken reading. |
-| Asymmetric split | Unequal columns or intentionally offset elements express priority or tension. | Reorder by meaning and preserve asymmetry through scale, inset, overlap, or spacing without breaking semantic or focus order. |
+| Asymmetric split | Unequal columns or intentionally offset elements express priority or tension; column starts and centers of gravity must still read as one composition. | Reorder by meaning and preserve asymmetry through scale, inset, overlap, or spacing without breaking semantic or focus order or delaying primary content. |
 | Feature grid | Comparable items are arranged for scanning or selection. Use only when the items are genuinely parallel objects. | Change column count or use a labelled horizontal scroll when comparison remains clear; do not turn every item into an oversized stacked card. |
 | Metric-led | Verified statistics or numbers establish proof and hierarchy. | Use a compact stacked band, ordered list, or two-column numeric rhythm while keeping labels attached to values. |
 | Quote-led | A verified testimonial, founder statement, athlete quote, or customer voice is the primary visual element. | Preserve quotation scale and attribution proximity; treat portraits as supporting evidence, not decoration. |
@@ -36,6 +36,8 @@ For each major section, identify:
 4. The hierarchy source: heading, image, product, statistic, quote, sequence, comparison, schedule, action, or another content type.
 5. How the section changes the page's scale, density, alignment, whitespace, or media behavior relative to its neighbors.
 6. How the same design idea survives on mobile.
+7. For prominent type, the intended measure and whether any manual line break is essential to the art direction.
+8. For large negative space or offset columns, what the space frames, separates, emphasizes, or contributes to rhythm.
 
 If two neighboring sections use the same hierarchy, alignment, silhouette, and spacing cadence, either document why the repetition communicates a relationship or change the weaker composition.
 

@@ -8,7 +8,8 @@
 ## Visual and responsive
 - [ ] Screenshot review completed at required widths
 - [ ] Full-page mobile and desktop views pass the composition diversity gate
-- [ ] No clipping, overlap, overflow, broken crop, or orphan heading
+- [ ] No clipping, overlap, overflow, broken crop, accidental heading fragment, or avoidable prominent-text orphan
+- [ ] Heroes and major split layouts contain no unexplained dead zones or unjustified delay of primary messaging
 - [ ] Brand and industry fit pass rubric
 - [ ] Eyebrows, introductions, alignments, silhouettes, spacing cadence, density, and hierarchy sources were audited for accidental repetition
 - [ ] Mobile adaptations preserve the planned hierarchy rather than merely stacking columns

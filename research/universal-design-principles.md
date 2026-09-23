@@ -43,6 +43,8 @@ Select type according to voice, reading task, available weights, language suppor
 - Conservative text faces fit legal, financial, medical-adjacent, institutional, and complex informational pages.
 - Do not use an “industry font” as a shortcut. Construction does not require condensed stencil type; nonprofits do not require friendly geometric sans type.
 
+Headline wrapping is part of the composition. At supported widths, prominent text should not leave isolated characters, punctuation, awkward word fragments, extremely short final lines, or avoidable one-word orphans. When wrapping fails despite available space, adjust layout allocation and measure before reducing type size. Manual breaks are art-direction decisions and must remain effective across viewports.
+
 ## 3. Color system
 
 Define semantic roles, not a loose swatch list:
@@ -90,6 +92,8 @@ Vary composition with:
 - Product grids when product comparison is the task
 
 Asymmetry is useful when it guides sequence, creates tension appropriate to the brand, or allows media to carry meaning. It is harmful when it disrupts reading order or produces awkward mobile reflow.
+
+Negative space must frame, separate, emphasize, or create intentional rhythm. In heroes and split layouts, judge text and media as one composition: coordinate their start positions, heights, visual centers, focal points, and relationship to the fold. Viewport-height sizing, excessive padding, bottom alignment, or hard-coded offsets must not manufacture unexplained dead space.
 
 Use `research/section-composition-patterns.md` for a content-driven composition vocabulary. The archetypes are not templates or a requirement to maximize variety.
 
@@ -159,7 +163,7 @@ Design mobile from user priorities:
 - Replace wide comparisons with disclosure, scroll regions with labels, or prioritized summaries.
 - Preserve key context near controls.
 - Re-crop imagery, do not simply shrink it.
-- Prevent headings from producing one-word orphan lines.
+- Prevent headings from producing isolated characters, punctuation-only lines, broken fragments, extremely short final lines, or avoidable one-word orphans.
 - Keep primary actions reachable without persistent overlays covering content.
 - Validate landscape, text zoom, and 320px reflow in addition to named screenshots.
 - Preserve the desktop composition's design idea rather than merely stacking columns. Use priority, scale, inset, crop, sequence, or accessible scrolling to carry the hierarchy into mobile.

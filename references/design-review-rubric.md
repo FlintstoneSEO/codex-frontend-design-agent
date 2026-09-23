@@ -46,6 +46,12 @@ Score each category from 0–5, then multiply by `weight / 5`.
 - Essential page content unavailable without failed client-side JavaScript
 - Composition map absent before implementation
 - Major section components collapse materially different content into one universal section schema
+- Prominent heading leaves a single character or punctuation fragment on its own line
+- Prominent heading contains a clearly avoidable broken word
+- Hero contains a large unexplained dead zone caused by layout mechanics rather than art direction
+- Primary hero content is substantially delayed below adjacent media without a compositional purpose
+
+Apply typography failures with language and viewport context. Legitimate language-specific wrapping and truly unavoidable narrow-screen behavior require documented rationale rather than an automatic failure.
 
 ## Remediation
 
@@ -53,10 +59,20 @@ Every deduction must identify the element, viewport/state, evidence, exact chang
 
 ## Composition scoring anchors
 
-Score composition diversity and page rhythm together with semantic appropriateness. Inspect eyebrow frequency, repeated introduction patterns, alignment runs, component silhouettes, section density, media ratios, hierarchy sources, and mobile adaptations.
+Score composition diversity and page rhythm together with semantic appropriateness. Inspect eyebrow frequency, repeated introduction patterns, alignment runs, component silhouettes, section density, media ratios, hierarchy sources, mobile adaptations, whitespace purpose, and the vertical relationship between text and media in heroes and split layouts.
 
 - **0-1:** Mechanical repetition or chaotic variation obscures purpose; compositions are unrelated to content semantics.
 - **2:** Some differentiated sections, but a dominant generic formula, repeated silhouette, or desktop-only composition weakens the page.
 - **3:** Mostly content-appropriate composition with minor accidental repetition or mobile flattening.
 - **4:** Cohesive brand system with clear, content-driven changes in rhythm and hierarchy across viewports.
 - **5:** Every major composition advances the narrative or decision task; repetition is intentional, mobile preserves the ideas, and the page is distinctive without arbitrary novelty.
+
+## Typography scoring anchors
+
+Inspect prominent heading measure and line-break quality at every required viewport. Distinguish intentional editorial breaks from unavoidable responsive wrapping and accidental browser outcomes.
+
+- **0-1:** Prominent text contains isolated characters, punctuation-only lines, avoidable word fragments, or repeated severe orphans that obstruct reading.
+- **2:** Text remains readable, but restrictive measures or unstable breaks make headings unnecessarily tall or weaken hierarchy.
+- **3:** Mostly intentional wrapping with minor avoidable orphan or phrase-break issues.
+- **4:** Measures and fluid scales produce readable, balanced wraps across viewports; manual breaks, if any, are justified.
+- **5:** Line breaking actively supports the art direction and hierarchy across viewports without sacrificing readability or resilience.

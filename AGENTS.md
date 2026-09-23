@@ -85,6 +85,20 @@ For a typical marketing page with five or more major content sections, apply the
 
 Use `research/section-composition-patterns.md` as a vocabulary, not a rotation of templates.
 
+### Typography integrity
+
+- Treat headline wrapping as part of the composition, not as an incidental browser outcome.
+- At required review widths, prominent text must not leave isolated characters, punctuation, awkward word fragments, or clearly avoidable orphan lines.
+- When a heading wraps poorly despite available space, reconsider grid allocation, inline size, heading measure, fluid scale, font size, letter spacing, adjacent column proportions, and then the composition before inserting a manual break or simply shrinking the type.
+- Use manual heading line breaks only when they express the selected art direction, improve the composition, and have been verified across supported viewports.
+
+### Whitespace and composition balance
+
+- Whitespace must frame, separate, emphasize, or create intentional rhythm. Large unused regions are not automatically premium, editorial, or modern.
+- Review split layouts as one composition rather than two independently positioned columns. Their start positions, heights, visual anchors, and centers of gravity must form an intentional relationship.
+- Avoid artificial hero dead space caused by excessive viewport height, padding, hard-coded offsets, or bottom alignment without a documented compositional reason.
+- Position primary messaging intentionally relative to adjacent media and the viewport fold. Preserve purposeful asymmetry, but remediate empty space that has no clear compositional job.
+
 ### CMS content models
 
 CMS schemas must preserve composition-specific semantics rather than homogenize every section into `eyebrow`, `heading`, `description`, and `button`. Model editorial stories, metrics, quotes, processes, showcases, and other compositions with fields that match their content. An optional eyebrow field is acceptable; its presence never implies that it should be populated.
