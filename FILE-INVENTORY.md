@@ -17,6 +17,7 @@
 - `references/screenshot-review-workflow.md`
 - `references/seo-checklist.md`
 - `references/website-qa-checklist.md`
+- `research/header-site-shell-patterns.md`
 - `research/accessibility-standards.md`
 - `research/anti-template-patterns.md`
 - `research/design-taxonomy.md`
