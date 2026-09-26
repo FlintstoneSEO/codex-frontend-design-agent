@@ -73,6 +73,21 @@ For authenticated or workflow-driven application screens, use `application-redes
 - Use semantic HTML before ARIA. Use native controls whenever possible.
 - Accessibility, SEO, and performance are planning constraints, not final audits.
 
+### Header and site-shell diversity
+
+Treat the header, navigation shell, and its relationship to the hero as first-order art-direction decisions rather than neutral chrome.
+
+- Do not default automatically to `logo left -> horizontal nav -> CTA right`. Use that pattern only when the navigation depth, brand posture, conversion goal, content density, and selected art direction justify it.
+- Before implementation, document the chosen header or site-shell archetype, why it fits the project, how it relates to the hero or first content region, whether it is static, sticky, floating, transparent, layered, split-row, centered, utility-led, rail-based, or otherwise structured, and how it adapts on mobile.
+- Consider alternatives such as centered-brand navigation, split navigation, editorial mastheads, utility-bar systems, compact conversion headers, hero-integrated navigation, floating contained navigation, asymmetric brand-led shells, category or mega navigation, and vertical or rail navigation when supported by the content.
+- Header archetypes are a vocabulary, not a rotation. Do not force novelty when the conventional structure is the strongest solution.
+- Across redesigns, explicitly classify the existing header as preserve, improve, restructure, replace, or remove. Retaining the same shell requires a project-specific rationale, not familiarity.
+- The three proposed art directions should not silently share the same header architecture. If the same architecture is necessary across directions because of hard constraints, document the constraint and vary its hierarchy, relationship to the hero, density, interaction, or responsive behavior meaningfully.
+- Mobile navigation is a composition, not merely a desktop menu collapsed behind a hamburger. Define priority, CTA behavior, disclosure pattern, hierarchy, touch targets, focus management, and how brand presence changes at small widths.
+- Preserve semantic navigation, keyboard access, visible focus, current-page indication where useful, and adequate contrast in every shell treatment.
+
+Use `research/header-site-shell-patterns.md` as a vocabulary and decision aid, not as a template catalog.
+
 ### Section hierarchy diversity
 
 For a typical marketing page with five or more major content sections, apply these as content-sensitive heuristics rather than quotas:
@@ -125,6 +140,7 @@ CMS schemas must preserve composition-specific semantics rather than homogenize 
 - Authenticated product, portal, dashboard, admin, review, or workflow application needs substantial redesign: `application-redesign`
 - Project includes both public and authenticated surfaces: analyze each separately and apply `site-redesign` and `application-redesign` to their respective surfaces
 - Need market conventions and differentiation: `industry-design-research`
+- Shopify new storefront, major redesign, or theme foundation decision: `shopify-store-design`
 - Need three concepts: `art-direction-generator`
 - Need sitemap or navigation: `information-architecture`
 - Need page-level planning: `page-content-planner`

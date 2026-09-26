@@ -17,9 +17,9 @@ Generate, compare, and recommend three structural art directions.
 ## Workflow
 
 1. Select three distinct taxonomy families.
-2. Define strategy, emotion, type, color, page rhythm, content density, section composition vocabulary, media behavior, whitespace, typography scale relationships, alignment, hierarchy sources, components, interaction, mobile, accessibility, and performance.
+2. Define strategy, emotion, type, color, page rhythm, content density, section composition vocabulary, media behavior, whitespace, typography scale relationships, alignment, hierarchy sources, header and site-shell architecture, components, interaction, mobile, accessibility, and performance.
 3. Give content-supported examples of likely section compositions for each direction without fixing the project to a template.
-4. Explain structural differences across composition, sequencing, media, density, alignment, and interaction. A palette, font, or surface-style change does not constitute a new direction.
+4. Explain structural differences across composition, sequencing, media, density, alignment, header/site-shell architecture, and interaction. The three directions must not silently reuse the same `logo left -> nav -> CTA right` shell unless a documented project constraint requires it. A palette, font, or surface-style change does not constitute a new direction.
 5. Score fit and risk.
 6. Recommend one while preserving all three.
 
@@ -33,6 +33,7 @@ Three completed art-direction documents and recommendation.
 - `references/art-direction-template.md`
 - `research/anti-template-patterns.md`
 - `research/section-composition-patterns.md`
+- `research/header-site-shell-patterns.md`
 
 ## Scripts and tools
 
@@ -41,13 +42,15 @@ Use repository-native tooling first. Applicable tools may include browser screen
 ## Failure conditions
 
 - Directions differ only by color/type
-- Directions preserve the same page rhythm, composition vocabulary, media behavior, alignment, and hierarchy sources
+- Directions preserve the same page rhythm, composition vocabulary, media behavior, alignment, header/site-shell architecture, and hierarchy sources without a documented constraint
 - Available content cannot support a direction
 
 ## Quality checks
 
 - [ ] Distinct compositions
 - [ ] Distinct page rhythm, density, whitespace, media behavior, alignment, interaction, and hierarchy sources
+- [ ] Header/site-shell architecture is explicit and justified for each direction
+- [ ] Directions do not reuse one shell by default
 - [ ] Explicit mobile behavior
 - [ ] Risks and tradeoffs
 - [ ] No copied composition

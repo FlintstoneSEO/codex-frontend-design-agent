@@ -31,7 +31,7 @@ The existing repository and site are source material to audit, not evidence that
 Inspect the repository before proposing or changing the design. Inventory:
 
 - Framework or platform, package manager, deployment configuration, and validation commands
-- Routes, pages, navigation, footer, reusable components, design tokens, fonts, breakpoints, images, and media
+- Routes, pages, navigation, header and site-shell architecture, header-to-hero relationship, footer, reusable components, design tokens, fonts, breakpoints, images, and media
 - CMS and content model, editing capability, forms, calls to action, user flows, business logic, ecommerce, and authentication
 - Integrations, analytics, and third-party scripts
 - Metadata, structured data, canonicals, redirects, and other SEO assets
@@ -43,7 +43,7 @@ Produce an existing-site audit with evidence, important dependencies, validation
 
 ### 2. Build the redesign classification
 
-Classify each important route, content group, feature, integration, component family, or design behavior as:
+Classify each important route, content group, feature, integration, component family, site-shell behavior, or design behavior as:
 
 - **PRESERVE:** Retain verified facts, authentic media, useful URLs, required CMS capability, or working functionality.
 - **IMPROVE:** Keep the role while improving its execution.
@@ -93,7 +93,7 @@ Do not proceed while an `AGENTS.md` stop condition applies.
 
 Use `art-direction-generator` to produce three substantially different directions and select one with a recorded rationale.
 
-For each direction, add redesign-specific reasoning: which existing brand qualities remain, which visual behaviors change, and how the direction affects content emphasis, page rhythm, composition vocabulary, media, density, whitespace, typography relationships, CTAs, responsive behavior, and resistance to generic AI patterns.
+For each direction, add redesign-specific reasoning: which existing brand qualities remain, which visual behaviors change, and how the direction affects content emphasis, page rhythm, composition vocabulary, media, density, whitespace, typography relationships, header/site-shell architecture, the header-to-hero relationship, CTAs, responsive behavior, and resistance to generic AI patterns. Explicitly decide whether the existing shell is preserved, improved, restructured, or replaced.
 
 ### 6. Confirm or revise information architecture
 
@@ -113,7 +113,7 @@ At the orchestration level, confirm that each plan:
 - Preserves useful verified content and removes unnecessary duplication
 - Uses content-supported composition diversity and meaningful negative space
 - Defines a deliberate mobile strategy
-- Avoids accidental repetition, including repeated section-introduction formulas
+- Avoids accidental repetition, including repeated section-introduction formulas and default reuse of the same header/site-shell silhouette
 
 Leave detailed composition, typography, and whitespace rules to `AGENTS.md`, `page-content-planner`, and their references.
 
@@ -137,7 +137,7 @@ After implementation, run these skills in order:
 
 Use the issue format required by `AGENTS.md`. Treat documented findings as unresolved work, not completion evidence.
 
-The latest headline-wrapping, typography-integrity, whitespace, dead-space, composition-balance, and accidental-composition checks are inherited through `page-content-planner`, `frontend-ui-builder`, the review skills, and `website-qa`. Do not restate or fork those checks in this skill.
+The latest headline-wrapping, typography-integrity, whitespace, dead-space, composition-balance, header/site-shell-diversity, and accidental-composition checks are inherited through `page-content-planner`, `frontend-ui-builder`, the review skills, and `website-qa`. Do not restate or fork those checks in this skill.
 
 ### 10. Remediate and recheck
 
@@ -202,6 +202,7 @@ Stop implementation and request or visibly record missing input when:
 - [ ] Redesign classification matrix completed
 - [ ] Redesign Contract completed
 - [ ] Verified content and required functionality preserved
+- [ ] Existing header/site shell classified and redesign treatment documented
 - [ ] Three art directions completed and selection documented
 - [ ] IA confirmed or changed intentionally with redirects defined
 - [ ] Page specifications and composition maps completed
