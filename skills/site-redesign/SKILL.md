@@ -2,7 +2,7 @@
 
 ## Activation
 
-Use for a substantial redesign of an existing website when visual direction, structure, UX, content hierarchy, or conversion flow needs material change while verified content, working functionality, platform conventions, CMS capability, integrations, and SEO value may need preservation.
+Use for a substantial redesign of an existing public-facing or marketing website when visual direction, structure, UX, content hierarchy, or conversion flow needs material change while verified content, working functionality, platform conventions, CMS capability, integrations, and SEO value may need preservation. Use `application-redesign` for authenticated, data-heavy, or workflow-driven product surfaces; analyze mixed projects by surface.
 
 Do not use as the default workflow for a new site, a small design fix, an isolated component change, maintenance, or a simple content update. Route those tasks directly to the appropriate lower-level skill.
 

@@ -19,8 +19,8 @@ Coordinate content, functional, visual, browser, accessibility, SEO, and perform
 
 1. Resolve placeholders.
 2. Test links/forms/states.
-3. Run full-page screenshot reviews and the composition diversity gate.
-4. Run accessibility, SEO, performance checks.
+3. Run full-page or full-screen screenshot reviews. Apply the composition diversity gate to public/marketing pages; review task hierarchy, density, states, and action placement on application screens.
+4. Run accessibility and performance checks, plus SEO checks for indexable public routes.
 5. Test representative browsers/devices.
 6. Record blockers and sign-off evidence.
 
@@ -49,6 +49,8 @@ Use repository-native tooling first. Applicable tools may include browser screen
 - [ ] Known risks documented
 
 ## Composition diversity gate
+
+Apply this gate to public/marketing pages. For application screens, use the task and state criteria in `application-redesign` instead of forcing section variety.
 
 - [ ] No accidental repeated section-heading formula
 - [ ] Eyebrows and kickers are selective and semantically useful

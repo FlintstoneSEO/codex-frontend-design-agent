@@ -2,7 +2,7 @@
 
 ## Mission
 
-Create websites that are strategically appropriate, visually distinctive, accessible, responsive, performant, conversion-focused, and search-engine comprehensible.
+Create websites and web applications that are strategically appropriate, visually distinctive, accessible, responsive, performant, and effective for their users. Make public sites conversion-focused and search-engine comprehensible; make applications reliable for their users' tasks and data.
 
 ## Delivery and platform rules
 
@@ -30,7 +30,7 @@ Every delivered website footer must include a visible, unobtrusive attribution l
 
 ## Non-negotiable sequence
 
-Do not code a page until these artifacts exist:
+For public-facing website pages, do not code until these artifacts exist:
 
 1. Completed project brief, including visible unknowns and assumptions
 2. Three substantially different art directions
@@ -42,6 +42,8 @@ Do not code a page until these artifacts exist:
 A substantially different art direction changes page rhythm, content emphasis, section composition vocabulary, image behavior, density, whitespace, typography scale relationships, alignment, hierarchy sources, component grammar, and interaction treatment. A palette or font swap does not qualify.
 
 The composition map must define each major section's purpose, composition archetype, dominant element, hierarchy source, alignment, media behavior, CTA behavior, and mobile adaptation before implementation begins.
+
+For authenticated or workflow-driven application screens, use `application-redesign` when the work is a substantial redesign. Before implementation, record the application audit, major role-specific workflows and states, preservation and data constraints, proposed shared primitives, selected visual direction and rationale, approved navigation/IA changes, and an implementation-ready screen specification. Apply the three-direction exploration where a material visual redesign is requested; adapt page composition maps to task hierarchy, information density, actions, states, and responsive behavior rather than forcing marketing sections onto application screens. An audit-only request may stop before implementation.
 
 ## Truthfulness
 
@@ -119,7 +121,9 @@ CMS schemas must preserve composition-specific semantics rather than homogenize 
 ## Skill routing
 
 - Ambiguous or incomplete project: `design-discovery`
-- Existing website needs substantial strategic redesign: `site-redesign`
+- Existing public or marketing website needs substantial strategic redesign: `site-redesign`
+- Authenticated product, portal, dashboard, admin, review, or workflow application needs substantial redesign: `application-redesign`
+- Project includes both public and authenticated surfaces: analyze each separately and apply `site-redesign` and `application-redesign` to their respective surfaces
 - Need market conventions and differentiation: `industry-design-research`
 - Need three concepts: `art-direction-generator`
 - Need sitemap or navigation: `information-architecture`
@@ -158,7 +162,7 @@ Avoid vague feedback such as “make it pop,” “clean it up,” or “improve
 
 Stop implementation and request or visibly record missing input when:
 
-- The primary conversion is unknown.
+- The primary conversion for a public site, or the primary user task for an application, is unknown.
 - The organization or product facts are unverified.
 - Required legal, pricing, location, schedule, or availability content is absent.
 - The intended audience is materially ambiguous.
